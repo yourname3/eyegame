@@ -19,6 +19,18 @@ var vels          := PackedVector2Array()
 @onready var root_pos = position
 
 @onready var line: Line2D = $Line2D
+@onready var fire_point := %FirePoint
+
+@onready var claw_root := $ClawRoot
+
+func _shoot() -> void:
+	var bullet = preload("res://proto/proto_projectile.tscn").instantiate()
+	
+	# We use OUR global rotation, as we're facing in the direction of the gun.
+	bullet.velocity = Vector2.from_angle(global_rotation) * 600.0
+	# The claw's parent is the player; add a sibling to the player.
+	get_parent().add_sibling(bullet)
+	bullet.global_position = fire_point.global_position
 
 func _ready() -> void:
 	# Put the circle at the "base" of the claw onto the parent
@@ -32,11 +44,11 @@ func _ready() -> void:
 		
 	line.default_color = line_color
 		
-func _process_points(delta: float) -> void:	
+func _process_points(delta: float) -> void:
 	var inv := line.global_transform.inverse()
 
 	global_points[0]                        = root_pos
-	global_points[global_points.size() - 1] = position
+	global_points[global_points.size() - 1] = transform * claw_root.position
 	
 	const SPRING_LENGTH = 0.2
 	
