@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cll6r826wc603"]
+[gd_scene load_steps=4 format=3 uid="uid://cll6r826wc603"]
 
 [ext_resource type="Texture2D" uid="uid://ie1vrw1yoboa" path="res://eyeball/eyeball.svg" id="1_80nbo"]
 [ext_resource type="PackedScene" uid="uid://dhx310ohc245d" path="res://player/player.tscn" id="2_e2o6t"]
+[ext_resource type="PackedScene" uid="uid://8xaqrd8b1bnf" path="res://enemies/basic_enemy/basic_enemy.tscn" id="3_feb5d"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -10,6 +11,11 @@ position = Vector2(1849, 335)
 texture = ExtResource("1_80nbo")
 
 [node name="Player" parent="." instance=ExtResource("2_e2o6t")]
+position = Vector2(690, 234)
 
-[node name="BasicEnemy" parent="." instance=ExtResource("2_e2o6t")]
-position = Vector2(656, 11)
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(682, 225)
+zoom = Vector2(0.655, 0.655)
+
+[node name="BasicEnemy" parent="." instance=ExtResource("3_feb5d")]
+position = Vector2(-88, 773)
