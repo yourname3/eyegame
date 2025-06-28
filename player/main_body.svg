@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="128"
+   height="128"
+   viewBox="0 0 33.866666 33.866666"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   sodipodi:docname="main_body.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="px"
+     inkscape:zoom="8.8016274"
+     inkscape:cx="88.222322"
+     inkscape:cy="65.385636"
+     inkscape:window-width="2560"
+     inkscape:window-height="1494"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       id="rect1"
+       style="fill:#a8a8a8;stroke-width:1.97267;stroke-linecap:square;stroke-miterlimit:12.9"
+       d="M 0.12024292,9.8360662 3.2465586,6.9502363 H 10.581376 V 26.970681 H 3.6072874 L 0.06012146,24.144973 Z"
+       sodipodi:nodetypes="ccccccc" />
+    <path
+       id="rect2"
+       style="fill:#b4b4b4;fill-opacity:1;stroke-width:3.06303;stroke-linecap:square;stroke-miterlimit:12.9"
+       d="m 10.461133,2.56137 2.46498,-2.58522262 H 25.491497 V 33.764405 H 12.926114 L 10.461133,31.50985 Z"
+       sodipodi:nodetypes="ccccccc" />
+    <path
+       style="fill:#b4b4b4;fill-opacity:1;stroke:none;stroke-width:2.38125;stroke-linecap:square;stroke-miterlimit:12.9"
+       d="M 25.416346,-0.00751518 C 35.817357,6.4856022 36.824392,26.573684 25.220951,33.848381"
+       id="path2"
+       sodipodi:nodetypes="cc" />
+  </g>
+</svg>

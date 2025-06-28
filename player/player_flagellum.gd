@@ -39,11 +39,13 @@ func _process(delta: float) -> void:
 	
 	var speed_control := remap(get_parent().position_delta.length(), 0.0, 400.0 / 60.0, 0.0, 1.0)
 	
-	var amp: float = lerp(0.0, 80.0, speed_control)
+	var amp: float = lerp(0.0, 20.0, speed_control)
 	#var maxstep: float = lerp(1.2, 2.0, speed_control) * step
 	var maxstep := 1.2 * step
 	
-	_phase = fmod(_phase + delta * _phase_rate * lerp(1.0, 7.0, speed_control), TAU)
+	var phase_speedup = lerp(1.0, 7.0, speed_control) 
+	
+	_phase = fmod(_phase + delta * _phase_rate * phase_speedup, TAU)
 	
 	#global_points[0] = global_transform * (ROOT + Vector2(0, sin(_phase) * amp))
 	
@@ -51,7 +53,7 @@ func _process(delta: float) -> void:
 		var t := float(i) / float(points.size() - 1)
 		t = 1.0 - (abs(t - 0.4) * 2.0)
 		var amp_i := t * amp
-		truth[i].y = sin(i * 0.3 + _phase) * amp_i
+		truth[i].y = sin(i * 0.3 * phase_speedup + _phase) * amp#_i
 	global_points[0] = global_transform * truth[0]
 	
 	var noise = Vector2.from_angle(randf_range(0, TAU)) * randf_range(0, 40)

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bwrea3awxyb53" path="res://player/player_animation.gd" id="1_fp5y0"]
 [ext_resource type="Script" uid="uid://cj378pgaoju2f" path="res://player/player_flagellum.gd" id="1_v5hpx"]
-[ext_resource type="Texture2D" uid="uid://cjjjj6t82jvhd" path="res://icon.svg" id="3_t8nns"]
+[ext_resource type="Texture2D" uid="uid://dfoct6gc3qe2q" path="res://player/main_body.svg" id="3_t8nns"]
 
 [sub_resource type="Curve" id="Curve_v5hpx"]
 _data = [Vector2(0, 1), 0.0, 0.0483477, 0, 0, Vector2(1, 0), -2.00557, 0.0, 0, 0]
@@ -11,30 +11,49 @@ point_count = 2
 [node name="PlayerAnimation" type="Node2D"]
 script = ExtResource("1_fp5y0")
 
-[node name="Line2D" type="Line2D" parent="."]
-rotation = -3.14159
-points = PackedVector2Array(0, 0, 172, 0)
+[node name="Line2D5" type="Line2D" parent="."]
+position = Vector2(-17.2818, -2.59416)
+rotation = 3.45405
+points = PackedVector2Array(0, 0, 146, 1.28746e-05)
+width = 8.36
 width_curve = SubResource("Curve_v5hpx")
-default_color = Color(0.654232, 0.654232, 0.654232, 1)
+default_color = Color(0.497474, 0.497474, 0.497474, 1)
+script = ExtResource("1_v5hpx")
+
+[node name="Line2D4" type="Line2D" parent="."]
+position = Vector2(-19.2818, 4.40584)
+rotation = 2.89456
+points = PackedVector2Array(0, 0, 146, 1.28746e-05)
+width = 8.36
+width_curve = SubResource("Curve_v5hpx")
+default_color = Color(0.497474, 0.497474, 0.497474, 1)
 script = ExtResource("1_v5hpx")
 
 [node name="Line2D2" type="Line2D" parent="."]
-position = Vector2(1, 14)
+position = Vector2(-18, 12)
 rotation = -3.14159
-points = PackedVector2Array(0, 0, 172, 0)
+points = PackedVector2Array(0, 0, 119, 1.04904e-05)
 width_curve = SubResource("Curve_v5hpx")
-default_color = Color(0.654232, 0.654232, 0.654232, 1)
+default_color = Color(0.593134, 0.593134, 0.593134, 1)
+script = ExtResource("1_v5hpx")
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(-18, 0)
+rotation = 3.14159
+points = PackedVector2Array(0, 0, 145, 1.26763e-05)
+width_curve = SubResource("Curve_v5hpx")
+default_color = Color(0.593134, 0.593134, 0.593134, 1)
 script = ExtResource("1_v5hpx")
 
 [node name="Line2D3" type="Line2D" parent="."]
-position = Vector2(-1, -16)
+position = Vector2(-18, -12)
 rotation = -3.14159
-points = PackedVector2Array(0, 0, 172, 0)
+points = PackedVector2Array(0, 0, 107, 9.53674e-06)
 width_curve = SubResource("Curve_v5hpx")
-default_color = Color(0.654232, 0.654232, 0.654232, 1)
+default_color = Color(0.593134, 0.593134, 0.593134, 1)
 script = ExtResource("1_v5hpx")
 
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(28, -1)
-scale = Vector2(0.435722, 0.435722)
+[node name="MainBody" type="Sprite2D" parent="."]
+position = Vector2(1, -9.53674e-07)
+scale = Vector2(0.59375, 0.59375)
 texture = ExtResource("3_t8nns")
