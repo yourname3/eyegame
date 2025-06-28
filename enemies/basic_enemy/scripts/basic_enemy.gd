@@ -33,6 +33,14 @@ func on_use_boost():
 		pass
 
 func _set_health(value:int):
+	if value < health:
+		print("OUCH!")
+		# If value is less than health, we're taking damage.
+		# For now, do a simple red blink animation.
+		var tween = create_tween()
+		# Intense red
+		tween.tween_property(self, "modulate", Color(2.0, 2.0, 2.0), 0.2)
+		tween.tween_property(self, "modulate", Color.WHITE, 0.2)
 	health = value
 	if health <= 0:
 		_death()
