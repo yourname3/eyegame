@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bki43oonjw1f2"]
+[gd_scene load_steps=5 format=3 uid="uid://bki43oonjw1f2"]
 
 [ext_resource type="Script" uid="uid://bwrea3awxyb53" path="res://player/player_animation.gd" id="1_fp5y0"]
 [ext_resource type="Script" uid="uid://cj378pgaoju2f" path="res://player/player_flagellum.gd" id="1_v5hpx"]
+[ext_resource type="Texture2D" uid="uid://cjjjj6t82jvhd" path="res://icon.svg" id="3_t8nns"]
 
 [sub_resource type="Curve" id="Curve_v5hpx"]
 _data = [Vector2(0, 1), 0.0, 0.0483477, 0, 0, Vector2(1, 0), -2.00557, 0.0, 0, 0]
@@ -32,3 +33,8 @@ points = PackedVector2Array(0, 0, 172, 0)
 width_curve = SubResource("Curve_v5hpx")
 default_color = Color(0.654232, 0.654232, 0.654232, 1)
 script = ExtResource("1_v5hpx")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(28, -1)
+scale = Vector2(0.435722, 0.435722)
+texture = ExtResource("3_t8nns")
