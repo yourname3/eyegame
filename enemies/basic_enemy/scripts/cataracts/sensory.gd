@@ -1,0 +1,2 @@
+extends BasicSensory
+class_name CataractsSensory
