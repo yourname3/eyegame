@@ -1,9 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://cll6r826wc603"]
+[gd_scene load_steps=3 format=3 uid="uid://cll6r826wc603"]
 
 [ext_resource type="Texture2D" uid="uid://ie1vrw1yoboa" path="res://eyeball/eyeball.svg" id="1_80nbo"]
+[ext_resource type="PackedScene" uid="uid://dhx310ohc245d" path="res://player/player.tscn" id="2_e2o6t"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Eyeball" type="Sprite2D" parent="."]
 position = Vector2(1849, 335)
 texture = ExtResource("1_80nbo")
+
+[node name="Player" parent="." instance=ExtResource("2_e2o6t")]
+
+[node name="BasicEnemy" parent="." instance=ExtResource("2_e2o6t")]
+position = Vector2(656, 11)
