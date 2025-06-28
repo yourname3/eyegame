@@ -6,6 +6,8 @@ extends Node2D
 
 @export var SpawnPoints: Array[Node2D]
 
+@export var SpawningRoot: Node2D
+
 func _ready() -> void:
 	print("thing is loaded")
 	
@@ -14,7 +16,7 @@ func _ready() -> void:
 		var newWave = enemy_data[i]
 		for j in newWave.enemy_sequences:
 			print(j)
-			print(j.EnemyName)
+			print(j.Enemy)
 			print(j.EnemyAmount)
 			print(j.EnemySpawnInterval)
 			
@@ -51,7 +53,7 @@ func _NextWave() -> void:
 		var newWave = enemy_data[current_wave]
 		for j in newWave.enemy_sequences:
 			print(j)
-			print(j.EnemyName)
+			print(j.Enemy)
 			print(j.EnemyAmount)
 			print(j.EnemySpawnInterval)
 			#this is the part where we spawn in the stuff
@@ -63,6 +65,10 @@ func _NextWave() -> void:
 				var spawnPoint = SpawnPoints.pick_random()
 				
 				#spawm enemy at that point
+				var newEnemy = j.Enemy.instantiate()
+				add_child(SpawningRoot)
+				
+				
 			
 		
 		
