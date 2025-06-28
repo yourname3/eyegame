@@ -21,8 +21,12 @@ sensory = NodePath("Sensory")
 stats = NodePath("Stats")
 state_machine = NodePath("StateMchine")
 
-[node name="Sensory" type="Node2D" parent="."]
+[node name="Sensory" type="Node2D" parent="." node_paths=PackedStringArray("signal_bus", "vision", "agent", "hitbox")]
 script = ExtResource("2_pyiaf")
+signal_bus = NodePath("..")
+vision = NodePath("Vision")
+agent = NodePath("Agent")
+hitbox = NodePath("HitBox")
 
 [node name="Vision" type="Area2D" parent="Sensory"]
 
@@ -30,6 +34,7 @@ script = ExtResource("2_pyiaf")
 shape = SubResource("CircleShape2D_yx0l5")
 
 [node name="Agent" type="NavigationAgent2D" parent="Sensory"]
+unique_name_in_owner = true
 
 [node name="HitBox" type="Area2D" parent="Sensory"]
 
