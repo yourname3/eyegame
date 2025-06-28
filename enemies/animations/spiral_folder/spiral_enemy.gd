@@ -16,25 +16,29 @@ func _ready() -> void:
 	for i in range(0, POINTS):
 		line.add_point(Vector2.ZERO)
 		
-	_draw_spiral(0)
+	_draw_spiral(0, 0)
 		
-func _draw_spiral(phase: float) -> void:
+func _draw_spiral(phase: float, funny_phase: float) -> void:
 	for i in range(0, line.points.size()):
 		var t := (float(i) / float(line.points.size() - 1)) * MAX_T
 		
-		var point = Vector2(cos(t + phase), 0.5 * (0.3 * t + sin(t + phase)))
+		var point = Vector2(0.5 * (0.3 * t + sin(t + phase)), cos(t + phase))
+		point.y += sin((t + funny_phase)/PI) * 0.2
 		point *= 30
 		
 		line.points[i] = point
 
+var _funny_phase := 0.0
 var _phase := 0.0
 
 func _process(delta: float) -> void:
 	var speed = 100.0
 	
-	position.y += speed * delta
+	position.x += speed * delta
 	
 	var phase_step = speed / (30 * 0.5 * 0.3)
 	
-	_draw_spiral(_phase)
+	_draw_spiral(_phase, _funny_phase)
 	_phase = fmod(_phase + phase_step * delta, TAU)
+	
+	_funny_phase = fmod(_funny_phase + TAU * delta, TAU)
