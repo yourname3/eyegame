@@ -19,6 +19,8 @@ var vels          := PackedVector2Array()
 @onready var line: Line2D = $Line2D
 
 func _ready() -> void:
+	# Put the circle at the "base" of the claw onto the parent
+	$ClawBase.reparent.call_deferred(get_parent())
 	line.clear_points()
 	
 	for i in range(0, POINT_COUNT):

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="128"
+   height="128"
+   viewBox="0 0 33.866666 33.866666"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   sodipodi:docname="claw_base.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="px"
+     inkscape:zoom="6.2236904"
+     inkscape:cx="73.10775"
+     inkscape:cy="74.955528"
+     inkscape:window-width="2560"
+     inkscape:window-height="1494"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <circle
+       style="fill:#232323;fill-opacity:1;stroke:none;stroke-width:3.72657;stroke-linecap:square;stroke-miterlimit:12.9"
+       id="path12"
+       cx="16.933332"
+       cy="16.933332"
+       r="16.933332" />
+    <circle
+       style="fill:#2b2b2b;fill-opacity:1;stroke:none;stroke-width:3.52074;stroke-linecap:square;stroke-miterlimit:12.9"
+       id="circle13"
+       cx="16.933332"
+       cy="16.933332"
+       r="15.998061" />
+    <circle
+       style="fill:#232323;fill-opacity:1;stroke:none;stroke-width:3.36169;stroke-linecap:square;stroke-miterlimit:12.9"
+       id="circle14"
+       cx="16.933332"
+       cy="16.933332"
+       r="15.275353" />
+    <circle
+       style="fill:#181818;fill-opacity:1;stroke:none;stroke-width:2.96875;stroke-linecap:square;stroke-miterlimit:12.9"
+       id="circle12"
+       cx="16.933332"
+       cy="16.933332"
+       r="13.489837" />
+  </g>
+</svg>
