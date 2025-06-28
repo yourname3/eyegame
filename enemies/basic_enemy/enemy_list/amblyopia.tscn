@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://l463s6lfifsc"]
+[gd_scene load_steps=9 format=3 uid="uid://l463s6lfifsc"]
 
 [ext_resource type="Script" uid="uid://cr250551rhlnc" path="res://enemies/basic_enemy/scripts/basic_enemy.gd" id="1_e3fca"]
 [ext_resource type="Script" uid="uid://cmf0c6novdp1j" path="res://enemies/basic_enemy/scripts/amblyopia/sensory.gd" id="2_pyiaf"]
 [ext_resource type="Script" uid="uid://bastchle4oji7" path="res://enemies/basic_enemy/scripts/stats.gd" id="3_j31mh"]
 [ext_resource type="Script" uid="uid://cctbcuv2vbaiv" path="res://enemies/basic_enemy/scripts/state_mchine.gd" id="4_1bcrh"]
+[ext_resource type="Texture2D" uid="uid://cjjjj6t82jvhd" path="res://icon.svg" id="5_r112n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yx0l5"]
 radius = 300.0
@@ -45,6 +46,9 @@ script = ExtResource("4_1bcrh")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_oul6g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("5_r112n")
 
 [connection signal="body_entered" from="Sensory/Vision" to="Sensory" method="_on_vision_body_entered"]
 [connection signal="body_exited" from="Sensory/Vision" to="Sensory" method="_on_vision_body_exited"]

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2f4gjk76cf4k"]
+
+[ext_resource type="Texture2D" uid="uid://6yc0xmhvv4fj" path="res://proto/proto_projectile.svg" id="1_3kd5e"]
+[ext_resource type="Script" uid="uid://lh8xpd3qgtxf" path="res://experience/exp.gd" id="1_denek"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3kd5e"]
+radius = 843.152
+
+[node name="Exp" type="Node2D"]
+script = ExtResource("1_denek")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+scale = Vector2(0.168432, 0.168432)
+texture = ExtResource("1_3kd5e")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
+shape = SubResource("CircleShape2D_3kd5e")
+
+[connection signal="body_entered" from="Sprite2D/Area2D" to="." method="_on_area_2d_body_entered"]

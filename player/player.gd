@@ -4,7 +4,9 @@ class_name Player
 @export var speed := 700
 @export var brake_force := 0.94
 @export var acceleration := 15.0
-
+var level : int = 0
+var current_exp : int = 0
+var needed_exp : int = 100
 @export var health : int = 100
 
 
@@ -23,15 +25,15 @@ func _physics_process(delta: float) -> void:
 	else:
 		# Apply braking force (simulates deceleration)
 		velocity *= brake_force
-	
 
 	move_and_slide()
 
-
-
-
-
 func _set_health(value:int):
 	health = value
+	if health <= 0:
+		_death()
 func get_health() -> int:
 	return health
+
+func _death():
+	queue_free()

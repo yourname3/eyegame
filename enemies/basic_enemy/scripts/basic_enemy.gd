@@ -42,6 +42,8 @@ func on_use_boost():
 
 func _set_health(value:int):
 	health = value
+	if health <= 0:
+		_death()
 func _set_speed(value:int):
 	speed = value
 func _set_speed_mod(value:float):
@@ -57,6 +59,8 @@ func get_speed_mod() -> float:
 func get_strength() -> int:
 	return strength
 
+func _death():
+	queue_free()
 
 func _on_hit_box_body_entered(body: Node2D) -> void:
 	if body.is_in_group('Players'):

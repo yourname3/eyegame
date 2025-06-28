@@ -1,12 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://cll6r826wc603"]
+[gd_scene load_steps=12 format=3 uid="uid://cll6r826wc603"]
 
 [ext_resource type="Texture2D" uid="uid://duueyjr6h31ar" path="res://eyeball/eye_white.svg" id="1_feb5d"]
 [ext_resource type="Script" uid="uid://cy5cg8tramg6s" path="res://eyeball/eyeball_mask_child.gd" id="2_7jktm"]
 [ext_resource type="PackedScene" uid="uid://dhx310ohc245d" path="res://player/player.tscn" id="2_e2o6t"]
-[ext_resource type="PackedScene" uid="uid://8xaqrd8b1bnf" path="res://enemies/basic_enemy/basic_enemy.tscn" id="3_feb5d"]
 [ext_resource type="Texture2D" uid="uid://cpim1me506bgn" path="res://eyeball/eye_iris_pupil.svg" id="4_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://duc5sncw1difd" path="res://enemies/animations/spiral_folder/spiral_enemy.tscn" id="6_eow3j"]
+[ext_resource type="PackedScene" uid="uid://l463s6lfifsc" path="res://enemies/basic_enemy/enemy_list/amblyopia.tscn" id="6_j5wjh"]
 [ext_resource type="PackedScene" uid="uid://cx74uha2f3op4" path="res://menus/pause_menu.tscn" id="6_ryrav"]
+[ext_resource type="PackedScene" uid="uid://c2f4gjk76cf4k" path="res://experience/exp.tscn" id="8_j5wjh"]
 
 [sub_resource type="Animation" id="Animation_7jktm"]
 resource_name = "Blink"
@@ -59,9 +60,6 @@ script = ExtResource("2_7jktm")
 position = Vector2(593, 87)
 texture = ExtResource("4_fc0e3")
 
-[node name="BasicEnemy" parent="EyeWhite/PutEverythingAsAChildOfThis" instance=ExtResource("3_feb5d")]
-position = Vector2(-1932, 438)
-
 [node name="Player" parent="EyeWhite/PutEverythingAsAChildOfThis" instance=ExtResource("2_e2o6t")]
 position = Vector2(-1154, -101)
 
@@ -72,9 +70,14 @@ zoom = Vector2(0.655, 0.655)
 [node name="SpiralEnemy" parent="EyeWhite/PutEverythingAsAChildOfThis" instance=ExtResource("6_eow3j")]
 position = Vector2(-996, -8)
 
+[node name="BasicEnemy" parent="EyeWhite/PutEverythingAsAChildOfThis" instance=ExtResource("6_j5wjh")]
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="EyeWhite"]
 libraries = {
 &"": SubResource("AnimationLibrary_ryrav")
 }
 
 [node name="PauseMenu" parent="." instance=ExtResource("6_ryrav")]
+
+[node name="Exp" parent="." instance=ExtResource("8_j5wjh")]
+position = Vector2(1242, -300)
