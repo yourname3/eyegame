@@ -30,7 +30,7 @@ func _on_vision_body_entered(body: Node2D) -> void:
 		_set_target(body)
 		match vision_state:
 			Globals.Status.SUCCESS:
-				_set_vision_state(Globals.RUNNING)
+				_set_vision_state(Globals.Status.RUNNING)
 			Globals.Status.RUNNING:
 				pass
 			Globals.Status.FAILURE:
@@ -44,9 +44,9 @@ func _on_vision_body_exited(body: Node2D) -> void:
 			Globals.Status.SUCCESS:
 				pass
 			Globals.Status.RUNNING:
-				_set_vision_state(Globals.SUCCESS)
+				_set_vision_state(Globals.Status.SUCCESS)
 			Globals.Status.FAILURE:
-				_set_vision_state(Globals.SUCCESS)
+				_set_vision_state(Globals.Status.SUCCESS)
 
 
 func _set_vision_state(new_state:Globals.Status):
@@ -57,3 +57,13 @@ func _set_target(new_target):
 	target = new_target
 func get_target():
 	return target
+
+
+func _on_agent_navigation_finished() -> void:
+	match vision_state:
+		Globals.Status.SUCCESS:
+			NavigationServer2D.region_get_random_point(Globals.nav_rid, 1, false)
+		Globals.Status.RUNNING:
+			pass
+		Globals.Status.FAILURE:
+			pass

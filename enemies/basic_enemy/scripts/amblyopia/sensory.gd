@@ -21,3 +21,5 @@ func _process(delta: float) -> void:
 			signal_bus.use_velocity.emit()
 			if signal_bus.state_machine.boost_cooldown:
 				signal_bus.use_boost.emit()
+			else:
+				pass
