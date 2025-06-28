@@ -12,6 +12,8 @@ const POINT_COUNT = 32
 var global_points := PackedVector2Array()
 var vels          := PackedVector2Array()
 
+@export var line_color := Color("#3f3f3f")
+
 # The root pos is where we are "attached" on the player model.
 # We must transform it into global position using our parent's transform.
 @onready var root_pos = position
@@ -27,6 +29,8 @@ func _ready() -> void:
 		line.add_point(Vector2.ZERO)
 		global_points.append(Vector2.ZERO)
 		vels.append(Vector2.ZERO)
+		
+	line.default_color = line_color
 		
 func _process_points(delta: float) -> void:	
 	var inv := line.global_transform.inverse()

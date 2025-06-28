@@ -1,11 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bki43oonjw1f2"]
+[gd_scene load_steps=6 format=3 uid="uid://bki43oonjw1f2"]
 
 [ext_resource type="Script" uid="uid://bwrea3awxyb53" path="res://player/player_animation.gd" id="1_fp5y0"]
 [ext_resource type="Script" uid="uid://cj378pgaoju2f" path="res://player/player_flagellum.gd" id="1_v5hpx"]
 [ext_resource type="Texture2D" uid="uid://dfoct6gc3qe2q" path="res://player/main_body.svg" id="3_t8nns"]
-[ext_resource type="Script" uid="uid://rgmo63w3dx3c" path="res://player/claw.gd" id="4_1wvki"]
-[ext_resource type="Texture2D" uid="uid://bqql7qdcmhd2y" path="res://player/claw.svg" id="4_v3vk1"]
-[ext_resource type="Texture2D" uid="uid://sp6x8l5gd007" path="res://player/claw_base.svg" id="5_v0igm"]
+[ext_resource type="PackedScene" uid="uid://d2woy30l5kinr" path="res://player/player_claw.tscn" id="4_v3vk1"]
 
 [sub_resource type="Curve" id="Curve_v5hpx"]
 _data = [Vector2(0, 1), 0.0, 0.0483477, 0, 0, Vector2(1, 0), -2.00557, 0.0, 0, 0]
@@ -61,24 +59,11 @@ position = Vector2(1, -9.53674e-07)
 scale = Vector2(0.59375, 0.59375)
 texture = ExtResource("3_t8nns")
 
-[node name="Claw" type="Node2D" parent="."]
-z_index = 1
+[node name="Claw" parent="." instance=ExtResource("4_v3vk1")]
 position = Vector2(13, -26)
-script = ExtResource("4_1wvki")
 
-[node name="ClawBase" type="Sprite2D" parent="Claw"]
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("5_v0igm")
-
-[node name="Sprite2D" type="Sprite2D" parent="Claw"]
-z_index = 1
-position = Vector2(18, -7)
-scale = Vector2(0.315821, 0.315821)
-texture = ExtResource("4_v3vk1")
-
-[node name="Line2D" type="Line2D" parent="Claw"]
-points = PackedVector2Array(0, 0, 0, 0, 6, 0)
-default_color = Color(0.247059, 0.247059, 0.247059, 1)
-begin_cap_mode = 2
+[node name="Claw2" parent="." instance=ExtResource("4_v3vk1")]
+position = Vector2(13, 25)
+line_color = Color(0.215902, 0.215902, 0.215902, 1)
 
 [node name="Line2D6" type="Line2D" parent="."]
