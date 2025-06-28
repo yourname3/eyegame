@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://8xaqrd8b1bnf"]
+[gd_scene load_steps=8 format=3 uid="uid://l463s6lfifsc"]
 
-[ext_resource type="Script" uid="uid://cr250551rhlnc" path="res://enemies/basic_enemy/scripts/basic_enemy.gd" id="1_yx0l5"]
-[ext_resource type="Texture2D" uid="uid://cjjjj6t82jvhd" path="res://icon.svg" id="2_eopwh"]
-[ext_resource type="Script" uid="uid://d3bdbfqyjv66r" path="res://enemies/basic_enemy/scripts/sensory.gd" id="2_xuk7h"]
-[ext_resource type="Script" uid="uid://bastchle4oji7" path="res://enemies/basic_enemy/scripts/stats.gd" id="4_xuk7h"]
-[ext_resource type="Script" uid="uid://cctbcuv2vbaiv" path="res://enemies/basic_enemy/scripts/state_mchine.gd" id="5_m6spd"]
+[ext_resource type="Script" uid="uid://cr250551rhlnc" path="res://enemies/basic_enemy/scripts/basic_enemy.gd" id="1_e3fca"]
+[ext_resource type="Script" uid="uid://cmf0c6novdp1j" path="res://enemies/basic_enemy/scripts/amblyopia/sensory.gd" id="2_pyiaf"]
+[ext_resource type="Script" uid="uid://bastchle4oji7" path="res://enemies/basic_enemy/scripts/stats.gd" id="3_j31mh"]
+[ext_resource type="Script" uid="uid://cctbcuv2vbaiv" path="res://enemies/basic_enemy/scripts/state_mchine.gd" id="4_1bcrh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yx0l5"]
 radius = 300.0
@@ -16,17 +15,13 @@ radius = 62.1289
 radius = 54.0093
 
 [node name="BasicEnemy" type="CharacterBody2D" node_paths=PackedStringArray("sensory", "stats", "state_machine") groups=["Enemies"]]
-script = ExtResource("1_yx0l5")
+script = ExtResource("1_e3fca")
 sensory = NodePath("Sensory")
 stats = NodePath("Stats")
 state_machine = NodePath("StateMchine")
 
-[node name="Sensory" type="Node2D" parent="." node_paths=PackedStringArray("signal_bus", "vision", "agent", "hitbox")]
-script = ExtResource("2_xuk7h")
-signal_bus = NodePath("..")
-vision = NodePath("Vision")
-agent = NodePath("Agent")
-hitbox = NodePath("HitBox")
+[node name="Sensory" type="Node2D" parent="."]
+script = ExtResource("2_pyiaf")
 
 [node name="Vision" type="Area2D" parent="Sensory"]
 
@@ -43,16 +38,13 @@ shape = SubResource("CircleShape2D_xuk7h")
 [node name="Profile" type="AnimationPlayer" parent="."]
 
 [node name="Stats" type="Node" parent="."]
-script = ExtResource("4_xuk7h")
+script = ExtResource("3_j31mh")
 
 [node name="StateMchine" type="AnimationTree" parent="."]
-script = ExtResource("5_m6spd")
+script = ExtResource("4_1bcrh")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_oul6g")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_eopwh")
 
 [connection signal="body_entered" from="Sensory/Vision" to="Sensory" method="_on_vision_body_entered"]
 [connection signal="body_exited" from="Sensory/Vision" to="Sensory" method="_on_vision_body_exited"]

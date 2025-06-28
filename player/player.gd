@@ -5,6 +5,8 @@ class_name Player
 @export var brake_force := 0.94
 @export var acceleration := 15.0
 
+@export var health : int = 100
+
 
 func get_input() -> Vector2:
 	return Input.get_vector("Left", "Right", "Up", "Down")
@@ -24,3 +26,12 @@ func _physics_process(delta: float) -> void:
 	
 
 	move_and_slide()
+
+
+
+
+
+func _set_health(value:int):
+	health = value
+func get_health() -> int:
+	return health
