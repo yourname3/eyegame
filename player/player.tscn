@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dhx310ohc245d"]
 
-[ext_resource type="Script" path="res://player/player.gd" id="1_rkbax"]
+[ext_resource type="Script" uid="uid://dp2lpl3y8xpc7" path="res://player/player.gd" id="1_rkbax"]
 [ext_resource type="PackedScene" uid="uid://bki43oonjw1f2" path="res://player/player_animation.tscn" id="3_g1dw6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oul6g"]
