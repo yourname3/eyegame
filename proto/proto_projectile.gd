@@ -13,4 +13,5 @@ func _on_life_time_timeout():
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("Enemies"):
-		print("Implement Enemy Damage function in proto_projectile.gd")
+		Globals.transmit_damage.emit(body, 1)
+		print(body.get_health())
