@@ -46,10 +46,17 @@ func _make_ellipse(xr: float = 80, yr: float = 80) -> PackedVector2Array:
 		points.append(Vector2(xr * cos(t), yr * sin(t)))
 	return points
 		
+var _bean_phase := 0.0
+		
 func _process(delta: float) -> void:
-	var beanness = 0.5
+	var beanness = 0.5 + sin(_bean_phase) * 0.05
+	var other_bean = sin(_bean_phase) * 0.05
+	var fac1 = (1.0 + other_bean)
+	var fac2 = (1.0 - other_bean)
 	
-	inside.polygon = _make_circle(30, _bean.bind(beanness))
-	outside.polygon = _make_ellipse(120, 80)
-	white_line.points = _make_ellipse(30 * (1.0 + beanness), 30)
+	_bean_phase = fmod(_bean_phase + delta * TAU, TAU)
+	
+	inside.polygon = _make_circle(60, _bean.bind(beanness))
+	outside.polygon = _make_ellipse(120 * fac1, 80 * fac2)
+	white_line.points = _make_ellipse(60 * (1.0 + beanness), 60)
 	orange_line.points = outside.polygon

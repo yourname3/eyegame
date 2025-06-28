@@ -14,6 +14,7 @@ polygon = PackedVector2Array(-108, -65, -158, -10, -171, 61, -105, 147, -33, 147
 unique_name_in_owner = true
 points = PackedVector2Array(-170, 52, -148, -25, -95, -80, -21, -100, 93, -96, 150, -101, 215, -95, 255, 3, 232, 99, 160, 123, 73, 148, -32, 145, -106, 145)
 closed = true
+width = 5.0
 default_color = Color(1, 0.838956, 0.574374, 1)
 
 [node name="Outside" type="Polygon2D" parent="."]
@@ -25,4 +26,5 @@ polygon = PackedVector2Array(-147, -161, -264, -31, -267, 127, -175, 235, -19, 2
 unique_name_in_owner = true
 points = PackedVector2Array(-266, -29, -172, -145, -138, -179, -79, -205, 52, -196, 298, -136, 356, -3, 343, 170, 224, 245, 96, 273, -178, 241, -239, 169, -278, 124)
 closed = true
+width = 5.0
 default_color = Color(0.921569, 0.470588, 0, 1)
