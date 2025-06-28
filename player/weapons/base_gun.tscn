@@ -17,6 +17,5 @@ unique_name_in_owner = true
 position = Vector2(36, -16)
 
 [node name="Cooldown" type="Timer" parent="."]
-wait_time = 0.2
 
 [connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]

@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://d2woy30l5kinr"]
+[gd_scene load_steps=7 format=3 uid="uid://d2woy30l5kinr"]
 
 [ext_resource type="Script" uid="uid://rgmo63w3dx3c" path="res://player/claw.gd" id="1_v4ovm"]
 [ext_resource type="Texture2D" uid="uid://sp6x8l5gd007" path="res://player/claw_base.svg" id="2_q6hqj"]
 [ext_resource type="Texture2D" uid="uid://cp7fsmenmb5nh" path="res://player/arm_texture.svg" id="3_q6hqj"]
-[ext_resource type="PackedScene" uid="uid://lu2jh4qxhpgd" path="res://player/weapons/base_gun.tscn" id="4_wbwh2"]
 
 [sub_resource type="Animation" id="Animation_q6hqj"]
 length = 0.001
@@ -99,9 +98,7 @@ begin_cap_mode = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_q6hqj")
+&"": SubResource("AnimationLibrary_q6hqj")
 }
 
 [node name="ClawRoot" type="Node2D" parent="."]
-
-[node name="Gun" parent="ClawRoot" instance=ExtResource("4_wbwh2")]

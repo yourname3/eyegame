@@ -18,6 +18,7 @@ var vels          := PackedVector2Array()
 @export var angle_offset := 5.0
 @export var arm_length := 70
 @export var is_left = false
+
 # The root pos is where we are "attached" on the player model.
 # We must transform it into global position using our parent's transform.
 @onready var root_pos = position
@@ -26,8 +27,9 @@ var vels          := PackedVector2Array()
 #@onready var fire_point := %FirePoint
 
 @onready var claw_root := $ClawRoot
-
-
+@onready var weapons :=[preload("res://player/weapons/base_gun.tscn"), preload("res://player/weapons/machine_gun.tscn"), preload("res://player/weapons/shot_gun.tscn")]
+@export var weapon_idx : int = 0
+var weapon_knockback := Vector2.ZERO
 
 #func _shoot() -> void:
 	#var bullet = preload("res://proto/proto_projectile.tscn").instantiate()
@@ -40,8 +42,9 @@ var vels          := PackedVector2Array()
 	#bullet.global_position = fire_point.global_position
 
 func _ready() -> void:
-	
-	 
+	if weapons[weapon_idx]:
+		var weapon = weapons[weapon_idx].instantiate()
+		$ClawRoot.add_child(weapon)
 	# Put the circle at the "base" of the claw onto the parent
 	$ClawBase.reparent.call_deferred(get_parent())
 	line.clear_points()
@@ -105,7 +108,6 @@ func _process(delta: float) -> void:
 
 	if abs(rad_to_deg(to_mouse.angle() - get_parent().global_rotation)) > 90:
 		ang_off = -angle_offset
-		print("claw to mouse ", rad_to_deg((to_mouse.angle())), " ang_off = ", ang_off)
 	else:
 		ang_off = angle_offset
 		#TODO: Fix the bottom left quadrant arm crossover.
@@ -114,7 +116,8 @@ func _process(delta: float) -> void:
 	var angle_with_offset = to_mouse.angle() + deg_to_rad(ang_off)
 	
 	target = get_parent().global_position + Vector2.from_angle(angle_with_offset) * arm_length
-	
+	target += weapon_knockback
+	weapon_knockback *= .6
 	global_position = global_position.move_toward(target, 300 * delta)
 	global_rotation = rotate_toward(global_rotation, target.angle(), TAU * delta * 8)
 	
