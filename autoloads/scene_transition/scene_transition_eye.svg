@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="1584.2798mm"
+   height="674.40253mm"
+   viewBox="0 0 1584.2798 674.40253"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   sodipodi:docname="scene_transition_eye.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.19449033"
+     inkscape:cx="2455.135"
+     inkscape:cy="1992.387"
+     inkscape:window-width="2560"
+     inkscape:window-height="1494"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(9.590611,166.52328)">
+    <path
+       id="path1"
+       style="fill:#f9f9f9;stroke:none;stroke-width:2.38125;stroke-linecap:square;stroke-miterlimit:12.9"
+       d="M 807.27684 -165.2846 C 491.66559 -168.00538 203.31662 -43.548942 -7.6956362 152.94921 C 168.75295 302.78457 462.94644 498.0822 805.32916 504.07868 C 806.12109 504.09255 806.8409 504.07039 807.63082 504.08333 A 345.22104 335.32431 0 0 1 472.98768 169.49394 A 345.22104 335.32431 0 0 1 809.32013 -165.21277 C 808.63525 -165.21995 807.96199 -165.27869 807.27684 -165.2846 z M 858.00863 -163.50176 A 345.22104 335.32431 0 0 1 1163.4298 169.49394 A 345.22104 335.32431 0 0 1 828.19856 504.12416 C 1135.8119 505.88242 1291.2312 430.56295 1572.6146 130.5976 C 1419.4534 -16.128317 1153.5066 -147.44828 858.00863 -163.50176 z " />
+  </g>
+</svg>

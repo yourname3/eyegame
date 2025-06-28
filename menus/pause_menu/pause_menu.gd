@@ -27,7 +27,6 @@ func pause() -> void:
 	show()
 	tween = _kill_tween()
 	tween.tween_property(menu, "anchor_top", 0.0, 0.3).set_ease(Tween.EASE_IN_OUT)
-	
 
 func toggle_pause() -> void:
 	if get_tree().paused:
@@ -40,6 +39,9 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	
 	%ResumeButton.pressed.connect(unpause)
+	%QuitButton.pressed.connect(func():
+		SceneTransition.change_scene_to_packed(SceneList.MainMenu)
+	)
 	# Hide menu through same property as animations
 	menu.anchor_top = 1.0
 	hide()

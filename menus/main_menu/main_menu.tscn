@@ -1,12 +1,15 @@
-[gd_scene format=3 uid="uid://b3ny2uvbkysyk"]
+[gd_scene load_steps=2 format=3 uid="uid://b3ny2uvbkysyk"]
 
-[node name="Control" type="Control"]
+[ext_resource type="Script" uid="uid://dvg38iheyga04" path="res://menus/main_menu/main_menu.gd" id="1_xbn2l"]
+
+[node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_xbn2l")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -23,7 +26,8 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Main Menu For Our Game"
 
-[node name="Button" type="Button" parent="."]
+[node name="PlayButton" type="Button" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
