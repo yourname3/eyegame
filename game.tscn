@@ -1,13 +1,22 @@
+<<<<<<< HEAD
 [gd_scene load_steps=12 format=3 uid="uid://5cnpll852h55"]
+=======
+[gd_scene load_steps=10 format=3 uid="uid://cll6r826wc603"]
+>>>>>>> c56cdab60bdd4daeb58f853caf97e769e9b9cc0f
 
 [ext_resource type="Texture2D" uid="uid://duueyjr6h31ar" path="res://eyeball/eye_white.svg" id="1_feb5d"]
 [ext_resource type="Script" uid="uid://cy5cg8tramg6s" path="res://eyeball/eyeball_mask_child.gd" id="2_7jktm"]
 [ext_resource type="PackedScene" uid="uid://dhx310ohc245d" path="res://player/player.tscn" id="2_e2o6t"]
 [ext_resource type="Texture2D" uid="uid://cpim1me506bgn" path="res://eyeball/eye_iris_pupil.svg" id="4_fc0e3"]
+<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://l463s6lfifsc" path="res://enemies/basic_enemy/enemy_list/amblyopia.tscn" id="4_j5wjh"]
 [ext_resource type="PackedScene" uid="uid://duc5sncw1difd" path="res://enemies/animations/spiral_folder/spiral_enemy.tscn" id="6_eow3j"]
 [ext_resource type="PackedScene" uid="uid://cx74uha2f3op4" path="res://menus/pause_menu.tscn" id="6_ryrav"]
 [ext_resource type="Script" uid="uid://dmnbt4opvsh4c" path="res://enemies/navigation_region.gd" id="8_j5wjh"]
+=======
+[ext_resource type="PackedScene" uid="uid://l463s6lfifsc" path="res://enemies/basic_enemy/enemy_list/amblyopia.tscn" id="5_ryrav"]
+[ext_resource type="PackedScene" uid="uid://cx74uha2f3op4" path="res://menus/pause_menu.tscn" id="6_ryrav"]
+>>>>>>> c56cdab60bdd4daeb58f853caf97e769e9b9cc0f
 
 [sub_resource type="Animation" id="Animation_7jktm"]
 resource_name = "Blink"
@@ -60,8 +69,11 @@ script = ExtResource("2_7jktm")
 position = Vector2(593, 87)
 texture = ExtResource("4_fc0e3")
 
+<<<<<<< HEAD
 [node name="BasicEnemy2" parent="EyeWhite/PutEverythingAsAChildOfThis" instance=ExtResource("4_j5wjh")]
 
+=======
+>>>>>>> c56cdab60bdd4daeb58f853caf97e769e9b9cc0f
 [node name="Player" parent="EyeWhite/PutEverythingAsAChildOfThis" instance=ExtResource("2_e2o6t")]
 position = Vector2(-1154, -101)
 
@@ -69,15 +81,23 @@ position = Vector2(-1154, -101)
 position = Vector2(-8, -9)
 zoom = Vector2(0.655, 0.655)
 
+<<<<<<< HEAD
 [node name="SpiralEnemy" parent="EyeWhite/PutEverythingAsAChildOfThis" instance=ExtResource("6_eow3j")]
 position = Vector2(-996, -8)
 
+=======
+>>>>>>> c56cdab60bdd4daeb58f853caf97e769e9b9cc0f
 [node name="AnimationPlayer" type="AnimationPlayer" parent="EyeWhite"]
 libraries = {
 &"": SubResource("AnimationLibrary_ryrav")
 }
 
-[node name="PauseMenu" parent="." instance=ExtResource("6_ryrav")]
+[node name="BasicEnemy" parent="EyeWhite" instance=ExtResource("5_ryrav")]
+position = Vector2(-2296, -135)
 
+<<<<<<< HEAD
 [node name="NavigationRegion" type="NavigationRegion2D" parent="."]
 script = ExtResource("8_j5wjh")
+=======
+[node name="PauseMenu" parent="." instance=ExtResource("6_ryrav")]
+>>>>>>> c56cdab60bdd4daeb58f853caf97e769e9b9cc0f

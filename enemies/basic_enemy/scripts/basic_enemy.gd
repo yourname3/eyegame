@@ -128,9 +128,18 @@ func on_use_aggression():
 	else:
 		pass
 
-
 func _set_health(value:int):
+	if value < health:
+		print("OUCH!")
+		# If value is less than health, we're taking damage.
+		# For now, do a simple red blink animation.
+		var tween = create_tween()
+		# Intense red
+		tween.tween_property(self, "modulate", Color(2.0, 2.0, 2.0), 0.2)
+		tween.tween_property(self, "modulate", Color.WHITE, 0.2)
 	health = value
+	if health <= 0:
+		_death()
 func _set_speed(value:int):
 	speed = value
 func _set_speed_mod(value:float):
@@ -146,6 +155,8 @@ func get_speed_mod() -> float:
 func get_strength() -> int:
 	return strength
 
+func _death():
+	queue_free()
 
 func _on_hit_box_body_entered(body: Node2D) -> void:
 	if body.is_in_group('Players'):

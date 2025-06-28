@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://b3ny2uvbkysyk"]
+[gd_scene load_steps=5 format=3 uid="uid://b3ny2uvbkysyk"]
 
+[ext_resource type="Theme" uid="uid://dsvhdhjqgfmv5" path="res://menus/theme/main_theme.tres" id="1_1nwmw"]
 [ext_resource type="Script" uid="uid://dvg38iheyga04" path="res://menus/main_menu/main_menu.gd" id="1_xbn2l"]
+[ext_resource type="Script" uid="uid://de0vynh2l6b6q" path="res://menus/main_menu/player_wander.gd" id="3_ml8bw"]
+[ext_resource type="PackedScene" uid="uid://bki43oonjw1f2" path="res://player/player_animation.tscn" id="3_vu5tu"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -9,7 +12,23 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_1nwmw")
 script = ExtResource("1_xbn2l")
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+z_index = -2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -362.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerWander" type="Node2D" parent="ReferenceRect"]
+script = ExtResource("3_ml8bw")
+
+[node name="PlayerAnimation" parent="ReferenceRect/PlayerWander" instance=ExtResource("3_vu5tu")]
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -18,13 +37,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -31.0
-offset_right = 100.0
-offset_bottom = -8.0
+offset_left = -342.5
+offset_top = -36.0
+offset_right = 342.5
+offset_bottom = 29.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Main Menu For Our Game"
+text = "Aperture Apparatus"
+horizontal_alignment = 1
 
 [node name="PlayButton" type="Button" parent="."]
 unique_name_in_owner = true
@@ -34,10 +54,77 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -22.5
-offset_top = 5.0
-offset_right = 22.5
-offset_bottom = 36.0
+offset_left = -115.0
+offset_top = 46.0
+offset_right = 115.0
+offset_bottom = 119.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Play!"
+
+[node name="OpenCreditsButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -115.0
+offset_top = 132.0
+offset_right = 115.0
+offset_bottom = 205.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Credits"
+
+[node name="Credits" type="ColorRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="RichTextLabel" parent="Credits"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -143.0
+offset_top = 10.0
+offset_right = 143.0
+offset_bottom = 565.0
+grow_horizontal = 2
+bbcode_enabled = true
+text = "[font size=24]A game by[/font]
+[font size=36]
+Avi
+Ben
+Brandon
+Jeb
+Pedro
+Zach
+[/font]
+[font size=24]Chelsea Market font used under OFL[/font]"
+horizontal_alignment = 1
+
+[node name="CloseCreditsButton" type="Button" parent="Credits"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -115.0
+offset_top = -75.0
+offset_right = 115.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "Done"

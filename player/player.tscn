@@ -1,10 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhx310ohc245d"]
+[gd_scene load_steps=6 format=3 uid="uid://dhx310ohc245d"]
 
 [ext_resource type="Script" uid="uid://dp2lpl3y8xpc7" path="res://player/player.gd" id="1_rkbax"]
 [ext_resource type="PackedScene" uid="uid://bki43oonjw1f2" path="res://player/player_animation.tscn" id="3_g1dw6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oul6g"]
-radius = 66.0076
+radius = 36.0555
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rkbax"]
+radius = 380.296
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g1dw6"]
+radius = 65.0
 
 [node name="Player" type="CharacterBody2D" groups=["Players"]]
 script = ExtResource("1_rkbax")
@@ -13,3 +19,19 @@ script = ExtResource("1_rkbax")
 shape = SubResource("CircleShape2D_oul6g")
 
 [node name="Node2D" parent="." instance=ExtResource("3_g1dw6")]
+
+[node name="EXPRange" type="Area2D" parent="."]
+position = Vector2(-4, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EXPRange"]
+shape = SubResource("CircleShape2D_rkbax")
+
+[node name="EXPCollect" type="Area2D" parent="."]
+position = Vector2(-4, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EXPCollect"]
+shape = SubResource("CircleShape2D_g1dw6")
+
+[connection signal="body_entered" from="EXPRange" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="EXPRange" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="EXPCollect" to="." method="_on_exp_collect_body_entered"]

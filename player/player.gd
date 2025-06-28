@@ -4,7 +4,9 @@ class_name Player
 @export var speed := 700
 @export var brake_force := 0.94
 @export var acceleration := 15.0
-
+var level : int = 0
+var current_exp : int = 0
+var needed_exp : int = 1
 @export var health : int = 100
 
 
@@ -23,15 +25,41 @@ func _physics_process(delta: float) -> void:
 	else:
 		# Apply braking force (simulates deceleration)
 		velocity *= brake_force
-	
 
 	move_and_slide()
 
-
-
-
-
 func _set_health(value:int):
 	health = value
+	if health <= 0:
+		_death()
 func get_health() -> int:
 	return health
+
+func _death():
+	queue_free()
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Experience"):
+		body.fly = true
+
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body.is_in_group("Experience"):
+		body.fly = false
+
+
+func _on_exp_collect_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Experience"):
+		body.queue_free()
+		current_exp+=1
+		print(current_exp)
+		check_level_up()
+
+func check_level_up():
+	if current_exp >= needed_exp:
+		level += 1
+		current_exp = 0
+		needed_exp = needed_exp * 2
+		print("level: ", level)
+	

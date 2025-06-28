@@ -1,0 +1,130 @@
+[gd_scene load_steps=11 format=3 uid="uid://c01mphv284mfg"]
+
+[ext_resource type="Texture2D" uid="uid://duueyjr6h31ar" path="res://eyeball/eye_white.svg" id="1_iollg"]
+[ext_resource type="Script" uid="uid://cy5cg8tramg6s" path="res://eyeball/eyeball_mask_child.gd" id="2_lfvl7"]
+[ext_resource type="Texture2D" uid="uid://cpim1me506bgn" path="res://eyeball/eye_iris_pupil.svg" id="3_6ja1x"]
+[ext_resource type="PackedScene" uid="uid://dhx310ohc245d" path="res://player/player.tscn" id="4_ljkvk"]
+[ext_resource type="PackedScene" uid="uid://c2f4gjk76cf4k" path="res://experience/exp.tscn" id="5_q7gsq"]
+[ext_resource type="PackedScene" uid="uid://cx74uha2f3op4" path="res://menus/pause_menu.tscn" id="6_my55s"]
+[ext_resource type="Script" path="res://enemies/navigation_region.gd" id="7_p2vhm"]
+
+[sub_resource type="Animation" id="Animation_7jktm"]
+resource_name = "Blink"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.366667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1e-05), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ryrav"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ryrav"]
+_data = {
+&"Blink": SubResource("Animation_7jktm"),
+&"RESET": SubResource("Animation_ryrav")
+}
+
+[node name="Testworld" type="Node2D"]
+
+[node name="EyeWhite" type="Sprite2D" parent="."]
+clip_children = 2
+position = Vector2(1845, 335)
+texture = ExtResource("1_iollg")
+
+[node name="PutEverythingAsAChildOfThis" type="Node2D" parent="EyeWhite"]
+script = ExtResource("2_lfvl7")
+
+[node name="EyeIrisPupil" type="Sprite2D" parent="EyeWhite/PutEverythingAsAChildOfThis"]
+position = Vector2(593, 87)
+texture = ExtResource("3_6ja1x")
+
+[node name="Player" parent="EyeWhite/PutEverythingAsAChildOfThis" instance=ExtResource("4_ljkvk")]
+position = Vector2(-1154, -101)
+
+[node name="Camera2D" type="Camera2D" parent="EyeWhite/PutEverythingAsAChildOfThis/Player"]
+position = Vector2(-8, -9)
+zoom = Vector2(0.655, 0.655)
+
+[node name="Exp" parent="EyeWhite/PutEverythingAsAChildOfThis" instance=ExtResource("5_q7gsq")]
+position = Vector2(-1693, -160)
+
+[node name="Exp2" parent="EyeWhite/PutEverythingAsAChildOfThis" instance=ExtResource("5_q7gsq")]
+position = Vector2(-1713, -20)
+
+[node name="Exp3" parent="EyeWhite/PutEverythingAsAChildOfThis" instance=ExtResource("5_q7gsq")]
+position = Vector2(-1566, -12)
+
+[node name="Exp4" parent="EyeWhite/PutEverythingAsAChildOfThis" instance=ExtResource("5_q7gsq")]
+position = Vector2(-1648, -168)
+
+[node name="Exp5" parent="EyeWhite/PutEverythingAsAChildOfThis" instance=ExtResource("5_q7gsq")]
+position = Vector2(-1711, -192)
+
+[node name="Exp6" parent="EyeWhite/PutEverythingAsAChildOfThis" instance=ExtResource("5_q7gsq")]
+position = Vector2(-1650, -127)
+
+[node name="Exp7" parent="EyeWhite/PutEverythingAsAChildOfThis" instance=ExtResource("5_q7gsq")]
+position = Vector2(-1693, -131)
+
+[node name="Exp8" parent="EyeWhite/PutEverythingAsAChildOfThis" instance=ExtResource("5_q7gsq")]
+position = Vector2(-1614, -153)
+
+[node name="Exp9" parent="EyeWhite/PutEverythingAsAChildOfThis" instance=ExtResource("5_q7gsq")]
+position = Vector2(-1639, -205)
+
+[node name="Exp10" parent="EyeWhite/PutEverythingAsAChildOfThis" instance=ExtResource("5_q7gsq")]
+position = Vector2(-1680, -221)
+
+[node name="Exp11" parent="EyeWhite/PutEverythingAsAChildOfThis" instance=ExtResource("5_q7gsq")]
+position = Vector2(-1755, -149)
+
+[node name="Exp12" parent="EyeWhite/PutEverythingAsAChildOfThis" instance=ExtResource("5_q7gsq")]
+position = Vector2(-1788, -215)
+
+[node name="Exp13" parent="EyeWhite/PutEverythingAsAChildOfThis" instance=ExtResource("5_q7gsq")]
+position = Vector2(-1666, -158)
+collision_mask = 1
+
+[node name="Exp14" parent="EyeWhite/PutEverythingAsAChildOfThis" instance=ExtResource("5_q7gsq")]
+position = Vector2(-1666, -158)
+collision_mask = 1
+
+[node name="Exp15" parent="EyeWhite/PutEverythingAsAChildOfThis" instance=ExtResource("5_q7gsq")]
+position = Vector2(-1666, -158)
+collision_mask = 1
+
+[node name="Exp16" parent="EyeWhite/PutEverythingAsAChildOfThis" instance=ExtResource("5_q7gsq")]
+position = Vector2(-1666, -158)
+collision_mask = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="EyeWhite"]
+libraries = {
+&"": SubResource("AnimationLibrary_ryrav")
+}
+
+[node name="PauseMenu" parent="." instance=ExtResource("6_my55s")]
+visible = false
+
+[node name="NavigationRegion" type="NavigationRegion2D" parent="."]
+script = ExtResource("7_p2vhm")
