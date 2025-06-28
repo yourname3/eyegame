@@ -14,26 +14,34 @@ var global_points := PackedVector2Array()
 var vels          := PackedVector2Array()
 
 @export var line_color := Color("#3f3f3f")
-
+#This is how far left or right the arm aims for based on the mouse position
+@export var angle_offset := 5.0
+@export var arm_length := 70
+@export var is_left = false
 # The root pos is where we are "attached" on the player model.
 # We must transform it into global position using our parent's transform.
 @onready var root_pos = position
 
 @onready var line: Line2D = $Line2D
-@onready var fire_point := %FirePoint
+#@onready var fire_point := %FirePoint
 
 @onready var claw_root := $ClawRoot
 
-func _shoot() -> void:
-	var bullet = preload("res://proto/proto_projectile.tscn").instantiate()
-	
-	# We use OUR global rotation, as we're facing in the direction of the gun.
-	bullet.velocity = Vector2.from_angle(global_rotation) * 600.0
-	# The claw's parent is the player; add a sibling to the player.
-	get_parent().add_sibling(bullet)
-	bullet.global_position = fire_point.global_position
+
+
+#func _shoot() -> void:
+	#var bullet = preload("res://proto/proto_projectile.tscn").instantiate()
+	#
+	## We use OUR global rotation, as we're facing in the direction of the gun.
+	#
+	#bullet.velocity = (gun.global_position - get_global_mouse_position()).normalized() #.from_angle(global_rotation) * 600.0
+	## The claw's parent is the player; add a sibling to the player.
+	#get_parent().add_sibling(bullet)
+	#bullet.global_position = fire_point.global_position
 
 func _ready() -> void:
+	
+	 
 	# Put the circle at the "base" of the claw onto the parent
 	$ClawBase.reparent.call_deferred(get_parent())
 	line.clear_points()
@@ -90,9 +98,24 @@ func _process(delta: float) -> void:
 	var noise = Vector2.from_angle(randf_range(0, TAU)) * randf_range(0, 500)
 	smooth1 += (noise - smooth1) * fac
 	smooth2 += (smooth1 - smooth2) * fac
-	target += (smooth2 - target) * fac
+	#target += (smooth2 - target) * fac
 	
-	position = position.move_toward(target, 300 * delta)
+	var to_mouse = get_global_mouse_position() - global_position
+	var ang_off = 0
+
+	if abs(rad_to_deg(to_mouse.angle() - get_parent().global_rotation)) > 90:
+		ang_off = -angle_offset
+		print("claw to mouse ", rad_to_deg((to_mouse.angle())), " ang_off = ", ang_off)
+	else:
+		ang_off = angle_offset
+		#TODO: Fix the bottom left quadrant arm crossover.
+	if is_left:
+		pass
+	var angle_with_offset = to_mouse.angle() + deg_to_rad(ang_off)
+	
+	target = get_parent().global_position + Vector2.from_angle(angle_with_offset) * arm_length
+	
+	global_position = global_position.move_toward(target, 300 * delta)
 	global_rotation = rotate_toward(global_rotation, target.angle(), TAU * delta * 8)
 	
 	_render_points()
