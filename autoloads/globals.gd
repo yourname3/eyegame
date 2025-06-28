@@ -19,6 +19,10 @@ enum NetStatus {
 }
 
 
+var nav_rid
+
+
+
 
 func _ready() -> void:
 	transmit_damage.connect(receive_damage)

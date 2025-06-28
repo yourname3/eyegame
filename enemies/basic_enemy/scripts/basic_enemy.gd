@@ -34,6 +34,7 @@ func on_use_velocity():
 func on_use_boost():
 	if state_machine.boost_cooldown:
 		_set_speed_mod(1.5)
+		state_machine._set_boost_cooldown(false)
 		await get_tree().create_timer(.3).timeout
 		_set_speed_mod(1)
 	else:

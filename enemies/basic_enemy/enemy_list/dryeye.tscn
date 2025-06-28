@@ -50,6 +50,8 @@ script = ExtResource("4_rd046")
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_oul6g")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
 [connection signal="body_entered" from="Sensory/Vision" to="Sensory" method="_on_vision_body_entered"]
 [connection signal="body_exited" from="Sensory/Vision" to="Sensory" method="_on_vision_body_exited"]
 [connection signal="body_entered" from="Sensory/HitBox" to="." method="_on_hit_box_body_entered"]

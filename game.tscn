@@ -1,4 +1,5 @@
-[gd_scene load_steps=12 format=3 uid="uid://cll6r826wc603"]
+
+[gd_scene load_steps=13 format=3 uid="uid://cll6r826wc603"]
 
 [ext_resource type="Texture2D" uid="uid://duueyjr6h31ar" path="res://eyeball/eye_white.svg" id="1_feb5d"]
 [ext_resource type="Script" uid="uid://cy5cg8tramg6s" path="res://eyeball/eyeball_mask_child.gd" id="2_7jktm"]
@@ -8,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://l463s6lfifsc" path="res://enemies/basic_enemy/enemy_list/amblyopia.tscn" id="6_j5wjh"]
 [ext_resource type="PackedScene" uid="uid://cx74uha2f3op4" path="res://menus/pause_menu.tscn" id="6_ryrav"]
 [ext_resource type="PackedScene" uid="uid://c2f4gjk76cf4k" path="res://experience/exp.tscn" id="8_j5wjh"]
+[ext_resource type="Script" uid="uid://dmnbt4opvsh4c" path="res://enemies/navigation_region.gd" id="8_j5wjh"]
+[ext_resource type="PackedScene" uid="uid://cr4ov1pso6xb4" path="res://Director/spawn_point.tscn" id="7_vef74"]
+[ext_resource type="PackedScene" uid="uid://bwca23wivq56k" path="res://Director/director.tscn" id="9_hve3p"]
 
 [sub_resource type="Animation" id="Animation_7jktm"]
 resource_name = "Blink"
@@ -70,7 +74,11 @@ zoom = Vector2(0.655, 0.655)
 [node name="SpiralEnemy" parent="EyeWhite/PutEverythingAsAChildOfThis" instance=ExtResource("6_eow3j")]
 position = Vector2(-996, -8)
 
-[node name="BasicEnemy" parent="EyeWhite/PutEverythingAsAChildOfThis" instance=ExtResource("6_j5wjh")]
+[node name="SpawnPoint" parent="EyeWhite/PutEverythingAsAChildOfThis" instance=ExtResource("7_vef74")]
+position = Vector2(-1915, -209)
+
+[node name="SpawnPoint2" parent="EyeWhite/PutEverythingAsAChildOfThis" instance=ExtResource("7_vef74")]
+position = Vector2(-1920, -39)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="EyeWhite"]
 libraries = {
@@ -81,3 +89,10 @@ libraries = {
 
 [node name="Exp" parent="." instance=ExtResource("8_j5wjh")]
 position = Vector2(1242, -300)
+
+[node name="NavigationRegion" type="NavigationRegion2D" parent="."]
+script = ExtResource("8_j5wjh")
+[node name="Director" parent="." node_paths=PackedStringArray("SpawnPoints", "SpawningRoot") instance=ExtResource("9_hve3p")]
+position = Vector2(-377, 40)
+SpawnPoints = [NodePath("../EyeWhite/PutEverythingAsAChildOfThis/SpawnPoint"), NodePath("../EyeWhite/PutEverythingAsAChildOfThis/SpawnPoint2")]
+SpawningRoot = NodePath("../EyeWhite/PutEverythingAsAChildOfThis")
