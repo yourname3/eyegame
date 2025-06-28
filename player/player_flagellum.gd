@@ -80,7 +80,7 @@ func _process(delta: float) -> void:
 			
 	#var diff = global_points[0] - (global_transform * ROOT)
 	#for i in range(0, points.size()):
-		#global_points[i] -= diff
+		#global_points[i] -= diffd
 		
 	#global_points[0] = global_transform * ROOT
 	#for i in range(0, 15):

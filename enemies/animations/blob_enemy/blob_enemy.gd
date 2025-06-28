@@ -1,2 +1,55 @@
 extends Node2D
 class_name BlobEnemy
+
+const POINTS := 32
+
+@onready var inside: Polygon2D = %Inside
+@onready var white_line: Line2D = %WhiteLine
+@onready var outside: Polygon2D = %Outside
+@onready var orange_line: Line2D = %OrangeLine
+
+func _circle(x: float) -> float:
+	return 1
+	
+func _bean(x: float, squish: float = 0.5) -> float:
+	return 1 - squish * cos(2 * x + PI)
+
+func _ready() -> void:
+	#var inside_polygon  := PackedVector2Array()
+	#var outside_polygon := PackedVector2Array()
+	#
+	#for i in range(0, POINTS):
+		#inside_polygon.append(Vector2.ZERO)
+		#outside_polygon.append(Vector2.ZERO)
+		#white_line.add_point(Vector2.ZERO)
+		#orange_line.add_point(Vector2.ZERO)
+	#
+	#inside.polygon  = inside_polygon
+	#outside.polygon = outside_polygon
+	#inside.polygon = _make_circle(30, _bean)
+	outside.polygon = _make_circle()
+	white_line.points = _make_circle(30)
+	orange_line.points = _make_circle()
+		
+func _make_circle(radius: float = 80, callable: Callable = _circle) -> PackedVector2Array:
+	var points = PackedVector2Array()
+	for i in range(0, POINTS):
+		# Don't use t [0, 1], because 0 point will be same as 1, so use t [0, 1)
+		var t := float(i) / float(POINTS)
+		points.append(Vector2.from_angle(t * TAU) * radius * callable.call(t * TAU))
+	return points
+	
+func _make_ellipse(xr: float = 80, yr: float = 80) -> PackedVector2Array:
+	var points = PackedVector2Array()
+	for i in range(0, POINTS):
+		var t := TAU * float(i) / float(POINTS)
+		points.append(Vector2(xr * cos(t), yr * sin(t)))
+	return points
+		
+func _process(delta: float) -> void:
+	var beanness = 0.5
+	
+	inside.polygon = _make_circle(30, _bean.bind(beanness))
+	outside.polygon = _make_ellipse(120, 80)
+	white_line.points = _make_ellipse(30 * (1.0 + beanness), 30)
+	orange_line.points = outside.polygon
