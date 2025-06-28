@@ -41,4 +41,4 @@ func _process(delta: float) -> void:
 	_draw_spiral(_phase, _funny_phase)
 	_phase = fmod(_phase + phase_step * delta, TAU)
 	
-	_funny_phase = fmod(_funny_phase + TAU * delta, TAU)
+	_funny_phase = fmod(_funny_phase + TAU * delta, PI * PI * 2.0)
