@@ -39,7 +39,7 @@ func _process(delta: float) -> void:
 	
 	var speed_control := remap(get_parent().position_delta.length(), 0.0, 600.0 / 60.0, 0.0, 1.0)
 	
-	var amp: float = lerp(0.0, 20.0, speed_control)
+	var amp: float = lerp(5.0, 20.0, speed_control)
 	#var maxstep: float = lerp(1.2, 2.0, speed_control) * step
 	var maxstep := 1.2 * step
 	
@@ -77,10 +77,24 @@ func _process(delta: float) -> void:
 		var to_last = global_points[i] - global_points[i - 1]
 		if to_last.length_squared() > (maxstep * maxstep):
 			global_points[i] = global_points[i - 1] + to_last.normalized() * maxstep
+			
+	#var diff = global_points[0] - (global_transform * ROOT)
+	#for i in range(0, points.size()):
+		#global_points[i] -= diff
+		
+	#global_points[0] = global_transform * ROOT
+	#for i in range(0, 15):
+		#_smooth_points()
 
 	for i in range(0, points.size()):
 		points[i] = inv * global_points[i]
-		#
+		
+func _smooth_points() -> void:
+	var smoothed := points
+	for i in range(1, points.size() - 1):
+		smoothed[i] = points[i - 1] * 0.25 + points[i] * 0.5 + points[i + 1] * 0.25
+	
+	points = smoothed
 		
 func spring_damp(vel: Vector2, B: float = 10) -> Vector2:
 	return -B * vel
