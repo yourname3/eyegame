@@ -57,9 +57,9 @@ func _process_points(delta: float) -> void:
 	const SPRING_LENGTH = 0.2
 	
 	for i in range(1, global_points.size() - 1):
-		var accel = spring(global_points[i], global_points[i - 1], SPRING_LENGTH) + \
-			spring(global_points[i], global_points[i + 1], SPRING_LENGTH) + \
-			spring_damp(vels[i])
+		var accel = Spring.spring(global_points[i], global_points[i - 1], SPRING_LENGTH) + \
+			Spring.spring(global_points[i], global_points[i + 1], SPRING_LENGTH) + \
+			Spring.spring_damp(vels[i])
 		vels[i] += accel * delta
 		global_points[i] += vels[i] * delta
 		
@@ -68,22 +68,7 @@ func _process_points(delta: float) -> void:
 	#	if to_last.length_squared() > (maxstep * maxstep):
 	#		global_points[i] = global_points[i - 1] + to_last.normalized() * maxstep
 		
-func spring_damp(vel: Vector2, B: float = 20) -> Vector2:
-	return -B * vel
 
-func spring(pos: Vector2, o_pos: Vector2, length: float, K: float = 800) -> Vector2:
-	# Direction from other to current pos.
-	var x = pos - o_pos
-	if x.length_squared() < 0.00000001:
-		return Vector2.ZERO
-	
-	# Project our spring length along that.
-	var rest = length * x.normalized()
-	
-	# F = -(x - rest)
-	var accel = -K * (x - rest)
-	
-	return accel
 
 func _process(delta: float) -> void:
 	const fac = 0.1
