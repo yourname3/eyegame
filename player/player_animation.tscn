@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bki43oonjw1f2"]
+[gd_scene load_steps=7 format=3 uid="uid://bki43oonjw1f2"]
 
 [ext_resource type="Script" uid="uid://bwrea3awxyb53" path="res://player/player_animation.gd" id="1_fp5y0"]
 [ext_resource type="Script" uid="uid://cj378pgaoju2f" path="res://player/player_flagellum.gd" id="1_v5hpx"]
+[ext_resource type="Texture2D" uid="uid://b5sio6tgpbloj" path="res://player/leg_texture.svg" id="2_1wvki"]
 [ext_resource type="Texture2D" uid="uid://dfoct6gc3qe2q" path="res://player/main_body.svg" id="3_t8nns"]
 [ext_resource type="PackedScene" uid="uid://d2woy30l5kinr" path="res://player/player_claw.tscn" id="4_v3vk1"]
 
@@ -13,45 +14,60 @@ point_count = 2
 script = ExtResource("1_fp5y0")
 
 [node name="Line2D5" type="Line2D" parent="."]
+texture_repeat = 2
 position = Vector2(-17.2818, -2.59416)
 rotation = 3.45405
 points = PackedVector2Array(0, 0, 146, 1.28746e-05)
 width = 8.36
 width_curve = SubResource("Curve_v5hpx")
 default_color = Color(0.497474, 0.497474, 0.497474, 1)
+texture = ExtResource("2_1wvki")
+texture_mode = 1
 script = ExtResource("1_v5hpx")
 
 [node name="Line2D4" type="Line2D" parent="."]
+texture_repeat = 2
 position = Vector2(-19.2818, 4.40584)
 rotation = 2.89456
 points = PackedVector2Array(0, 0, 146, 1.28746e-05)
 width = 8.36
 width_curve = SubResource("Curve_v5hpx")
 default_color = Color(0.497474, 0.497474, 0.497474, 1)
+texture = ExtResource("2_1wvki")
+texture_mode = 1
 script = ExtResource("1_v5hpx")
 
 [node name="Line2D2" type="Line2D" parent="."]
+texture_repeat = 2
 position = Vector2(-18, 12)
 rotation = -3.14159
 points = PackedVector2Array(0, 0, 119, 1.04904e-05)
 width_curve = SubResource("Curve_v5hpx")
 default_color = Color(0.593134, 0.593134, 0.593134, 1)
+texture = ExtResource("2_1wvki")
+texture_mode = 1
 script = ExtResource("1_v5hpx")
 
 [node name="Line2D" type="Line2D" parent="."]
+texture_repeat = 2
 position = Vector2(-18, 0)
 rotation = 3.14159
 points = PackedVector2Array(0, 0, 145, 1.26763e-05)
 width_curve = SubResource("Curve_v5hpx")
 default_color = Color(0.593134, 0.593134, 0.593134, 1)
+texture = ExtResource("2_1wvki")
+texture_mode = 1
 script = ExtResource("1_v5hpx")
 
 [node name="Line2D3" type="Line2D" parent="."]
+texture_repeat = 2
 position = Vector2(-18, -12)
 rotation = -3.14159
 points = PackedVector2Array(0, 0, 107, 9.53674e-06)
 width_curve = SubResource("Curve_v5hpx")
 default_color = Color(0.593134, 0.593134, 0.593134, 1)
+texture = ExtResource("2_1wvki")
+texture_mode = 1
 script = ExtResource("1_v5hpx")
 
 [node name="MainBody" type="Sprite2D" parent="."]

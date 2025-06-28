@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="256"
+   height="128"
+   viewBox="0 0 67.733332 33.866666"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   sodipodi:docname="leg_texture.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="px"
+     inkscape:zoom="1"
+     inkscape:cx="292"
+     inkscape:cy="68.5"
+     inkscape:window-width="2560"
+     inkscape:window-height="1494"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     inkscape:lockguides="true" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#fffffd;fill-opacity:1;stroke:none;stroke-width:2.26917;stroke-linecap:square;stroke-miterlimit:12.9"
+       id="rect14"
+       width="33.866665"
+       height="33.866665"
+       x="0"
+       y="0" />
+    <path
+       id="rect15"
+       style="fill:#f2f2f2;stroke-width:1.60463;stroke-linecap:square;stroke-miterlimit:12.9;fill-opacity:1"
+       d="M 33.488871,0 68.29098,0 v 33.866665 l -34.802109,0 C -3.1896861,18.880628 11.023063,8.7061863 33.488871,0 Z"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       id="path17"
+       style="fill:#ffffff;fill-opacity:1;stroke-width:1.60463;stroke-linecap:square;stroke-miterlimit:12.9"
+       d="m 67.35192,0 h 34.80211 V 33.866665 H 67.35192 C 30.673363,18.880628 44.886112,8.7061863 67.35192,0 Z"
+       sodipodi:nodetypes="ccccc" />
+    <ellipse
+       style="fill:#d1d1d1;fill-opacity:1;stroke:#a5a5a5;stroke-width:0.681;stroke-linecap:square;stroke-miterlimit:12.9;stroke-dasharray:none;stroke-opacity:1"
+       id="path18"
+       cx="21.565258"
+       cy="16.041309"
+       rx="3.4377542"
+       ry="3.3208239" />
+    <ellipse
+       style="fill:#d1d1d1;fill-opacity:1;stroke:#a5a5a5;stroke-width:0.681;stroke-linecap:square;stroke-miterlimit:12.9;stroke-dasharray:none;stroke-opacity:1"
+       id="ellipse18"
+       cx="55.49807"
+       cy="16.041309"
+       rx="3.4377542"
+       ry="3.3208239" />
+  </g>
+</svg>
