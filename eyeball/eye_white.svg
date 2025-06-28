@@ -8,7 +8,7 @@
    version="1.1"
    id="svg1"
    inkscape:version="1.4 (86a8ad7, 2024-10-11)"
-   sodipodi:docname="eyeball.svg"
+   sodipodi:docname="eye_white.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -44,17 +44,5 @@
        d="M -7.6955464,152.94898 C 264.53441,-55.792711 491.66546,-168.00513 807.27671,-165.28435 1122.888,-162.56356 1485.5495,68.019665 1572.6146,130.59775 1186.2629,394.51405 1158.5297,486.614 835.25802,505.43931 493.40195,525.34685 168.75304,302.78434 -7.6955464,152.94898 Z"
        id="path1"
        sodipodi:nodetypes="cscsc" />
-    <circle
-       style="fill:#17831e;fill-opacity:1;stroke:none;stroke-width:2.38125;stroke-linecap:square;stroke-miterlimit:12.9"
-       id="path2"
-       cx="781.70154"
-       cy="167.47482"
-       r="321.28906" />
-    <circle
-       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.44363;stroke-linecap:square;stroke-miterlimit:12.9"
-       id="circle2"
-       cx="781.70154"
-       cy="167.47482"
-       r="194.78136" />
   </g>
 </svg>
