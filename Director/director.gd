@@ -4,6 +4,8 @@ extends Node2D
 
 @export var current_wave: int
 
+@export var SpawnPoints: Array[Node2D]
+
 func _ready() -> void:
 	print("thing is loaded")
 	
@@ -52,6 +54,16 @@ func _NextWave() -> void:
 			print(j.EnemyName)
 			print(j.EnemyAmount)
 			print(j.EnemySpawnInterval)
+			#this is the part where we spawn in the stuff
+			
+			for i in j.EnemyAmount:
+				await get_tree().create_timer(j.EnemySpawnInterval).timeout
+				#pick a random spawn point 
+				
+				var spawnPoint = SpawnPoints.pick_random()
+				
+				#spawm enemy at that point
+			
 		
 		
 		$Wave_Timer.wait_time = enemy_data[current_wave].SecondsTillNextWave
