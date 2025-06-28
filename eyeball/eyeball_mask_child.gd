@@ -7,5 +7,6 @@ class_name EyeballMaskChild
 #
 # So, do that inside this script, and do it as a tool too.
 
+
 func _process(delta: float) -> void:
 	global_scale = Vector2.ONE
