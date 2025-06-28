@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="1584.2798mm"
+   height="674.40253mm"
+   viewBox="0 0 1584.2798 674.40253"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   sodipodi:docname="eyeball.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.13752543"
+     inkscape:cx="2046.8942"
+     inkscape:cy="1799.6672"
+     inkscape:window-width="2560"
+     inkscape:window-height="1494"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(9.590611,166.52328)">
+    <path
+       style="fill:#f9f9f9;stroke:#d25959;stroke-width:2.38125;stroke-linecap:square;stroke-miterlimit:12.9"
+       d="M -7.6955464,152.94898 C 264.53441,-55.792711 491.66546,-168.00513 807.27671,-165.28435 1122.888,-162.56356 1485.5495,68.019665 1572.6146,130.59775 1186.2629,394.51405 1158.5297,486.614 835.25802,505.43931 493.40195,525.34685 168.75304,302.78434 -7.6955464,152.94898 Z"
+       id="path1"
+       sodipodi:nodetypes="cscsc" />
+    <circle
+       style="fill:#17831e;fill-opacity:1;stroke:#d25959;stroke-width:2.38125;stroke-linecap:square;stroke-miterlimit:12.9"
+       id="path2"
+       cx="759.93524"
+       cy="176.99757"
+       r="321.28906" />
+    <circle
+       style="fill:#000000;fill-opacity:1;stroke:#d25959;stroke-width:1.44363;stroke-linecap:square;stroke-miterlimit:12.9"
+       id="circle2"
+       cx="759.93524"
+       cy="176.99757"
+       r="194.78136" />
+  </g>
+</svg>
