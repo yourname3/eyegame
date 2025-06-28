@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://bki43oonjw1f2"]
+
+[ext_resource type="Script" uid="uid://cj378pgaoju2f" path="res://player/player_flagellum.gd" id="1_v5hpx"]
+
+[sub_resource type="Curve" id="Curve_v5hpx"]
+_data = [Vector2(0, 1), 0.0, 0.0483477, 0, 0, Vector2(1, 0), -2.00557, 0.0, 0, 0]
+point_count = 2
+
+[node name="PlayerAnimation" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 172, 0)
+width_curve = SubResource("Curve_v5hpx")
+default_color = Color(0.654232, 0.654232, 0.654232, 1)
+script = ExtResource("1_v5hpx")
+
+[node name="Line2D2" type="Line2D" parent="."]
+position = Vector2(-1, 14)
+points = PackedVector2Array(0, 0, 172, 0)
+width_curve = SubResource("Curve_v5hpx")
+default_color = Color(0.654232, 0.654232, 0.654232, 1)
+script = ExtResource("1_v5hpx")
+
+[node name="Line2D3" type="Line2D" parent="."]
+position = Vector2(-1, -16)
+points = PackedVector2Array(0, 0, 172, 0)
+width_curve = SubResource("Curve_v5hpx")
+default_color = Color(0.654232, 0.654232, 0.654232, 1)
+script = ExtResource("1_v5hpx")
