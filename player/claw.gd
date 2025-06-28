@@ -29,8 +29,8 @@ func _ready() -> void:
 func _process_points(delta: float) -> void:	
 	var inv := line.global_transform.inverse()
 
-	global_points[0]                        = get_parent().global_transform * root_pos
-	global_points[global_points.size() - 1] = global_position
+	global_points[0]                        = root_pos
+	global_points[global_points.size() - 1] = position
 	
 	const SPRING_LENGTH = 0.2
 	
@@ -47,7 +47,7 @@ func _process_points(delta: float) -> void:
 	#		global_points[i] = global_points[i - 1] + to_last.normalized() * maxstep
 
 	for i in range(0, global_points.size()):
-		line.points[i] = inv * global_points[i]
+		line.points[i] = inv * get_parent().global_transform * global_points[i]
 		#
 		
 func spring_damp(vel: Vector2, B: float = 20) -> Vector2:
@@ -79,7 +79,7 @@ func _process(delta: float) -> void:
 	
 	var inv := line.global_transform.inverse()
 	for i in range(0, global_points.size()):
-		line.points[i] = inv * global_points[i]
+		line.points[i] = inv * get_parent().global_transform * global_points[i]
 	
 func _physics_process(delta: float) -> void:
 	_process_points(delta)

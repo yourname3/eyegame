@@ -23,14 +23,14 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#505050"
      inkscape:document-units="px"
-     inkscape:zoom="4.4008137"
-     inkscape:cx="139.17881"
-     inkscape:cy="94.414358"
-     inkscape:window-width="2560"
-     inkscape:window-height="1494"
-     inkscape:window-x="-11"
-     inkscape:window-y="-11"
-     inkscape:window-maximized="1"
+     inkscape:zoom="6.2236904"
+     inkscape:cx="40.811799"
+     inkscape:cy="107.97452"
+     inkscape:window-width="1264"
+     inkscape:window-height="1069"
+     inkscape:window-x="1180"
+     inkscape:window-y="254"
+     inkscape:window-maximized="0"
      inkscape:current-layer="layer1" />
   <defs
      id="defs1" />
@@ -40,7 +40,7 @@
      id="layer1">
     <path
        id="rect9"
-       style="fill:#878787;fill-opacity:1;stroke-width:2.38125;stroke-linecap:square;stroke-miterlimit:12.9"
+       style="fill:#252525;fill-opacity:1;stroke-width:2.38125;stroke-linecap:square;stroke-miterlimit:12.9"
        d="m 4.2367175,17.153691 h 9.1826515 c 0.516757,-0.0089 0.882765,0.168928 0.807737,0.892758 V 24.76339 H 4.2367175 Z"
        sodipodi:nodetypes="cccccc" />
     <path
@@ -50,7 +50,7 @@
        sodipodi:nodetypes="cccccccccc" />
     <path
        id="rect8"
-       style="fill:#a8a8a8;stroke-width:2.38125;stroke-linecap:square;stroke-miterlimit:12.9"
+       style="fill:#3f3f3f;stroke-width:2.38125;stroke-linecap:square;stroke-miterlimit:12.9;fill-opacity:1"
        d="m 4.2414325,19.59148 h 8.9552265 c 0.460854,0.149187 1.004272,0.16765 1.005101,1.04521 l 0.02567,5.606561 c -0.0171,0.540517 -0.277186,0.858301 -0.775258,0.957928 H 4.2414325 L 1.7163314,25.371254 1.6210174,19.380913 4.2414325,17.194737 Z"
        sodipodi:nodetypes="cccccccccc" />
     <rect
@@ -67,5 +67,12 @@
        height="2.3806882"
        x="1.504288"
        y="9.642477" />
+    <ellipse
+       style="fill:#ff1111;fill-opacity:1;stroke:none;stroke-width:2.63257;stroke-linecap:square;stroke-miterlimit:12.9"
+       id="path11"
+       cx="10.054156"
+       cy="23.573065"
+       rx="2.1043582"
+       ry="1.8917969" />
   </g>
 </svg>
