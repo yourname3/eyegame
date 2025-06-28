@@ -77,5 +77,9 @@ func _process(delta: float) -> void:
 	position = position.move_toward(target, 300 * delta)
 	global_rotation = rotate_toward(global_rotation, target.angle(), TAU * delta * 8)
 	
+	var inv := line.global_transform.inverse()
+	for i in range(0, global_points.size()):
+		line.points[i] = inv * global_points[i]
+	
 func _physics_process(delta: float) -> void:
 	_process_points(delta)
