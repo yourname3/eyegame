@@ -15,7 +15,7 @@ script = ExtResource("1_fp5y0")
 
 [node name="Line2D5" type="Line2D" parent="."]
 texture_repeat = 2
-position = Vector2(-17.2818, -2.59416)
+position = Vector2(-12.2818, -3.59482)
 rotation = 3.45405
 points = PackedVector2Array(0, 0, 146, 1.28746e-05)
 width = 8.36
@@ -27,7 +27,7 @@ script = ExtResource("1_v5hpx")
 
 [node name="Line2D4" type="Line2D" parent="."]
 texture_repeat = 2
-position = Vector2(-19.2818, 4.40584)
+position = Vector2(-14.2818, 3.40518)
 rotation = 2.89456
 points = PackedVector2Array(0, 0, 146, 1.28746e-05)
 width = 8.36
@@ -39,7 +39,7 @@ script = ExtResource("1_v5hpx")
 
 [node name="Line2D2" type="Line2D" parent="."]
 texture_repeat = 2
-position = Vector2(-18, 12)
+position = Vector2(-23, 12.0003)
 rotation = -3.14159
 points = PackedVector2Array(0, 0, 119, 1.04904e-05)
 width_curve = SubResource("Curve_v5hpx")
@@ -50,7 +50,7 @@ script = ExtResource("1_v5hpx")
 
 [node name="Line2D" type="Line2D" parent="."]
 texture_repeat = 2
-position = Vector2(-18, 0)
+position = Vector2(-23, 0.000305176)
 rotation = 3.14159
 points = PackedVector2Array(0, 0, 145, 1.26763e-05)
 width_curve = SubResource("Curve_v5hpx")
@@ -61,7 +61,7 @@ script = ExtResource("1_v5hpx")
 
 [node name="Line2D3" type="Line2D" parent="."]
 texture_repeat = 2
-position = Vector2(-18, -12)
+position = Vector2(-23, -11.9997)
 rotation = -3.14159
 points = PackedVector2Array(0, 0, 107, 9.53674e-06)
 width_curve = SubResource("Curve_v5hpx")
