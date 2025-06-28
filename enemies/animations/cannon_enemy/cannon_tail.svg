@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="256"
+   height="128"
+   viewBox="0 0 67.733332 33.866666"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   sodipodi:docname="cannon_tail.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="px"
+     inkscape:zoom="4"
+     inkscape:cx="82.25"
+     inkscape:cy="99.25"
+     inkscape:window-width="2560"
+     inkscape:window-height="1494"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     inkscape:lockguides="true" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.609672;stroke-linecap:square;stroke-miterlimit:12.9"
+       id="rect1"
+       width="67.73333"
+       height="33.866665"
+       x="0"
+       y="-8.8817842e-16" />
+    <rect
+       style="fill:#ececec;fill-opacity:1;stroke:none;stroke-width:0.242495;stroke-linecap:square;stroke-miterlimit:12.9"
+       id="rect2"
+       width="67.73333"
+       height="5.3578105"
+       x="0"
+       y="-8.8817842e-16" />
+    <path
+       style="fill:#ececec;fill-opacity:1;stroke:none;stroke-width:0.786871;stroke-linecap:square;stroke-miterlimit:12.9"
+       d="M -0.06614583,5.3578124 C 7.5406249,4.8286458 13.758333,26.259896 28.178125,26.722916 42.597916,27.185937 45.971354,5.2255208 67.601041,5.3578124"
+       id="path2" />
+  </g>
+</svg>
