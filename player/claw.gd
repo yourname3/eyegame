@@ -97,6 +97,13 @@ func _process(delta: float) -> void:
 	
 	_render_points()
 	
+func _smooth_points() -> void:
+	var smoothed := line.points
+	for i in range(1, line.points.size() - 1):
+		smoothed[i] = line.points[i - 1] * 0.25 + line.points[i] * 0.5 + line.points[i + 1] * 0.25
+	
+	line.points = smoothed
+	
 func _render_points() -> void:
 	var inv := line.global_transform.inverse()
 	
@@ -112,6 +119,9 @@ func _render_points() -> void:
 		var b = a + 1
 		var t = float(i - (a * chunk)) / float(chunk - 1)
 		line.points[i] = lerp(tformed[a], tformed[b], t)
+		
+	for i in range(0, 3):
+		_smooth_points()
 	
 func _physics_process(delta: float) -> void:
 	_process_points(delta)
