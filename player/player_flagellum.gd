@@ -37,7 +37,7 @@ func _process(delta: float) -> void:
 	
 	var inv := global_transform.inverse()
 	
-	var speed_control := remap(get_parent().position_delta.length(), 0.0, 400.0 / 60.0, 0.0, 1.0)
+	var speed_control := remap(get_parent().position_delta.length(), 0.0, 600.0 / 60.0, 0.0, 1.0)
 	
 	var amp: float = lerp(0.0, 20.0, speed_control)
 	#var maxstep: float = lerp(1.2, 2.0, speed_control) * step
