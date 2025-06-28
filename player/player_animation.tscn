@@ -61,12 +61,14 @@ scale = Vector2(0.59375, 0.59375)
 texture = ExtResource("3_t8nns")
 
 [node name="Claw" type="Node2D" parent="."]
-position = Vector2(85, -28)
+position = Vector2(13, -26)
 script = ExtResource("4_1wvki")
 
 [node name="Sprite2D" type="Sprite2D" parent="Claw"]
 position = Vector2(18, -7)
 scale = Vector2(0.315821, 0.315821)
 texture = ExtResource("4_v3vk1")
+
+[node name="Line2D" type="Line2D" parent="Claw"]
 
 [node name="Line2D6" type="Line2D" parent="."]
