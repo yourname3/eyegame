@@ -31,6 +31,8 @@ func _ready() -> void:
 var _phase := 0.0
 var _phase_rate := randf_range(4.5, 5.5) * 3
 
+var idle_noise := Vector2.ZERO
+
 func _process(delta: float) -> void:
 	_phase = fmod(_phase + delta * _phase_rate, TAU)
 	var inv := global_transform.inverse()
@@ -45,6 +47,11 @@ func _process(delta: float) -> void:
 		var amp_i := t * amp
 		truth[i].y = sin(i * 0.3 + _phase) * amp_i
 	global_points[0] = global_transform * truth[0]
+	
+	var noise = Vector2.from_angle(randf_range(0, TAU)) * randf_range(0, 40)
+	idle_noise += (noise - idle_noise) * 0.02
+	for i in range(1, points.size()):
+		global_points[i] += vels[i].orthogonal() * delta + idle_noise * delta
 	
 	for i in range(1, points.size()):
 		var global_truth = global_transform * truth[i]
