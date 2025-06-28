@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://duc5sncw1difd"]
+[gd_scene load_steps=4 format=3 uid="uid://duc5sncw1difd"]
 
 [ext_resource type="Script" uid="uid://chqywftrap4qo" path="res://enemies/animations/spiral_folder/spiral_enemy.gd" id="1_wa05u"]
+[ext_resource type="Texture2D" uid="uid://cmtdijh6ti2il" path="res://enemies/animations/spiral_folder/spiral_texture.png" id="2_3glbj"]
 
 [sub_resource type="Curve" id="Curve_wa05u"]
 _data = [Vector2(0, 0.45047), 0.0, 2.15115, 0, 0, Vector2(0.336245, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.572588), -0.211856, 0.0, 0, 0]
@@ -11,8 +12,11 @@ script = ExtResource("1_wa05u")
 
 [node name="Line" type="Line2D" parent="."]
 unique_name_in_owner = true
+texture_repeat = 2
 points = PackedVector2Array(-12, 2, -9, -2, -6, -4, -1, -4, 1, 2, 2, 8, 4, 12, 10, 13, 12, 7, 13, 1, 14, -6, 19, -6, 21, -3, 23, 3, 23, 12, 25, 19, 32, 14, 32, 6, 33, -1, 35, -6, 40, -7, 42, -2, 42, 3, 43, 12, 44, 18, 49, 22, 54, 18, 58, 9, 63, 5, 66, -4, 69, -8, 74, -6, 74, -1, 74, 7, 75, 17)
 width_curve = SubResource("Curve_wa05u")
-default_color = Color(0.0555916, 0, 0.394601, 1)
+default_color = Color(0.14756, 3.85046e-07, 0.768491, 1)
+texture = ExtResource("2_3glbj")
+texture_mode = 1
 begin_cap_mode = 2
 end_cap_mode = 2
