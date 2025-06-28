@@ -15,10 +15,14 @@ func _bean(x: float, squish: float = 0.5) -> float:
 	return 1 - squish * cos(2 * x + PI)
 
 var noise_o = PackedVector2Array()
+var vels_o  = PackedVector2Array()
 
 func _ready() -> void:
 	for i in range(0, POINTS):
 		noise_o.append(Vector2.ZERO)
+		vels_o.append(Vector2.ZERO)
+	# Make initial polygon
+	outside.polygon = _make_ellipse(120, 80)
 	#var inside_polygon  := PackedVector2Array()
 	#var outside_polygon := PackedVector2Array()
 	#
@@ -51,22 +55,39 @@ func _make_ellipse(xr: float = 80, yr: float = 80) -> PackedVector2Array:
 	return points
 		
 var _bean_phase := 0.0
-		
-func _process(delta: float) -> void:
-	var beanness = 0.5 + sin(_bean_phase) * 0.05
+
+func _physics_process(delta: float) -> void:
 	var other_bean = sin(_bean_phase) * 0.05
 	var fac1 = (1.0 + other_bean)
 	var fac2 = (1.0 - other_bean)
 	
+	# Update noise 
+	for i in range(0, POINTS):
+		var noise_unfil: Vector2 = Vector2.from_angle(randf_range(0, TAU)) * randf_range(0, 160)
+		noise_o[i] += (noise_unfil - noise_o[i]) * 0.02
+		
+	var outside_goal := _make_ellipse(120 * fac1, 80 * fac2)
+	for i in range(0, POINTS):
+		outside_goal[i] += noise_o[i]
+		
+	for i in range(0, POINTS):
+		var idx_last = ((i - 1) + outside.polygon.size()) % outside.polygon.size()
+		var idx_next = (i + 1) % outside.polygon.size()
+		
+		var accel := Spring.spring(outside.polygon[i], outside_goal[i], 0.0) + \
+			Spring.spring(outside.polygon[i], outside.polygon[idx_last], 0.0) + \
+			Spring.spring(outside.polygon[i], outside.polygon[idx_next], 0.0) + \
+			Spring.spring_damp(vels_o[i])
+		vels_o[i] += accel * delta
+	# Perform the position update in a separate pass so there's no dependency
+	for i in range(0, POINTS):
+		outside.polygon[i] += vels_o[i] * delta
+		
+func _process(delta: float) -> void:
+	var beanness = 0.5 + sin(_bean_phase) * 0.05
+	
 	_bean_phase = fmod(_bean_phase + delta * TAU, TAU)
 	
-	for i in range(0, POINTS):
-		var noise_unfil: Vector2 = Vector2.from_angle(randf_range(0, TAU)) * randf_range(0, 80)
-		noise_o[i] += (noise_unfil - noise_o[i]) * 0.02
-	
 	inside.polygon = _make_circle(60, _bean.bind(beanness))
-	outside.polygon = _make_ellipse(120 * fac1, 80 * fac2)
-	for i in range(0, POINTS):
-		outside.polygon[i] += noise_o[i]
 	white_line.points = _make_ellipse(60 * (1.0 + beanness), 60)
 	orange_line.points = outside.polygon
