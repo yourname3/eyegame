@@ -29,21 +29,27 @@ func _ready() -> void:
 	_phase = position.y * 3
 
 var _phase := 0.0
-var _phase_rate := randf_range(4.5, 5.5) * 3
+var _phase_rate := randf_range(4.5, 5.5)
 
 var idle_noise := Vector2.ZERO
 
 func _process(delta: float) -> void:
-	_phase = fmod(_phase + delta * _phase_rate, TAU)
+	
 	var inv := global_transform.inverse()
 	
-	var amp := remap(get_parent().position_delta.length(), 0.0, 400.0 / 60.0, 0.0, 20.0)
+	var speed_control := remap(get_parent().position_delta.length(), 0.0, 400.0 / 60.0, 0.0, 1.0)
+	
+	var amp: float = lerp(0.0, 80.0, speed_control)
+	#var maxstep: float = lerp(1.2, 2.0, speed_control) * step
+	var maxstep := 1.2 * step
+	
+	_phase = fmod(_phase + delta * _phase_rate * lerp(1.0, 7.0, speed_control), TAU)
 	
 	#global_points[0] = global_transform * (ROOT + Vector2(0, sin(_phase) * amp))
 	
 	for i in range(0, points.size()):
 		var t := float(i) / float(points.size() - 1)
-		t = 1.0 - (abs(t - 0.25) * 2.0)
+		t = 1.0 - (abs(t - 0.4) * 2.0)
 		var amp_i := t * amp
 		truth[i].y = sin(i * 0.3 + _phase) * amp_i
 	global_points[0] = global_transform * truth[0]
@@ -51,18 +57,19 @@ func _process(delta: float) -> void:
 	var noise = Vector2.from_angle(randf_range(0, TAU)) * randf_range(0, 40)
 	idle_noise += (noise - idle_noise) * 0.02
 	for i in range(1, points.size()):
-		global_points[i] += vels[i].orthogonal() * delta + idle_noise * delta
+		global_points[i] += idle_noise * delta # + vels[i].orthogonal() * delta
 	
 	for i in range(1, points.size()):
 		var global_truth = global_transform * truth[i]
 		
+		var t := float(i) / float(points.size() - 1)
+		var truth_springiness = lerp(60, 1, t)
+		
 		var accel = spring(global_points[i], global_points[i - 1], step) + \
-			spring(global_points[i], global_truth, 0.0, 20) + \
+			spring(global_points[i], global_truth, 0.0, truth_springiness) + \
 			spring_damp(vels[i])
 		vels[i] += accel * delta
 		global_points[i] += vels[i] * delta
-		
-	var maxstep = step * 1.2
 		
 	for i in range(1, points.size()):
 		var to_last = global_points[i] - global_points[i - 1]

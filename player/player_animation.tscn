@@ -19,7 +19,7 @@ default_color = Color(0.654232, 0.654232, 0.654232, 1)
 script = ExtResource("1_v5hpx")
 
 [node name="Line2D2" type="Line2D" parent="."]
-position = Vector2(-1, 14)
+position = Vector2(1, 14)
 rotation = -3.14159
 points = PackedVector2Array(0, 0, 172, 0)
 width_curve = SubResource("Curve_v5hpx")
