@@ -8,7 +8,8 @@ var target: Vector2 = Vector2.ZERO
 var smooth1: Vector2 = Vector2.ZERO
 var smooth2: Vector2 = Vector2.ZERO
 
-const POINT_COUNT = 32
+const POINT_COUNT = 5
+const INTERP_COUNT = 32
 var global_points := PackedVector2Array()
 var vels          := PackedVector2Array()
 
@@ -38,9 +39,12 @@ func _ready() -> void:
 	line.clear_points()
 	
 	for i in range(0, POINT_COUNT):
-		line.add_point(Vector2.ZERO)
+		#line.add_point(Vector2.ZERO)
 		global_points.append(Vector2.ZERO)
 		vels.append(Vector2.ZERO)
+		
+	for i in range(0, INTERP_COUNT):
+		line.add_point(Vector2.ZERO)
 		
 	line.default_color = line_color
 		
@@ -63,10 +67,6 @@ func _process_points(delta: float) -> void:
 	#	var to_last = global_points[i] - global_points[i - 1]
 	#	if to_last.length_squared() > (maxstep * maxstep):
 	#		global_points[i] = global_points[i - 1] + to_last.normalized() * maxstep
-
-	for i in range(0, global_points.size()):
-		line.points[i] = inv * get_parent().global_transform * global_points[i]
-		#
 		
 func spring_damp(vel: Vector2, B: float = 20) -> Vector2:
 	return -B * vel
@@ -95,9 +95,23 @@ func _process(delta: float) -> void:
 	position = position.move_toward(target, 300 * delta)
 	global_rotation = rotate_toward(global_rotation, target.angle(), TAU * delta * 8)
 	
+	_render_points()
+	
+func _render_points() -> void:
 	var inv := line.global_transform.inverse()
-	for i in range(0, global_points.size()):
-		line.points[i] = inv * get_parent().global_transform * global_points[i]
+	
+	var tformed := PackedVector2Array()
+	
+	for i in range(0, POINT_COUNT):
+		tformed.append(inv * get_parent().global_transform * global_points[i])
+		
+	const chunk = (INTERP_COUNT / (POINT_COUNT - 1))
+	
+	for i in range(0, line.points.size()):
+		var a = i / chunk
+		var b = a + 1
+		var t = float(i - (a * chunk)) / float(chunk - 1)
+		line.points[i] = lerp(tformed[a], tformed[b], t)
 	
 func _physics_process(delta: float) -> void:
 	_process_points(delta)
