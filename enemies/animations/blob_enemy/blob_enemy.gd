@@ -14,7 +14,11 @@ func _circle(x: float) -> float:
 func _bean(x: float, squish: float = 0.5) -> float:
 	return 1 - squish * cos(2 * x + PI)
 
+var noise_o = PackedVector2Array()
+
 func _ready() -> void:
+	for i in range(0, POINTS):
+		noise_o.append(Vector2.ZERO)
 	#var inside_polygon  := PackedVector2Array()
 	#var outside_polygon := PackedVector2Array()
 	#
@@ -27,9 +31,9 @@ func _ready() -> void:
 	#inside.polygon  = inside_polygon
 	#outside.polygon = outside_polygon
 	#inside.polygon = _make_circle(30, _bean)
-	outside.polygon = _make_circle()
-	white_line.points = _make_circle(30)
-	orange_line.points = _make_circle()
+	#outside.polygon = _make_circle()
+	#white_line.points = _make_circle(30)
+	#orange_line.points = _make_circle()
 		
 func _make_circle(radius: float = 80, callable: Callable = _circle) -> PackedVector2Array:
 	var points = PackedVector2Array()
@@ -56,7 +60,13 @@ func _process(delta: float) -> void:
 	
 	_bean_phase = fmod(_bean_phase + delta * TAU, TAU)
 	
+	for i in range(0, POINTS):
+		var noise_unfil: Vector2 = Vector2.from_angle(randf_range(0, TAU)) * randf_range(0, 80)
+		noise_o[i] += (noise_unfil - noise_o[i]) * 0.02
+	
 	inside.polygon = _make_circle(60, _bean.bind(beanness))
 	outside.polygon = _make_ellipse(120 * fac1, 80 * fac2)
+	for i in range(0, POINTS):
+		outside.polygon[i] += noise_o[i]
 	white_line.points = _make_ellipse(60 * (1.0 + beanness), 60)
 	orange_line.points = outside.polygon
