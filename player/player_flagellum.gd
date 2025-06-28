@@ -67,9 +67,9 @@ func _process(delta: float) -> void:
 		var t := float(i) / float(points.size() - 1)
 		var truth_springiness = lerp(60, 1, t)
 		
-		var accel = spring(global_points[i], global_points[i - 1], step) + \
-			spring(global_points[i], global_truth, 0.0, truth_springiness) + \
-			spring_damp(vels[i])
+		var accel = Spring.spring(global_points[i], global_points[i - 1], step) + \
+			Spring.spring(global_points[i], global_truth, 0.0, truth_springiness) + \
+			Spring.spring_damp(vels[i])
 		vels[i] += accel * delta
 		global_points[i] += vels[i] * delta
 		
@@ -80,7 +80,7 @@ func _process(delta: float) -> void:
 			
 	#var diff = global_points[0] - (global_transform * ROOT)
 	#for i in range(0, points.size()):
-		#global_points[i] -= diff
+		#global_points[i] -= diffd
 		
 	#global_points[0] = global_transform * ROOT
 	#for i in range(0, 15):
@@ -95,20 +95,3 @@ func _smooth_points() -> void:
 		smoothed[i] = points[i - 1] * 0.25 + points[i] * 0.5 + points[i + 1] * 0.25
 	
 	points = smoothed
-		
-func spring_damp(vel: Vector2, B: float = 10) -> Vector2:
-	return -B * vel
-
-func spring(pos: Vector2, o_pos: Vector2, length: float, K: float = 100) -> Vector2:
-	# Direction from other to current pos.
-	var x = pos - o_pos
-	if x.length_squared() < 0.00000001:
-		return Vector2.ZERO
-	
-	# Project our spring length along that.
-	var rest = length * x.normalized()
-	
-	# F = -(x - rest)
-	var accel = -K * (x - rest)
-	
-	return accel

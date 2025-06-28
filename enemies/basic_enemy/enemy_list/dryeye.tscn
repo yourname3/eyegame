@@ -33,6 +33,7 @@ hitbox = NodePath("HitBox")
 shape = SubResource("CircleShape2D_yx0l5")
 
 [node name="Agent" type="NavigationAgent2D" parent="Sensory"]
+unique_name_in_owner = true
 
 [node name="HitBox" type="Area2D" parent="Sensory"]
 

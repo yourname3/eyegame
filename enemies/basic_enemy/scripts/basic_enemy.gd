@@ -1,9 +1,6 @@
 extends CharacterBody2D
 class_name BasicEnemy
 
-
-
-
 signal use_velocity
 signal use_boost
 
@@ -15,11 +12,6 @@ signal use_boost
 @export var speed : int
 var speed_mod : float = 1.0
 @export var strength : int
-
-
-
-
-
 
 func _ready() -> void:
 	use_velocity.connect(on_use_velocity)
@@ -40,8 +32,15 @@ func on_use_boost():
 	else:
 		pass
 
-
 func _set_health(value:int):
+	if value < health:
+		print("OUCH!")
+		# If value is less than health, we're taking damage.
+		# For now, do a simple red blink animation.
+		var tween = create_tween()
+		# Intense red
+		tween.tween_property(self, "modulate", Color(2.0, 2.0, 2.0), 0.2)
+		tween.tween_property(self, "modulate", Color.WHITE, 0.2)
 	health = value
 	if health <= 0:
 		_death()

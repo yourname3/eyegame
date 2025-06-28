@@ -9,20 +9,27 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_yx0l5"]
 radius = 300.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xuk7h"]
-radius = 47.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ib75m"]
+radius = 48.0
+height = 234.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_oul6g"]
-radius = 37.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dmf6v"]
+radius = 39.0
+height = 214.0
 
 [node name="BasicEnemy" type="CharacterBody2D" node_paths=PackedStringArray("sensory", "stats", "state_machine") groups=["Enemies"]]
 script = ExtResource("1_e3fca")
 sensory = NodePath("Sensory")
 stats = NodePath("Stats")
 state_machine = NodePath("StateMchine")
+health = 10
 
-[node name="Sensory" type="Node2D" parent="."]
+[node name="Sensory" type="Node2D" parent="." node_paths=PackedStringArray("signal_bus", "vision", "agent", "hitbox")]
 script = ExtResource("2_pyiaf")
+signal_bus = NodePath("..")
+vision = NodePath("Vision")
+agent = NodePath("Agent")
+hitbox = NodePath("HitBox")
 
 [node name="Vision" type="Area2D" parent="Sensory"]
 
@@ -30,11 +37,13 @@ script = ExtResource("2_pyiaf")
 shape = SubResource("CircleShape2D_yx0l5")
 
 [node name="Agent" type="NavigationAgent2D" parent="Sensory"]
+unique_name_in_owner = true
 
 [node name="HitBox" type="Area2D" parent="Sensory"]
 
 [node name="Collision" type="CollisionShape2D" parent="Sensory/HitBox"]
-shape = SubResource("CircleShape2D_xuk7h")
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_ib75m")
 
 [node name="Profile" type="AnimationPlayer" parent="."]
 
@@ -45,10 +54,11 @@ script = ExtResource("3_j31mh")
 script = ExtResource("4_1bcrh")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_oul6g")
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_dmf6v")
 
 [node name="SpiralEnemy" parent="." instance=ExtResource("5_r112n")]
-position = Vector2(-34, -3)
+position = Vector2(-92, -3)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 

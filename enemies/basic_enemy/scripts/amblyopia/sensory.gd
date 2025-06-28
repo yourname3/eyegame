@@ -1,14 +1,6 @@
 extends BasicSensory
 class_name AmblyiopiaSensory
 
-
-
-
-
-
-
-
-
 func _process(delta: float) -> void:
 	match vision_state:
 		Globals.Status.SUCCESS:
