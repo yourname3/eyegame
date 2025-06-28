@@ -1,8 +1,66 @@
 extends Node2D
 
+@export var enemy_data: Array[Wave]
 
-# array - list each wave of enemies coming in 
+@export var current_wave: int
 
+func _ready() -> void:
+	print("thing is loaded")
+	
+	for i in enemy_data.size():
+		#print(enemy_data[i])
+		var newWave = enemy_data[i]
+		for j in newWave.enemy_sequences:
+			print(j)
+			print(j.EnemyName)
+			print(j.EnemyAmount)
+			print(j.EnemySpawnInterval)
+			
+	
+	$Wave_Timer.wait_time = enemy_data[current_wave].SecondsTillNextWave
+	
+	print(enemy_data[current_wave].SecondsTillNextWave)
+	
+	$Wave_Timer.start()
+	
+	$Wave_Timer.timeout.connect(_NextWave)
+
+	
+
+func _process(delta: float) -> void:
+	pass
+	
+			
+			# array - list each wave of enemies coming in 
+
+
+func _NextWave() -> void:
+	
+	print("timer over")
+	current_wave += 1
+	
+	print(current_wave)	
+	
+	var array_size = enemy_data.size()
+	
+	if  current_wave <= array_size-1:
+		print(enemy_data[current_wave].SecondsTillNextWave)
+		
+		var newWave = enemy_data[current_wave]
+		for j in newWave.enemy_sequences:
+			print(j)
+			print(j.EnemyName)
+			print(j.EnemyAmount)
+			print(j.EnemySpawnInterval)
+		
+		
+		$Wave_Timer.wait_time = enemy_data[current_wave].SecondsTillNextWave
+		$Wave_Timer.start()
+	else:
+		print("All Waves Over") 
+	 
+	
+	
 # wave
 # time till next wave
 # enemy dictionary 
