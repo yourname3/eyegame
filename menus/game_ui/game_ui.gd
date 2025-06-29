@@ -7,6 +7,7 @@ var panels_left = []
 var left_idx := 0
 var right_idx := 0
 var panels_right = []
+var health_scale = 15
 
 func _ready():
 	create_ui()
@@ -28,7 +29,10 @@ func set_player_level(current, needed):
 	$PlayerLevel.scale.x = 1.0*current/needed * 15.0
 	print("scalex", $PlayerLevel.scale.x)
 	$PlayLevelContainer/Label.text = str("Level: ", Globals.player.level, " ", current, "/", needed )
-
+func set_player_health_ui(hp, max_hp):
+	print("Health ", $PlayerHealth.scale.x )
+	$PlayerHealth.scale.x = (1.0*hp/max_hp) * 15
+	
 func update_ammo_text():
 	for i in panels_left:
 		if is_instance_valid(i):

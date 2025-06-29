@@ -38,8 +38,11 @@ func _set_health(value:int):
 		SignalBus.player_damaged.emit()
 	health = value
 	print("Player took damage! ", health)
+	if Globals.game_ui_ref:
+		Globals.game_ui_ref.set_player_health_ui(health,max_health)
 	if health <= 0:
 		_death()
+	
 func get_health() -> int:
 	return health
 
