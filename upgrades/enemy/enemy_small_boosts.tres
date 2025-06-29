@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Upgrade" load_steps=2 format=3 uid="uid://buuvvkf5fwok8"]
+
+[ext_resource type="Script" uid="uid://cqp62343t00ga" path="res://upgrades/upgrade.gd" id="1_abvb0"]
+
+[resource]
+script = ExtResource("1_abvb0")
+upgrades_var = &"enemy_small_boosts"
+description = "Enemies are 10% smaller."
+metadata/_custom_type_script = "uid://cqp62343t00ga"

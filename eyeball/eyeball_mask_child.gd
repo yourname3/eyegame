@@ -7,6 +7,11 @@ class_name EyeballMaskChild
 #
 # So, do that inside this script, and do it as a tool too.
 
+@onready var navigation : NavigationRegion2D = $NavigationRegion
+@export var player : Player 
+
+func _ready() -> void:
+	Globals.nav_rid = navigation.get_rid()
 
 func _process(delta: float) -> void:
 	global_scale = Vector2.ONE

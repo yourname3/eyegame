@@ -1,6 +1,5 @@
 extends Node2D
 class_name ProtoProjectile
-
 var velocity = Vector2.ZERO
 var speed := 0.0
 var damage := 0.0
@@ -14,5 +13,10 @@ func _on_life_time_timeout():
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("Enemies"):
-		Globals.transmit_damage.emit(body, 1)
+		# TODO: Is 1 supposed to be 'damage'?
+		Globals.transmit_damage.emit(body, 1 * Upgrades.player_damage_multiplier)
 		print(body.get_health())
+		queue_free()
+		
+
+#

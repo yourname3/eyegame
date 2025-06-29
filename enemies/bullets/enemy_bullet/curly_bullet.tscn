@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfslrhdu2iedv"]
+
+[ext_resource type="Script" uid="uid://ifvjwt7sa1op" path="res://enemies/bullets/enemy_bullet/curly_bullet.gd" id="1_ni348"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b0vgt"]
+lifetime_randomness = 0.2
+particle_flag_disable_z = true
+angle_min = 198.6
+angle_max = 720.0
+gravity = Vector3(0, -98, 0)
+linear_accel_min = -20.69
+linear_accel_max = -6.9
+radial_accel_min = -59.77
+radial_accel_max = -59.77
+scale_min = 15.0
+scale_max = 15.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ni348"]
+
+[sub_resource type="Curve2D" id="Curve2D_ni348"]
+_data = {
+"points": PackedVector2Array(0, 0, 300, 0, 0, 0, 0, 0, 0, 0, 0, 300)
+}
+point_count = 2
+
+[node name="Area2D" type="Area2D" groups=["Projectiles"]]
+script = ExtResource("1_ni348")
+
+[node name="Animation" type="GPUParticles2D" parent="."]
+modulate = Color(0.988235, 0, 1, 1)
+lifetime = 3.0
+process_material = SubResource("ParticleProcessMaterial_b0vgt")
+
+[node name="LifeTime" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ni348")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_ni348")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+
+[connection signal="timeout" from="LifeTime" to="." method="_on_life_time_timeout"]

@@ -1,5 +1,7 @@
 extends Node2D
 
+@export var player : Player
+
 @export var enemy_data: Array[Wave]
 
 @export var current_wave: int
@@ -8,77 +10,53 @@ extends Node2D
 
 @export var SpawningRoot: Node2D
 
+@export var BlinkingAnimator: AnimationPlayer
+
+var outstanding_sequences: int = 0
+
+signal _ready_for_next_wave
+
+func _do_sequence(sequence: EnemySequence) -> void:
+	outstanding_sequences += 1
+	for i in sequence.EnemyAmount:
+		await get_tree().create_timer(sequence.EnemySpawnInterval).timeout
+		#pick a random spawn point 
+		
+		var spawnPoint = SpawnPoints.pick_random()
+		
+		#spawm enemy at that point
+		var newEnemy = sequence.Enemy.instantiate()
+		print("newEnemy target = ", player)
+				
+		newEnemy.sensory.target = player
+		SpawningRoot.add_child(newEnemy)
+		
+	# If we were the last sequence, signal to the wave manager that we're
+	# ready for the next wave
+	outstanding_sequences -= 1
+	if outstanding_sequences <= 0:
+		_ready_for_next_wave.emit()
+	
 func _ready() -> void:
 	print("thing is loaded")
 	
-	for i in enemy_data.size():
-		#print(enemy_data[i])
-		var newWave = enemy_data[i]
-		for j in newWave.enemy_sequences:
-			print(j)
-			print(j.Enemy)
-			print(j.EnemyAmount)
-			print(j.EnemySpawnInterval)
-			
-	
-	$Wave_Timer.wait_time = enemy_data[current_wave].SecondsTillNextWave
-	
-	print(enemy_data[current_wave].SecondsTillNextWave)
-	
-	$Wave_Timer.start()
-	
-	$Wave_Timer.timeout.connect(_NextWave)
+	for wave in enemy_data:
+		await get_tree().create_timer(wave.SecondsTillNextWave).timeout
+		
+		# Spawn coroutine for each spawner
+		for sequence in wave.enemy_sequences:
+			_do_sequence(sequence)
+		
+		await _ready_for_next_wave
 
-	
 
+func _play_blink() -> void:
+	BlinkingAnimator.play("Blink")
+	
+	
 func _process(delta: float) -> void:
-	pass
-	
-			
-			# array - list each wave of enemies coming in 
-
-
-func _NextWave() -> void:
-	
-	print("timer over")
-	current_wave += 1
-	
-	print(current_wave)	
-	
-	var array_size = enemy_data.size()
-	
-	if  current_wave <= array_size-1:
-		print(enemy_data[current_wave].SecondsTillNextWave)
-		
-		var newWave = enemy_data[current_wave]
-		for j in newWave.enemy_sequences:
-			print(j)
-			print(j.Enemy)
-			print(j.EnemyAmount)
-			print(j.EnemySpawnInterval)
-			#this is the part where we spawn in the stuff
-			
-			for i in j.EnemyAmount:
-				await get_tree().create_timer(j.EnemySpawnInterval).timeout
-				#pick a random spawn point 
-				
-				var spawnPoint = SpawnPoints.pick_random()
-				
-				#spawm enemy at that point
-				var newEnemy = j.Enemy.instantiate()
-				add_child(SpawningRoot)
-				
-				
-			
-		
-		
-		$Wave_Timer.wait_time = enemy_data[current_wave].SecondsTillNextWave
-		$Wave_Timer.start()
-	else:
-		print("All Waves Over") 
-	 
-	
-	
+	if Input.is_key_pressed(KEY_SPACE):
+		_play_blink()
 # wave
 # time till next wave
 # enemy dictionary 

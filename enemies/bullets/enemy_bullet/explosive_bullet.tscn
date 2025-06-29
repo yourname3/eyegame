@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpilx7w5fgq2w"]
+
+[ext_resource type="Script" uid="uid://yrv1labkosq7" path="res://enemies/bullets/enemy_bullet/explosive_bullet.gd" id="1_ag83w"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b0vgt"]
+lifetime_randomness = 0.2
+particle_flag_disable_z = true
+gravity = Vector3(0, -98, 0)
+linear_accel_min = 25.29
+linear_accel_max = 56.32
+tangential_accel_min = -35.0
+tangential_accel_max = 35.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ag83w"]
+
+[node name="Area2D" type="Area2D" groups=["Projectiles"]]
+script = ExtResource("1_ag83w")
+
+[node name="Animation" type="GPUParticles2D" parent="."]
+modulate = Color(0.0980392, 0.839216, 0.960784, 1)
+amount = 500
+lifetime = 1.5
+trail_lifetime = 5.0
+process_material = SubResource("ParticleProcessMaterial_b0vgt")
+
+[node name="LifeTime" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ag83w")
+
+[connection signal="timeout" from="LifeTime" to="." method="_on_life_time_timeout"]

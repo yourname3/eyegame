@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Upgrade" load_steps=2 format=3 uid="uid://wqkitagf0rin"]
+
+[ext_resource type="Script" uid="uid://cqp62343t00ga" path="res://upgrades/upgrade.gd" id="1_wj4ss"]
+
+[resource]
+script = ExtResource("1_wj4ss")
+upgrades_var = &"enemy_spawn_rolls"
+description = "Enemies have a 2% chance to spawn a copy of themselves on death."
+metadata/_custom_type_script = "uid://cqp62343t00ga"

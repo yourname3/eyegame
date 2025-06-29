@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Upgrade" load_steps=2 format=3 uid="uid://covym8unqmcf1"]
+
+[ext_resource type="Script" uid="uid://cqp62343t00ga" path="res://upgrades/upgrade.gd" id="1_p382e"]
+
+[resource]
+script = ExtResource("1_p382e")
+upgrades_var = &"enemy_speed_boosts"
+description = "Enemies move 10% faster."
+metadata/_custom_type_script = "uid://cqp62343t00ga"

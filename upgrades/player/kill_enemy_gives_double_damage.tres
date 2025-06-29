@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Upgrade" load_steps=2 format=3 uid="uid://b5beou0o86hhe"]
+
+[ext_resource type="Script" uid="uid://cqp62343t00ga" path="res://upgrades/upgrade.gd" id="1_0quw6"]
+
+[resource]
+script = ExtResource("1_0quw6")
+upgrades_var = &"kill_enemy_gives_double_damage"
+description = "After killing an enemy, deal double damage for 0.25 sec."
+metadata/_custom_type_script = "uid://cqp62343t00ga"

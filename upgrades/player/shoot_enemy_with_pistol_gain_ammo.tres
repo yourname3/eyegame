@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Upgrade" load_steps=2 format=3 uid="uid://cw268n1b2kmm4"]
+
+[ext_resource type="Script" uid="uid://cqp62343t00ga" path="res://upgrades/upgrade.gd" id="1_h5n0j"]
+
+[resource]
+script = ExtResource("1_h5n0j")
+upgrades_var = &"shoot_enemy_with_pistol_gain_ammo"
+description = "Whenever you shoot an enemy with your pistol, gain 1 ammo for a random weapon."
+metadata/_custom_type_script = "uid://cqp62343t00ga"
