@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://ll28eb2obp02"]
+[gd_scene load_steps=9 format=3 uid="uid://ll28eb2obp02"]
 
 [ext_resource type="Theme" uid="uid://dsvhdhjqgfmv5" path="res://menus/theme/main_theme.tres" id="1_s8gm3"]
+[ext_resource type="Script" uid="uid://bhkgif2ujwuq8" path="res://menus/upgrades/upgrade_panel.gd" id="2_lv8pk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s8gm3"]
 bg_color = Color(0.517985, 0.527356, 0.818159, 1)
@@ -12,6 +13,60 @@ bg_color = Color(0.835182, 0.385838, 0.563971, 1)
 corner_radius_bottom_right = 60
 corner_radius_bottom_left = 60
 
+[sub_resource type="Animation" id="Animation_lv8pk"]
+resource_name = "fade"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_g3kdx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7qcel"]
+resource_name = "show"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7qcel"]
+_data = {
+&"RESET": SubResource("Animation_g3kdx"),
+&"fade": SubResource("Animation_lv8pk"),
+&"show": SubResource("Animation_7qcel")
+}
+
 [node name="UpgradePanel" type="Control"]
 custom_minimum_size = Vector2(180, 332)
 layout_mode = 3
@@ -19,6 +74,7 @@ anchors_preset = 0
 offset_right = 180.0
 offset_bottom = 332.0
 theme = ExtResource("1_s8gm3")
+script = ExtResource("2_lv8pk")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
@@ -62,7 +118,8 @@ text = "-"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="Label" type="Label" parent="."]
+[node name="PlayerText" type="Label" parent="."]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 13.0
 offset_top = 44.0
@@ -73,7 +130,8 @@ text = "Whenever you shoot an enemy with your pistol, gain 1 ammo for a random w
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="Label4" type="Label" parent="."]
+[node name="EnemyText" type="Label" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -93,7 +151,8 @@ position = Vector2(0, -12)
 points = PackedVector2Array(0, 178, 180, 178)
 width = 4.0
 
-[node name="Button" type="Button" parent="."]
+[node name="SelectButton" type="Button" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -108,3 +167,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 35
 text = "Select"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_7qcel")
+}

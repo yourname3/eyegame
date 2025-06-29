@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_sgfvo")
 upgrades_var = &"take_damage_gives_fire_rate"
-description = "After killing an enemy, deal double damage for 0.25 sec."
+description = "Whenever you take damage, increase fire rate by 100% for 2 seconds."
 metadata/_custom_type_script = "uid://cqp62343t00ga"

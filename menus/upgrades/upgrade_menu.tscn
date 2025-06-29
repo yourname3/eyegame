@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://deo3ptwsido8b"]
+[gd_scene load_steps=20 format=3 uid="uid://deo3ptwsido8b"]
 
 [ext_resource type="Theme" uid="uid://dsvhdhjqgfmv5" path="res://menus/theme/main_theme.tres" id="1_vc2sf"]
 [ext_resource type="Script" uid="uid://di11acl2p23e8" path="res://menus/upgrades/upgrade_menu.gd" id="2_8qicm"]
@@ -54,6 +54,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [955.0, 79.0, 128.0]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_x0oev"]
 length = 0.001
@@ -105,10 +117,38 @@ tracks/3/keys = {
 "update": 0,
 "values": [128.0]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_sfa88"]
+resource_name = "hide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x0oev"]
 _data = {
 &"RESET": SubResource("Animation_x0oev"),
+&"hide": SubResource("Animation_sfa88"),
 &"show": SubResource("Animation_jys1j")
 }
 
@@ -170,6 +210,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_x0oev")
 }
