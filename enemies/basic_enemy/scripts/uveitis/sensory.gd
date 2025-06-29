@@ -9,7 +9,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if cooldown_timer.is_stopped():
-		print('yes')
+		#print('yes')
+		pass
 	
 	if !target:
 			target = Globals.player

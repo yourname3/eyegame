@@ -60,7 +60,7 @@ func _death():
 	if sensory.death_explosion:
 		var new_blowup = Globals.explosion.instantiate()
 		new_blowup.global_position = death_position
-		add_sibling(new_blowup)
+		add_sibling.call_deferred(new_blowup)
 		queue_free()
 	else:
 		queue_free()
