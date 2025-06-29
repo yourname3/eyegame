@@ -78,8 +78,9 @@ func _play_blink() -> void:
 	
 	
 func _process(delta: float) -> void:
-	if Input.is_key_pressed(KEY_SPACE):		
-		_play_blink()
+	pass
+	#if Input.is_key_pressed(KEY_SPACE):		
+		#_play_blink()
 		
 # wave
 
