@@ -23,6 +23,7 @@ func _physics_process(delta: float) -> void:
 			if "damage" in pellet:                              # only if your projectile exposes it
 				pellet.damage = damage
 			get_tree().root.add_child(pellet)
+			#get_node("root/Game").add_child(pellet)
 			Globals.CURRENT_AMMO[weapon_idx]-=1
 			print("Current ammo: ", Globals.CURRENT_AMMO[weapon_idx])
 		knockback((get_global_mouse_position() - %FirePoint.global_position).normalized())
@@ -46,6 +47,7 @@ func _physics_process(delta: float) -> void:
 			if "damage" in pellet:                              # only if your projectile exposes it
 				pellet.damage = damage
 			get_tree().root.add_child(pellet)
+			#get_node("root/Game").add_child(pellet)
 			Globals.CURRENT_AMMO[weapon_idx]-=1
 			print("Current ammo: ", Globals.CURRENT_AMMO[weapon_idx])
 		knockback((get_global_mouse_position() - %FirePoint.global_position).normalized())

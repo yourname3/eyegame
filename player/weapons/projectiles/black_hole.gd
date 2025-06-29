@@ -25,7 +25,7 @@ func _on_life_time_timeout():
 	#var explosion = preload("res://player/weapons/projectiles/explosion.tscn")
 	#var e = explosion.instantiate()
 	#e.global_position = global_position
-	#get_tree().root.add_child.call_deferred(e)
+	#get_tree().Game.add_child.call_deferred(e)
 	#print("spawned e: ", e)
 	
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

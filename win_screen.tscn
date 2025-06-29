@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://d2lesvi6fg5ri"]
 
-[ext_resource type="Script" uid="uid://drr0ho1fh1py0" path="res://game_over_screen.gd" id="1_l2arl"]
+[ext_resource type="Script" uid="uid://bu5b83emy6vcy" path="res://win_screen.gd" id="1_l2arl"]
 
 [node name="Win Screen" type="Control"]
 layout_mode = 3
