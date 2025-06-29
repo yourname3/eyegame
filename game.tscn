@@ -4,16 +4,16 @@
 [ext_resource type="Script" uid="uid://cy5cg8tramg6s" path="res://eyeball/eyeball_mask_child.gd" id="2_7jktm"]
 [ext_resource type="PackedScene" uid="uid://dhx310ohc245d" path="res://player/player.tscn" id="2_e2o6t"]
 [ext_resource type="Texture2D" uid="uid://cpim1me506bgn" path="res://eyeball/eye_iris_pupil.svg" id="4_fc0e3"]
-[ext_resource type="PackedScene" uid="uid://deo3ptwsido8b" path="res://menus/upgrades/upgrade_menu.tscn" id="6_eow3j"]
 [ext_resource type="PackedScene" uid="uid://cx74uha2f3op4" path="res://menus/pause_menu.tscn" id="6_ryrav"]
 [ext_resource type="PackedScene" uid="uid://bwca23wivq56k" path="res://Director/director.tscn" id="7_eow3j"]
+[ext_resource type="Texture2D" uid="uid://c2suaq0y5j1si" path="res://eyeball/skin.png" id="7_j5wjh"]
 
 [sub_resource type="Animation" id="Animation_7jktm"]
 resource_name = "Blink"
 length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -22,6 +22,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1, 1e-05), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Skin:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.36),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1860, -4282), Vector2(1906, 131), Vector2(1860, -4282)]
 }
 
 [sub_resource type="Animation" id="Animation_ryrav"]
@@ -38,6 +50,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Skin:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1860, -4282)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ryrav"]
 _data = {
@@ -47,9 +71,10 @@ _data = {
 
 [node name="Game" type="Node2D"]
 
-[node name="Director" parent="." node_paths=PackedStringArray("SpawnPoints", "SpawningRoot") instance=ExtResource("7_eow3j")]
+[node name="Director" parent="." node_paths=PackedStringArray("SpawnPoints", "SpawningRoot", "BlinkingAnimator") instance=ExtResource("7_eow3j")]
 SpawnPoints = [NodePath("SpawnPoint")]
 SpawningRoot = NodePath("../EyeWhite/PutEverythingAsAChildOfThis")
+BlinkingAnimator = NodePath("../EyeWhite/AnimationPlayer")
 
 [node name="SpawnPoint" type="Marker2D" parent="Director"]
 position = Vector2(341, -229)
@@ -78,10 +103,10 @@ libraries = {
 &"": SubResource("AnimationLibrary_ryrav")
 }
 
-[node name="Upgrades" type="CanvasLayer" parent="."]
-
-[node name="Upgrades" parent="Upgrades" instance=ExtResource("6_eow3j")]
-
 [node name="PauseMenu" parent="." instance=ExtResource("6_ryrav")]
-layer = 2
-visible = false
+
+[node name="Skin" type="Sprite2D" parent="."]
+z_index = 5
+position = Vector2(1860, -4282)
+scale = Vector2(5.89896, 4.44896)
+texture = ExtResource("7_j5wjh")

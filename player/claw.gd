@@ -31,6 +31,8 @@ var vels          := PackedVector2Array()
 var weapon_idx : int = 0
 var weapon_knockback := Vector2.ZERO
 
+var isUsingMouse : bool = true
+
 #func _shoot() -> void:
 	#var bullet = preload("res://proto/proto_projectile.tscn").instantiate()
 	#
@@ -100,9 +102,12 @@ func _process(delta: float) -> void:
 	
 	var to_mouse = get_global_mouse_position() - global_position
 	
-	#var dir := get_input().normalized()
+	# controller aiming 
+	#var stickDIR = Vector2(Input.get_joy_axis(0,2), Input.get_joy_axis(0,3))
+	#
+	#if stickDIR != Vector2.ZERO:
+		#to_mouse = stickDIR
 	
-	#to_mouse = dir
 	
 	var ang_off = 0
 

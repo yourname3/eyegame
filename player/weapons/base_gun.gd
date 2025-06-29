@@ -68,6 +68,9 @@ func _physics_process(delta):
 		print("Current ammo: ", Globals.CURRENT_AMMO[weapon_idx])
 	#Rotate gun towards mouse as well
 	var to_mouse = get_global_mouse_position() - global_position
+	
+	
+	
 	global_rotation = rotate_toward(global_rotation, to_mouse.angle(), delta * gun_rotate_speed)
 	
 	if rad_to_deg(abs(global_rotation)) > 90:
@@ -78,6 +81,8 @@ func _physics_process(delta):
 func _on_cooldown_timeout():
 	can_shoot = true
 
+func get_input() -> Vector2:
+	return Input.get_vector("Aiming Left", "Aiming Right", "Aiming Up", "Aiming Down")
 
 func _on_weapon_swap_cd_timeout() -> void:
 	can_shoot = true
