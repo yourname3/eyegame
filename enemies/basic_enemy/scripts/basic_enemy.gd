@@ -23,6 +23,7 @@ var speed_mod : float = 1.0
 
 @export var target : Player
 
+var _spawn_in_tween: Tween = null
 
 
 func _ready() -> void:
@@ -37,7 +38,11 @@ func _ready() -> void:
 	# Update health based on upgrades
 	health = int(float(health) * Upgrades.enemy_health_multiplier)
 	
-
+	scale = Vector2.ZERO
+	modulate = Color(1, 1, 1, 0)
+	_spawn_in_tween = create_tween()
+	_spawn_in_tween.tween_property(self, "scale", Vector2.ONE * Upgrades.enemy_scale_multiplier, 0.3)
+	_spawn_in_tween.set_parallel().tween_property(self, "modulate", Color.WHITE, 0.1)
 
 func _drop_exp(count: int) -> void:
 	for i in range(count):
@@ -54,6 +59,25 @@ func _spawn_copy():
 		var copy = self_to_spawn.instantiate()
 		copy.global_position = global_position
 		add_sibling(copy)
+
+func _disable_area(area: Area2D) -> void:
+	if area != null:
+		area.collision_layer = 0
+		area.collision_mask = 0
+
+func _die_tween():
+	var t = create_tween()
+	t.tween_property(self, "modulate", Color(0, 0, 0, 0), 0.3)
+	t.tween_callback(self.queue_free)
+	
+	# Make sure we can't collide with anything
+	if sensory:
+		_disable_area(sensory.vision)
+		_disable_area(sensory.hitbox)
+	collision_layer = 0
+	collision_mask = 0
+		
+	#process_mode = Node.PROCESS_MODE_DISABLED
 
 func _death():
 	if _died:
@@ -78,9 +102,11 @@ func _death():
 		var new_blowup = Globals.explosion.instantiate()
 		new_blowup.global_position = death_position
 		add_sibling.call_deferred(new_blowup)
-		queue_free()
+		#queue_free()
+		_die_tween()
 	else:
-		queue_free()
+		#queue_free()
+		_die_tween()
 
 func on_use_engage(new_vec):
 	
@@ -225,8 +251,9 @@ func _on_hit_box_body_entered(body: Node2D) -> void:
 func _process(delta: float) -> void:
 	# This could be moved to a signal that only updates when upgrades are chosen,
 	# but whatever.
-	scale.x = Upgrades.enemy_scale_multiplier
-	scale.y = scale.x
+	if not _spawn_in_tween.is_running():
+		scale.x = Upgrades.enemy_scale_multiplier
+		scale.y = scale.x
 
 
 func _on_timer_timeout() -> void:
