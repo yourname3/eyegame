@@ -3,6 +3,8 @@ extends Node2D
 func _ready():
 	$GPUParticles2D.restart()
 	#$LifeTime.start(.8)
+	Sounds.sfx_grenade_explosion.play()
+
 	
 
 
