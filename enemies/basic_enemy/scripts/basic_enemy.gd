@@ -28,6 +28,8 @@ func _ready() -> void:
 	sensory.target = get_parent().find_child("Player")
 	use_engage.connect(on_use_engage)
 	use_boost.connect(on_use_boost)
+	use_skill.connect(on_use_skill)
+	use_aggression.connect(on_use_aggression)
 	boost_cooldown.connect(state_machine.on_boost_cooldown)
 	
 	sensory.target = target
@@ -92,9 +94,9 @@ func on_use_boost():
 
 func on_use_skill():
 	if state_machine.attack_one:
-		var new_proj = Globals.homing_bullet
+		var new_proj = Globals.homing_bullet.instantiate()
 		new_proj.target = sensory.target
-		new_proj.global_position = global_position + global_position.direction_to(sensory.agent.target_position)
+		new_proj.global_position = (global_position + global_position.direction_to(sensory.agent.target_position))
 		new_proj.direction = global_position.direction_to(sensory.agent.target_position)
 		add_sibling(new_proj)
 		await get_tree().create_timer(0.1).timeout
@@ -106,12 +108,12 @@ func on_use_skill():
 	else:
 		pass
 	if state_machine.attack_two:
-		var new_proj = Globals.enemy_bullet
+		var new_proj = Globals.enemy_bullet.instantiate()
 		new_proj.global_position = global_position + global_position.direction_to(sensory.agent.target_position)
 		new_proj.direction = global_position.direction_to(sensory.agent.target_position)
 		add_sibling(new_proj)
-		state_machine._set_attacK_two(false)
-		state_machine.on_attacK_two()
+		state_machine._set_attack_two(false)
+		state_machine.on_attack_two()
 	else:
 		pass
 	if state_machine.attack_three:
@@ -128,7 +130,7 @@ func on_use_skill():
 		new_proj_one.target_position = sensory.agent.target_position
 		new_proj_two.global_position = double_vec
 		new_proj_two.target_position = sensory.agent.target_position
-		new_proj_two.side_arm = false
+		new_proj_two.side_aim = false
 		add_sibling(new_proj)
 		add_sibling(new_proj_one)
 		add_sibling(new_proj_two)
@@ -144,8 +146,8 @@ func on_use_aggression():
 		new_proj.global_position = global_position + global_position.direction_to(sensory.agent.target_position)
 		new_proj.direction = global_position.direction_to(sensory.agent.target_position)
 		add_sibling(new_proj)
-		state_machine._set_attacK_two(false)
-		state_machine.on_attacK_two()
+		state_machine._set_attack_two(false)
+		state_machine.on_attack_two()
 	else:
 		pass
 

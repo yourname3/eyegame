@@ -21,6 +21,9 @@ script = ExtResource("1_c87uy")
 sensory = NodePath("Sensory")
 stats = NodePath("Stats")
 state_machine = NodePath("StateMchine")
+health = 200
+speed = 50
+strength = 8
 
 [node name="Sensory" type="Node2D" parent="." node_paths=PackedStringArray("signal_bus", "vision", "agent", "hitbox")]
 script = ExtResource("2_c87uy")

@@ -9,11 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://cx74uha2f3op4" path="res://menus/pause_menu.tscn" id="6_ryrav"]
 [ext_resource type="PackedScene" uid="uid://bwca23wivq56k" path="res://Director/director.tscn" id="7_eow3j"]
 [ext_resource type="Script" uid="uid://d0qnw1ylathq4" path="res://Director/EnemySequence.gd" id="7_lc2xo"]
-[ext_resource type="PackedScene" uid="uid://l463s6lfifsc" path="res://enemies/basic_enemy/enemy_list/amblyopia.tscn" id="8_215e1"]
+[ext_resource type="PackedScene" uid="uid://d2k42hloets24" path="res://enemies/basic_enemy/enemy_list/cataracts.tscn" id="8_215e1"]
 [ext_resource type="Texture2D" uid="uid://c58hbr1gi6k7n" path="res://eyeball/blinker.svg" id="8_j5wjh"]
 [ext_resource type="Shader" uid="uid://bsrqnqm64wq4y" path="res://eyeball/eyeball_blink.gdshader" id="8_vef74"]
 [ext_resource type="PackedScene" uid="uid://b2h205882at0f" path="res://enemies/basic_enemy/enemy_list/dryeye.tscn" id="10_7sc4i"]
-[ext_resource type="PackedScene" uid="uid://d0pk8wgi381l3" path="res://enemies/basic_enemy/enemy_list/uveitis.tscn" id="11_80cx4"]
+[ext_resource type="PackedScene" uid="uid://l463s6lfifsc" path="res://enemies/basic_enemy/enemy_list/amblyopia.tscn" id="10_215e1"]
 
 [sub_resource type="Animation" id="Animation_7jktm"]
 resource_name = "Blink"
@@ -66,7 +66,7 @@ metadata/_custom_type_script = "uid://d0qnw1ylathq4"
 
 [sub_resource type="Resource" id="Resource_215e1"]
 script = ExtResource("7_lc2xo")
-Enemy = ExtResource("11_80cx4")
+Enemy = ExtResource("10_7sc4i")
 EnemyAmount = 4
 EnemySpawnInterval = 0.1
 metadata/_custom_type_script = "uid://d0qnw1ylathq4"
@@ -80,7 +80,7 @@ metadata/_custom_type_script = "uid://d0qnw1ylathq4"
 
 [sub_resource type="Resource" id="Resource_rvswv"]
 script = ExtResource("7_lc2xo")
-Enemy = ExtResource("11_80cx4")
+Enemy = ExtResource("10_215e1")
 EnemyAmount = 4
 EnemySpawnInterval = 0.1
 metadata/_custom_type_script = "uid://d0qnw1ylathq4"
