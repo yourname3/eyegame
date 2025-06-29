@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b5ihla3kgspya" path="res://enemies/animations/virus_enemy/virus_enemy.tscn" id="5_yvoln"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yx0l5"]
-radius = 300.0
+radius = 850.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xuk7h"]
 radius = 62.1289
@@ -25,7 +25,6 @@ state_machine = NodePath("StateMchine")
 [node name="Sensory" type="Node2D" parent="." node_paths=PackedStringArray("signal_bus", "vision", "agent", "hitbox")]
 script = ExtResource("2_5i3yh")
 signal_bus = NodePath("..")
-attack_range = null
 vision = NodePath("Vision")
 agent = NodePath("Agent")
 hitbox = NodePath("HitBox")
