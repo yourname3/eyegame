@@ -26,6 +26,8 @@ func _do_sequence(sequence: EnemySequence) -> void:
 		
 		#spawm enemy at that point
 		var newEnemy = sequence.Enemy.instantiate()
+		print("newEnemy target = ", player)
+				
 		newEnemy.sensory.target = player
 		SpawningRoot.add_child(newEnemy)
 		

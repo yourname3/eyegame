@@ -1,14 +1,19 @@
-[gd_scene load_steps=15 format=3 uid="uid://cll6r826wc603"]
+[gd_scene load_steps=25 format=3 uid="uid://cll6r826wc603"]
 
 [ext_resource type="Script" uid="uid://bxtpjpge1yypu" path="res://game.gd" id="1_hve3p"]
 [ext_resource type="Texture2D" uid="uid://dxalddyrgwxy1" path="res://eyeball/white_square.svg" id="1_vef74"]
 [ext_resource type="PackedScene" uid="uid://dhx310ohc245d" path="res://player/player.tscn" id="2_e2o6t"]
 [ext_resource type="Texture2D" uid="uid://cpim1me506bgn" path="res://eyeball/eye_iris_pupil.svg" id="4_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://deo3ptwsido8b" path="res://menus/upgrades/upgrade_menu.tscn" id="5_j5wjh"]
+[ext_resource type="Script" uid="uid://b653chsv5uyx7" path="res://Director/Wave.gd" id="6_iotsf"]
 [ext_resource type="PackedScene" uid="uid://cx74uha2f3op4" path="res://menus/pause_menu.tscn" id="6_ryrav"]
 [ext_resource type="PackedScene" uid="uid://bwca23wivq56k" path="res://Director/director.tscn" id="7_eow3j"]
+[ext_resource type="Script" uid="uid://d0qnw1ylathq4" path="res://Director/EnemySequence.gd" id="7_lc2xo"]
+[ext_resource type="PackedScene" uid="uid://l463s6lfifsc" path="res://enemies/basic_enemy/enemy_list/amblyopia.tscn" id="8_215e1"]
 [ext_resource type="Texture2D" uid="uid://c58hbr1gi6k7n" path="res://eyeball/blinker.svg" id="8_j5wjh"]
 [ext_resource type="Shader" uid="uid://bsrqnqm64wq4y" path="res://eyeball/eyeball_blink.gdshader" id="8_vef74"]
+[ext_resource type="PackedScene" uid="uid://b2h205882at0f" path="res://enemies/basic_enemy/enemy_list/dryeye.tscn" id="10_7sc4i"]
+[ext_resource type="PackedScene" uid="uid://d0pk8wgi381l3" path="res://enemies/basic_enemy/enemy_list/uveitis.tscn" id="11_80cx4"]
 
 [sub_resource type="Animation" id="Animation_7jktm"]
 resource_name = "Blink"
@@ -52,6 +57,40 @@ vertices = PackedVector2Array(2412.94, -500.367, 2412.69, -500.531, 2981.04, -14
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5), PackedInt32Array(6, 7, 8, 9, 10, 11, 0, 2, 3, 5, 12, 13, 14, 15, 16, 17)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-2980, -86, -2044, -706, -1453, -1012, -645, -1258, 251, -1278, 1197, -1100, 1847, -844, 2418, -509, 2999, -145, 1994, 574, 1482, 939, 704, 1244, -123, 1303, -1217, 1037, -1877, 692, -2507, 318)])
 
+[sub_resource type="Resource" id="Resource_7sc4i"]
+script = ExtResource("7_lc2xo")
+Enemy = ExtResource("8_215e1")
+EnemyAmount = 4
+EnemySpawnInterval = 0.1
+metadata/_custom_type_script = "uid://d0qnw1ylathq4"
+
+[sub_resource type="Resource" id="Resource_215e1"]
+script = ExtResource("7_lc2xo")
+Enemy = ExtResource("11_80cx4")
+EnemyAmount = 4
+EnemySpawnInterval = 0.1
+metadata/_custom_type_script = "uid://d0qnw1ylathq4"
+
+[sub_resource type="Resource" id="Resource_e8heu"]
+script = ExtResource("7_lc2xo")
+Enemy = ExtResource("10_7sc4i")
+EnemyAmount = 4
+EnemySpawnInterval = 0.1
+metadata/_custom_type_script = "uid://d0qnw1ylathq4"
+
+[sub_resource type="Resource" id="Resource_rvswv"]
+script = ExtResource("7_lc2xo")
+Enemy = ExtResource("11_80cx4")
+EnemyAmount = 4
+EnemySpawnInterval = 0.1
+metadata/_custom_type_script = "uid://d0qnw1ylathq4"
+
+[sub_resource type="Resource" id="Resource_80cx4"]
+script = ExtResource("6_iotsf")
+enemy_sequences = Array[ExtResource("7_lc2xo")]([SubResource("Resource_7sc4i"), SubResource("Resource_215e1"), SubResource("Resource_e8heu"), SubResource("Resource_rvswv")])
+SecondsTillNextWave = 0.0
+metadata/_custom_type_script = "uid://b653chsv5uyx7"
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hve3p"]
 resource_local_to_scene = true
 shader = ExtResource("8_vef74")
@@ -91,6 +130,7 @@ texture = ExtResource("1_vef74")
 
 [node name="Director" parent="." node_paths=PackedStringArray("player", "SpawnPoints", "SpawningRoot", "BlinkingAnimator") instance=ExtResource("7_eow3j")]
 player = NodePath("../Player")
+enemy_data = Array[ExtResource("6_iotsf")]([SubResource("Resource_80cx4")])
 SpawnPoints = [NodePath("SpawnPoint")]
 SpawningRoot = NodePath("..")
 BlinkingAnimator = NodePath("../AnimationPlayer")

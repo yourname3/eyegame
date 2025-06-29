@@ -14,7 +14,8 @@ func _physics_process(delta: float) -> void:
 	position += velocity * delta * speed
 	velocity *= braking_force
 	for i in victims:
-		i.velocity += (global_position - i.global_position).normalized() * pull_force
+		if is_instance_valid(i):
+			i.velocity += (global_position - i.global_position).normalized() * pull_force
 func _on_life_time_timeout():
 	#spawn_explosion()
 	queue_free()

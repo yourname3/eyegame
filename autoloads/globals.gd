@@ -1,6 +1,6 @@
 extends Node
 
-
+var player = CharacterBody2D
 #0 - pistol 
 #1 - rifle
 #2 - shotgun
