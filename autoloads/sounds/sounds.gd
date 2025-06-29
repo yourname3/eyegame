@@ -23,6 +23,7 @@ var current_music := -1
 @onready var sfx_item_select := $ItemSelect
 @onready var sfx_menu_hover := $MenuHover
 @onready var sfx_player_hit := $PlayerHit
+@onready var sfx_eye_hit := $EyeHit
 @onready var sfx_shotgun := $Shotgun
 
 func play_music(idx: int) -> void:
@@ -44,3 +45,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_blink_finished() -> void:
 	sfx_blink_open.play()
+
+
+func _on_boss_death_finished() -> void:
+	get_tree().change_scene_to_file("res://game_over_screen.tscn")

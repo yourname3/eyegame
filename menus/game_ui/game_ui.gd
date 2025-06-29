@@ -11,7 +11,8 @@ var health_scale = 15
 
 func _ready():
 	create_ui()
-	
+
+
 func switch_panel(is_left):
 	if is_left:
 		panels_left[left_idx].selected = false
@@ -32,6 +33,7 @@ func set_player_level(current, needed):
 func set_player_health_ui(hp, max_hp):
 	print("Health ", $PlayerHealth.scale.x )
 	$PlayerHealth.scale.x = (1.0*hp/max_hp) * 15
+	$PlayerHealth/Label.text = str("Player HP: ", hp)
 	
 func update_ammo_text():
 	for i in panels_left:
@@ -40,7 +42,10 @@ func update_ammo_text():
 	for i in panels_right:
 		if is_instance_valid(i):
 			i.set_ammo_text()
-	
+func update_eye_health(hp, max_hp):
+	$PlayerHealth3.scale.x = (1.0*hp/max_hp) * 12.5
+	$PlayerHealth3/Label.text = str("Eye HP: ", hp)
+
 func create_ui():
 	#Get owned weapons
 	var get_children_vl = vbox_left.get_children()

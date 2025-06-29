@@ -104,6 +104,7 @@ var game_ui_ref: GameUI
 var nav_rid
 var center_point : Vector2 = Vector2(2448.0, 434.0)
 
+var MAX_EYE_HEALTH : float = 100
 var EYE_HEALTH : float = 100
 func _ready() -> void:
 	transmit_damage.connect(receive_damage)

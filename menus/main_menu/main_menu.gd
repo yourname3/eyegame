@@ -39,3 +39,19 @@ func _ready() -> void:
 	%CloseCreditsButton.pressed.connect(close_credits)
 	
 	Sounds.play_music(1)
+
+
+func _on_play_button_mouse_entered() -> void:
+	Sounds.sfx_menu_hover.play()
+
+
+func _on_play_button_button_down() -> void:
+	Sounds.sfx_item_select.play()
+
+
+func _on_open_credits_button_button_down() -> void:
+	Sounds.sfx_item_select.play()
+
+
+func _on_open_credits_button_mouse_entered() -> void:
+	Sounds.sfx_menu_hover.play()

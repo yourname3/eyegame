@@ -173,3 +173,6 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_7qcel")
 }
+
+[connection signal="button_down" from="SelectButton" to="." method="_on_select_button_button_down"]
+[connection signal="mouse_entered" from="SelectButton" to="." method="_on_select_button_mouse_entered"]
