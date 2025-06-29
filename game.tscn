@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cll6r826wc603"]
+[gd_scene load_steps=13 format=3 uid="uid://cll6r826wc603"]
 
 [ext_resource type="Texture2D" uid="uid://dxalddyrgwxy1" path="res://eyeball/white_square.svg" id="1_vef74"]
 [ext_resource type="PackedScene" uid="uid://dhx310ohc245d" path="res://player/player.tscn" id="2_e2o6t"]
 [ext_resource type="Texture2D" uid="uid://cpim1me506bgn" path="res://eyeball/eye_iris_pupil.svg" id="4_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://deo3ptwsido8b" path="res://menus/upgrades/upgrade_menu.tscn" id="5_j5wjh"]
 [ext_resource type="PackedScene" uid="uid://cx74uha2f3op4" path="res://menus/pause_menu.tscn" id="6_ryrav"]
 [ext_resource type="PackedScene" uid="uid://bwca23wivq56k" path="res://Director/director.tscn" id="7_eow3j"]
 [ext_resource type="Texture2D" uid="uid://c58hbr1gi6k7n" path="res://eyeball/blinker.svg" id="8_j5wjh"]
@@ -83,7 +84,12 @@ BlinkingAnimator = NodePath("../AnimationPlayer")
 [node name="SpawnPoint" type="Marker2D" parent="Director"]
 position = Vector2(341, -229)
 
+[node name="UpgradesMenu" type="CanvasLayer" parent="."]
+
+[node name="UpgradeMenu" parent="UpgradesMenu" instance=ExtResource("5_j5wjh")]
+
 [node name="PauseMenu" parent="." instance=ExtResource("6_ryrav")]
+layer = 2
 
 [node name="Blinker" type="Sprite2D" parent="."]
 z_index = 1000
