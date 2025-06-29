@@ -31,7 +31,7 @@ func _do_sequence(sequence: EnemySequence) -> void:
 		var RandomPoint = NavigationServer2D.region_get_random_point(Globals.nav_rid, 0, true)
 		
 		#make sure its not touching the pupil area 2D
-		while RandomPoint.distance_to(PupilZone.position) < PupilcollsionShape.shape.radius:
+		while RandomPoint.distance_to(PupilZone.position) < PupilcollsionShape.shape.radius * 1.5:
 			RandomPoint = NavigationServer2D.region_get_random_point(Globals.nav_rid, 0, true)
 			
 		
@@ -95,7 +95,7 @@ func _teleport_all_enemies() -> void:
 		var RandomPoint = NavigationServer2D.region_get_random_point(Globals.nav_rid, 0, true)
 		
 		#make sure its not touching the pupil area 2D
-		while RandomPoint.distance_to(PupilZone.position) < PupilcollsionShape.shape.radius:
+		while RandomPoint.distance_to(PupilZone.position) < PupilcollsionShape.shape.radius * 1.5:
 			RandomPoint = NavigationServer2D.region_get_random_point(Globals.nav_rid, 0, true)
 			
 		i.position = RandomPoint
