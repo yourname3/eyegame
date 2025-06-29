@@ -83,7 +83,7 @@ var explosive_bullet : PackedScene = preload("res://enemies/bullets/enemy_bullet
 var explosion : PackedScene = preload("res://enemies/bullets/enemy_bullet/enemy_explosion.tscn")
 
 
-
+var game_ui_ref: GameUI
 
 
 var nav_rid
