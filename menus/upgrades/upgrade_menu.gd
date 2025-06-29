@@ -19,7 +19,6 @@ class_name UpgradeMenu
 
 func _choose_not_in(possible: Array[Upgrade], already_chosen: Array[Upgrade]) -> Upgrade:
 	var choice = possible.pick_random()
-	print(choice in already_chosen)
 	var fuel = 10000
 	while choice in already_chosen:
 		choice = possible.pick_random()
@@ -30,6 +29,8 @@ func _choose_not_in(possible: Array[Upgrade], already_chosen: Array[Upgrade]) ->
 	
 	return choice
 
+# Call this to show new upgrades
+# TODO: pause the game? Blink the eye...?
 func show_new_upgrades() -> void:
 	var chosen_player: Array[Upgrade] = []
 	var chosen_enemy: Array[Upgrade] = []
@@ -69,10 +70,3 @@ func _ready() -> void:
 		panel.select_upgrade.connect(select_upgrade)
 	# Be sure to start out hidden
 	hide()
-
-	#await get_tree().create_timer(3).timeout
-	#show_new_upgrades()
-	
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_accept"):
-		show_new_upgrades()
