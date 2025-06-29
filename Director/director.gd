@@ -22,28 +22,29 @@ var outstanding_sequences: int = 0
 
 signal _ready_for_next_wave
 
+func _pick_random_point() -> Vector2:
+	var point = NavigationServer2D.region_get_random_point(Globals.nav_rid, 0, true)
+	var fuel = 5000
+	while point.distance_to(PupilZone.global_position) < PupilcollsionShape.shape.radius:
+		point = NavigationServer2D.region_get_random_point(Globals.nav_rid, 0, true)
+		fuel -= 1
+		if fuel <= 0:
+			break
+	return point
+
 func _do_sequence(sequence: EnemySequence) -> void:
 	outstanding_sequences += 1
 	for i in sequence.EnemyAmount:
 		await get_tree().create_timer(sequence.EnemySpawnInterval, false).timeout
 		#pick a random spawn point within navigation region
 		
-		var RandomPoint = NavigationServer2D.region_get_random_point(Globals.nav_rid, 0, true)
-		
-		#make sure its not touching the pupil area 2D
-		while RandomPoint.distance_to(PupilZone.position) < PupilcollsionShape.shape.radius:
-			RandomPoint = NavigationServer2D.region_get_random_point(Globals.nav_rid, 0, true)
-			
-		
 		#make sure its not too close to the player 
 		
 		#spawn the enemy there 
-		#var spawnPoint = SpawnPoints.pick_random() -old 
-		var spawnPoint = RandomPoint
 		
 		#spawm enemy at that point
 		var newEnemy = sequence.Enemy.instantiate()
-		newEnemy.position = RandomPoint
+		newEnemy.global_position = _pick_random_point()
 		print("newEnemy target = ", player)
 				
 		newEnemy.sensory.target = player
@@ -86,19 +87,11 @@ func _process(delta: float) -> void:
 
 
 func _teleport_all_enemies() -> void:
-	pass
 	#get list of all enemies 
-	
 	var nodes_in_group = get_tree().get_nodes_in_group("Enemies")
 	
 	for i in nodes_in_group:
-		var RandomPoint = NavigationServer2D.region_get_random_point(Globals.nav_rid, 0, true)
-		
-		#make sure its not touching the pupil area 2D
-		while RandomPoint.distance_to(PupilZone.position) < PupilcollsionShape.shape.radius:
-			RandomPoint = NavigationServer2D.region_get_random_point(Globals.nav_rid, 0, true)
-			
-		i.position = RandomPoint
+		i.global_position = _pick_random_point()
 		
 	
 	#loop list
