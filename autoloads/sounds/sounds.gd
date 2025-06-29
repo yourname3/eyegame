@@ -11,6 +11,20 @@ var current_music := -1
 	$Music_Game
 ]
 
+@onready var sfx_blink := $Blink
+@onready var sfx_blink_open := $BlinkOpen
+@onready var sfx_blink_warning := $BlinkWarning
+@onready var sfx_boss_death := $BossDeath
+@onready var sfx_bullet_shoot := $BulletShootV3
+@onready var sfx_enemy_death := $EnemyDeath
+@onready var sfx_enemy_hit := $EnemyHit
+@onready var sfx_grenade_explosion := $GrenadeExplosion
+@onready var sfx_grenade_launch := $GrenadeLaunch
+@onready var sfx_item_select := $ItemSelect
+@onready var sfx_menu_hover := $MenuHover
+@onready var sfx_player_hit := $PlayerHit
+@onready var sfx_shotgun := $Shotgun
+
 func play_music(idx: int) -> void:
 	if idx < 0 or idx >= music.size():
 		push_warning("Invalid music index")
