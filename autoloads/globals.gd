@@ -20,7 +20,7 @@ enum NetStatus {
 
 
 var nav_rid
-
+var center_point : Vector2 = Vector2(2448.0, 434.0)
 
 
 

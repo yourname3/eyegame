@@ -15,11 +15,13 @@ radius = 62.1289
 radius = 54.0093
 
 [node name="BasicEnemy" type="CharacterBody2D" groups=["Enemies"]]
+collision_mask = 0
 script = ExtResource("1_m55pa")
 
 [node name="Sensory" type="Node2D" parent="." node_paths=PackedStringArray("signal_bus", "vision", "agent", "hitbox")]
 script = ExtResource("2_m55pa")
 signal_bus = NodePath("..")
+attack_range = null
 vision = NodePath("Vision")
 agent = NodePath("Agent")
 hitbox = NodePath("HitBox")

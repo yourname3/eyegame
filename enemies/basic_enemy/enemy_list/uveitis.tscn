@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://d0pk8wgi381l3"]
+[gd_scene load_steps=9 format=3 uid="uid://d0pk8wgi381l3"]
 
 [ext_resource type="Script" uid="uid://cr250551rhlnc" path="res://enemies/basic_enemy/scripts/basic_enemy.gd" id="1_5i3yh"]
 [ext_resource type="Script" uid="uid://c008c8eir80ld" path="res://enemies/basic_enemy/scripts/uveitis/sensory.gd" id="2_5i3yh"]
 [ext_resource type="Script" uid="uid://bastchle4oji7" path="res://enemies/basic_enemy/scripts/stats.gd" id="3_ba1jc"]
 [ext_resource type="Script" uid="uid://cctbcuv2vbaiv" path="res://enemies/basic_enemy/scripts/state_mchine.gd" id="4_egusn"]
+[ext_resource type="PackedScene" uid="uid://b5ihla3kgspya" path="res://enemies/animations/virus_enemy/virus_enemy.tscn" id="5_yvoln"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yx0l5"]
 radius = 300.0
@@ -15,6 +16,7 @@ radius = 62.1289
 radius = 54.0093
 
 [node name="BasicEnemy" type="CharacterBody2D" node_paths=PackedStringArray("sensory", "stats", "state_machine") groups=["Enemies"]]
+collision_mask = 0
 script = ExtResource("1_5i3yh")
 sensory = NodePath("Sensory")
 stats = NodePath("Stats")
@@ -23,6 +25,7 @@ state_machine = NodePath("StateMchine")
 [node name="Sensory" type="Node2D" parent="." node_paths=PackedStringArray("signal_bus", "vision", "agent", "hitbox")]
 script = ExtResource("2_5i3yh")
 signal_bus = NodePath("..")
+attack_range = null
 vision = NodePath("Vision")
 agent = NodePath("Agent")
 hitbox = NodePath("HitBox")
@@ -50,6 +53,8 @@ script = ExtResource("4_egusn")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_oul6g")
+
+[node name="VirusEnemy" parent="." instance=ExtResource("5_yvoln")]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
