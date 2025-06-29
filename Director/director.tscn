@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bwca23wivq56k"]
+[gd_scene load_steps=11 format=3 uid="uid://bwca23wivq56k"]
 
 [ext_resource type="Script" uid="uid://cgvc1adk520p3" path="res://Director/director.gd" id="1_h1vsq"]
 [ext_resource type="Script" uid="uid://b653chsv5uyx7" path="res://Director/Wave.gd" id="2_7b5rb"]
@@ -12,20 +12,29 @@ EnemyAmount = 5
 EnemySpawnInterval = 1.0
 metadata/_custom_type_script = "uid://d0qnw1ylathq4"
 
+[sub_resource type="Resource" id="Resource_7b5rb"]
+script = ExtResource("3_y04b1")
+Enemy = ExtResource("4_7b5rb")
+EnemyAmount = 5
+EnemySpawnInterval = 2.0
+metadata/_custom_type_script = "uid://d0qnw1ylathq4"
+
 [sub_resource type="Resource" id="Resource_us3my"]
 script = ExtResource("2_7b5rb")
-enemy_sequences = Array[ExtResource("3_y04b1")]([SubResource("Resource_so7e8")])
+enemy_sequences = Array[ExtResource("3_y04b1")]([SubResource("Resource_so7e8"), SubResource("Resource_7b5rb")])
 SecondsTillNextWave = 5.0
 metadata/_custom_type_script = "uid://b653chsv5uyx7"
 
 [sub_resource type="Resource" id="Resource_rjmvp"]
 script = ExtResource("3_y04b1")
+Enemy = ExtResource("4_7b5rb")
 EnemyAmount = 10
 EnemySpawnInterval = 0.8
 metadata/_custom_type_script = "uid://d0qnw1ylathq4"
 
 [sub_resource type="Resource" id="Resource_djm83"]
 script = ExtResource("3_y04b1")
+Enemy = ExtResource("4_7b5rb")
 EnemyAmount = 5
 EnemySpawnInterval = 1.0
 metadata/_custom_type_script = "uid://d0qnw1ylathq4"
