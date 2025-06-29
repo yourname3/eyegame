@@ -39,7 +39,6 @@ func _process(delta: float) -> void:
 	if delta <= 0.0:
 		speed = 0.0 # idk
 	
-
 	var phase_step = speed / (30 * 0.5 * 0.3)
 	
 	_draw_spiral(_phase, _funny_phase)
