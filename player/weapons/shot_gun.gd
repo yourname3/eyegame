@@ -4,6 +4,11 @@ extends Gun
 @export var spread_degrees : float = 18.0   # full cone width (degrees)
 
 func _physics_process(delta: float) -> void:
+	var root = get_node_or_null("/root/Game")
+	if !root:
+		root = get_node_or_null("/root/MainMenu")
+	if !root:
+		return
 	if is_left && check_can_shoot() && Input.is_action_pressed("ShootLeft") and can_shoot:
 		can_shoot = false
 
@@ -22,8 +27,8 @@ func _physics_process(delta: float) -> void:
 			Sounds.sfx_shotgun.play()
 			if "damage" in pellet:                              # only if your projectile exposes it
 				pellet.damage = damage
-			get_tree().root.add_child(pellet)
-			#get_node("root/Game").add_child(pellet)
+			#get_tree().root.add_child(pellet)
+			root.add_child(pellet)
 			Globals.CURRENT_AMMO[weapon_idx]-=1
 			print("Current ammo: ", Globals.CURRENT_AMMO[weapon_idx])
 		knockback((get_global_mouse_position() - %FirePoint.global_position).normalized())
@@ -46,7 +51,7 @@ func _physics_process(delta: float) -> void:
 			Sounds.sfx_shotgun.play()
 			if "damage" in pellet:                              # only if your projectile exposes it
 				pellet.damage = damage
-			get_tree().root.add_child(pellet)
+			root.add_child(pellet)
 			#get_node("root/Game").add_child(pellet)
 			Globals.CURRENT_AMMO[weapon_idx]-=1
 			print("Current ammo: ", Globals.CURRENT_AMMO[weapon_idx])
