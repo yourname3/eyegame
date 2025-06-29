@@ -42,22 +42,6 @@ grow_horizontal = 0
 layout_mode = 0
 show_percentage = false
 
-[node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color(1, 1, 1, 0.643137)
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -391.0
-offset_top = -58.0
-offset_right = 391.0
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("2_245l2")
-expand_mode = 1
-
 [node name="TextureRect2" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0.643137)
 layout_mode = 1
@@ -66,7 +50,7 @@ anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -391.0
 offset_right = 391.0
-offset_bottom = 76.0
+offset_bottom = 77.0
 grow_horizontal = 2
 texture = ExtResource("2_245l2")
 expand_mode = 1
@@ -74,16 +58,13 @@ flip_v = true
 
 [node name="PlayLevelContainer" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -299.0
-offset_top = -28.0
-offset_right = 299.0
+offset_left = 2.0
+offset_right = 334.0
+offset_bottom = 28.0
 grow_horizontal = 2
-grow_vertical = 0
 pivot_offset = Vector2(20, 19)
 theme = ExtResource("2_d3duc")
 color = Color(0.326799, 0.712945, 0.999999, 1)
@@ -96,8 +77,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.165, 1)
-pivot_offset = Vector2(302, 20)
+pivot_offset = Vector2(172, 12)
 color = Color(0.436569, 0.0022248, 0.940983, 0.454902)
 
 [node name="Label" type="Label" parent="PlayLevelContainer"]
@@ -121,10 +101,9 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -299.0
-offset_top = 5.0
-offset_right = 299.0
-offset_bottom = 33.0
+offset_left = -335.0
+offset_right = 1.0
+offset_bottom = 28.0
 grow_horizontal = 2
 pivot_offset = Vector2(20, 19)
 theme = ExtResource("2_d3duc")
@@ -138,8 +117,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.205, 1)
-pivot_offset = Vector2(302, 20)
+pivot_offset = Vector2(171, 13)
 color = Color(1, 0.0747349, 0.275442, 0.454902)
 
 [node name="PlayerHealthLabel" type="Label" parent="PlayerHealthC"]
@@ -165,9 +143,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -249.0
-offset_top = 40.0
-offset_right = 249.0
-offset_bottom = 68.0
+offset_top = 48.0
+offset_right = 90.0
+offset_bottom = 76.0
 grow_horizontal = 2
 pivot_offset = Vector2(20, 19)
 theme = ExtResource("2_d3duc")
@@ -181,8 +159,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.235, 1)
-pivot_offset = Vector2(249, 13)
+pivot_offset = Vector2(169, 14)
 color = Color(0.982768, 1.82897e-06, 0.489477, 0.454902)
 
 [node name="EyeHealthLabel" type="Label" parent="PlayerHealthC2"]
@@ -204,17 +181,14 @@ metadata/_edit_lock_ = true
 
 [node name="Waves Count" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -126.0
-offset_top = -54.0
-offset_right = 126.0
-offset_bottom = -30.0
+offset_left = 98.0
+offset_top = 49.0
+offset_right = 272.0
+offset_bottom = 73.0
 grow_horizontal = 2
-grow_vertical = 0
 theme = SubResource("Theme_245l2")
 theme_override_font_sizes/font_size = 18
 text = "Wave: 1/10"
