@@ -34,6 +34,8 @@ agent = NodePath("Agent")
 hitbox = NodePath("HitBox")
 
 [node name="Vision" type="Area2D" parent="Sensory"]
+collision_layer = 2
+collision_mask = 2
 
 [node name="Range" type="CollisionShape2D" parent="Sensory/Vision"]
 shape = SubResource("CircleShape2D_yx0l5")
@@ -42,6 +44,8 @@ shape = SubResource("CircleShape2D_yx0l5")
 unique_name_in_owner = true
 
 [node name="HitBox" type="Area2D" parent="Sensory"]
+collision_layer = 2
+collision_mask = 2
 
 [node name="Collision" type="CollisionShape2D" parent="Sensory/HitBox"]
 shape = SubResource("CircleShape2D_xuk7h")
