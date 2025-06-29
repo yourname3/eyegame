@@ -69,9 +69,7 @@ func _death():
 		if randf() <= 0.08:
 			_drop_exp(3)
 			
-	print("HEEELELO ", Upgrades.enemy_spawn_rolls)
 	for roll in range(0, Upgrades.enemy_spawn_rolls):
-		print("TRY SPAWN")
 		if randf() <= 0.04:
 			_spawn_copy()
 	
