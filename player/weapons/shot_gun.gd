@@ -24,7 +24,7 @@ func _physics_process(delta: float) -> void:
 			Globals.CURRENT_AMMO[weapon_idx]-=1
 			print("Current ammo: ", Globals.CURRENT_AMMO[weapon_idx])
 		knockback((get_global_mouse_position() - %FirePoint.global_position).normalized())
-		$Cooldown.start(shoot_cooldown)
+		$Cooldown.start(shoot_cooldown / Upgrades.player_firerate_multiplier)
 	if !is_left && check_can_shoot() && Input.is_action_pressed("ShootRight") and can_shoot:
 		can_shoot = false
 
@@ -45,7 +45,7 @@ func _physics_process(delta: float) -> void:
 			Globals.CURRENT_AMMO[weapon_idx]-=1
 			print("Current ammo: ", Globals.CURRENT_AMMO[weapon_idx])
 		knockback((get_global_mouse_position() - %FirePoint.global_position).normalized())
-		$Cooldown.start(shoot_cooldown)
+		$Cooldown.start(shoot_cooldown / Upgrades.player_firerate_multiplier)
 
 	var to_mouse = get_global_mouse_position() - global_position
 	global_rotation = rotate_toward(global_rotation, to_mouse.angle(), delta * gun_rotate_speed)

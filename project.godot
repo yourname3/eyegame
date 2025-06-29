@@ -21,6 +21,7 @@ SceneTransition="*res://autoloads/scene_transition/scene_transition.tscn"
 SceneList="*res://autoloads/scene_list.gd"
 Globals="*res://autoloads/globals.gd"
 Upgrades="*res://autoloads/upgrades.gd"
+SignalBus="*res://autoloads/signal_bus.gd"
 
 [display]
 

@@ -29,3 +29,35 @@ var enemy_health_boosts: int = 0
 var enemy_small_boosts: int = 0
 ## How many times the enemies roll for spawning themselves on death
 var enemy_spawn_rolls: int = 0
+
+
+
+# -- Below is variables used for tracking stuff relevant to particular
+# -- upgrades. This is done by the Upgrades script so that the relevant
+# -- code in other scritps can be as simple as possible.
+
+var player_damage_multiplier := 1.0
+var player_firerate_multiplier := 1.0
+
+var _double_damage_timer := 0.0
+var _double_firerate_timer := 0.0
+
+func _ready() -> void:
+	SignalBus.enemy_died.connect(func():
+		# This upgrade resets this timer -- you do get an additional 0.25 per
+		# copy of the upgrade.
+		_double_damage_timer = 0.25 * kill_enemy_gives_double_damage
+	)
+	
+	SignalBus.player_damaged.connect(func():
+		_double_firerate_timer = 2.0 * take_damage_gives_fire_rate
+	)
+
+func _process(delta: float) -> void:
+	if _double_damage_timer >= 0.0:
+		_double_damage_timer -= delta
+	if _double_firerate_timer >= 0.0:
+		_double_firerate_timer -= delta
+	
+	player_damage_multiplier = 2.0 if _double_damage_timer > 0.0 else 1.0
+	player_firerate_multiplier = 2.0 if _double_firerate_timer > 0.0 else 1.0

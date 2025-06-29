@@ -29,6 +29,8 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _set_health(value:int):
+	if value < health:
+		SignalBus.player_damaged.emit()
 	health = value
 	if health <= 0:
 		_death()

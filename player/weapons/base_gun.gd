@@ -50,7 +50,7 @@ func _physics_process(delta):
 		
 		knockback((get_global_mouse_position() - %FirePoint.global_position).normalized())
 		get_tree().root.add_child(bullet)
-		$Cooldown.start(shoot_cooldown)
+		$Cooldown.start(shoot_cooldown / Upgrades.player_firerate_multiplier)
 		Globals.CURRENT_AMMO[weapon_idx]-=1
 		print("Current ammo: ", Globals.CURRENT_AMMO[weapon_idx])
 	elif check_can_shoot() && !is_left && Input.is_action_pressed("ShootRight") && can_shoot:
@@ -63,7 +63,7 @@ func _physics_process(delta):
 		
 		knockback((get_global_mouse_position() - %FirePoint.global_position).normalized())
 		get_tree().root.add_child(bullet)
-		$Cooldown.start(shoot_cooldown)
+		$Cooldown.start(shoot_cooldown / Upgrades.player_firerate_multiplier)
 		Globals.CURRENT_AMMO[weapon_idx]-=1
 		print("Current ammo: ", Globals.CURRENT_AMMO[weapon_idx])
 	#Rotate gun towards mouse as well

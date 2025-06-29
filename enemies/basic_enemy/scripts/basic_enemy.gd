@@ -33,6 +33,8 @@ func _ready() -> void:
 
 
 func _death():
+	SignalBus.enemy_died.emit()
+	
 	for i in range(3):
 		var e = exp.instantiate()
 		e.global_position = global_position + Vector2.from_angle(randf_range(0,TAU) ) * randf_range(.1,100)
