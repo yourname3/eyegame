@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cll6r826wc603"]
+[gd_scene load_steps=11 format=3 uid="uid://cll6r826wc603"]
 
 [ext_resource type="Texture2D" uid="uid://duueyjr6h31ar" path="res://eyeball/eye_white.svg" id="1_feb5d"]
 [ext_resource type="Script" uid="uid://cy5cg8tramg6s" path="res://eyeball/eyeball_mask_child.gd" id="2_7jktm"]
 [ext_resource type="PackedScene" uid="uid://dhx310ohc245d" path="res://player/player.tscn" id="2_e2o6t"]
 [ext_resource type="Texture2D" uid="uid://cpim1me506bgn" path="res://eyeball/eye_iris_pupil.svg" id="4_fc0e3"]
+[ext_resource type="Theme" uid="uid://dsvhdhjqgfmv5" path="res://menus/theme/main_theme.tres" id="6_eow3j"]
 [ext_resource type="PackedScene" uid="uid://cx74uha2f3op4" path="res://menus/pause_menu.tscn" id="6_ryrav"]
 [ext_resource type="PackedScene" uid="uid://bwca23wivq56k" path="res://Director/director.tscn" id="7_eow3j"]
 
@@ -77,4 +78,90 @@ libraries = {
 &"": SubResource("AnimationLibrary_ryrav")
 }
 
+[node name="Upgrades" type="CanvasLayer" parent="."]
+
+[node name="Upgrades" type="Control" parent="Upgrades"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_eow3j")
+
+[node name="Panel" type="Panel" parent="Upgrades/Upgrades"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.0
+offset_top = -190.5
+offset_right = 146.0
+offset_bottom = 190.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Upgrades/Upgrades/Panel"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 303.5
+offset_right = 292.0
+offset_bottom = 390.5
+theme_override_font_sizes/font_size = 24
+text = "Black Hole Launcher
+60 ammo"
+horizontal_alignment = 1
+
+[node name="Panel2" type="Panel" parent="Upgrades/Upgrades"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -458.0
+offset_top = -190.5
+offset_right = -166.0
+offset_bottom = 190.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Upgrades/Upgrades/Panel2"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 303.5
+offset_right = 292.0
+offset_bottom = 390.5
+theme_override_font_sizes/font_size = 24
+text = "Bullets get +1 pierce"
+horizontal_alignment = 1
+
+[node name="Panel3" type="Panel" parent="Upgrades/Upgrades"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 162.0
+offset_top = -190.5
+offset_right = 454.0
+offset_bottom = 190.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Upgrades/Upgrades/Panel3"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 303.5
+offset_right = 292.0
+offset_bottom = 390.5
+theme_override_font_sizes/font_size = 24
+text = "10% faster move speed"
+horizontal_alignment = 1
+
 [node name="PauseMenu" parent="." instance=ExtResource("6_ryrav")]
+layer = 2
+visible = false
