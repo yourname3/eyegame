@@ -46,6 +46,8 @@ turbulence_noise_scale = 10.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_dsnyh"]
 
 [node name="Area2D" type="Area2D" groups=["Projectiles"]]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_hbevu")
 
 [node name="Animation" type="GPUParticles2D" parent="."]
