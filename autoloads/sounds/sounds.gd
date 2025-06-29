@@ -25,6 +25,7 @@ var current_music := -1
 @onready var sfx_player_hit := $PlayerHit
 @onready var sfx_eye_hit := $EyeHit
 @onready var sfx_shotgun := $Shotgun
+@onready var sfx_exp_collect := $ExpCollect
 
 func play_music(idx: int) -> void:
 	if idx < 0 or idx >= music.size():
