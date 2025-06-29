@@ -10,3 +10,6 @@ signal enemy_died()
 
 ## Emitted when the player takes damage.
 signal player_damaged()
+
+## Emitted when the player levels up.
+signal level_up()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cll6r826wc603"]
+[gd_scene load_steps=30 format=3 uid="uid://cll6r826wc603"]
 
 [ext_resource type="Script" uid="uid://bxtpjpge1yypu" path="res://game.gd" id="1_hve3p"]
 [ext_resource type="Texture2D" uid="uid://dxalddyrgwxy1" path="res://eyeball/white_square.svg" id="1_vef74"]
@@ -11,10 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://bwca23wivq56k" path="res://Director/director.tscn" id="7_eow3j"]
 [ext_resource type="Script" uid="uid://d0qnw1ylathq4" path="res://Director/EnemySequence.gd" id="7_lc2xo"]
 [ext_resource type="Script" uid="uid://jfh83dwiuvw3" path="res://eye_health_redness.gd" id="7_rvswv"]
-[ext_resource type="PackedScene" uid="uid://d2k42hloets24" path="res://enemies/basic_enemy/enemy_list/cataracts.tscn" id="8_215e1"]
 [ext_resource type="Texture2D" uid="uid://c58hbr1gi6k7n" path="res://eyeball/blinker.svg" id="8_j5wjh"]
 [ext_resource type="Shader" uid="uid://bsrqnqm64wq4y" path="res://eyeball/eyeball_blink.gdshader" id="8_vef74"]
-[ext_resource type="PackedScene" uid="uid://b2h205882at0f" path="res://enemies/basic_enemy/enemy_list/dryeye.tscn" id="10_7sc4i"]
 [ext_resource type="PackedScene" uid="uid://l463s6lfifsc" path="res://enemies/basic_enemy/enemy_list/amblyopia.tscn" id="10_215e1"]
 [ext_resource type="PackedScene" uid="uid://d0pk8wgi381l3" path="res://enemies/basic_enemy/enemy_list/uveitis.tscn" id="11_80cx4"]
 [ext_resource type="Texture2D" uid="uid://bfw3fhgeks2tp" path="res://eyeball/eye_pupil.svg" id="15_7sc4i"]
@@ -81,36 +79,41 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-2980, -86, -2044, -706
 
 [sub_resource type="Resource" id="Resource_7sc4i"]
 script = ExtResource("7_lc2xo")
-Enemy = ExtResource("8_215e1")
-EnemyAmount = 4
-EnemySpawnInterval = 0.1
-metadata/_custom_type_script = "uid://d0qnw1ylathq4"
-
-[sub_resource type="Resource" id="Resource_215e1"]
-script = ExtResource("7_lc2xo")
-Enemy = ExtResource("11_80cx4")
-EnemyAmount = 4
-EnemySpawnInterval = 0.1
-metadata/_custom_type_script = "uid://d0qnw1ylathq4"
-
-[sub_resource type="Resource" id="Resource_e8heu"]
-script = ExtResource("7_lc2xo")
-Enemy = ExtResource("10_7sc4i")
-EnemyAmount = 4
-EnemySpawnInterval = 0.1
-metadata/_custom_type_script = "uid://d0qnw1ylathq4"
-
-[sub_resource type="Resource" id="Resource_rvswv"]
-script = ExtResource("7_lc2xo")
 Enemy = ExtResource("10_215e1")
-EnemyAmount = 4
-EnemySpawnInterval = 0.1
+EnemyAmount = 30
+EnemySpawnInterval = 2.0
 metadata/_custom_type_script = "uid://d0qnw1ylathq4"
 
 [sub_resource type="Resource" id="Resource_80cx4"]
 script = ExtResource("6_iotsf")
-enemy_sequences = Array[ExtResource("7_lc2xo")]([SubResource("Resource_7sc4i"), SubResource("Resource_215e1"), SubResource("Resource_e8heu"), SubResource("Resource_rvswv")])
-SecondsTillNextWave = 0.0
+enemy_sequences = Array[ExtResource("7_lc2xo")]([SubResource("Resource_7sc4i")])
+SecondsTillNextWave = 2.0
+metadata/_custom_type_script = "uid://b653chsv5uyx7"
+
+[sub_resource type="Resource" id="Resource_ug6kq"]
+script = ExtResource("7_lc2xo")
+Enemy = ExtResource("10_215e1")
+EnemyAmount = 30
+EnemySpawnInterval = 1.5
+metadata/_custom_type_script = "uid://d0qnw1ylathq4"
+
+[sub_resource type="Resource" id="Resource_hk480"]
+script = ExtResource("7_lc2xo")
+Enemy = ExtResource("11_80cx4")
+EnemyAmount = 15
+EnemySpawnInterval = 3.0
+metadata/_custom_type_script = "uid://d0qnw1ylathq4"
+
+[sub_resource type="Resource" id="Resource_opc04"]
+script = ExtResource("6_iotsf")
+enemy_sequences = Array[ExtResource("7_lc2xo")]([SubResource("Resource_ug6kq"), SubResource("Resource_hk480")])
+SecondsTillNextWave = 4.0
+metadata/_custom_type_script = "uid://b653chsv5uyx7"
+
+[sub_resource type="Resource" id="Resource_3xivb"]
+script = ExtResource("6_iotsf")
+enemy_sequences = Array[ExtResource("7_lc2xo")]([SubResource("Resource_ug6kq"), SubResource("Resource_hk480")])
+SecondsTillNextWave = 4.0
 metadata/_custom_type_script = "uid://b653chsv5uyx7"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hve3p"]
@@ -154,7 +157,6 @@ navigation_polygon = SubResource("NavigationPolygon_j5wjh")
 
 [node name="Player" parent="." instance=ExtResource("2_e2o6t")]
 position = Vector2(690, 234)
-collision_layer = 1
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-8, -9)
@@ -169,7 +171,7 @@ script = ExtResource("7_rvswv")
 
 [node name="Director" parent="." node_paths=PackedStringArray("player", "EnemyPathfindingArea", "PupilZone", "PupilcollsionShape", "SpawningRoot", "BlinkingAnimator") instance=ExtResource("7_eow3j")]
 player = NodePath("../Player")
-enemy_data = Array[ExtResource("6_iotsf")]([SubResource("Resource_80cx4")])
+enemy_data = Array[ExtResource("6_iotsf")]([SubResource("Resource_80cx4"), SubResource("Resource_opc04"), SubResource("Resource_3xivb")])
 EnemyPathfindingArea = NodePath("../NavigationRegion")
 PupilZone = NodePath("../EyeIrisPupil/Area2D")
 PupilcollsionShape = NodePath("../EyeIrisPupil/Area2D/CollisionShape2D")

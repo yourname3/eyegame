@@ -54,6 +54,8 @@ func get_health() -> int:
 func _death():
 	queue_free()
 
+func _ready():
+	_compute_needed_exp()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Experience"):
@@ -71,12 +73,17 @@ func _on_exp_collect_body_entered(body: Node2D) -> void:
 		current_exp+=1
 		print(current_exp)
 		check_level_up()
-		Globals.game_ui_ref.set_player_level(current_exp, needed_exp)
-
+		
+func _compute_needed_exp():
+	var x = (level + 1) # experience to the next level, e.g. when level = 0 we get x = 1
+	needed_exp = int(20 * pow(1.1, x))
 
 func check_level_up():
+	if Globals.game_ui_ref:
+		Globals.game_ui_ref.set_player_level(current_exp, needed_exp)
 	if current_exp >= needed_exp:
 		level += 1
 		current_exp = 0
-		needed_exp = needed_exp * 2
+		_compute_needed_exp()
+		SignalBus.level_up.emit()
 		print("level: ", level)

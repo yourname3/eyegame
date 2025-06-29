@@ -20,6 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://dy18u38xst2sf" path="res://Music/EyeMainMenu.wav" id="18_ml10i"]
 
 [node name="Sounds" type="Node"]
+process_mode = 3
 script = ExtResource("1_qu8rh")
 
 [node name="Music_Game" type="AudioStreamPlayer" parent="."]
