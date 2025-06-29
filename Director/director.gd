@@ -23,7 +23,7 @@ signal _ready_for_next_wave
 func _do_sequence(sequence: EnemySequence) -> void:
 	outstanding_sequences += 1
 	for i in sequence.EnemyAmount:
-		await get_tree().create_timer(sequence.EnemySpawnInterval).timeout
+		await get_tree().create_timer(sequence.EnemySpawnInterval, false).timeout
 		#pick a random spawn point within navigation region
 		
 		var RandomPoint = NavigationServer2D.region_get_random_point(Globals.nav_rid, 0, true)
@@ -57,7 +57,7 @@ func _ready() -> void:
 	print("thing is loaded")
 	
 	for wave in enemy_data:
-		await get_tree().create_timer(wave.SecondsTillNextWave).timeout
+		await get_tree().create_timer(wave.SecondsTillNextWave, false).timeout
 		
 		# Spawn coroutine for each spawner
 		for sequence in wave.enemy_sequences:

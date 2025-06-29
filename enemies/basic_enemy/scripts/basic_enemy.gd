@@ -107,7 +107,7 @@ func on_use_boost():
 	if state_machine.boost_cooldown:
 		_set_speed_mod(speed_boost)
 		state_machine._set_boost_cooldown(false)
-		await get_tree().create_timer(.3).timeout
+		await get_tree().create_timer(.3, false).timeout
 		_set_speed_mod(1)
 		boost_cooldown.emit()
 	else:
@@ -128,9 +128,9 @@ func on_use_skill():
 	new_proj_three.direction = global_position.direction_to(sensory.agent.target_position)
 	new_proj_three.look_at(sensory.agent.target_position)
 	add_sibling(new_proj)
-	await get_tree().create_timer(0.3).timeout
+	await get_tree().create_timer(0.3, false).timeout
 	add_sibling(new_proj_two)
-	await get_tree().create_timer(0.7).timeout
+	await get_tree().create_timer(0.7, false).timeout
 	add_sibling(new_proj_three)
 
 
