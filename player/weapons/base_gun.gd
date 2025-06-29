@@ -48,8 +48,15 @@ func _play_shoot_sfx() -> void:
 		Sounds.sfx_grenade_launch.play()
 	else:
 		Sounds.sfx_bullet_shoot.play()
+		
+
 	
 func _physics_process(delta):
+	var root = get_node_or_null("/root/Game")
+	if !root:
+		root = get_node_or_null("/root/MainMenu")
+	if !root:
+		return
 	if check_can_shoot() && is_left && Input.is_action_pressed("ShootLeft") && can_shoot:
 		can_shoot = false
 		
@@ -60,8 +67,8 @@ func _physics_process(delta):
 		bullet.gun_id = weapon_idx
 		
 		knockback((get_global_mouse_position() - %FirePoint.global_position).normalized())
-		get_tree().root.add_child(bullet)
-		#get_node("root/Game").add_child(bullet)
+		#get_tree().root.add_child(bullet)
+		root.add_child(bullet)
 		_play_shoot_sfx()
 		$Cooldown.start(shoot_cooldown / Upgrades.player_firerate_multiplier)
 		Globals.CURRENT_AMMO[weapon_idx]-=1
@@ -76,8 +83,8 @@ func _physics_process(delta):
 		bullet.gun_id = weapon_idx
 		
 		knockback((get_global_mouse_position() - %FirePoint.global_position).normalized())
-		get_tree().root.add_child(bullet)
-		#get_node("root/Game").add_child(bullet)
+		#get_tree().root.add_child(bullet)
+		root.add_child(bullet)
 		_play_shoot_sfx()
 		$Cooldown.start(shoot_cooldown / Upgrades.player_firerate_multiplier)
 		Globals.CURRENT_AMMO[weapon_idx]-=1
