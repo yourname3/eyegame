@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Upgrade" load_steps=2 format=3 uid="uid://b84rpipoc0yr8"]
+
+[ext_resource type="Script" uid="uid://cqp62343t00ga" path="res://upgrades/upgrade.gd" id="1_sgfvo"]
+
+[resource]
+script = ExtResource("1_sgfvo")
+upgrades_var = &"take_damage_gives_fire_rate"
+description = "Whenever you take damage, increase fire rate by 100% for 2 seconds.
+"
+metadata/_custom_type_script = "uid://cqp62343t00ga"

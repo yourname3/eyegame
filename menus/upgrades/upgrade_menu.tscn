@@ -1,0 +1,56 @@
+[gd_scene load_steps=16 format=3 uid="uid://deo3ptwsido8b"]
+
+[ext_resource type="Theme" uid="uid://dsvhdhjqgfmv5" path="res://menus/theme/main_theme.tres" id="1_vc2sf"]
+[ext_resource type="Script" uid="uid://di11acl2p23e8" path="res://menus/upgrades/upgrade_menu.gd" id="2_8qicm"]
+[ext_resource type="PackedScene" uid="uid://ll28eb2obp02" path="res://menus/upgrades/upgrade_panel.tscn" id="2_ikkw3"]
+[ext_resource type="Script" uid="uid://cqp62343t00ga" path="res://upgrades/upgrade.gd" id="3_jys1j"]
+[ext_resource type="Resource" uid="uid://bs4v1ugqpx7ap" path="res://upgrades/player/kill_5_gives_heal_5.tres" id="4_x0oev"]
+[ext_resource type="Resource" uid="uid://b5beou0o86hhe" path="res://upgrades/player/kill_enemy_gives_double_damage.tres" id="5_sfa88"]
+[ext_resource type="Resource" uid="uid://bgxof83t20ct7" path="res://upgrades/player/rolls_for_extra_xp.tres" id="6_br8lp"]
+[ext_resource type="Resource" uid="uid://cw268n1b2kmm4" path="res://upgrades/player/shoot_enemy_with_pistol_gain_ammo.tres" id="7_j2qs8"]
+[ext_resource type="Resource" uid="uid://b84rpipoc0yr8" path="res://upgrades/player/take_damage_gives_fire_rate.tres" id="8_x6vmw"]
+[ext_resource type="Resource" uid="uid://dpljvivw18n4c" path="res://upgrades/enemy/enemy_damage_boosts.tres" id="9_7n3ql"]
+[ext_resource type="Resource" uid="uid://sggwob17gxa5" path="res://upgrades/enemy/enemy_health_boosts.tres" id="10_hp8mq"]
+[ext_resource type="Resource" uid="uid://buuvvkf5fwok8" path="res://upgrades/enemy/enemy_small_boosts.tres" id="11_fnlpn"]
+[ext_resource type="Resource" uid="uid://wqkitagf0rin" path="res://upgrades/enemy/enemy_spawn_rolls.tres" id="12_dbdwo"]
+[ext_resource type="Resource" uid="uid://covym8unqmcf1" path="res://upgrades/enemy/enemy_speed_boosts.tres" id="13_ytw0b"]
+[ext_resource type="Resource" uid="uid://bre7qv3lq55xk" path="res://upgrades/enemy/enemy_wave_spawn_extra_first.tres" id="14_d27yo"]
+
+[node name="UpgradeMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_vc2sf")
+script = ExtResource("2_8qicm")
+player_upgrades = Array[ExtResource("3_jys1j")]([ExtResource("4_x0oev"), ExtResource("5_sfa88"), ExtResource("6_br8lp"), ExtResource("7_j2qs8"), ExtResource("8_x6vmw")])
+enemy_upgrades = Array[ExtResource("3_jys1j")]([ExtResource("9_7n3ql"), ExtResource("10_hp8mq"), ExtResource("11_fnlpn"), ExtResource("12_dbdwo"), ExtResource("13_ytw0b"), ExtResource("14_d27yo")])
+
+[node name="Container" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -290.0
+offset_top = -190.0
+offset_right = 290.0
+offset_bottom = 190.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="UpgradePanel" parent="Container" instance=ExtResource("2_ikkw3")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="UpgradePanel2" parent="Container" instance=ExtResource("2_ikkw3")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="UpgradePanel3" parent="Container" instance=ExtResource("2_ikkw3")]
+unique_name_in_owner = true
+layout_mode = 2
