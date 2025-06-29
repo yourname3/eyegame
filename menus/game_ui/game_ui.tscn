@@ -4,21 +4,23 @@
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_2rou7")
 
 [node name="VBoxContainerL" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_right = 166.0
-offset_bottom = 406.0
-alignment = 1
+offset_right = 156.0
+offset_bottom = 433.0
 
 [node name="VBoxContainerR" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 986.0
-offset_top = -3.0
-offset_right = 1152.0
-offset_bottom = 403.0
-alignment = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -156.0
+offset_bottom = 433.0
+grow_horizontal = 0
