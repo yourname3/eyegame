@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dh715enpgk4bm"]
+[gd_scene load_steps=8 format=3 uid="uid://dh715enpgk4bm"]
 
 [ext_resource type="Script" uid="uid://bfm74d303o4me" path="res://player/weapons/projectiles/black_hole.gd" id="1_hiov4"]
 [ext_resource type="Texture2D" uid="uid://6yc0xmhvv4fj" path="res://proto/proto_projectile.svg" id="2_hnqjn"]
@@ -67,6 +67,26 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_hiov4"]
 radius = 489.401
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rwebq"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_max = 600.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -45.62
+linear_accel_max = 49.12
+radial_accel_min = -600.0
+radial_accel_max = -2.23517e-06
+scale_min = 0.0
+scale_max = 0.1
+scale_over_velocity_min = 65.79
+scale_over_velocity_max = 65.79
+color = Color(0.270588, 0, 0.737255, 1)
+turbulence_enabled = true
+turbulence_noise_strength = 18.35
+turbulence_noise_scale = 1.032
+turbulence_noise_speed_random = 1.23
+
 [node name="BlackHole" type="Node2D"]
 script = ExtResource("1_hiov4")
 
@@ -93,6 +113,17 @@ shape = SubResource("CircleShape2D_hiov4")
 [node name="ScanArea" type="Timer" parent="."]
 wait_time = 0.15
 autostart = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 30
+texture = ExtResource("2_hnqjn")
+lifetime = 2.0
+speed_scale = 0.8
+explosiveness = 0.1
+randomness = 0.1
+trail_lifetime = 0.1
+trail_sections = 4
+process_material = SubResource("ParticleProcessMaterial_rwebq")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
