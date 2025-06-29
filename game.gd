@@ -21,7 +21,7 @@ func _physics_process(delta: float) -> void:
 		$EyeIrisPupil.global_position = $EyeIrisPupil.global_position.move_toward(rand_point, delta * eye_speed)
 
 func _on_choose_iris_move_timeout() -> void:
-	var rect : Rect2 = $ChooseIrisMove/Area2D/CollisionShape2D.shape.get_rect()
+	var rect : Rect2 = %ChooseIrisRect.get_global_rect()#$ChooseIrisMove/Area2D/CollisionShape2D.shape.get_rect()
 	var x = randi_range(rect.position.x, rect.position.x + rect.size.x)
 	var y = randi_range(rect.position.y, rect.position.y + rect.size.y)
 	var r = global_position + Vector2(x, y)

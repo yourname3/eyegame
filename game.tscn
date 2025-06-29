@@ -224,4 +224,11 @@ autostart = true
 position = Vector2(1609, 152)
 shape = SubResource("RectangleShape2D_e8heu")
 
+[node name="ChooseIrisRect" type="ReferenceRect" parent="."]
+unique_name_in_owner = true
+offset_left = 780.0
+offset_top = -325.0
+offset_right = 2438.0
+offset_bottom = 625.0
+
 [connection signal="timeout" from="ChooseIrisMove" to="." method="_on_choose_iris_move_timeout"]
