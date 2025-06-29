@@ -73,6 +73,7 @@ func _on_exp_collect_body_entered(body: Node2D) -> void:
 		current_exp+=1
 		print(current_exp)
 		check_level_up()
+		Sounds.sfx_exp_collect.play()
 		
 func _compute_needed_exp():
 	var x = (level + 1) # experience to the next level, e.g. when level = 0 we get x = 1
