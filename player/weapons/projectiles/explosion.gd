@@ -1,6 +1,7 @@
 extends Node2D
 
-#func _ready():
+func _ready():
+	$GPUParticles2D.restart()
 	#$LifeTime.start(.8)
 	
 

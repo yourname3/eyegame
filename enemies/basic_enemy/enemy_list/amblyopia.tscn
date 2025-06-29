@@ -17,7 +17,7 @@ height = 234.0
 radius = 39.0
 height = 214.0
 
-[node name="BasicEnemy2" type="CharacterBody2D" node_paths=PackedStringArray("sensory", "stats", "state_machine") groups=["Enemies"]]
+[node name="BasicEnemy3" type="CharacterBody2D" node_paths=PackedStringArray("sensory", "stats", "state_machine") groups=["Enemies"]]
 collision_mask = 0
 script = ExtResource("1_e3fca")
 sensory = NodePath("Sensory")
@@ -28,9 +28,10 @@ speed = 150
 strength = 2
 speed_boost = 5.0
 
-[node name="Sensory" type="Node2D" parent="." node_paths=PackedStringArray("signal_bus", "vision", "agent", "hitbox")]
+[node name="Sensory" type="Node2D" parent="." node_paths=PackedStringArray("signal_bus", "cooldown_timer", "vision", "agent", "hitbox")]
 script = ExtResource("2_pyiaf")
 signal_bus = NodePath("..")
+cooldown_timer = NodePath("Timer")
 attack_range = 100
 vision = NodePath("Vision")
 agent = NodePath("Agent")
@@ -49,6 +50,9 @@ unique_name_in_owner = true
 [node name="Collision" type="CollisionShape2D" parent="Sensory/HitBox"]
 rotation = 1.57079
 shape = SubResource("CapsuleShape2D_ib75m")
+
+[node name="Timer" type="Timer" parent="Sensory"]
+one_shot = true
 
 [node name="Profile" type="AnimationPlayer" parent="."]
 

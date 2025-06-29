@@ -15,19 +15,20 @@ radius = 62.1289
 [sub_resource type="CircleShape2D" id="CircleShape2D_oul6g"]
 radius = 54.0093
 
-[node name="BasicEnemy" type="CharacterBody2D" node_paths=PackedStringArray("sensory", "stats", "state_machine") groups=["Enemies"]]
+[node name="BasicEnemy3" type="CharacterBody2D" node_paths=PackedStringArray("sensory", "stats", "state_machine") groups=["Enemies"]]
 collision_mask = 0
 script = ExtResource("1_c87uy")
 sensory = NodePath("Sensory")
 stats = NodePath("Stats")
 state_machine = NodePath("StateMchine")
-health = 200
+health = 25
 speed = 50
 strength = 8
 
-[node name="Sensory" type="Node2D" parent="." node_paths=PackedStringArray("signal_bus", "vision", "agent", "hitbox")]
+[node name="Sensory" type="Node2D" parent="." node_paths=PackedStringArray("signal_bus", "cooldown_timer", "vision", "agent", "hitbox")]
 script = ExtResource("2_c87uy")
 signal_bus = NodePath("..")
+cooldown_timer = NodePath("Timer")
 vision = NodePath("Vision")
 agent = NodePath("Agent")
 hitbox = NodePath("HitBox")
@@ -44,6 +45,9 @@ unique_name_in_owner = true
 
 [node name="Collision" type="CollisionShape2D" parent="Sensory/HitBox"]
 shape = SubResource("CircleShape2D_xuk7h")
+
+[node name="Timer" type="Timer" parent="Sensory"]
+one_shot = true
 
 [node name="Profile" type="AnimationPlayer" parent="."]
 

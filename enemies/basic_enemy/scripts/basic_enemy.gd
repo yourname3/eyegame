@@ -33,13 +33,32 @@ func _ready() -> void:
 	use_aggression.connect(on_use_aggression)
 	boost_cooldown.connect(state_machine.on_boost_cooldown)
 	
-	sensory.target = target
+	
+	# Update health based on upgrades
+	health = int(float(health) * Upgrades.enemy_health_multiplier)
+	
 
+
+func _drop_exp(count: int) -> void:
+	for i in range(count):
+		var e = preload("res://experience/exp.tscn").instantiate()
+		e.global_position = global_position + Vector2.from_angle(randf_range(0,TAU) ) * randf_range(.1,100)
+		get_tree().root.add_child.call_deferred(e)
+		#print("hello")
 
 func _death():
+	var death_position : Vector2 = global_position
+	SignalBus.enemy_died.emit()
+	
+	# "10% to drop 5 extra xp", stacks by extra rolls
+	for roll in range(0, Upgrades.rolls_for_extra_xp):
+		if randf() <= 0.1:
+			_drop_exp(5)
+	
+	_drop_exp(3)
 	if sensory.death_explosion:
-		var new_blowup
-		new_blowup.global_position = global_position
+		var new_blowup = Globals.explosion.instantiate()
+		new_blowup.global_position = death_position
 		add_sibling(new_blowup)
 		queue_free()
 	else:
@@ -49,7 +68,7 @@ func on_use_engage(new_vec):
 	
 	var dir := global_position.direction_to(new_vec)
 	
-	var target_velocity := dir * (get_speed() * get_speed_mod())
+	var target_velocity := dir * (get_modded_speed())
 	
 	
 	# Apply acceleration if there's input
@@ -65,10 +84,11 @@ func on_use_engage(new_vec):
 
 
 
+
 func on_use_retreat(new_vec):
 	var dir := global_position.direction_to(new_vec)
 	
-	var target_velocity := dir * (get_speed() * get_speed_mod()) * -1
+	var target_velocity := dir * (get_modded_speed()) * -1
 	
 	
 	# Apply acceleration if there's input
@@ -94,64 +114,60 @@ func on_use_boost():
 
 
 func on_use_skill():
-	if state_machine.attack_one:
-		await get_tree().create_timer(0.8).timeout
-		var new_proj = Globals.homing_bullet.instantiate()
-		var new_proj_two = Globals.homing_bullet.instantiate()
-		var new_proj_three = Globals.homing_bullet.instantiate()
-		new_proj.target = Globals.player
-		new_proj.global_position = (global_position + global_position.direction_to(sensory.agent.target_position))
-		new_proj.direction = global_position.direction_to(sensory.agent.target_position)
-		new_proj_two.target = Globals.player
-		new_proj_two.global_position = (global_position + global_position.direction_to(sensory.agent.target_position))
-		new_proj_two.direction = global_position.direction_to(sensory.agent.target_position)
-		new_proj_three.target = Globals.player
-		new_proj.global_position = (global_position + global_position.direction_to(sensory.agent.target_position))
-		new_proj.direction = global_position.direction_to(sensory.agent.target_position)
-		add_sibling(new_proj)
-		await get_tree().create_timer(0.3).timeout
-		add_sibling(new_proj_two)
-		await get_tree().create_timer(0.7).timeout
-		add_sibling(new_proj_three)
-	else:
-		pass
-	if state_machine.attack_two:
-		var new_proj = Globals.enemy_bullet.instantiate()
-		new_proj.global_position = global_position + global_position.direction_to(sensory.agent.target_position)
-		new_proj.direction = global_position.direction_to(sensory.agent.target_position)
-		add_sibling(new_proj)
-	else:
-		pass
-	if state_machine.attack_three:
-		var new_proj = Globals.homing_bullet.instantiate()
-		var new_proj_one = Globals.curly_bullet.instantiate()
-		var new_proj_two = Globals.curly_bullet.instantiate()
-		var new_vec = global_position.direction_to(sensory.agent.target_position)
-		var double_vec = new_vec
-		new_proj.global_position = global_position + global_position.direction_to(sensory.agent.target_position)
-		new_proj.agent.set_target_position(sensory.agent.target_position)
-		new_vec.rotated(TAU / 8)
-		double_vec.rotated(-TAU / 8)
-		new_proj_one.global_position = new_vec
-		new_proj_one.target_position = sensory.agent.target_position
-		new_proj_two.global_position = double_vec
-		new_proj_two.target_position = sensory.agent.target_position
-		new_proj_two.side_aim = false
-		add_sibling(new_proj)
-		add_sibling(new_proj_one)
-		add_sibling(new_proj_two)
-	else:
-		pass
+	var new_proj = Globals.explosive_bullet.instantiate()
+	var new_proj_two = Globals.explosive_bullet.instantiate()
+	var new_proj_three = Globals.explosive_bullet.instantiate()
+	new_proj.global_position = (global_position + global_position.direction_to(sensory.agent.target_position))
+	new_proj.direction = global_position.direction_to(sensory.agent.target_position)
+	new_proj.look_at(sensory.agent.target_position)
+	new_proj_two.global_position = (global_position + global_position.direction_to(sensory.agent.target_position))
+	new_proj_two.direction = global_position.direction_to(sensory.agent.target_position)
+	new_proj_two.look_at(sensory.agent.target_position)
+	new_proj_three.global_position = (global_position + global_position.direction_to(sensory.agent.target_position))
+	new_proj_three.direction = global_position.direction_to(sensory.agent.target_position)
+	new_proj_three.look_at(sensory.agent.target_position)
+	add_sibling(new_proj)
+	await get_tree().create_timer(0.3).timeout
+	add_sibling(new_proj_two)
+	await get_tree().create_timer(0.7).timeout
+	add_sibling(new_proj_three)
+
+
+	var new_proj_good = Globals.enemy_bullet.instantiate()
+	new_proj_good.global_position = global_position + global_position.direction_to(sensory.agent.target_position)
+	new_proj_good.direction = global_position.direction_to(sensory.agent.target_position)
+	new_proj_good.look_at(sensory.agent.target_position)
+	add_sibling(new_proj_good)
+
+	var new_proj_fly = Globals.homing_bullet.instantiate()
+	var new_proj_up = Globals.curly_bullet.instantiate()
+	var new_proj_slo = Globals.curly_bullet.instantiate()
+	var new_vec = global_position.direction_to(sensory.agent.target_position)
+	var double_vec = new_vec
+	new_proj_fly.global_position = global_position + global_position.direction_to(sensory.agent.target_position)
+	new_proj_fly.agent.set_target_position(sensory.agent.target_position)
+	new_vec.rotated(TAU / 8)
+	double_vec.rotated(-TAU / 8)
+	new_proj_up.global_position = new_vec
+	new_proj_up.target_position = sensory.agent.target_position
+	new_proj_slo.global_position = double_vec
+	new_proj_slo.target_position = sensory.agent.target_position
+	new_proj_slo.side_aim = false
+	new_proj_fly.look_at(sensory.agent.target_position)
+	new_proj_up.look_at(sensory.agent.target_position)
+	new_proj_slo.look_at(sensory.agent.target_position)
+	add_sibling(new_proj_fly)
+	add_sibling(new_proj_up)
+	add_sibling(new_proj_slo)
+
 
 
 func on_use_aggression():
-	if state_machine.attack_two:
-		var new_proj = Globals.heavy_bullet.instantiate()
-		new_proj.global_position = global_position + global_position.direction_to(sensory.agent.target_position)
-		new_proj.direction = global_position.direction_to(sensory.agent.target_position)
-		add_sibling(new_proj)
-	else:
-		pass
+	var new_proj = Globals.heavy_bullet.instantiate()
+	new_proj.global_position = global_position + global_position.direction_to(sensory.agent.target_position)
+	new_proj.direction = global_position.direction_to(sensory.agent.target_position)
+	add_sibling(new_proj)
+
 
 func _set_health(value:int):
 	if value < health:
@@ -177,6 +193,8 @@ func get_speed() -> int:
 	return speed
 func get_speed_mod() -> float:
 	return speed_mod
+func get_modded_speed() -> float:
+	return get_speed() * get_speed_mod() * Upgrades.enemy_speed_multiplier
 func get_strength() -> int:
 	return strength
 
@@ -184,4 +202,13 @@ func get_strength() -> int:
 func _on_hit_box_body_entered(body: Node2D) -> void:
 	if body.is_in_group('Players'):
 		Globals.transmit_damage.emit(body, get_strength())
-		print('player damaged')
+
+func _process(delta: float) -> void:
+	# This could be moved to a signal that only updates when upgrades are chosen,
+	# but whatever.
+	scale.x = Upgrades.enemy_scale_multiplier
+	scale.y = scale.x
+
+
+func _on_timer_timeout() -> void:
+	sensory.can_shoot = true

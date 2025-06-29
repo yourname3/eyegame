@@ -21,9 +21,10 @@ sensory = NodePath("Sensory")
 stats = NodePath("Stats")
 state_machine = NodePath("StateMchine")
 
-[node name="Sensory" type="Node2D" parent="." node_paths=PackedStringArray("signal_bus", "vision", "agent", "hitbox")]
+[node name="Sensory" type="Node2D" parent="." node_paths=PackedStringArray("signal_bus", "cooldown_timer", "vision", "agent", "hitbox")]
 script = ExtResource("2_xuk7h")
 signal_bus = NodePath("..")
+cooldown_timer = NodePath("Timer")
 vision = NodePath("Vision")
 agent = NodePath("Agent")
 hitbox = NodePath("HitBox")
@@ -39,6 +40,9 @@ shape = SubResource("CircleShape2D_yx0l5")
 
 [node name="Collision" type="CollisionShape2D" parent="Sensory/HitBox"]
 shape = SubResource("CircleShape2D_xuk7h")
+
+[node name="Timer" type="Timer" parent="Sensory"]
+one_shot = true
 
 [node name="Profile" type="AnimationPlayer" parent="."]
 
