@@ -9,14 +9,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_yx0l5"]
 radius = 750.0
 
-<<<<<<< HEAD
-[sub_resource type="CircleShape2D" id="CircleShape2D_xuk7h"]
-radius = 89.0
-=======
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ib75m"]
 radius = 48.0
 height = 234.0
->>>>>>> c56cdab60bdd4daeb58f853caf97e769e9b9cc0f
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dmf6v"]
 radius = 39.0
@@ -27,19 +22,13 @@ script = ExtResource("1_e3fca")
 sensory = NodePath("Sensory")
 stats = NodePath("Stats")
 state_machine = NodePath("StateMchine")
-<<<<<<< HEAD
-speed = 150
-=======
 health = 10
->>>>>>> c56cdab60bdd4daeb58f853caf97e769e9b9cc0f
+speed = 150
 
 [node name="Sensory" type="Node2D" parent="." node_paths=PackedStringArray("signal_bus", "vision", "agent", "hitbox")]
 script = ExtResource("2_pyiaf")
 signal_bus = NodePath("..")
-<<<<<<< HEAD
 attack_range = 500
-=======
->>>>>>> c56cdab60bdd4daeb58f853caf97e769e9b9cc0f
 vision = NodePath("Vision")
 agent = NodePath("Agent")
 hitbox = NodePath("HitBox")
