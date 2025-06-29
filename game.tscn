@@ -1,13 +1,13 @@
 [gd_scene load_steps=13 format=3 uid="uid://cll6r826wc603"]
 
-[ext_resource type="Texture2D" uid="uid://duueyjr6h31ar" path="res://eyeball/eye_white.svg" id="1_feb5d"]
-[ext_resource type="Script" uid="uid://cy5cg8tramg6s" path="res://eyeball/eyeball_mask_child.gd" id="2_7jktm"]
+[ext_resource type="Texture2D" uid="uid://dxalddyrgwxy1" path="res://eyeball/white_square.svg" id="1_vef74"]
 [ext_resource type="PackedScene" uid="uid://dhx310ohc245d" path="res://player/player.tscn" id="2_e2o6t"]
 [ext_resource type="Texture2D" uid="uid://cpim1me506bgn" path="res://eyeball/eye_iris_pupil.svg" id="4_fc0e3"]
-[ext_resource type="PackedScene" uid="uid://l463s6lfifsc" path="res://enemies/basic_enemy/enemy_list/amblyopia.tscn" id="6_j5wjh"]
+[ext_resource type="PackedScene" uid="uid://deo3ptwsido8b" path="res://menus/upgrades/upgrade_menu.tscn" id="5_j5wjh"]
 [ext_resource type="PackedScene" uid="uid://cx74uha2f3op4" path="res://menus/pause_menu.tscn" id="6_ryrav"]
 [ext_resource type="PackedScene" uid="uid://bwca23wivq56k" path="res://Director/director.tscn" id="7_eow3j"]
-[ext_resource type="Texture2D" uid="uid://c2suaq0y5j1si" path="res://eyeball/skin.png" id="7_j5wjh"]
+[ext_resource type="Texture2D" uid="uid://c58hbr1gi6k7n" path="res://eyeball/blinker.svg" id="8_j5wjh"]
+[ext_resource type="Shader" uid="uid://bsrqnqm64wq4y" path="res://eyeball/eyeball_blink.gdshader" id="8_vef74"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_j5wjh"]
 vertices = PackedVector2Array(2412.94, -500.367, 2412.69, -500.531, 2981.04, -144.453, 1988.18, 565.867, 1988.2, 565.859, 1477.21, 930.133, -2038.92, -697.359, -1449.22, -1002.69, -643.398, -1248.03, 250.172, -1267.97, 1194.26, -1090.33, 1842.55, -835, 701.75, 1234.13, -122.133, 1292.91, -1213.47, 1027.56, -1872.1, 683.281, -2501.18, 309.82, -2963.42, -84.9766)
@@ -16,30 +16,18 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-2980, -86, -2044, -706
 
 [sub_resource type="Animation" id="Animation_7jktm"]
 resource_name = "Blink"
-length = 0.4
+length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = false
-tracks/0/path = NodePath(".:scale")
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blinker:material:shader_parameter/scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.366667),
+"times": PackedFloat32Array(0, 0.4, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1, 1e-05), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Skin:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.36),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1860, -4282), Vector2(1906, 131), Vector2(1860, -4282)]
+"values": [1.0, 0.0, 1.0]
 }
 
 [sub_resource type="Animation" id="Animation_ryrav"]
@@ -47,26 +35,14 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
+tracks/0/path = NodePath("Blinker:material:shader_parameter/scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Skin:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1860, -4282)]
+"values": [1.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ryrav"]
@@ -74,6 +50,12 @@ _data = {
 &"Blink": SubResource("Animation_7jktm"),
 &"RESET": SubResource("Animation_ryrav")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hve3p"]
+resource_local_to_scene = true
+shader = ExtResource("8_vef74")
+shader_parameter/scale = 1.0
+shader_parameter/modulate = Color(0.945098, 0.760784, 0.490196, 1)
 
 [node name="Game" type="Node2D"]
 
@@ -113,14 +95,48 @@ speed_boost = 1.0
 navigation_polygon = SubResource("NavigationPolygon_j5wjh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="EyeWhite"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_ryrav")
 }
 
-[node name="PauseMenu" parent="." instance=ExtResource("6_ryrav")]
+[node name="EyeIrisPupil" type="Sprite2D" parent="."]
+position = Vector2(2437, 422)
+texture = ExtResource("4_fc0e3")
 
-[node name="Skin" type="Sprite2D" parent="."]
-z_index = 5
-position = Vector2(1860, -4282)
-scale = Vector2(5.89896, 4.44896)
-texture = ExtResource("7_j5wjh")
+[node name="Player" parent="." instance=ExtResource("2_e2o6t")]
+position = Vector2(690, 234)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-8, -9)
+zoom = Vector2(0.655, 0.655)
+
+[node name="WhiteSquare" type="Sprite2D" parent="."]
+z_index = -1000
+position = Vector2(1920, 280)
+scale = Vector2(123.563, 58.625)
+texture = ExtResource("1_vef74")
+
+[node name="Director" parent="." node_paths=PackedStringArray("SpawnPoints", "SpawningRoot", "BlinkingAnimator") instance=ExtResource("7_eow3j")]
+SpawnPoints = [NodePath("SpawnPoint")]
+SpawningRoot = NodePath("..")
+BlinkingAnimator = NodePath("../AnimationPlayer")
+
+[node name="SpawnPoint" type="Marker2D" parent="Director"]
+position = Vector2(341, -229)
+
+[node name="UpgradesMenu" type="CanvasLayer" parent="."]
+
+[node name="UpgradeMenu" parent="UpgradesMenu" instance=ExtResource("5_j5wjh")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("6_ryrav")]
+layer = 2
+
+[node name="Blinker" type="Sprite2D" parent="."]
+z_index = 1000
+texture_repeat = 1
+material = SubResource("ShaderMaterial_hve3p")
+position = Vector2(1323, 69)
+texture = ExtResource("8_j5wjh")
+region_enabled = true
+region_rect = Rect2(-3795.72, -4534.58, 13829.5, 12194.5)
