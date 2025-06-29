@@ -75,11 +75,17 @@ func _ready() -> void:
 func _play_blink() -> void:
 	BlinkingAnimator.play("Blink")
 	BlinkTimer.start(randf_range(5.0, 15.0))
+	Sounds.sfx_blink_open.play()
 	
 	
 	
 func _process(delta: float) -> void:
-	pass
+	if BlinkTimer.time_left <= 2.0 and !Sounds.sfx_blink_warning.is_playing():
+		Sounds.sfx_blink_warning.play()
+	if Globals.EYE_HEALTH <= 0:
+		get_tree().change_scene_to_file("res://game_over_screen.tscn")
+		
+	
 	#if Input.is_key_pressed(KEY_SPACE):		
 		#_play_blink()
 		
@@ -92,6 +98,7 @@ func _teleport_all_enemies() -> void:
 	
 	for i in nodes_in_group:
 		i.global_position = _pick_random_point()
+
 		
 	
 	#loop list

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cmu8yfv1od0e7"]
+[gd_scene load_steps=19 format=3 uid="uid://cmu8yfv1od0e7"]
 
 [ext_resource type="Script" uid="uid://csdmbatffj8q2" path="res://autoloads/sounds/sounds.gd" id="1_qu8rh"]
 [ext_resource type="AudioStream" uid="uid://biynpfn6vrfmm" path="res://Music/EyeGameGameplayTheme.wav" id="2_0dcvf"]
@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://sl73fykc4fox" path="res://SFX/MenuHover.wav" id="14_nx5xd"]
 [ext_resource type="AudioStream" uid="uid://db20shje8jhs7" path="res://SFX/PlayerHit.wav" id="15_f4wvs"]
 [ext_resource type="AudioStream" uid="uid://cybr0xc1uh5d3" path="res://SFX/Shotgun.wav" id="16_b6e7a"]
+[ext_resource type="AudioStream" uid="uid://dy18u38xst2sf" path="res://Music/EyeMainMenu.wav" id="18_ml10i"]
 
 [node name="Sounds" type="Node"]
 process_mode = 3
@@ -111,3 +112,8 @@ stream = ExtResource("16_b6e7a")
 max_polyphony = 4
 bus = &"SFX"
 script = ExtResource("4_ml10i")
+
+[node name="MusicMenu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_ml10i")
+
+[connection signal="finished" from="Blink" to="." method="_on_blink_finished"]
