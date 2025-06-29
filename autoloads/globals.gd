@@ -25,6 +25,10 @@ const MAX_AMMO_INIT: Array[int] = [
 var MAX_AMMO: Array[int] = MAX_AMMO_INIT.duplicate()
 var CURRENT_AMMO: Array[int] = MAX_AMMO.duplicate()
 var OWNED_WEAPONS = [true, true, true, true, true]
+
+## Stores the indices of each non-pistol weapon that we own.
+var owned_nonpistol_weapons_by_idx: Array[int] = []
+
 signal transmit_damage(body, amount)
 
 ## Call this when we start a new game. Should reset all global state to what
@@ -39,6 +43,7 @@ func reset_game_state() -> void:
 		OWNED_WEAPONS[i] = false
 	# We always have the pistol unlocked
 	OWNED_WEAPONS[GUN_PISTOL] = true
+	owned_nonpistol_weapons_by_idx = []
 
 func unlock_gun(idx: int, ammo: int) -> void:
 	OWNED_WEAPONS[idx] = true
@@ -46,6 +51,13 @@ func unlock_gun(idx: int, ammo: int) -> void:
 	if CURRENT_AMMO[idx] > MAX_AMMO[idx]:
 		CURRENT_AMMO[idx] = MAX_AMMO[idx]
 	
+	if idx not in owned_nonpistol_weapons_by_idx:
+		owned_nonpistol_weapons_by_idx.append(idx)
+		
+func add_ammo(weapon: int, amount: int) -> void:
+	CURRENT_AMMO[weapon] += amount
+	if CURRENT_AMMO[weapon] > MAX_AMMO[weapon]:
+		CURRENT_AMMO[weapon] = MAX_AMMO[weapon]
 
 enum Status {
 	SUCCESS,

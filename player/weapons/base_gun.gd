@@ -47,6 +47,7 @@ func _physics_process(delta):
 		bullet.velocity = (get_global_mouse_position() - %FirePoint.global_position).normalized() 
 		bullet.global_position = %FirePoint.global_position
 		bullet.speed = speed
+		bullet.gun_id = weapon_idx
 		
 		knockback((get_global_mouse_position() - %FirePoint.global_position).normalized())
 		get_tree().root.add_child(bullet)
@@ -60,6 +61,7 @@ func _physics_process(delta):
 		bullet.velocity = (get_global_mouse_position() - %FirePoint.global_position).normalized() 
 		bullet.global_position = %FirePoint.global_position
 		bullet.speed = speed
+		bullet.gun_id = weapon_idx
 		
 		knockback((get_global_mouse_position() - %FirePoint.global_position).normalized())
 		get_tree().root.add_child(bullet)
