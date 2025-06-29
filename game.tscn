@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cll6r826wc603"]
+[gd_scene load_steps=13 format=3 uid="uid://cll6r826wc603"]
 
 [ext_resource type="Texture2D" uid="uid://duueyjr6h31ar" path="res://eyeball/eye_white.svg" id="1_feb5d"]
 [ext_resource type="Script" uid="uid://cy5cg8tramg6s" path="res://eyeball/eyeball_mask_child.gd" id="2_7jktm"]
@@ -8,6 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://cx74uha2f3op4" path="res://menus/pause_menu.tscn" id="6_ryrav"]
 [ext_resource type="PackedScene" uid="uid://bwca23wivq56k" path="res://Director/director.tscn" id="7_eow3j"]
 [ext_resource type="Texture2D" uid="uid://c2suaq0y5j1si" path="res://eyeball/skin.png" id="7_j5wjh"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_j5wjh"]
+vertices = PackedVector2Array(2412.94, -500.367, 2412.69, -500.531, 2981.04, -144.453, 1988.18, 565.867, 1988.2, 565.859, 1477.21, 930.133, -2038.92, -697.359, -1449.22, -1002.69, -643.398, -1248.03, 250.172, -1267.97, 1194.26, -1090.33, 1842.55, -835, 701.75, 1234.13, -122.133, 1292.91, -1213.47, 1027.56, -1872.1, 683.281, -2501.18, 309.82, -2963.42, -84.9766)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5), PackedInt32Array(6, 7, 8, 9, 10, 11, 0, 2, 3, 5, 12, 13, 14, 15, 16, 17)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-2980, -86, -2044, -706, -1453, -1012, -645, -1258, 251, -1278, 1197, -1100, 1847, -844, 2418, -509, 2999, -145, 1994, 574, 1482, 939, 704, 1244, -123, 1303, -1217, 1037, -1877, 692, -2507, 318)])
 
 [sub_resource type="Animation" id="Animation_7jktm"]
 resource_name = "Blink"
@@ -103,6 +108,9 @@ zoom = Vector2(0.655, 0.655)
 position = Vector2(-2248, 56)
 speed = 500
 speed_boost = 1.0
+
+[node name="NavigationRegion" type="NavigationRegion2D" parent="EyeWhite/PutEverythingAsAChildOfThis"]
+navigation_polygon = SubResource("NavigationPolygon_j5wjh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="EyeWhite"]
 libraries = {
