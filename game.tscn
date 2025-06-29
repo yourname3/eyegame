@@ -81,6 +81,7 @@ libraries = {
 [node name="Upgrades" type="CanvasLayer" parent="."]
 
 [node name="Upgrades" parent="Upgrades" instance=ExtResource("6_eow3j")]
+visible = false
 
 [node name="PauseMenu" parent="." instance=ExtResource("6_ryrav")]
 layer = 2

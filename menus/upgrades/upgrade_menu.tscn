@@ -28,29 +28,28 @@ script = ExtResource("2_8qicm")
 player_upgrades = Array[ExtResource("3_jys1j")]([ExtResource("4_x0oev"), ExtResource("5_sfa88"), ExtResource("6_br8lp"), ExtResource("7_j2qs8"), ExtResource("8_x6vmw")])
 enemy_upgrades = Array[ExtResource("3_jys1j")]([ExtResource("9_7n3ql"), ExtResource("10_hp8mq"), ExtResource("11_fnlpn"), ExtResource("12_dbdwo"), ExtResource("13_ytw0b"), ExtResource("14_d27yo")])
 
-[node name="Container" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -290.0
-offset_top = -190.0
-offset_right = 290.0
-offset_bottom = 190.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 20
-
-[node name="UpgradePanel" parent="Container" instance=ExtResource("2_ikkw3")]
+[node name="UpgradePanel" parent="." instance=ExtResource("2_ikkw3")]
 unique_name_in_owner = true
 layout_mode = 2
+offset_left = 286.0
+offset_top = 134.0
+offset_right = 466.0
+offset_bottom = 466.0
 
-[node name="UpgradePanel2" parent="Container" instance=ExtResource("2_ikkw3")]
+[node name="UpgradePanel2" parent="." instance=ExtResource("2_ikkw3")]
 unique_name_in_owner = true
 layout_mode = 2
+offset_left = 486.0
+offset_top = 134.0
+offset_right = 666.0
+offset_bottom = 466.0
 
-[node name="UpgradePanel3" parent="Container" instance=ExtResource("2_ikkw3")]
+[node name="UpgradePanel3" parent="." instance=ExtResource("2_ikkw3")]
 unique_name_in_owner = true
 layout_mode = 2
+offset_left = 686.0
+offset_top = 134.0
+offset_right = 866.0
+offset_bottom = 466.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

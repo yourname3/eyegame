@@ -16,3 +16,6 @@ class_name UpgradeMenu
 
 @export var player_upgrades: Array[Upgrade] = []
 @export var enemy_upgrades: Array[Upgrade] = []
+
+func select_upgrades() -> void:
+	pass
