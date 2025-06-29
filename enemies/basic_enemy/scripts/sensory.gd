@@ -7,7 +7,7 @@ class_name BasicSensory
 var vision_state : Globals.Status
 
 @export var target : Player
-var center : Vector2
+var death_explosion : bool = false
 @export var attack_range : int 
 
 
@@ -17,7 +17,8 @@ var center : Vector2
 
 
 
-
+func _ready() -> void:
+	agent.set_target_position(signal_bus.global_position)
 
 
 func _on_vision_body_entered(body: Node2D) -> void:
@@ -58,7 +59,7 @@ func get_target():
 func _on_agent_navigation_finished() -> void:
 	match vision_state:
 		Globals.Status.SUCCESS:
-			NavigationServer2D.region_get_random_point(Globals.nav_rid, 1, false)
+			agent.set_target_position(NavigationServer2D.region_get_random_point(Globals.nav_rid, 1, false))
 		Globals.Status.RUNNING:
 			pass
 		Globals.Status.FAILURE:

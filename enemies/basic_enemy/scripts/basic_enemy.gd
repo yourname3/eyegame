@@ -31,6 +31,14 @@ func _ready() -> void:
 	boost_cooldown.connect(state_machine.on_boost_cooldown)
 
 
+func _death():
+	if sensory.death_explosion:
+		var new_blowup
+		new_blowup.global_position = global_position
+		add_sibling(new_blowup)
+		queue_free()
+	else:
+		queue_free()
 
 func on_use_engage(new_vec):
 	
@@ -155,8 +163,6 @@ func get_speed_mod() -> float:
 func get_strength() -> int:
 	return strength
 
-func _death():
-	queue_free()
 
 func _on_hit_box_body_entered(body: Node2D) -> void:
 	if body.is_in_group('Players'):

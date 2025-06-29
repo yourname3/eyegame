@@ -23,6 +23,7 @@ state_machine = NodePath("StateMchine")
 [node name="Sensory" type="Node2D" parent="." node_paths=PackedStringArray("signal_bus", "vision", "agent", "hitbox")]
 script = ExtResource("2_5i3yh")
 signal_bus = NodePath("..")
+attack_range = null
 vision = NodePath("Vision")
 agent = NodePath("Agent")
 hitbox = NodePath("HitBox")
