@@ -23,6 +23,7 @@ var current_music := -1
 @onready var sfx_item_select := $ItemSelect
 @onready var sfx_menu_hover := $MenuHover
 @onready var sfx_player_hit := $PlayerHit
+@onready var sfx_eye_hit := $EyeHit
 @onready var sfx_shotgun := $Shotgun
 
 func play_music(idx: int) -> void:
