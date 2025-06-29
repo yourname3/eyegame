@@ -46,7 +46,13 @@ func _drop_exp(count: int) -> void:
 		get_tree().root.add_child.call_deferred(e)
 		#print("hello")
 
+var _died = false
+
 func _death():
+	if _died:
+		return
+	_died = true
+	
 	var death_position : Vector2 = global_position
 	Sounds.sfx_enemy_death.play()
 	SignalBus.enemy_died.emit()
@@ -60,7 +66,7 @@ func _death():
 	if sensory.death_explosion:
 		var new_blowup = Globals.explosion.instantiate()
 		new_blowup.global_position = death_position
-		add_sibling(new_blowup)
+		add_sibling.call_deferred(new_blowup)
 		queue_free()
 	else:
 		queue_free()
