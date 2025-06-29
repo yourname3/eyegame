@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://l7px385b3xil"]
+
+[ext_resource type="Script" uid="uid://bq7ormchumw7q" path="res://player/weapons/rpg_gun.gd" id="1_sxml7"]
+[ext_resource type="Texture2D" uid="uid://i6hn4qylrqqp" path="res://enemies/animations/virus_enemy/virus_enemy.svg" id="2_sxml7"]
+
+[node name="RpgGun" type="Node2D"]
+script = ExtResource("1_sxml7")
+speed = 400
+shoot_cooldown = 1.2
+damage = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(18, -7)
+scale = Vector2(0.315821, 0.315821)
+texture = ExtResource("2_sxml7")
+
+[node name="FirePoint" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(36, -16)
+
+[node name="Cooldown" type="Timer" parent="."]
+
+[node name="WeaponSwapCD" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
+[connection signal="timeout" from="WeaponSwapCD" to="." method="_on_weapon_swap_cd_timeout"]

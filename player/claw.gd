@@ -27,7 +27,7 @@ var vels          := PackedVector2Array()
 #@onready var fire_point := %FirePoint
 
 @onready var claw_root := $ClawRoot
-@onready var weapons := [preload("res://player/weapons/base_gun.tscn"), preload("res://player/weapons/machine_gun.tscn"), preload("res://player/weapons/shot_gun.tscn")]
+@onready var weapons := [preload("res://player/weapons/base_gun.tscn"), preload("res://player/weapons/machine_gun.tscn"), preload("res://player/weapons/shot_gun.tscn"), preload("res://player/weapons/rpg_gun.tscn")]
 var weapon_idx : int = 0
 var weapon_knockback := Vector2.ZERO
 
@@ -63,7 +63,7 @@ func _ready() -> void:
 		line.add_point(Vector2.ZERO)
 		
 	line.default_color = line_color
-		
+	
 func _process_points(delta: float) -> void:
 	var inv := line.global_transform.inverse()
 

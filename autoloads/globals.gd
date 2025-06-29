@@ -4,13 +4,20 @@ extends Node
 #0 - pistol 
 #1 - rifle
 #2 - shotgun
+#3 - RPG
+#4 - Gravity Gun
+#5 - Delayed Bombs
 var MAX_AMMO = [
 	9999999999999,
-	12,
-	12,
+	175,
+	180,
+	7,
+	3,
+	20,
 ]
+
 var CURRENT_AMMO = MAX_AMMO
-var OWNED_WEAPONS = [true, true, true]
+var OWNED_WEAPONS = [true, true, true, true]
 signal transmit_damage(body, amount)
 
 enum Status {
@@ -26,6 +33,18 @@ enum NetStatus {
 	FAILURE, # code fails to run
 	ERROR # error code
 }
+
+
+
+var enemy_bullet : PackedScene = preload("res://enemies/bullets/enemy_bullet/bullet.tscn")
+var heavy_bullet : PackedScene = preload("res://enemies/bullets/enemy_bullet/heavy_bullet.tscn")
+var curly_bullet : PackedScene = preload("res://enemies/bullets/enemy_bullet/curly_bullet.tscn")
+var homing_bullet : PackedScene = preload("res://enemies/bullets/enemy_bullet/homing_bullet.tscn")
+var explosive_bullet : PackedScene = preload("res://enemies/bullets/enemy_bullet/explosive_bullet.tscn")
+var explosion
+
+
+
 
 
 var nav_rid
