@@ -13,6 +13,7 @@ radius = 380.296
 radius = 65.0
 
 [node name="Player" type="CharacterBody2D" groups=["Players"]]
+collision_layer = 2
 script = ExtResource("1_rkbax")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

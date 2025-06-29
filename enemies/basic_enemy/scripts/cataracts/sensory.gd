@@ -9,6 +9,9 @@ class_name CataractsSensory
 func _process(delta: float) -> void:
 	if !target:
 		target = Globals.player
+	if target == null:
+		# Once the player dies, we can't do anything anymore.
+		return
 	match vision_state:
 		Globals.Status.SUCCESS:
 			print("Enemy target",target)

@@ -6,7 +6,11 @@ extends Node2D
 
 @export var current_wave: int
 
-@export var SpawnPoints: Array[Node2D]
+@export var EnemyPathfindingArea: NavigationRegion2D
+
+@export var PupilZone : Area2D
+
+@export var PupilcollsionShape : CollisionShape2D
 
 @export var SpawningRoot: Node2D
 
@@ -20,12 +24,24 @@ func _do_sequence(sequence: EnemySequence) -> void:
 	outstanding_sequences += 1
 	for i in sequence.EnemyAmount:
 		await get_tree().create_timer(sequence.EnemySpawnInterval).timeout
-		#pick a random spawn point 
+		#pick a random spawn point within navigation region
 		
-		var spawnPoint = SpawnPoints.pick_random()
+		var RandomPoint = NavigationServer2D.region_get_random_point(Globals.nav_rid, 0, true)
+		
+		#make sure its not touching the pupil area 2D
+		while RandomPoint.distance_to(PupilZone.position) < PupilcollsionShape.shape.radius:
+			RandomPoint = NavigationServer2D.region_get_random_point(Globals.nav_rid, 0, true)
+			
+		
+		#make sure its not too close to the player 
+		
+		#spawn the enemy there 
+		#var spawnPoint = SpawnPoints.pick_random() -old 
+		var spawnPoint = RandomPoint
 		
 		#spawm enemy at that point
 		var newEnemy = sequence.Enemy.instantiate()
+		newEnemy.position = RandomPoint
 		print("newEnemy target = ", player)
 				
 		newEnemy.sensory.target = player
@@ -58,6 +74,17 @@ func _process(delta: float) -> void:
 	if Input.is_key_pressed(KEY_SPACE):
 		_play_blink()
 # wave
+
+
+func _teleport_all_enemies() -> void:
+	pass
+	#get list of all enemies 
+	
+	#loop list
+		#find random spot in eye
+		#check spot is valid
+		#teleport enemy there
+	
 # time till next wave
 # enemy dictionary 
 		#type , number 

@@ -33,13 +33,19 @@ func knockback(shoot_dir):
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func check_can_shoot():
-	Globals.game_ui_ref.update_ammo_text()
+	if Globals.game_ui_ref:
+		Globals.game_ui_ref.update_ammo_text()
 	check_remove_gun()
 	if !Globals.OWNED_WEAPONS[weapon_idx]:
 		unequip = true
 		print("MUST UNEQUIP")
 	if Globals.CURRENT_AMMO[weapon_idx] < 1: return false
 	else: return true
+	
+## May be overriden in child classes.
+func _play_shoot_sfx() -> void:
+	Sounds.sfx_bullet_shoot.play()
+	
 func _physics_process(delta):
 	if check_can_shoot() && is_left && Input.is_action_pressed("ShootLeft") && can_shoot:
 		can_shoot = false
@@ -48,9 +54,11 @@ func _physics_process(delta):
 		bullet.velocity = (get_global_mouse_position() - %FirePoint.global_position).normalized() 
 		bullet.global_position = %FirePoint.global_position
 		bullet.speed = speed
+		bullet.gun_id = weapon_idx
 		
 		knockback((get_global_mouse_position() - %FirePoint.global_position).normalized())
 		get_tree().root.add_child(bullet)
+		_play_shoot_sfx()
 		$Cooldown.start(shoot_cooldown / Upgrades.player_firerate_multiplier)
 		Globals.CURRENT_AMMO[weapon_idx]-=1
 		print("Current ammo: ", Globals.CURRENT_AMMO[weapon_idx])
@@ -61,9 +69,11 @@ func _physics_process(delta):
 		bullet.velocity = (get_global_mouse_position() - %FirePoint.global_position).normalized() 
 		bullet.global_position = %FirePoint.global_position
 		bullet.speed = speed
+		bullet.gun_id = weapon_idx
 		
 		knockback((get_global_mouse_position() - %FirePoint.global_position).normalized())
 		get_tree().root.add_child(bullet)
+		_play_shoot_sfx()
 		$Cooldown.start(shoot_cooldown / Upgrades.player_firerate_multiplier)
 		Globals.CURRENT_AMMO[weapon_idx]-=1
 		print("Current ammo: ", Globals.CURRENT_AMMO[weapon_idx])

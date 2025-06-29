@@ -3,6 +3,7 @@ extends Node2D
 var velocity = Vector2.ZERO
 var speed := 0.0
 var damage := 3
+var gun_id: int = 0
 
 func _physics_process(delta: float) -> void:
 	position += velocity * delta * speed
