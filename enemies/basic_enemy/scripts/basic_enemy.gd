@@ -20,6 +20,7 @@ var speed_mod : float = 1.0
 @export var strength : int
 @export var speed_boost : float
 
+
 @export var target : Player
 
 
@@ -94,17 +95,24 @@ func on_use_boost():
 
 func on_use_skill():
 	if state_machine.attack_one:
+		await get_tree().create_timer(0.8).timeout
 		var new_proj = Globals.homing_bullet.instantiate()
-		new_proj.target = sensory.target
+		var new_proj_two = Globals.homing_bullet.instantiate()
+		var new_proj_three = Globals.homing_bullet.instantiate()
+		new_proj.target = Globals.player
+		new_proj.global_position = (global_position + global_position.direction_to(sensory.agent.target_position))
+		new_proj.direction = global_position.direction_to(sensory.agent.target_position)
+		new_proj_two.target = Globals.player
+		new_proj_two.global_position = (global_position + global_position.direction_to(sensory.agent.target_position))
+		new_proj_two.direction = global_position.direction_to(sensory.agent.target_position)
+		new_proj_three.target = Globals.player
 		new_proj.global_position = (global_position + global_position.direction_to(sensory.agent.target_position))
 		new_proj.direction = global_position.direction_to(sensory.agent.target_position)
 		add_sibling(new_proj)
-		await get_tree().create_timer(0.1).timeout
-		add_sibling(new_proj)
-		await get_tree().create_timer(0.1).timeout
-		add_sibling(new_proj)
-		state_machine._set_attack_one(false)
-		state_machine.on_attack_one()
+		await get_tree().create_timer(0.3).timeout
+		add_sibling(new_proj_two)
+		await get_tree().create_timer(0.7).timeout
+		add_sibling(new_proj_three)
 	else:
 		pass
 	if state_machine.attack_two:
@@ -112,8 +120,6 @@ func on_use_skill():
 		new_proj.global_position = global_position + global_position.direction_to(sensory.agent.target_position)
 		new_proj.direction = global_position.direction_to(sensory.agent.target_position)
 		add_sibling(new_proj)
-		state_machine._set_attack_two(false)
-		state_machine.on_attack_two()
 	else:
 		pass
 	if state_machine.attack_three:
@@ -134,8 +140,6 @@ func on_use_skill():
 		add_sibling(new_proj)
 		add_sibling(new_proj_one)
 		add_sibling(new_proj_two)
-		state_machine._set_attack_three(false)
-		state_machine.on_attacK_three()
 	else:
 		pass
 
@@ -146,8 +150,6 @@ func on_use_aggression():
 		new_proj.global_position = global_position + global_position.direction_to(sensory.agent.target_position)
 		new_proj.direction = global_position.direction_to(sensory.agent.target_position)
 		add_sibling(new_proj)
-		state_machine._set_attack_two(false)
-		state_machine.on_attack_two()
 	else:
 		pass
 

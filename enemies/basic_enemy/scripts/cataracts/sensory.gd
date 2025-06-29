@@ -11,7 +11,6 @@ func _process(delta: float) -> void:
 		target = Globals.player
 	match vision_state:
 		Globals.Status.SUCCESS:
-			print("Enemy target",target)
 			agent.set_target_position(target.global_position)
 			signal_bus.look_at(agent.target_position)
 			signal_bus.use_engage.emit(agent.get_next_path_position())

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cll6r826wc603"]
+[gd_scene load_steps=26 format=3 uid="uid://cll6r826wc603"]
 
 [ext_resource type="Script" uid="uid://bxtpjpge1yypu" path="res://game.gd" id="1_hve3p"]
 [ext_resource type="Texture2D" uid="uid://dxalddyrgwxy1" path="res://eyeball/white_square.svg" id="1_vef74"]
@@ -14,6 +14,7 @@
 [ext_resource type="Shader" uid="uid://bsrqnqm64wq4y" path="res://eyeball/eyeball_blink.gdshader" id="8_vef74"]
 [ext_resource type="PackedScene" uid="uid://b2h205882at0f" path="res://enemies/basic_enemy/enemy_list/dryeye.tscn" id="10_7sc4i"]
 [ext_resource type="PackedScene" uid="uid://l463s6lfifsc" path="res://enemies/basic_enemy/enemy_list/amblyopia.tscn" id="10_215e1"]
+[ext_resource type="PackedScene" uid="uid://d0pk8wgi381l3" path="res://enemies/basic_enemy/enemy_list/uveitis.tscn" id="11_80cx4"]
 
 [sub_resource type="Animation" id="Animation_7jktm"]
 resource_name = "Blink"
@@ -61,28 +62,28 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-2980, -86, -2044, -706
 script = ExtResource("7_lc2xo")
 Enemy = ExtResource("8_215e1")
 EnemyAmount = 4
-EnemySpawnInterval = 0.1
+EnemySpawnInterval = 8.0
 metadata/_custom_type_script = "uid://d0qnw1ylathq4"
 
 [sub_resource type="Resource" id="Resource_215e1"]
 script = ExtResource("7_lc2xo")
-Enemy = ExtResource("10_7sc4i")
-EnemyAmount = 4
-EnemySpawnInterval = 0.1
+Enemy = ExtResource("11_80cx4")
+EnemyAmount = 18
+EnemySpawnInterval = 6.0
 metadata/_custom_type_script = "uid://d0qnw1ylathq4"
 
 [sub_resource type="Resource" id="Resource_e8heu"]
 script = ExtResource("7_lc2xo")
-Enemy = ExtResource("10_7sc4i")
-EnemyAmount = 4
-EnemySpawnInterval = 0.1
+Enemy = ExtResource("10_215e1")
+EnemyAmount = 0
+EnemySpawnInterval = 0.0
 metadata/_custom_type_script = "uid://d0qnw1ylathq4"
 
 [sub_resource type="Resource" id="Resource_rvswv"]
 script = ExtResource("7_lc2xo")
-Enemy = ExtResource("10_215e1")
-EnemyAmount = 4
-EnemySpawnInterval = 0.1
+Enemy = ExtResource("10_7sc4i")
+EnemyAmount = 10
+EnemySpawnInterval = 15.0
 metadata/_custom_type_script = "uid://d0qnw1ylathq4"
 
 [sub_resource type="Resource" id="Resource_80cx4"]

@@ -1,34 +1,15 @@
 [gd_scene load_steps=4 format=3 uid="uid://d4crxlfbidcr"]
 
 [ext_resource type="Script" uid="uid://taxsdfj7xk2f" path="res://enemies/bullets/enemy_bullet/bullet.gd" id="1_q61gr"]
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_q61gr"]
-lifetime_randomness = 0.3
-particle_flag_disable_z = true
-angle_min = 91.0
-angle_max = 438.6
-angular_velocity_min = -355.86
-angular_velocity_max = -248.27
-orbit_velocity_min = -0.391
-orbit_velocity_max = 0.368
-gravity = Vector3(0, -98, 0)
-scale_min = 10.0
-scale_max = 15.0
-hue_variation_min = 0.63
-hue_variation_max = 1.0
-anim_speed_max = 1.01
-turbulence_noise_strength = 20.0
-turbulence_noise_scale = 10.0
+[ext_resource type="Texture2D" uid="uid://cjjjj6t82jvhd" path="res://icon.svg" id="2_dsnyh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dsnyh"]
 
 [node name="Area2D" type="Area2D" groups=["Projectiles"]]
 script = ExtResource("1_q61gr")
 
-[node name="Animation" type="GPUParticles2D" parent="."]
-modulate = Color(0.0313726, 0.027451, 0.968627, 1)
-amount = 50
-process_material = SubResource("ParticleProcessMaterial_q61gr")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_dsnyh")
 
 [node name="LifeTime" type="Timer" parent="."]
 
