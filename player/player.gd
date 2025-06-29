@@ -8,6 +8,7 @@ var level : int = 0
 var current_exp : int = 0
 var needed_exp : int = 1
 @export var health : int = 100
+@onready var max_health: int = health
 
 
 func get_input() -> Vector2:
@@ -29,6 +30,10 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _set_health(value:int):
+	if value > max_health:
+		# TODO: Do we want overheal?
+		value = max_health
+	
 	if value < health:
 		SignalBus.player_damaged.emit()
 	health = value

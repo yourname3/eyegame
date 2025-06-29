@@ -41,12 +41,21 @@ var player_firerate_multiplier := 1.0
 
 var _double_damage_timer := 0.0
 var _double_firerate_timer := 0.0
+var _heal_five_counter: int = 0
 
 func _ready() -> void:
 	SignalBus.enemy_died.connect(func():
 		# This upgrade resets this timer -- you do get an additional 0.25 per
 		# copy of the upgrade.
 		_double_damage_timer = 0.25 * kill_enemy_gives_double_damage
+	
+		if kill_5_gives_heal_5 > 0:	
+			_heal_five_counter += 1
+			var player: Player = get_tree().get_first_node_in_group("Players")
+			if player != null:
+				while _heal_five_counter >= 5:
+					player._set_health(player.health + 5 * kill_5_gives_heal_5)
+					_heal_five_counter -= 5
 	)
 	
 	SignalBus.player_damaged.connect(func():

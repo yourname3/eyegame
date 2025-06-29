@@ -31,15 +31,23 @@ func _ready() -> void:
 	use_boost.connect(on_use_boost)
 	boost_cooldown.connect(state_machine.on_boost_cooldown)
 
+func _drop_exp(count: int) -> void:
+	for i in range(count):
+		var e = exp.instantiate()
+		e.global_position = global_position + Vector2.from_angle(randf_range(0,TAU) ) * randf_range(.1,100)
+		get_tree().root.add_child.call_deferred(e)
+		#print("hello")
 
 func _death():
 	SignalBus.enemy_died.emit()
 	
-	for i in range(3):
-		var e = exp.instantiate()
-		e.global_position = global_position + Vector2.from_angle(randf_range(0,TAU) ) * randf_range(.1,100)
-		get_tree().root.add_child.call_deferred(e)
-		print("hello")
+	# "10% to drop 5 extra xp", stacks by extra rolls
+	for roll in range(0, Upgrades.rolls_for_extra_xp):
+		if randf() <= 0.1:
+			_drop_exp(5)
+	
+	_drop_exp(3)
+	
 	if sensory.death_explosion:
 		var new_blowup
 		new_blowup.global_position = global_position
