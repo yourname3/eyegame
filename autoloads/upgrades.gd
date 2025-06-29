@@ -76,7 +76,7 @@ func _process(delta: float) -> void:
 	player_damage_multiplier = 2.0 if _double_damage_timer > 0.0 else 1.0
 	player_firerate_multiplier = 2.0 if _double_firerate_timer > 0.0 else 1.0
 
-	enemy_damage_multiplier = pow(1.1, enemy_damage_boosts)
-	enemy_speed_multiplier  = pow(1.1, enemy_speed_boosts)
-	enemy_health_multiplier = pow(1.1, enemy_health_boosts)
+	enemy_damage_multiplier = 1.0 + enemy_damage_boosts * 0.1#= pow(1.1, enemy_damage_boosts)
+	enemy_speed_multiplier  = 1.0 + enemy_speed_boosts * 0.1#= pow(1.1, enemy_speed_boosts)
+	enemy_health_multiplier = 1.0 + enemy_health_boosts * 0.1#= pow(1.1, enemy_health_boosts)
 	enemy_scale_multiplier  = pow(0.9, enemy_small_boosts)

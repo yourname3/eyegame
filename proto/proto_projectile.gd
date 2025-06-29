@@ -28,8 +28,14 @@ func _hit_enemy() -> void:
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("Enemies"):
 		if remaining_hits > 0:
+			# So, in theory, this is supposed to be damage, but I haven't
+			# checked if we actually set this properly everywhere, so I'll
+			# just make sure it's at least 1
+			var the_damage = damage
+			if the_damage < 1:
+				the_damage = 1
 			# TODO: Is 1 supposed to be 'damage'?
-			Globals.transmit_damage.emit(body, 1 * Upgrades.player_damage_multiplier)
+			Globals.transmit_damage.emit(body, the_damage * Upgrades.player_damage_multiplier)
 			print(body.get_health())
 			remaining_hits -= 1
 			

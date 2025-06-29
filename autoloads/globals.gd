@@ -53,7 +53,7 @@ const MAX_AMMO_INIT: Array[int] = [
 	175,
 	180,
 	80,
-	4,
+	16,
 	20,
 ]
 

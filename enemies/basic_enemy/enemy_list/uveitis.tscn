@@ -18,6 +18,7 @@ radius = 54.0093
 [node name="BasicEnemy2" type="CharacterBody2D" node_paths=PackedStringArray("sensory", "stats", "state_machine") groups=["Enemies"]]
 collision_layer = 4
 script = ExtResource("1_5i3yh")
+self_to_spawn = null
 sensory = NodePath("Sensory")
 stats = NodePath("Stats")
 state_machine = NodePath("StateMchine")

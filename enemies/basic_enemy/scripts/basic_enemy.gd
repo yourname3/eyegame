@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name BasicEnemy
 
 
-
+@export var self_to_spawn: PackedScene = null
 
 signal use_engage
 signal use_boost
@@ -49,6 +49,12 @@ func _drop_exp(count: int) -> void:
 
 var _died = false
 
+func _spawn_copy():
+	if self_to_spawn != null:
+		var copy = self_to_spawn.instantiate()
+		copy.global_position = global_position
+		add_sibling(copy)
+
 func _death():
 	if _died:
 		return
@@ -60,8 +66,14 @@ func _death():
 	
 	# "10% to drop 5 extra xp", stacks by extra rolls
 	for roll in range(0, Upgrades.rolls_for_extra_xp):
-		if randf() <= 0.1:
-			_drop_exp(5)
+		if randf() <= 0.08:
+			_drop_exp(3)
+			
+	print("HEEELELO ", Upgrades.enemy_spawn_rolls)
+	for roll in range(0, Upgrades.enemy_spawn_rolls):
+		print("TRY SPAWN")
+		if randf() <= 0.04:
+			_spawn_copy()
 	
 	_drop_exp(3)
 	if sensory.death_explosion:

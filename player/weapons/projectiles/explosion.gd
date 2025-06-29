@@ -16,4 +16,4 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemies"):
-		Globals.transmit_damage.emit(body, 1)
+		Globals.transmit_damage.emit(body, 1 * Upgrades.player_damage_multiplier)

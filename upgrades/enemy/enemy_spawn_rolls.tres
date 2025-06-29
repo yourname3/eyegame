@@ -5,5 +5,7 @@
 [resource]
 script = ExtResource("1_wj4ss")
 upgrades_var = &"enemy_spawn_rolls"
-description = "Enemies have a 2% chance to spawn a copy of themselves on death."
+gun_index = -1
+gun_ammo = 0
+description = "Enemies have a 4% chance to spawn a copy of themselves on death."
 metadata/_custom_type_script = "uid://cqp62343t00ga"

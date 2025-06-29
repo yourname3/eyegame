@@ -5,5 +5,7 @@
 [resource]
 script = ExtResource("1_ownaj")
 upgrades_var = &"rolls_for_extra_xp"
-description = "Enemies have a 10% chance to drop five extra XP."
+gun_index = -1
+gun_ammo = 0
+description = "Enemies have an 8% chance to drop three extra XP."
 metadata/_custom_type_script = "uid://cqp62343t00ga"

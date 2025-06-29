@@ -15,9 +15,9 @@
 [ext_resource type="Resource" uid="uid://blrjci86aaver" path="res://upgrades/player/gun_rpg.tres" id="10_j2qs8"]
 [ext_resource type="Resource" uid="uid://buuvvkf5fwok8" path="res://upgrades/enemy/enemy_small_boosts.tres" id="11_fnlpn"]
 [ext_resource type="Resource" uid="uid://dkukm5t2gqx3o" path="res://upgrades/player/gun_shotgun.tres" id="11_x6vmw"]
+[ext_resource type="Resource" uid="uid://bnipe7hyolygf" path="res://upgrades/player/gun_gravity.tres" id="12_br8lp"]
 [ext_resource type="Resource" uid="uid://wqkitagf0rin" path="res://upgrades/enemy/enemy_spawn_rolls.tres" id="12_dbdwo"]
 [ext_resource type="Resource" uid="uid://covym8unqmcf1" path="res://upgrades/enemy/enemy_speed_boosts.tres" id="13_ytw0b"]
-[ext_resource type="Resource" uid="uid://bre7qv3lq55xk" path="res://upgrades/enemy/enemy_wave_spawn_extra_first.tres" id="14_d27yo"]
 
 [sub_resource type="Animation" id="Animation_x0oev"]
 length = 0.001
@@ -165,8 +165,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_vc2sf")
 script = ExtResource("2_8qicm")
-player_upgrades = Array[ExtResource("3_jys1j")]([ExtResource("4_x0oev"), ExtResource("5_sfa88"), ExtResource("6_br8lp"), ExtResource("7_j2qs8"), ExtResource("8_x6vmw"), ExtResource("9_br8lp"), ExtResource("10_j2qs8"), ExtResource("11_x6vmw")])
-enemy_upgrades = Array[ExtResource("3_jys1j")]([ExtResource("9_7n3ql"), ExtResource("10_hp8mq"), ExtResource("11_fnlpn"), ExtResource("12_dbdwo"), ExtResource("13_ytw0b"), ExtResource("14_d27yo")])
+player_upgrades = Array[ExtResource("3_jys1j")]([ExtResource("4_x0oev"), ExtResource("5_sfa88"), ExtResource("6_br8lp"), ExtResource("7_j2qs8"), ExtResource("8_x6vmw"), ExtResource("9_br8lp"), ExtResource("10_j2qs8"), ExtResource("11_x6vmw"), ExtResource("12_br8lp")])
+enemy_upgrades = Array[ExtResource("3_jys1j")]([ExtResource("9_7n3ql"), ExtResource("10_hp8mq"), ExtResource("11_fnlpn"), ExtResource("12_dbdwo"), ExtResource("13_ytw0b")])
 
 [node name="UpgradePanel" parent="." instance=ExtResource("2_ikkw3")]
 unique_name_in_owner = true

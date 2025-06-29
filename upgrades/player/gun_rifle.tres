@@ -6,6 +6,6 @@
 script = ExtResource("1_x5u56")
 upgrades_var = &""
 gun_index = 1
-gun_ammo = 125
-description = "Grants you Rifle and 125 ammo for it."
+gun_ammo = 65
+description = "Grants you Rifle and 65 ammo for it."
 metadata/_custom_type_script = "uid://cqp62343t00ga"
