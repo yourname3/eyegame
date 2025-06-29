@@ -1,13 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://cll6r826wc603"]
+[gd_scene load_steps=10 format=3 uid="uid://cll6r826wc603"]
 
 [ext_resource type="Texture2D" uid="uid://duueyjr6h31ar" path="res://eyeball/eye_white.svg" id="1_feb5d"]
 [ext_resource type="Script" uid="uid://cy5cg8tramg6s" path="res://eyeball/eyeball_mask_child.gd" id="2_7jktm"]
 [ext_resource type="PackedScene" uid="uid://dhx310ohc245d" path="res://player/player.tscn" id="2_e2o6t"]
 [ext_resource type="Texture2D" uid="uid://cpim1me506bgn" path="res://eyeball/eye_iris_pupil.svg" id="4_fc0e3"]
-[ext_resource type="PackedScene" uid="uid://b5ihla3kgspya" path="res://enemies/animations/virus_enemy/virus_enemy.tscn" id="5_j5wjh"]
 [ext_resource type="PackedScene" uid="uid://l463s6lfifsc" path="res://enemies/basic_enemy/enemy_list/amblyopia.tscn" id="5_ryrav"]
 [ext_resource type="PackedScene" uid="uid://cx74uha2f3op4" path="res://menus/pause_menu.tscn" id="6_ryrav"]
-[ext_resource type="PackedScene" uid="uid://53ndylwh10qw" path="res://enemies/animations/cannon_enemy/cannon_enemy.tscn" id="7_eow3j"]
 
 [sub_resource type="Animation" id="Animation_7jktm"]
 resource_name = "Blink"
@@ -67,18 +65,6 @@ position = Vector2(-1154, -101)
 position = Vector2(-8, -9)
 zoom = Vector2(0.655, 0.655)
 
-[node name="VirusEnemy" parent="EyeWhite/PutEverythingAsAChildOfThis" instance=ExtResource("5_j5wjh")]
-position = Vector2(-1062, -587)
-
-[node name="VirusEnemy2" parent="EyeWhite/PutEverythingAsAChildOfThis" instance=ExtResource("5_j5wjh")]
-position = Vector2(-807, -699)
-
-[node name="VirusEnemy3" parent="EyeWhite/PutEverythingAsAChildOfThis" instance=ExtResource("5_j5wjh")]
-position = Vector2(-651, -482)
-
-[node name="VirusEnemy4" parent="EyeWhite/PutEverythingAsAChildOfThis" instance=ExtResource("5_j5wjh")]
-position = Vector2(-462, -793)
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="EyeWhite"]
 libraries = {
 &"": SubResource("AnimationLibrary_ryrav")
@@ -88,6 +74,3 @@ libraries = {
 position = Vector2(-2296, -135)
 
 [node name="PauseMenu" parent="." instance=ExtResource("6_ryrav")]
-
-[node name="CannonEnemy" parent="." instance=ExtResource("7_eow3j")]
-position = Vector2(276, -142)
