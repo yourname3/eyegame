@@ -43,7 +43,7 @@ offset_right = 342.5
 offset_bottom = 29.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Aperture Apparatus"
+text = "Cornea Carnage: Occular Offensive"
 horizontal_alignment = 1
 
 [node name="PlayButton" type="Button" parent="."]
