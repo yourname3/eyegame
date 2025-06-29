@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqbb77w018hnv"]
+[gd_scene load_steps=6 format=3 uid="uid://bqbb77w018hnv"]
 
 [ext_resource type="Script" uid="uid://b18g3b8rfcfl7" path="res://menus/game_ui/game_ui.gd" id="1_2rou7"]
 [ext_resource type="FontFile" uid="uid://6ckenv7h70nq" path="res://menus/theme/ChelseaMarket-Regular.ttf" id="2_1vkcg"]
-[ext_resource type="Texture2D" uid="uid://dxalddyrgwxy1" path="res://eyeball/white_square.svg" id="3_d3duc"]
+[ext_resource type="Texture2D" uid="uid://bpra8tcld7th4" path="res://menus/game_ui/menu_boxes.svg" id="2_245l2"]
+[ext_resource type="Theme" uid="uid://dsvhdhjqgfmv5" path="res://menus/theme/main_theme.tres" id="2_d3duc"]
 
 [sub_resource type="Theme" id="Theme_245l2"]
 default_font = ExtResource("2_1vkcg")
@@ -21,185 +22,200 @@ WavesDisplay = NodePath("Waves Count")
 
 [node name="VBoxContainerL" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_right = 156.0
-offset_bottom = 433.0
+offset_left = 14.0
+offset_top = 13.0
+offset_right = 170.0
+offset_bottom = 446.0
 
 [node name="VBoxContainerR" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -156.0
-offset_bottom = 433.0
+offset_left = -168.0
+offset_top = 12.0
+offset_right = -12.0
+offset_bottom = 445.0
 grow_horizontal = 0
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 layout_mode = 0
 show_percentage = false
 
-[node name="Border" type="ColorRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.643137)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -391.0
+offset_top = -58.0
+offset_right = 391.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_245l2")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.643137)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.16
-offset_right = 19.84
-offset_bottom = 40.0
+offset_left = -391.0
+offset_right = 391.0
+offset_bottom = 76.0
 grow_horizontal = 2
-scale = Vector2(15.18, 0.52)
-pivot_offset = Vector2(20, 19)
-color = Color(0, 0, 0, 0.419608)
-
-[node name="PlayerHealth" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 40.0
-grow_horizontal = 2
-scale = Vector2(15, 0.4)
-pivot_offset = Vector2(20, 19)
-color = Color(1, 0, 0, 0.470588)
-
-[node name="Label" type="Label" parent="PlayerHealth"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -45.0
-offset_top = -22.0
-offset_right = 558.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.065, 1)
-pivot_offset = Vector2(27.1795, 10.4999)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Player HP: 100"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="PlayerLevel" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_top = 602.0
-offset_right = 20.0
-offset_bottom = 642.0
-grow_horizontal = 2
-scale = Vector2(1e-05, 0.4)
-pivot_offset = Vector2(20, 19)
-color = Color(2.88785e-07, 0.570311, 0.840815, 0.454902)
+texture = ExtResource("2_245l2")
+expand_mode = 1
+flip_v = true
 
 [node name="PlayLevelContainer" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 7
 anchor_left = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-offset_left = -20.0
-offset_top = 602.0
-offset_right = 20.0
-offset_bottom = 642.0
+anchor_bottom = 1.0
+offset_left = -299.0
+offset_top = -28.0
+offset_right = 299.0
 grow_horizontal = 2
-scale = Vector2(15, 0.4)
+grow_vertical = 0
 pivot_offset = Vector2(20, 19)
-color = Color(0.39656, 0.737271, 1, 0.396078)
+theme = ExtResource("2_d3duc")
+color = Color(0.326799, 0.712945, 0.999999, 1)
+
+[node name="PlayerLevel" type="ColorRect" parent="PlayLevelContainer"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.165, 1)
+pivot_offset = Vector2(302, 20)
+color = Color(0.436569, 0.0022248, 0.940983, 0.454902)
 
 [node name="Label" type="Label" parent="PlayLevelContainer"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -45.0
-offset_top = -22.0
-offset_right = 558.0
-offset_bottom = 20.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.065, 1)
 pivot_offset = Vector2(27.1795, 10.4999)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Level"
+theme_override_font_sizes/font_size = 16
+text = "Level: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_lock_ = true
 
-[node name="Border2" type="ColorRect" parent="."]
+[node name="PlayerHealthC" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.235
-offset_top = 24.035
-offset_right = 19.765
-offset_bottom = 64.035
+offset_left = -299.0
+offset_top = 5.0
+offset_right = 299.0
+offset_bottom = 33.0
 grow_horizontal = 2
-scale = Vector2(13.725, 0.52)
 pivot_offset = Vector2(20, 19)
-color = Color(0, 0, 0, 0.419608)
+theme = ExtResource("2_d3duc")
+color = Color(0.420202, 0, 0.142893, 1)
 
-[node name="PlayerHealth3" type="ColorRect" parent="."]
+[node name="PlayerHealth" type="ColorRect" parent="PlayerHealthC"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.205, 1)
+pivot_offset = Vector2(302, 20)
+color = Color(1, 0.0747349, 0.275442, 0.454902)
+
+[node name="PlayerHealthLabel" type="Label" parent="PlayerHealthC"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(27.1795, 10.4999)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "Player: 100/100"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="PlayerHealthC2" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_top = 24.0
-offset_right = 20.0
-offset_bottom = 64.0
+offset_left = -249.0
+offset_top = 40.0
+offset_right = 249.0
+offset_bottom = 68.0
 grow_horizontal = 2
-scale = Vector2(13.535, 0.4)
 pivot_offset = Vector2(20, 19)
-color = Color(1, 0, 0, 0.470588)
+theme = ExtResource("2_d3duc")
+color = Color(0.420202, 0, 0.142893, 1)
 
-[node name="Label" type="Label" parent="PlayerHealth3"]
+[node name="EyeHealth" type="ColorRect" parent="PlayerHealthC2"]
+unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -45.0
-offset_top = -22.0
-offset_right = 558.0
-offset_bottom = 20.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.065, 1)
+scale = Vector2(0.235, 1)
+pivot_offset = Vector2(249, 13)
+color = Color(0.982768, 1.82897e-06, 0.489477, 0.454902)
+
+[node name="EyeHealthLabel" type="Label" parent="PlayerHealthC2"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 pivot_offset = Vector2(27.1795, 10.4999)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Eye HP: 100"
+theme_override_font_sizes/font_size = 16
+text = "Eye: 100/100"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_lock_ = true
 
 [node name="Waves Count" type="Label" parent="."]
-layout_mode = 0
-offset_left = 13.0
-offset_top = 568.0
-offset_right = 265.0
-offset_bottom = 633.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -126.0
+offset_top = -54.0
+offset_right = 126.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
 theme = SubResource("Theme_245l2")
-text = "WAVE: 1/10"
-
-[node name="Sprite2D" type="Sprite2D" parent="Waves Count"]
-modulate = Color(0, 0, 0, 0.427451)
-z_index = -1
-position = Vector2(113, 28)
-scale = Vector2(3.89063, 1)
-texture = ExtResource("3_d3duc")
+theme_override_font_sizes/font_size = 18
+text = "Wave: 1/10"
+horizontal_alignment = 1

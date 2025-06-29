@@ -12,10 +12,13 @@ var health_scale = 15
 @export var WavesDisplay : Label
 
 func _ready():
+	%PlayerLevel.scale.x = 0
+	%PlayerHealth.scale.x = 1
+	%EyeHealth.scale.x = 1
 	create_ui()
 	
 func _process(delta: float) -> void:
-	WavesDisplay.text = str("Waves: ", Globals.CURRENT_WAVE, "/", Globals.MAX_WAVES)
+	WavesDisplay.text = str("Wave: ", Globals.CURRENT_WAVE, "/", Globals.MAX_WAVES)
 	_update_weapon_panels(panels_left, Globals.equipped_left)
 	_update_weapon_panels(panels_right, Globals.equipped_right)
 
@@ -39,13 +42,13 @@ func _update_weapon_panels(arr: Array, which_weapon: int) -> void:
 	
 func set_player_level(current, needed):
 	print("c: ", current, " / n: ", needed)
-	$PlayerLevel.scale.x = 1.0*current/needed * 15.0
-	print("scalex", $PlayerLevel.scale.x)
-	$PlayLevelContainer/Label.text = str("Level: ", Globals.player.level, " ", current, "/", needed )
+	%PlayerLevel.scale.x = float(current)/float(needed)
+	print("scalex", %PlayerLevel.scale.x)
+	$PlayLevelContainer/Label.text = str("Level: ", Globals.player.level, " XP: ", current, "/", needed )
 func set_player_health_ui(hp, max_hp):
-	print("Health ", $PlayerHealth.scale.x )
-	$PlayerHealth.scale.x = (1.0*hp/max_hp) * 15
-	$PlayerHealth/Label.text = str("Player HP: ", hp)
+	#print("Health ", $PlayerHealth.scale.x )
+	%PlayerHealth.scale.x = float(hp)/float(max_hp)
+	%PlayerHealthLabel.text = str("Player: ", int(hp), "/", int(max_hp))
 	
 func update_ammo_text():
 	for i in panels_left:
@@ -55,8 +58,8 @@ func update_ammo_text():
 		if is_instance_valid(i):
 			i.set_ammo_text()
 func update_eye_health(hp, max_hp):
-	$PlayerHealth3.scale.x = (1.0*hp/max_hp) * 12.5
-	$PlayerHealth3/Label.text = str("Eye HP: ", hp)
+	%EyeHealth.scale.x = float(hp)/float(max_hp)
+	%EyeHealthLabel.text = str("Eye: ", int(hp), "/", int(max_hp))
 
 func create_ui():
 	#Get owned weapons
