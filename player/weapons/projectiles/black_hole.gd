@@ -5,11 +5,16 @@ var velocity = Vector2.ZERO
 var speed := 0.0
 var damage := 1
 var braking_force = 0.99
+var victims:= []
+var pull_force:= 10
 
+func _ready():
+	$AnimationPlayer.speed_scale = .667
 func _physics_process(delta: float) -> void:
 	position += velocity * delta * speed
 	velocity *= braking_force
-
+	for i in victims:
+		i.velocity += (global_position - i.global_position).normalized() * pull_force
 func _on_life_time_timeout():
 	#spawn_explosion()
 	queue_free()
@@ -30,3 +35,16 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemies"):
 		print("do stuff on blackhole enemy")
 		#Globals.transmit_damage.emit(body, 1)
+
+
+
+func _on_scan_area_timeout() -> void:
+	var valid_victims = $Area2D.get_overlapping_bodies()
+	print("Valid victims: ", valid_victims)
+	var idx = 0
+	for i in range(valid_victims.size()):
+		if !valid_victims[idx].is_in_group("Enemies"):
+			valid_victims.remove_at(idx)
+			
+	victims = valid_victims
+	print("Victims: ", victims)
