@@ -84,6 +84,9 @@ func _process_points(delta: float) -> void:
 	#		global_points[i] = global_points[i - 1] + to_last.normalized() * maxstep
 		
 
+func get_input() -> Vector2:
+	return Input.get_vector("Aiming Left", "Aiming Right", "Aiming Up", "Aiming Down")
+
 
 func _process(delta: float) -> void:
 	if $ClawRoot.get_children()[0].unequip:
@@ -96,6 +99,11 @@ func _process(delta: float) -> void:
 	#target += (smooth2 - target) * fac
 	
 	var to_mouse = get_global_mouse_position() - global_position
+	
+	var dir := get_input().normalized()
+	
+	to_mouse = dir
+	
 	var ang_off = 0
 
 	if abs(rad_to_deg(to_mouse.angle() - get_parent().global_rotation)) > 90:

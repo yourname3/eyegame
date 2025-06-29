@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://cy5cg8tramg6s" path="res://eyeball/eyeball_mask_child.gd" id="2_7jktm"]
 [ext_resource type="PackedScene" uid="uid://dhx310ohc245d" path="res://player/player.tscn" id="2_e2o6t"]
 [ext_resource type="Texture2D" uid="uid://cpim1me506bgn" path="res://eyeball/eye_iris_pupil.svg" id="4_fc0e3"]
-[ext_resource type="PackedScene" uid="uid://l463s6lfifsc" path="res://enemies/basic_enemy/enemy_list/amblyopia.tscn" id="5_ryrav"]
 [ext_resource type="PackedScene" uid="uid://cx74uha2f3op4" path="res://menus/pause_menu.tscn" id="6_ryrav"]
+[ext_resource type="PackedScene" uid="uid://bwca23wivq56k" path="res://Director/director.tscn" id="7_eow3j"]
 
 [sub_resource type="Animation" id="Animation_7jktm"]
 resource_name = "Blink"
@@ -46,6 +46,13 @@ _data = {
 
 [node name="Game" type="Node2D"]
 
+[node name="Director" parent="." node_paths=PackedStringArray("SpawnPoints", "SpawningRoot") instance=ExtResource("7_eow3j")]
+SpawnPoints = [NodePath("SpawnPoint")]
+SpawningRoot = NodePath("../EyeWhite/PutEverythingAsAChildOfThis")
+
+[node name="SpawnPoint" type="Marker2D" parent="Director"]
+position = Vector2(341, -229)
+
 [node name="EyeWhite" type="Sprite2D" parent="."]
 clip_children = 2
 position = Vector2(1844, 335)
@@ -69,9 +76,5 @@ zoom = Vector2(0.655, 0.655)
 libraries = {
 &"": SubResource("AnimationLibrary_ryrav")
 }
-
-[node name="BasicEnemy" parent="EyeWhite" instance=ExtResource("5_ryrav")]
-position = Vector2(-2296, -135)
-health = 0
 
 [node name="PauseMenu" parent="." instance=ExtResource("6_ryrav")]

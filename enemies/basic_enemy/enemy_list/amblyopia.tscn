@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://duc5sncw1difd" path="res://enemies/animations/spiral_folder/spiral_enemy.tscn" id="5_r112n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yx0l5"]
-radius = 300.0
+radius = 750.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ib75m"]
 radius = 48.0
@@ -18,15 +18,18 @@ radius = 39.0
 height = 214.0
 
 [node name="BasicEnemy" type="CharacterBody2D" node_paths=PackedStringArray("sensory", "stats", "state_machine") groups=["Enemies"]]
+collision_mask = 0
 script = ExtResource("1_e3fca")
 sensory = NodePath("Sensory")
 stats = NodePath("Stats")
 state_machine = NodePath("StateMchine")
 health = 10
+speed = 150
 
 [node name="Sensory" type="Node2D" parent="." node_paths=PackedStringArray("signal_bus", "vision", "agent", "hitbox")]
 script = ExtResource("2_pyiaf")
 signal_bus = NodePath("..")
+attack_range = 500
 vision = NodePath("Vision")
 agent = NodePath("Agent")
 hitbox = NodePath("HitBox")
