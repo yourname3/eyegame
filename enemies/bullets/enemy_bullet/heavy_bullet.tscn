@@ -18,3 +18,18 @@ shape = SubResource("CircleShape2D_dsnyh")
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color(0.988235, 0.0235294, 1, 1)
 polygon = PackedVector2Array(22, 0, -13, -17, -2, 0, -16, 15)
+
+[node name="Polygon2D2" type="Polygon2D" parent="."]
+rotation = 3.14159
+color = Color(0.988235, 0.0235294, 1, 1)
+polygon = PackedVector2Array(22, 0, -13, -17, -2, 0, -16, 15)
+
+[node name="Polygon2D3" type="Polygon2D" parent="."]
+rotation = 1.5708
+color = Color(0.988235, 0.0235294, 1, 1)
+polygon = PackedVector2Array(22, 0, -13, -17, -2, 0, -16, 15)
+
+[node name="Polygon2D4" type="Polygon2D" parent="."]
+rotation = -1.5708
+color = Color(0.988235, 0.0235294, 1, 1)
+polygon = PackedVector2Array(22, 0, -13, -17, -2, 0, -16, 15)
