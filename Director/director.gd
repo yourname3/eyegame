@@ -1,5 +1,7 @@
 extends Node2D
 
+@export var player : Player
+
 @export var enemy_data: Array[Wave]
 
 @export var current_wave: int
@@ -24,6 +26,7 @@ func _do_sequence(sequence: EnemySequence) -> void:
 		
 		#spawm enemy at that point
 		var newEnemy = sequence.Enemy.instantiate()
+		newEnemy.sensory.target = player
 		SpawningRoot.add_child(newEnemy)
 		
 	# If we were the last sequence, signal to the wave manager that we're
