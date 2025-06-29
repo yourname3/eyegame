@@ -51,6 +51,7 @@ script = ExtResource("4_ml10i")
 
 [node name="BulletShootV3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_1084v")
+volume_db = 12.0
 max_polyphony = 4
 bus = &"SFX"
 script = ExtResource("4_ml10i")
