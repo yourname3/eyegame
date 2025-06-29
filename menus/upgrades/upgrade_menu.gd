@@ -32,6 +32,7 @@ func _choose_not_in(possible: Array[Upgrade], already_chosen: Array[Upgrade]) ->
 # Call this to show new upgrades
 # TODO: pause the game? Blink the eye...?
 func show_new_upgrades() -> void:
+	Globals.push_pause()
 	var chosen_player: Array[Upgrade] = []
 	var chosen_enemy: Array[Upgrade] = []
 	
@@ -64,6 +65,7 @@ func select_upgrade(which: UpgradePanel, player: Upgrade, enemy: Upgrade) -> voi
 	%AnimationPlayer.play("hide")
 	player.apply()
 	enemy.apply()
+	Globals.pop_pause()
 	
 func _ready() -> void:
 	for panel in panels:

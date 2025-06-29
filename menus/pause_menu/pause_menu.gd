@@ -13,23 +13,23 @@ func _kill_tween() -> Tween:
 func unpause() -> void:
 	if not get_tree().paused:
 		return
-	get_tree().paused = false
+	Globals.pop_pause()
 	
 	tween = _kill_tween()
 	tween.tween_property(menu, "anchor_top", 1.0, 0.3).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(self, "visible", false, 0.0)
 	
 func pause() -> void:
-	if get_tree().paused:
+	if visible:
 		return
-	get_tree().paused = true
+	Globals.push_pause()
 	
 	show()
 	tween = _kill_tween()
 	tween.tween_property(menu, "anchor_top", 0.0, 0.3).set_ease(Tween.EASE_IN_OUT)
 
 func toggle_pause() -> void:
-	if get_tree().paused:
+	if visible:
 		unpause()
 	else:
 		pause()

@@ -19,6 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://cybr0xc1uh5d3" path="res://SFX/Shotgun.wav" id="16_b6e7a"]
 
 [node name="Sounds" type="Node"]
+process_mode = 3
 script = ExtResource("1_qu8rh")
 
 [node name="Music_Game" type="AudioStreamPlayer" parent="."]

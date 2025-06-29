@@ -7,6 +7,20 @@ const GUN_SHOTGUN := 2
 const GUN_RPG     := 3
 const GUN_GRAVITY := 4
 
+var pause_stack: int = 0
+
+func push_pause() -> void:
+	pause_stack += 1
+	if pause_stack > 0:
+		get_tree().paused = true
+		
+func pop_pause() -> void:
+	pause_stack -= 1
+	if pause_stack < 0:
+		pause_stack = 0
+	if pause_stack == 0:
+		get_tree().paused = false
+
 #0 - pistol 
 #1 - rifle
 #2 - shotgun
