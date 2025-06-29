@@ -45,9 +45,12 @@ enemy_sequences = Array[ExtResource("3_y04b1")]([SubResource("Resource_rjmvp"), 
 SecondsTillNextWave = 2.0
 metadata/_custom_type_script = "uid://b653chsv5uyx7"
 
-[node name="Director" type="Node2D"]
+[node name="Director" type="Node2D" node_paths=PackedStringArray("BlinkTimer")]
 script = ExtResource("1_h1vsq")
 enemy_data = Array[ExtResource("2_7b5rb")]([SubResource("Resource_us3my"), SubResource("Resource_pf5sc")])
+BlinkTimer = NodePath("Blink_Timer")
 
 [node name="Wave_Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Blink_Timer" type="Timer" parent="."]

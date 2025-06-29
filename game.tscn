@@ -33,6 +33,20 @@ tracks/0/keys = {
 "update": 0,
 "values": [1.0, 0.0, 1.0]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Director")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_teleport_all_enemies"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_ryrav"]
 length = 0.001
@@ -56,7 +70,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_80cx4"]
-radius = 702.0
+radius = 341.709
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_j5wjh"]
 vertices = PackedVector2Array(2412.94, -500.367, 2412.69, -500.531, 2981.04, -144.453, 1988.18, 565.867, 1988.2, 565.859, 1477.21, 930.133, -2038.92, -697.359, -1449.22, -1002.69, -643.398, -1248.03, 250.172, -1267.97, 1194.26, -1090.33, 1842.55, -835, 701.75, 1234.13, -122.133, 1292.91, -1213.47, 1027.56, -1872.1, 683.281, -2501.18, 309.82, -2963.42, -84.9766)
@@ -124,14 +138,17 @@ texture = ExtResource("4_fc0e3")
 
 [node name="EyePupil" type="Sprite2D" parent="EyeIrisPupil"]
 position = Vector2(28, 0)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("15_7sc4i")
 
-[node name="Area2D" type="Area2D" parent="EyeIrisPupil/EyePupil"]
+[node name="Area2D" type="Area2D" parent="EyeIrisPupil"]
+position = Vector2(28, 0)
 collision_layer = 5
 collision_mask = 5
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EyeIrisPupil/EyePupil/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EyeIrisPupil/Area2D"]
 shape = SubResource("CircleShape2D_80cx4")
+debug_color = Color(0.984314, 0, 0, 0.419608)
 script = ExtResource("4_e8heu")
 
 [node name="NavigationRegion" type="NavigationRegion2D" parent="."]
@@ -156,8 +173,8 @@ script = ExtResource("7_rvswv")
 player = NodePath("../Player")
 enemy_data = Array[ExtResource("6_iotsf")]([SubResource("Resource_80cx4"), SubResource("Resource_opc04"), SubResource("Resource_3xivb")])
 EnemyPathfindingArea = NodePath("../NavigationRegion")
-PupilZone = NodePath("../EyeIrisPupil/EyePupil/Area2D")
-PupilcollsionShape = NodePath("../EyeIrisPupil/EyePupil/Area2D/CollisionShape2D")
+PupilZone = NodePath("../EyeIrisPupil/Area2D")
+PupilcollsionShape = NodePath("../EyeIrisPupil/Area2D/CollisionShape2D")
 SpawningRoot = NodePath("..")
 BlinkingAnimator = NodePath("../AnimationPlayer")
 
