@@ -20,6 +20,10 @@ var CURRENT_AMMO = MAX_AMMO
 var OWNED_WEAPONS = [true, true, true, true, true]
 signal transmit_damage(body, amount)
 
+
+var EYE_HEALTH : float = 100
+
+
 enum Status {
 	SUCCESS,
 	RUNNING,
