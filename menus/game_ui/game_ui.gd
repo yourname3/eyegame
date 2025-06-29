@@ -9,8 +9,13 @@ var right_idx := 0
 var panels_right = []
 var health_scale = 15
 
+@export var WavesDisplay : Label
+
 func _ready():
 	create_ui()
+	
+func _process(delta: float) -> void:
+	WavesDisplay.text = str("Waves: ", Globals.CURRENT_WAVE, "/", Globals.MAX_WAVES)
 
 
 func switch_panel(is_left):

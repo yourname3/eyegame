@@ -1,8 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://bqbb77w018hnv"]
+[gd_scene load_steps=5 format=3 uid="uid://bqbb77w018hnv"]
 
 [ext_resource type="Script" uid="uid://b18g3b8rfcfl7" path="res://menus/game_ui/game_ui.gd" id="1_2rou7"]
+[ext_resource type="FontFile" uid="uid://6ckenv7h70nq" path="res://menus/theme/ChelseaMarket-Regular.ttf" id="2_1vkcg"]
+[ext_resource type="Texture2D" uid="uid://dxalddyrgwxy1" path="res://eyeball/white_square.svg" id="3_d3duc"]
 
-[node name="GameUI" type="Control"]
+[sub_resource type="Theme" id="Theme_245l2"]
+default_font = ExtResource("2_1vkcg")
+default_font_size = 44
+
+[node name="GameUI" type="Control" node_paths=PackedStringArray("WavesDisplay")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,6 +17,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_2rou7")
+WavesDisplay = NodePath("Waves Count")
 
 [node name="VBoxContainerL" type="VBoxContainer" parent="."]
 layout_mode = 0
@@ -180,3 +187,19 @@ theme_override_font_sizes/font_size = 30
 text = "Eye HP: 100"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Waves Count" type="Label" parent="."]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 568.0
+offset_right = 265.0
+offset_bottom = 633.0
+theme = SubResource("Theme_245l2")
+text = "WAVE: 1/10"
+
+[node name="Sprite2D" type="Sprite2D" parent="Waves Count"]
+modulate = Color(0, 0, 0, 0.427451)
+z_index = -1
+position = Vector2(113, 28)
+scale = Vector2(3.89063, 1)
+texture = ExtResource("3_d3duc")

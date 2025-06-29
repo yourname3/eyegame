@@ -101,6 +101,10 @@ var explosion : PackedScene = preload("res://enemies/bullets/enemy_bullet/enemy_
 var game_ui_ref: GameUI
 
 
+var CURRENT_WAVE : int = 1
+
+var MAX_WAVES : int = 0
+
 var nav_rid
 var center_point : Vector2 = Vector2(2448.0, 434.0)
 
