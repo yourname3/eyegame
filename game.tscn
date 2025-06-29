@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cll6r826wc603"]
+[gd_scene load_steps=31 format=3 uid="uid://cll6r826wc603"]
 
 [ext_resource type="Script" uid="uid://bxtpjpge1yypu" path="res://game.gd" id="1_hve3p"]
 [ext_resource type="Texture2D" uid="uid://dxalddyrgwxy1" path="res://eyeball/white_square.svg" id="1_vef74"]
@@ -122,6 +122,9 @@ shader = ExtResource("8_vef74")
 shader_parameter/scale = 1.0
 shader_parameter/modulate = Color(0.945098, 0.760784, 0.490196, 1)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e8heu"]
+size = Vector2(1646, 944)
+
 [node name="Game" type="Node2D" node_paths=PackedStringArray("player", "nav_region")]
 script = ExtResource("1_hve3p")
 player = NodePath("Player")
@@ -211,3 +214,14 @@ polygon = PackedVector2Array(4724, 51, 4486, 2767, -1397, 3196, -1372, 61, -265,
 position = Vector2(3352, 151)
 rotation = 3.14159
 polygon = PackedVector2Array(4707, 34.9996, 4486, 2767, -1397, 3196, -1365, 62.0001, -163, 763, 705, 1133, 1835, 1268, 2858, 1079, 3820, 687)
+
+[node name="ChooseIrisMove" type="Timer" parent="."]
+autostart = true
+
+[node name="Area2D" type="Area2D" parent="ChooseIrisMove"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChooseIrisMove/Area2D"]
+position = Vector2(1609, 152)
+shape = SubResource("RectangleShape2D_e8heu")
+
+[connection signal="timeout" from="ChooseIrisMove" to="." method="_on_choose_iris_move_timeout"]
