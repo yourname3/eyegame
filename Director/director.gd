@@ -20,6 +20,8 @@ extends Node2D
 
 var outstanding_sequences: int = 0
 
+var WavesAreDone : bool = false
+
 signal _ready_for_next_wave
 
 func _pick_random_point() -> Vector2:
@@ -70,6 +72,8 @@ func _ready() -> void:
 			_do_sequence(sequence)
 		
 		await _ready_for_next_wave
+		
+	WavesAreDone = true
 
 
 func _play_blink() -> void:
@@ -85,6 +89,12 @@ func _process(delta: float) -> void:
 	if Globals.EYE_HEALTH <= 0:
 		get_tree().change_scene_to_file("res://game_over_screen.tscn")
 		
+		
+	if WavesAreDone == true:
+		var nodes_in_group = get_tree().get_nodes_in_group("Enemies")
+		
+		if nodes_in_group.size() == 0:
+			get_tree().change_scene_to_file("res://win_screen.tscn")
 	
 	#if Input.is_key_pressed(KEY_SPACE):		
 		#_play_blink()
