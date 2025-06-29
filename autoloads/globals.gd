@@ -1,24 +1,51 @@
 extends Node
 
 var player : Player 
+const GUN_PISTOL  := 0
+const GUN_RIFLE   := 1
+const GUN_SHOTGUN := 2
+const GUN_RPG     := 3
+const GUN_GRAVITY := 4
+
 #0 - pistol 
 #1 - rifle
 #2 - shotgun
 #3 - RPG
 #4 - Gravity Gun
-#5 - Delayed Bombs
-var MAX_AMMO = [
+##5 - Delayed Bombs
+const MAX_AMMO_INIT: Array[int] = [
 	9999999999999,
 	175,
 	180,
-	7,
+	80,
 	4,
 	20,
 ]
 
-var CURRENT_AMMO = MAX_AMMO
+var MAX_AMMO: Array[int] = MAX_AMMO_INIT.duplicate()
+var CURRENT_AMMO: Array[int] = MAX_AMMO.duplicate()
 var OWNED_WEAPONS = [true, true, true, true, true]
 signal transmit_damage(body, amount)
+
+## Call this when we start a new game. Should reset all global state to what
+## it should be.
+func reset_game_state() -> void:
+	MAX_AMMO = MAX_AMMO_INIT.duplicate()
+	for i in range(0, CURRENT_AMMO.size()):
+		CURRENT_AMMO[i] = 0
+	# Make sure we start out with max ammo for gun 0 (the pistol)
+	CURRENT_AMMO[0] = MAX_AMMO[0]
+	for i in range(0, OWNED_WEAPONS.size()):
+		OWNED_WEAPONS[i] = false
+	# We always have the pistol unlocked
+	OWNED_WEAPONS[GUN_PISTOL] = true
+
+func unlock_gun(idx: int, ammo: int) -> void:
+	OWNED_WEAPONS[idx] = true
+	CURRENT_AMMO[idx] += ammo
+	if CURRENT_AMMO[idx] > MAX_AMMO[idx]:
+		CURRENT_AMMO[idx] = MAX_AMMO[idx]
+	
 
 enum Status {
 	SUCCESS,
