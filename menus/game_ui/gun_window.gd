@@ -5,6 +5,11 @@ var selected = false
 var selected_size = Vector2(1.5,1)
 var default_size = Vector2(1,1)
 var is_right = false
+
+func _ready() -> void:
+	%GunTitle.text = Globals.gun_name(weapon_idx)
+	%GunAppearance.texture = Globals.gun_texture(weapon_idx)
+
 func set_ammo_text():
 	if weapon_idx != 0:
 		$Panel/Label3.text = str(Globals.CURRENT_AMMO[weapon_idx] , " / " , Globals.MAX_AMMO[weapon_idx])

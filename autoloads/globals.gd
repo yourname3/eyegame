@@ -20,6 +20,24 @@ func pop_pause() -> void:
 		pause_stack = 0
 	if pause_stack == 0:
 		get_tree().paused = false
+		
+func gun_name(weapon_idx: int) -> String:
+	match weapon_idx:
+		0: return "Blaster"
+		1: return "Rifle"
+		2: return "Shotgun"
+		3: return "RPG"
+		4: return "Gravity Gun"
+		_: return "Unknown"
+
+func gun_texture(weapon_idx: int) -> Texture:
+	match weapon_idx:
+		0: return preload("res://player/blaster.svg")
+		1: return preload("res://player/rifle.svg")
+		2: return preload("res://player/shotgun.svg")
+		3: return preload("res://player/rpg.svg")
+		4: return preload("res://player/blackhole.svg")
+		_: return null
 
 #0 - pistol 
 #1 - rifle

@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://dsvhdhjqgfmv5" path="res://menus/theme/main_theme.tres" id="1_0i8mx"]
 [ext_resource type="Script" uid="uid://d21bqm4u37046" path="res://menus/game_ui/gun_window.gd" id="2_3o6t3"]
-[ext_resource type="Texture2D" uid="uid://bqql7qdcmhd2y" path="res://player/claw.svg" id="3_sjrsj"]
+[ext_resource type="Texture2D" uid="uid://dhp8jwm0r3rpo" path="res://player/rifle.svg" id="3_sjrsj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8f7ua"]
 bg_color = Color(0.340339, 0.340339, 0.340339, 1)
@@ -54,14 +54,14 @@ grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(89, 27)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 12
 text = "10000/10000"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="Label4" type="Label" parent="Panel"]
+[node name="GunTitle" type="Label" parent="Panel"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -73,26 +73,33 @@ offset_bottom = 28.0
 grow_horizontal = 2
 pivot_offset = Vector2(89, 27)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 12
 text = "Gravity Gun"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Panel"]
+[node name="Control" type="Control" parent="Panel"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = -64.0
-offset_right = 64.0
-offset_bottom = 64.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 26.0
+offset_right = -6.0
+offset_bottom = -26.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.415, 0.415)
-pivot_offset = Vector2(64.311, 58.9401)
+
+[node name="GunAppearance" type="TextureRect" parent="Panel/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_right = -7.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("3_sjrsj")
+expand_mode = 1
+stretch_mode = 5
