@@ -125,11 +125,13 @@ func on_use_skill():
 		new_vec.rotated(TAU / 8)
 		double_vec.rotated(-TAU / 8)
 		new_proj_one.global_position = new_vec
-		new_proj_one.direction = global_position.direction_to(new_vec)
+		new_proj_one.target_position = sensory.agent.target_position
 		new_proj_two.global_position = double_vec
-		#add_sibling(new_proj)
-		#add_sibling(new_proj_one)
-		#add_sibling(new_proj_two)
+		new_proj_two.target_position = sensory.agent.target_position
+		new_proj_two.side_arm = false
+		add_sibling(new_proj)
+		add_sibling(new_proj_one)
+		add_sibling(new_proj_two)
 		state_machine._set_attack_three(false)
 		state_machine.on_attacK_three()
 	else:

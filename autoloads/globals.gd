@@ -41,7 +41,7 @@ var heavy_bullet : PackedScene = preload("res://enemies/bullets/enemy_bullet/hea
 var curly_bullet : PackedScene = preload("res://enemies/bullets/enemy_bullet/curly_bullet.tscn")
 var homing_bullet : PackedScene = preload("res://enemies/bullets/enemy_bullet/homing_bullet.tscn")
 var explosive_bullet : PackedScene = preload("res://enemies/bullets/enemy_bullet/explosive_bullet.tscn")
-var explosion
+var explosion : PackedScene = preload("res://enemies/bullets/enemy_bullet/enemy_explosion.tscn")
 
 
 
