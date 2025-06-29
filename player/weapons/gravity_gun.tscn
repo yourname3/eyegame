@@ -1,22 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://dn5hbq1hy1eii"]
 
 [ext_resource type="Script" uid="uid://bq7ormchumw7q" path="res://player/weapons/rpg_gun.gd" id="1_vo4kc"]
-[ext_resource type="Texture2D" uid="uid://bqql7qdcmhd2y" path="res://player/claw.svg" id="2_cstxr"]
+[ext_resource type="Texture2D" uid="uid://bj54k23wwdc4" path="res://player/blackhole.svg" id="2_vo4kc"]
 
 [node name="Gun" type="Node2D"]
 script = ExtResource("1_vo4kc")
 black_hole = true
 speed = 200
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = 1
-position = Vector2(18, -7)
-scale = Vector2(0.315821, 0.315821)
-texture = ExtResource("2_cstxr")
-
 [node name="FirePoint" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(36, -16)
+position = Vector2(33, 0)
 
 [node name="Cooldown" type="Timer" parent="."]
 wait_time = 3.0
@@ -25,6 +19,12 @@ wait_time = 3.0
 wait_time = 0.15
 one_shot = true
 autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(23, -1)
+scale = Vector2(0.315821, 0.315821)
+texture = ExtResource("2_vo4kc")
 
 [connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
 [connection signal="timeout" from="WeaponSwapCD" to="." method="_on_weapon_swap_cd_timeout"]

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="128"
+   height="128"
+   viewBox="0 0 33.866666 33.866666"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   sodipodi:docname="clawback.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="px"
+     inkscape:zoom="6.2236904"
+     inkscape:cx="88.773696"
+     inkscape:cy="52.782189"
+     inkscape:window-width="2560"
+     inkscape:window-height="1494"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       id="path1"
+       style="fill:#262626;fill-opacity:1;stroke-width:6.20978;stroke-linecap:square;stroke-miterlimit:12.9"
+       d="M 6.7726695,4.6784716 H 30.125944 c 1.201807,0.389047 2.618922,0.437195 2.621084,2.72568 l 0.06694,14.6206854 c -0.04459,1.40955 -0.722841,2.238262 -2.021703,2.498067 H 6.7726695 L 0.18775712,19.75086 Z"
+       sodipodi:nodetypes="cccccccc" />
+    <path
+       id="rect8"
+       style="fill:#3f3f3f;fill-opacity:1;stroke-width:6.20978;stroke-linecap:square;stroke-miterlimit:12.9"
+       d="M 6.9427186,10.757729 H 30.295993 c 1.201807,0.389047 2.618922,0.437195 2.621084,2.72568 l 0.06694,14.620686 c -0.04459,1.40955 -0.722841,2.238262 -2.021703,2.498067 H 6.9427186 L 0.35780628,25.830118 0.10924818,10.208617 6.9427186,4.5075477 Z"
+       sodipodi:nodetypes="cccccccccc" />
+    <ellipse
+       style="fill:#ff1111;fill-opacity:1;stroke:none;stroke-width:6.86517;stroke-linecap:square;stroke-miterlimit:12.9"
+       id="path11"
+       cx="22.101032"
+       cy="21.140833"
+       rx="5.4877067"
+       ry="4.933393" />
+  </g>
+</svg>

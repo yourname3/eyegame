@@ -8,13 +8,12 @@ script = ExtResource("1_1pb1g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(18, -7)
+position = Vector2(10, -1)
 scale = Vector2(0.315821, 0.315821)
 texture = ExtResource("1_3lnlr")
 
 [node name="FirePoint" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(36, -16)
 
 [node name="Cooldown" type="Timer" parent="."]
 

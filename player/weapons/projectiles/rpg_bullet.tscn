@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://8lxtk2ydjfjc"]
 
 [ext_resource type="Script" uid="uid://bjq5dnih16fn7" path="res://player/weapons/projectiles/rpg_bullet.gd" id="1_otq2n"]
-[ext_resource type="Texture2D" uid="uid://i6hn4qylrqqp" path="res://enemies/animations/virus_enemy/virus_enemy.svg" id="2_ea76y"]
+[ext_resource type="Texture2D" uid="uid://6yc0xmhvv4fj" path="res://proto/proto_projectile.svg" id="2_ea76y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fpwlo"]
 radius = 4.0
@@ -9,12 +9,6 @@ radius = 4.0
 [node name="RPG" type="Node2D" groups=["Explosives", "Projectiles"]]
 scale = Vector2(8.25, 8.25)
 script = ExtResource("1_otq2n")
-
-[node name="Sprite" type="Sprite2D" parent="."]
-modulate = Color(0, 0.569465, 0.353702, 1)
-self_modulate = Color(0, 0.77236, 0.322964, 1)
-scale = Vector2(0.0466388, 0.0466388)
-texture = ExtResource("2_ea76y")
 
 [node name="LifeTime" type="Timer" parent="."]
 wait_time = 3.0
@@ -27,6 +21,26 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_fpwlo")
+
+[node name="Rotator" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="Rotator"]
+modulate = Color(0.989171, 0, 0.0616306, 1)
+position = Vector2(-0.242424, -1.09091)
+scale = Vector2(0.0466388, 0.0466388)
+texture = ExtResource("2_ea76y")
+
+[node name="Sprite2" type="Sprite2D" parent="Rotator"]
+modulate = Color(0.928489, 0.244404, 3.85046e-07, 1)
+position = Vector2(-0.969697, 1.09091)
+scale = Vector2(0.0466388, 0.0466388)
+texture = ExtResource("2_ea76y")
+
+[node name="Sprite3" type="Sprite2D" parent="Rotator"]
+modulate = Color(0.837995, 0.371086, 0, 1)
+position = Vector2(1.33333, 0.606061)
+scale = Vector2(0.0466388, 0.0466388)
+texture = ExtResource("2_ea76y")
 
 [connection signal="timeout" from="LifeTime" to="." method="_on_life_time_timeout"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
