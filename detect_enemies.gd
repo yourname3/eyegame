@@ -8,7 +8,7 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	for collider in ParentArea2D.get_overlapping_bodies():
-		print("Detected Overlap")
+		#print("Detected Overlap")
 		if collider.is_in_group("Enemies"):
 			print("enemy detected destroying them")
 			collider.queue_free()

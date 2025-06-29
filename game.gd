@@ -14,4 +14,4 @@ func _ready() -> void:
 	Globals.player = player
 	Globals.game_ui_ref = $GameUI/GameUI
 	
-	Sounds.play_music(Sounds.MUSIC_GAME)
+	#Sounds.play_music(0)

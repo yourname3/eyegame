@@ -129,10 +129,12 @@ func _process(delta: float) -> void:
 	#Detect inputs for weapon switching. 
 	if is_left && Input.is_action_just_pressed("SwitchWeaponLeft"):
 		change_weapon(1) 
-		Globals.game_ui_ref.switch_panel(true)
+		if Globals.game_ui_ref:
+			Globals.game_ui_ref.switch_panel(true)
 	elif !is_left && Input.is_action_just_pressed("SwitchWeaponRight"):
 		change_weapon(1) 
-		Globals.game_ui_ref.switch_panel(false)
+		if Globals.game_ui_ref:
+			Globals.game_ui_ref.switch_panel(false)
 
 	
 	_render_points()

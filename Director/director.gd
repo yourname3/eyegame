@@ -74,10 +74,13 @@ func _ready() -> void:
 func _play_blink() -> void:
 	BlinkingAnimator.play("Blink")
 	BlinkTimer.start(randf_range(5.0, 15.0))
+	Sounds.sfx_blink_open.play()
 	
 	
 	
 func _process(delta: float) -> void:
+	if BlinkTimer.time_left <= 2.0 and !Sounds.sfx_blink_warning.is_playing():
+		Sounds.sfx_blink_warning.play()
 	pass
 	#if Input.is_key_pressed(KEY_SPACE):		
 		#_play_blink()
