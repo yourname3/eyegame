@@ -200,3 +200,13 @@ region_rect = Rect2(-3795.72, -4534.58, 13829.5, 12194.5)
 [node name="GameUI" type="CanvasLayer" parent="."]
 
 [node name="GameUI" parent="GameUI" instance=ExtResource("16_80cx4")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(4724, 51, 4486, 2767, -1397, 3196, -1372, 61, -265, 880, 1023, 1435, 1911, 1501, 2966, 1317, 3820, 687)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(3352, 151)
+rotation = 3.14159
+polygon = PackedVector2Array(4707, 34.9996, 4486, 2767, -1397, 3196, -1365, 62.0001, -163, 763, 705, 1133, 1835, 1268, 2858, 1079, 3820, 687)
