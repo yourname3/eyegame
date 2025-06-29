@@ -6,6 +6,10 @@ class_name BasicSensory
 
 var vision_state : Globals.Status
 
+var can_shoot : bool = true
+@export var cooldown_timer : Timer
+
+
 @export var target : Player
 var death_explosion : bool = false
 @export var attack_range : int 

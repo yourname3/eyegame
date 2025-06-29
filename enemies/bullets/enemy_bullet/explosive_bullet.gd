@@ -21,4 +21,5 @@ func _on_life_time_timeout():
 	var new_explo = Globals.explosion.instantiate()
 	new_explo.global_position = global_position
 	add_sibling(new_explo)
+	print('expl')
 	queue_free()

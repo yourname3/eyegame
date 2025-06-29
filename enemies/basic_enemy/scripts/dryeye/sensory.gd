@@ -5,6 +5,10 @@ class_name DryEyeSensory
 
 
 
+func _ready() -> void:
+	death_explosion = true
+
+
 func _process(delta: float) -> void:
 	match vision_state:
 		Globals.Status.SUCCESS:

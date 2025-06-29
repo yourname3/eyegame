@@ -42,6 +42,8 @@ collision_mask = 2
 [node name="Collision" type="CollisionShape2D" parent="Sensory/HitBox"]
 shape = SubResource("CircleShape2D_xuk7h")
 
+[node name="Timer" type="Timer" parent="Sensory"]
+
 [node name="Profile" type="AnimationPlayer" parent="."]
 
 [node name="Stats" type="Node" parent="."]

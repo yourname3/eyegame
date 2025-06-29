@@ -44,7 +44,10 @@ func check_can_shoot():
 	
 ## May be overriden in child classes.
 func _play_shoot_sfx() -> void:
-	Sounds.sfx_bullet_shoot.play()
+	if weapon_idx == Globals.GUN_RPG || weapon_idx == Globals.GUN_GRAVITY:
+		Sounds.sfx_grenade_launch.play()
+	else:
+		Sounds.sfx_bullet_shoot.play()
 	
 func _physics_process(delta):
 	if check_can_shoot() && is_left && Input.is_action_pressed("ShootLeft") && can_shoot:

@@ -4,9 +4,6 @@ class_name EnemyExplosion
 #func _ready():
 	#$LifeTime.start(.8)
 	
-
-
-
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Explode":
 		queue_free()
