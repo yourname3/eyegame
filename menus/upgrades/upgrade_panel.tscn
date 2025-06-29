@@ -90,7 +90,7 @@ autowrap_mode = 2
 
 [node name="Line2D" type="Line2D" parent="."]
 position = Vector2(0, -12)
-points = PackedVector2Array(0, 178, 181, 178)
+points = PackedVector2Array(0, 178, 180, 178)
 width = 4.0
 
 [node name="Button" type="Button" parent="."]
