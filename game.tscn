@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cll6r826wc603"]
+[gd_scene load_steps=67 format=3 uid="uid://cll6r826wc603"]
 
 [ext_resource type="Script" uid="uid://bxtpjpge1yypu" path="res://game.gd" id="1_hve3p"]
 [ext_resource type="Texture2D" uid="uid://dxalddyrgwxy1" path="res://eyeball/white_square.svg" id="1_vef74"]
@@ -15,6 +15,8 @@
 [ext_resource type="Shader" uid="uid://bsrqnqm64wq4y" path="res://eyeball/eyeball_blink.gdshader" id="8_vef74"]
 [ext_resource type="PackedScene" uid="uid://l463s6lfifsc" path="res://enemies/basic_enemy/enemy_list/amblyopia.tscn" id="10_215e1"]
 [ext_resource type="PackedScene" uid="uid://d0pk8wgi381l3" path="res://enemies/basic_enemy/enemy_list/uveitis.tscn" id="11_80cx4"]
+[ext_resource type="PackedScene" uid="uid://b2h205882at0f" path="res://enemies/basic_enemy/enemy_list/dryeye.tscn" id="12_rvswv"]
+[ext_resource type="PackedScene" uid="uid://d2k42hloets24" path="res://enemies/basic_enemy/enemy_list/cataracts.tscn" id="13_boyg6"]
 [ext_resource type="Texture2D" uid="uid://bfw3fhgeks2tp" path="res://eyeball/eye_pupil.svg" id="15_7sc4i"]
 [ext_resource type="PackedScene" uid="uid://bqbb77w018hnv" path="res://menus/game_ui/game_ui.tscn" id="16_80cx4"]
 
@@ -80,40 +82,265 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-2980, -86, -2044, -706
 [sub_resource type="Resource" id="Resource_7sc4i"]
 script = ExtResource("7_lc2xo")
 Enemy = ExtResource("10_215e1")
-EnemyAmount = 30
-EnemySpawnInterval = 2.0
+EnemyAmount = 1
+EnemySpawnInterval = 0.1
 metadata/_custom_type_script = "uid://d0qnw1ylathq4"
 
 [sub_resource type="Resource" id="Resource_80cx4"]
 script = ExtResource("6_iotsf")
 enemy_sequences = Array[ExtResource("7_lc2xo")]([SubResource("Resource_7sc4i")])
-SecondsTillNextWave = 2.0
+SecondsTillNextWave = 5.0
 metadata/_custom_type_script = "uid://b653chsv5uyx7"
 
 [sub_resource type="Resource" id="Resource_ug6kq"]
 script = ExtResource("7_lc2xo")
 Enemy = ExtResource("10_215e1")
-EnemyAmount = 30
-EnemySpawnInterval = 1.5
-metadata/_custom_type_script = "uid://d0qnw1ylathq4"
-
-[sub_resource type="Resource" id="Resource_hk480"]
-script = ExtResource("7_lc2xo")
-Enemy = ExtResource("11_80cx4")
-EnemyAmount = 15
-EnemySpawnInterval = 3.0
+EnemyAmount = 4
+EnemySpawnInterval = 0.1
 metadata/_custom_type_script = "uid://d0qnw1ylathq4"
 
 [sub_resource type="Resource" id="Resource_opc04"]
 script = ExtResource("6_iotsf")
-enemy_sequences = Array[ExtResource("7_lc2xo")]([SubResource("Resource_ug6kq"), SubResource("Resource_hk480")])
-SecondsTillNextWave = 4.0
+enemy_sequences = Array[ExtResource("7_lc2xo")]([SubResource("Resource_ug6kq")])
+SecondsTillNextWave = 5.0
 metadata/_custom_type_script = "uid://b653chsv5uyx7"
 
 [sub_resource type="Resource" id="Resource_3xivb"]
 script = ExtResource("6_iotsf")
-enemy_sequences = Array[ExtResource("7_lc2xo")]([SubResource("Resource_ug6kq"), SubResource("Resource_hk480")])
-SecondsTillNextWave = 4.0
+enemy_sequences = Array[ExtResource("7_lc2xo")]([SubResource("Resource_ug6kq")])
+SecondsTillNextWave = 6.0
+metadata/_custom_type_script = "uid://b653chsv5uyx7"
+
+[sub_resource type="Resource" id="Resource_boyg6"]
+script = ExtResource("7_lc2xo")
+Enemy = ExtResource("12_rvswv")
+EnemyAmount = 1
+EnemySpawnInterval = 0.1
+metadata/_custom_type_script = "uid://d0qnw1ylathq4"
+
+[sub_resource type="Resource" id="Resource_e36ub"]
+script = ExtResource("6_iotsf")
+enemy_sequences = Array[ExtResource("7_lc2xo")]([SubResource("Resource_boyg6")])
+SecondsTillNextWave = 8.0
+metadata/_custom_type_script = "uid://b653chsv5uyx7"
+
+[sub_resource type="Resource" id="Resource_hb5m1"]
+script = ExtResource("7_lc2xo")
+Enemy = ExtResource("10_215e1")
+EnemyAmount = 3
+EnemySpawnInterval = 0.1
+metadata/_custom_type_script = "uid://d0qnw1ylathq4"
+
+[sub_resource type="Resource" id="Resource_x5p1p"]
+script = ExtResource("7_lc2xo")
+Enemy = ExtResource("12_rvswv")
+EnemyAmount = 1
+EnemySpawnInterval = 0.1
+metadata/_custom_type_script = "uid://d0qnw1ylathq4"
+
+[sub_resource type="Resource" id="Resource_qhcbd"]
+script = ExtResource("6_iotsf")
+enemy_sequences = Array[ExtResource("7_lc2xo")]([SubResource("Resource_hb5m1"), SubResource("Resource_x5p1p")])
+SecondsTillNextWave = 8.0
+metadata/_custom_type_script = "uid://b653chsv5uyx7"
+
+[sub_resource type="Resource" id="Resource_f1jbl"]
+script = ExtResource("7_lc2xo")
+Enemy = ExtResource("10_215e1")
+EnemyAmount = 3
+EnemySpawnInterval = 1.0
+metadata/_custom_type_script = "uid://d0qnw1ylathq4"
+
+[sub_resource type="Resource" id="Resource_vaj68"]
+script = ExtResource("6_iotsf")
+enemy_sequences = Array[ExtResource("7_lc2xo")]([SubResource("Resource_f1jbl")])
+SecondsTillNextWave = 9.0
+metadata/_custom_type_script = "uid://b653chsv5uyx7"
+
+[sub_resource type="Resource" id="Resource_i2p71"]
+script = ExtResource("7_lc2xo")
+Enemy = ExtResource("13_boyg6")
+EnemyAmount = 3
+EnemySpawnInterval = 0.2
+metadata/_custom_type_script = "uid://d0qnw1ylathq4"
+
+[sub_resource type="Resource" id="Resource_xa8c5"]
+script = ExtResource("6_iotsf")
+enemy_sequences = Array[ExtResource("7_lc2xo")]([SubResource("Resource_i2p71")])
+SecondsTillNextWave = 12.0
+metadata/_custom_type_script = "uid://b653chsv5uyx7"
+
+[sub_resource type="Resource" id="Resource_5b14r"]
+script = ExtResource("7_lc2xo")
+Enemy = ExtResource("10_215e1")
+EnemyAmount = 10
+EnemySpawnInterval = 0.4
+metadata/_custom_type_script = "uid://d0qnw1ylathq4"
+
+[sub_resource type="Resource" id="Resource_bnpwn"]
+script = ExtResource("7_lc2xo")
+Enemy = ExtResource("12_rvswv")
+EnemyAmount = 1
+EnemySpawnInterval = 2.0
+metadata/_custom_type_script = "uid://d0qnw1ylathq4"
+
+[sub_resource type="Resource" id="Resource_36jdj"]
+script = ExtResource("7_lc2xo")
+Enemy = ExtResource("11_80cx4")
+EnemyAmount = 2
+EnemySpawnInterval = 2.0
+metadata/_custom_type_script = "uid://d0qnw1ylathq4"
+
+[sub_resource type="Resource" id="Resource_xfvwf"]
+script = ExtResource("6_iotsf")
+enemy_sequences = Array[ExtResource("7_lc2xo")]([SubResource("Resource_5b14r"), SubResource("Resource_bnpwn"), SubResource("Resource_36jdj")])
+SecondsTillNextWave = 10.0
+metadata/_custom_type_script = "uid://b653chsv5uyx7"
+
+[sub_resource type="Resource" id="Resource_dhpj7"]
+script = ExtResource("7_lc2xo")
+Enemy = ExtResource("12_rvswv")
+EnemyAmount = 5
+EnemySpawnInterval = 0.2
+metadata/_custom_type_script = "uid://d0qnw1ylathq4"
+
+[sub_resource type="Resource" id="Resource_7knny"]
+script = ExtResource("6_iotsf")
+enemy_sequences = Array[ExtResource("7_lc2xo")]([SubResource("Resource_dhpj7")])
+SecondsTillNextWave = 15.0
+metadata/_custom_type_script = "uid://b653chsv5uyx7"
+
+[sub_resource type="Resource" id="Resource_082n1"]
+script = ExtResource("7_lc2xo")
+Enemy = ExtResource("12_rvswv")
+EnemyAmount = 2
+EnemySpawnInterval = 0.1
+metadata/_custom_type_script = "uid://d0qnw1ylathq4"
+
+[sub_resource type="Resource" id="Resource_xex6t"]
+script = ExtResource("7_lc2xo")
+Enemy = ExtResource("11_80cx4")
+EnemyAmount = 3
+EnemySpawnInterval = 1.0
+metadata/_custom_type_script = "uid://d0qnw1ylathq4"
+
+[sub_resource type="Resource" id="Resource_aa0lp"]
+script = ExtResource("6_iotsf")
+enemy_sequences = Array[ExtResource("7_lc2xo")]([SubResource("Resource_082n1"), SubResource("Resource_xex6t")])
+SecondsTillNextWave = 15.0
+metadata/_custom_type_script = "uid://b653chsv5uyx7"
+
+[sub_resource type="Resource" id="Resource_iu0sx"]
+script = ExtResource("7_lc2xo")
+Enemy = ExtResource("13_boyg6")
+EnemyAmount = 3
+EnemySpawnInterval = 0.3
+metadata/_custom_type_script = "uid://d0qnw1ylathq4"
+
+[sub_resource type="Resource" id="Resource_l1i01"]
+script = ExtResource("7_lc2xo")
+Enemy = ExtResource("11_80cx4")
+EnemyAmount = 1
+EnemySpawnInterval = 3.0
+metadata/_custom_type_script = "uid://d0qnw1ylathq4"
+
+[sub_resource type="Resource" id="Resource_4v2jo"]
+script = ExtResource("6_iotsf")
+enemy_sequences = Array[ExtResource("7_lc2xo")]([SubResource("Resource_iu0sx"), SubResource("Resource_l1i01")])
+SecondsTillNextWave = 15.0
+metadata/_custom_type_script = "uid://b653chsv5uyx7"
+
+[sub_resource type="Resource" id="Resource_r62pu"]
+script = ExtResource("7_lc2xo")
+Enemy = ExtResource("13_boyg6")
+EnemyAmount = 4
+EnemySpawnInterval = 0.1
+metadata/_custom_type_script = "uid://d0qnw1ylathq4"
+
+[sub_resource type="Resource" id="Resource_qpefm"]
+script = ExtResource("7_lc2xo")
+Enemy = ExtResource("10_215e1")
+EnemyAmount = 10
+EnemySpawnInterval = 1.0
+metadata/_custom_type_script = "uid://d0qnw1ylathq4"
+
+[sub_resource type="Resource" id="Resource_klri6"]
+script = ExtResource("6_iotsf")
+enemy_sequences = Array[ExtResource("7_lc2xo")]([SubResource("Resource_r62pu"), SubResource("Resource_qpefm")])
+SecondsTillNextWave = 10.0
+metadata/_custom_type_script = "uid://b653chsv5uyx7"
+
+[sub_resource type="Resource" id="Resource_eu6ph"]
+script = ExtResource("7_lc2xo")
+Enemy = ExtResource("12_rvswv")
+EnemyAmount = 4
+EnemySpawnInterval = 1.0
+metadata/_custom_type_script = "uid://d0qnw1ylathq4"
+
+[sub_resource type="Resource" id="Resource_edr7y"]
+script = ExtResource("6_iotsf")
+enemy_sequences = Array[ExtResource("7_lc2xo")]([SubResource("Resource_eu6ph")])
+SecondsTillNextWave = 12.0
+metadata/_custom_type_script = "uid://b653chsv5uyx7"
+
+[sub_resource type="Resource" id="Resource_kq12w"]
+script = ExtResource("7_lc2xo")
+Enemy = ExtResource("10_215e1")
+EnemyAmount = 45
+EnemySpawnInterval = 0.21
+metadata/_custom_type_script = "uid://d0qnw1ylathq4"
+
+[sub_resource type="Resource" id="Resource_t46w6"]
+script = ExtResource("6_iotsf")
+enemy_sequences = Array[ExtResource("7_lc2xo")]([SubResource("Resource_kq12w")])
+SecondsTillNextWave = 15.0
+metadata/_custom_type_script = "uid://b653chsv5uyx7"
+
+[sub_resource type="Resource" id="Resource_m28ev"]
+script = ExtResource("7_lc2xo")
+Enemy = ExtResource("12_rvswv")
+EnemyAmount = 10
+EnemySpawnInterval = 2.0
+metadata/_custom_type_script = "uid://d0qnw1ylathq4"
+
+[sub_resource type="Resource" id="Resource_lwlx3"]
+script = ExtResource("6_iotsf")
+enemy_sequences = Array[ExtResource("7_lc2xo")]([SubResource("Resource_m28ev")])
+SecondsTillNextWave = 25.0
+metadata/_custom_type_script = "uid://b653chsv5uyx7"
+
+[sub_resource type="Resource" id="Resource_0de7l"]
+script = ExtResource("7_lc2xo")
+Enemy = ExtResource("11_80cx4")
+EnemyAmount = 7
+EnemySpawnInterval = 2.0
+metadata/_custom_type_script = "uid://d0qnw1ylathq4"
+
+[sub_resource type="Resource" id="Resource_87ddb"]
+script = ExtResource("7_lc2xo")
+Enemy = ExtResource("13_boyg6")
+EnemyAmount = 12
+EnemySpawnInterval = 1.05
+metadata/_custom_type_script = "uid://d0qnw1ylathq4"
+
+[sub_resource type="Resource" id="Resource_tb2lt"]
+script = ExtResource("7_lc2xo")
+Enemy = ExtResource("10_215e1")
+EnemyAmount = 10
+EnemySpawnInterval = 3.0
+metadata/_custom_type_script = "uid://d0qnw1ylathq4"
+
+[sub_resource type="Resource" id="Resource_cfc7e"]
+script = ExtResource("7_lc2xo")
+Enemy = ExtResource("12_rvswv")
+EnemyAmount = 3
+EnemySpawnInterval = 10.0
+metadata/_custom_type_script = "uid://d0qnw1ylathq4"
+
+[sub_resource type="Resource" id="Resource_mljfx"]
+script = ExtResource("6_iotsf")
+enemy_sequences = Array[ExtResource("7_lc2xo")]([SubResource("Resource_0de7l"), SubResource("Resource_87ddb"), SubResource("Resource_tb2lt"), SubResource("Resource_cfc7e")])
+SecondsTillNextWave = 30.0
 metadata/_custom_type_script = "uid://b653chsv5uyx7"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hve3p"]
@@ -164,7 +391,7 @@ position = Vector2(690, 234)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-8, -9)
-zoom = Vector2(0.655, 0.655)
+zoom = Vector2(0.42, 0.42)
 
 [node name="WhiteSquare" type="Sprite2D" parent="."]
 z_index = -1000
@@ -175,7 +402,7 @@ script = ExtResource("7_rvswv")
 
 [node name="Director" parent="." node_paths=PackedStringArray("player", "EnemyPathfindingArea", "PupilZone", "PupilcollsionShape", "SpawningRoot", "BlinkingAnimator") instance=ExtResource("7_eow3j")]
 player = NodePath("../Player")
-enemy_data = Array[ExtResource("6_iotsf")]([SubResource("Resource_80cx4"), SubResource("Resource_opc04"), SubResource("Resource_3xivb")])
+enemy_data = Array[ExtResource("6_iotsf")]([SubResource("Resource_80cx4"), SubResource("Resource_opc04"), SubResource("Resource_3xivb"), SubResource("Resource_e36ub"), SubResource("Resource_qhcbd"), SubResource("Resource_vaj68"), SubResource("Resource_xa8c5"), SubResource("Resource_xa8c5"), SubResource("Resource_xfvwf"), SubResource("Resource_7knny"), SubResource("Resource_aa0lp"), SubResource("Resource_4v2jo"), SubResource("Resource_4v2jo"), SubResource("Resource_4v2jo"), SubResource("Resource_klri6"), SubResource("Resource_edr7y"), SubResource("Resource_t46w6"), SubResource("Resource_lwlx3"), SubResource("Resource_mljfx")])
 EnemyPathfindingArea = NodePath("../NavigationRegion")
 PupilZone = NodePath("../EyeIrisPupil/Area2D")
 PupilcollsionShape = NodePath("../EyeIrisPupil/Area2D/CollisionShape2D")

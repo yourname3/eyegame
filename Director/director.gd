@@ -27,7 +27,7 @@ signal _ready_for_next_wave
 func _pick_random_point() -> Vector2:
 	var point = NavigationServer2D.region_get_random_point(Globals.nav_rid, 0, true)
 	var fuel = 5000
-	while point.distance_to(PupilZone.global_position) < PupilcollsionShape.shape.radius:
+	while point.distance_to(PupilZone.global_position) < PupilcollsionShape.shape.radius * 1.7:
 		point = NavigationServer2D.region_get_random_point(Globals.nav_rid, 0, true)
 		fuel -= 1
 		if fuel <= 0:

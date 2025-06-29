@@ -7,7 +7,7 @@ class_name Player
 var level : int = 0
 var current_exp : int = 0
 var needed_exp : int = 1
-@export var health : int = 100
+@export var health : int = 60
 @onready var max_health: int = health
 
 var _damage_tween: Tween = null
