@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://cll6r826wc603"]
+[gd_scene load_steps=67 format=3 uid="uid://cll6r826wc603"]
 
 [ext_resource type="Script" uid="uid://bxtpjpge1yypu" path="res://game.gd" id="1_hve3p"]
 [ext_resource type="Texture2D" uid="uid://dxalddyrgwxy1" path="res://eyeball/white_square.svg" id="1_vef74"]
@@ -108,7 +108,7 @@ metadata/_custom_type_script = "uid://b653chsv5uyx7"
 [sub_resource type="Resource" id="Resource_3xivb"]
 script = ExtResource("6_iotsf")
 enemy_sequences = Array[ExtResource("7_lc2xo")]([SubResource("Resource_ug6kq")])
-SecondsTillNextWave = 5.0
+SecondsTillNextWave = 6.0
 metadata/_custom_type_script = "uid://b653chsv5uyx7"
 
 [sub_resource type="Resource" id="Resource_boyg6"]
@@ -121,7 +121,7 @@ metadata/_custom_type_script = "uid://d0qnw1ylathq4"
 [sub_resource type="Resource" id="Resource_e36ub"]
 script = ExtResource("6_iotsf")
 enemy_sequences = Array[ExtResource("7_lc2xo")]([SubResource("Resource_boyg6")])
-SecondsTillNextWave = 6.0
+SecondsTillNextWave = 8.0
 metadata/_custom_type_script = "uid://b653chsv5uyx7"
 
 [sub_resource type="Resource" id="Resource_hb5m1"]
@@ -141,7 +141,7 @@ metadata/_custom_type_script = "uid://d0qnw1ylathq4"
 [sub_resource type="Resource" id="Resource_qhcbd"]
 script = ExtResource("6_iotsf")
 enemy_sequences = Array[ExtResource("7_lc2xo")]([SubResource("Resource_hb5m1"), SubResource("Resource_x5p1p")])
-SecondsTillNextWave = 5.0
+SecondsTillNextWave = 8.0
 metadata/_custom_type_script = "uid://b653chsv5uyx7"
 
 [sub_resource type="Resource" id="Resource_f1jbl"]
@@ -154,7 +154,7 @@ metadata/_custom_type_script = "uid://d0qnw1ylathq4"
 [sub_resource type="Resource" id="Resource_vaj68"]
 script = ExtResource("6_iotsf")
 enemy_sequences = Array[ExtResource("7_lc2xo")]([SubResource("Resource_f1jbl")])
-SecondsTillNextWave = 5.0
+SecondsTillNextWave = 9.0
 metadata/_custom_type_script = "uid://b653chsv5uyx7"
 
 [sub_resource type="Resource" id="Resource_i2p71"]
@@ -167,7 +167,7 @@ metadata/_custom_type_script = "uid://d0qnw1ylathq4"
 [sub_resource type="Resource" id="Resource_xa8c5"]
 script = ExtResource("6_iotsf")
 enemy_sequences = Array[ExtResource("7_lc2xo")]([SubResource("Resource_i2p71")])
-SecondsTillNextWave = 6.0
+SecondsTillNextWave = 12.0
 metadata/_custom_type_script = "uid://b653chsv5uyx7"
 
 [sub_resource type="Resource" id="Resource_5b14r"]
@@ -194,7 +194,7 @@ metadata/_custom_type_script = "uid://d0qnw1ylathq4"
 [sub_resource type="Resource" id="Resource_xfvwf"]
 script = ExtResource("6_iotsf")
 enemy_sequences = Array[ExtResource("7_lc2xo")]([SubResource("Resource_5b14r"), SubResource("Resource_bnpwn"), SubResource("Resource_36jdj")])
-SecondsTillNextWave = 8.0
+SecondsTillNextWave = 10.0
 metadata/_custom_type_script = "uid://b653chsv5uyx7"
 
 [sub_resource type="Resource" id="Resource_dhpj7"]
@@ -207,7 +207,7 @@ metadata/_custom_type_script = "uid://d0qnw1ylathq4"
 [sub_resource type="Resource" id="Resource_7knny"]
 script = ExtResource("6_iotsf")
 enemy_sequences = Array[ExtResource("7_lc2xo")]([SubResource("Resource_dhpj7")])
-SecondsTillNextWave = 10.0
+SecondsTillNextWave = 15.0
 metadata/_custom_type_script = "uid://b653chsv5uyx7"
 
 [sub_resource type="Resource" id="Resource_082n1"]
@@ -227,7 +227,7 @@ metadata/_custom_type_script = "uid://d0qnw1ylathq4"
 [sub_resource type="Resource" id="Resource_aa0lp"]
 script = ExtResource("6_iotsf")
 enemy_sequences = Array[ExtResource("7_lc2xo")]([SubResource("Resource_082n1"), SubResource("Resource_xex6t")])
-SecondsTillNextWave = 10.0
+SecondsTillNextWave = 15.0
 metadata/_custom_type_script = "uid://b653chsv5uyx7"
 
 [sub_resource type="Resource" id="Resource_iu0sx"]
@@ -247,19 +247,27 @@ metadata/_custom_type_script = "uid://d0qnw1ylathq4"
 [sub_resource type="Resource" id="Resource_4v2jo"]
 script = ExtResource("6_iotsf")
 enemy_sequences = Array[ExtResource("7_lc2xo")]([SubResource("Resource_iu0sx"), SubResource("Resource_l1i01")])
-SecondsTillNextWave = 6.0
+SecondsTillNextWave = 15.0
 metadata/_custom_type_script = "uid://b653chsv5uyx7"
 
 [sub_resource type="Resource" id="Resource_r62pu"]
 script = ExtResource("7_lc2xo")
+Enemy = ExtResource("13_boyg6")
 EnemyAmount = 4
 EnemySpawnInterval = 0.1
 metadata/_custom_type_script = "uid://d0qnw1ylathq4"
 
+[sub_resource type="Resource" id="Resource_qpefm"]
+script = ExtResource("7_lc2xo")
+Enemy = ExtResource("10_215e1")
+EnemyAmount = 10
+EnemySpawnInterval = 1.0
+metadata/_custom_type_script = "uid://d0qnw1ylathq4"
+
 [sub_resource type="Resource" id="Resource_klri6"]
 script = ExtResource("6_iotsf")
-enemy_sequences = Array[ExtResource("7_lc2xo")]([SubResource("Resource_r62pu")])
-SecondsTillNextWave = 0.0
+enemy_sequences = Array[ExtResource("7_lc2xo")]([SubResource("Resource_r62pu"), SubResource("Resource_qpefm")])
+SecondsTillNextWave = 10.0
 metadata/_custom_type_script = "uid://b653chsv5uyx7"
 
 [sub_resource type="Resource" id="Resource_eu6ph"]
@@ -272,7 +280,7 @@ metadata/_custom_type_script = "uid://d0qnw1ylathq4"
 [sub_resource type="Resource" id="Resource_edr7y"]
 script = ExtResource("6_iotsf")
 enemy_sequences = Array[ExtResource("7_lc2xo")]([SubResource("Resource_eu6ph")])
-SecondsTillNextWave = 11.0
+SecondsTillNextWave = 12.0
 metadata/_custom_type_script = "uid://b653chsv5uyx7"
 
 [sub_resource type="Resource" id="Resource_kq12w"]
@@ -285,7 +293,7 @@ metadata/_custom_type_script = "uid://d0qnw1ylathq4"
 [sub_resource type="Resource" id="Resource_t46w6"]
 script = ExtResource("6_iotsf")
 enemy_sequences = Array[ExtResource("7_lc2xo")]([SubResource("Resource_kq12w")])
-SecondsTillNextWave = 10.0
+SecondsTillNextWave = 15.0
 metadata/_custom_type_script = "uid://b653chsv5uyx7"
 
 [sub_resource type="Resource" id="Resource_m28ev"]
@@ -298,7 +306,7 @@ metadata/_custom_type_script = "uid://d0qnw1ylathq4"
 [sub_resource type="Resource" id="Resource_lwlx3"]
 script = ExtResource("6_iotsf")
 enemy_sequences = Array[ExtResource("7_lc2xo")]([SubResource("Resource_m28ev")])
-SecondsTillNextWave = 20.0
+SecondsTillNextWave = 25.0
 metadata/_custom_type_script = "uid://b653chsv5uyx7"
 
 [sub_resource type="Resource" id="Resource_0de7l"]
@@ -315,10 +323,24 @@ EnemyAmount = 12
 EnemySpawnInterval = 1.05
 metadata/_custom_type_script = "uid://d0qnw1ylathq4"
 
+[sub_resource type="Resource" id="Resource_tb2lt"]
+script = ExtResource("7_lc2xo")
+Enemy = ExtResource("10_215e1")
+EnemyAmount = 10
+EnemySpawnInterval = 3.0
+metadata/_custom_type_script = "uid://d0qnw1ylathq4"
+
+[sub_resource type="Resource" id="Resource_cfc7e"]
+script = ExtResource("7_lc2xo")
+Enemy = ExtResource("12_rvswv")
+EnemyAmount = 3
+EnemySpawnInterval = 10.0
+metadata/_custom_type_script = "uid://d0qnw1ylathq4"
+
 [sub_resource type="Resource" id="Resource_mljfx"]
 script = ExtResource("6_iotsf")
-enemy_sequences = Array[ExtResource("7_lc2xo")]([SubResource("Resource_0de7l"), SubResource("Resource_87ddb")])
-SecondsTillNextWave = 14.0
+enemy_sequences = Array[ExtResource("7_lc2xo")]([SubResource("Resource_0de7l"), SubResource("Resource_87ddb"), SubResource("Resource_tb2lt"), SubResource("Resource_cfc7e")])
+SecondsTillNextWave = 30.0
 metadata/_custom_type_script = "uid://b653chsv5uyx7"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hve3p"]
