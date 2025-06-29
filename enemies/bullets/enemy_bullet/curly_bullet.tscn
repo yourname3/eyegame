@@ -23,8 +23,10 @@ _data = {
 }
 point_count = 2
 
-[node name="Area2D" type="Area2D" groups=["Projectiles"]]
+[node name="Area2D" type="Area2D" node_paths=PackedStringArray("path", "path_follow") groups=["Projectiles"]]
 script = ExtResource("1_ni348")
+path = NodePath("Path2D")
+path_follow = NodePath("Path2D/PathFollow2D")
 
 [node name="Animation" type="GPUParticles2D" parent="."]
 modulate = Color(0.988235, 0, 1, 1)
