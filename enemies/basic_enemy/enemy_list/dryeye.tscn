@@ -15,7 +15,7 @@ radius = 62.1289
 [sub_resource type="CircleShape2D" id="CircleShape2D_oul6g"]
 radius = 54.0093
 
-[node name="BasicEnemy" type="CharacterBody2D" node_paths=PackedStringArray("sensory", "stats", "state_machine") groups=["Enemies"]]
+[node name="BasicEnemy2" type="CharacterBody2D" node_paths=PackedStringArray("sensory", "stats", "state_machine") groups=["Enemies"]]
 collision_mask = 0
 script = ExtResource("1_c87uy")
 sensory = NodePath("Sensory")
