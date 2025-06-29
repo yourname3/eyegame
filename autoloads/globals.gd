@@ -6,7 +6,7 @@ var player : Player
 #2 - shotgun
 #3 - RPG
 #4 - Gravity Gun
-#5 - Delayed Bombs
+##5 - Delayed Bombs
 var MAX_AMMO = [
 	9999999999999,
 	175,
@@ -44,7 +44,7 @@ var explosive_bullet : PackedScene = preload("res://enemies/bullets/enemy_bullet
 var explosion : PackedScene = preload("res://enemies/bullets/enemy_bullet/enemy_explosion.tscn")
 
 
-
+var game_ui_ref: GameUI
 
 
 var nav_rid

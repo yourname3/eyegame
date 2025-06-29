@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cll6r826wc603"]
+[gd_scene load_steps=26 format=3 uid="uid://cll6r826wc603"]
 
 [ext_resource type="Script" uid="uid://bxtpjpge1yypu" path="res://game.gd" id="1_hve3p"]
 [ext_resource type="Texture2D" uid="uid://dxalddyrgwxy1" path="res://eyeball/white_square.svg" id="1_vef74"]
@@ -14,6 +14,7 @@
 [ext_resource type="Shader" uid="uid://bsrqnqm64wq4y" path="res://eyeball/eyeball_blink.gdshader" id="8_vef74"]
 [ext_resource type="PackedScene" uid="uid://b2h205882at0f" path="res://enemies/basic_enemy/enemy_list/dryeye.tscn" id="10_7sc4i"]
 [ext_resource type="PackedScene" uid="uid://l463s6lfifsc" path="res://enemies/basic_enemy/enemy_list/amblyopia.tscn" id="10_215e1"]
+[ext_resource type="PackedScene" uid="uid://bqbb77w018hnv" path="res://menus/game_ui/game_ui.tscn" id="15_7sc4i"]
 
 [sub_resource type="Animation" id="Animation_7jktm"]
 resource_name = "Blink"
@@ -153,3 +154,7 @@ position = Vector2(1323, 69)
 texture = ExtResource("8_j5wjh")
 region_enabled = true
 region_rect = Rect2(-3795.72, -4534.58, 13829.5, 12194.5)
+
+[node name="GameUI" type="CanvasLayer" parent="."]
+
+[node name="GameUI" parent="GameUI" instance=ExtResource("15_7sc4i")]
