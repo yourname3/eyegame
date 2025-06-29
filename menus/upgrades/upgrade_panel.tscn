@@ -1,0 +1,82 @@
+[gd_scene load_steps=4 format=3 uid="uid://ll28eb2obp02"]
+
+[ext_resource type="Theme" uid="uid://dsvhdhjqgfmv5" path="res://menus/theme/main_theme.tres" id="1_s8gm3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s8gm3"]
+bg_color = Color(0.517985, 0.527356, 0.818159, 1)
+corner_radius_top_left = 60
+corner_radius_top_right = 60
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lv8pk"]
+bg_color = Color(0.835182, 0.385838, 0.563971, 1)
+corner_radius_bottom_right = 60
+corner_radius_bottom_left = 60
+
+[node name="UpgradePanel" type="Control"]
+custom_minimum_size = Vector2(292, 380)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 292.0
+offset_bottom = 380.0
+theme = ExtResource("1_s8gm3")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 292.0
+offset_bottom = 184.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_s8gm3")
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 0
+offset_top = 194.0
+offset_right = 292.0
+offset_bottom = 379.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_lv8pk")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 6.0
+offset_right = 279.0
+offset_bottom = 38.0
+theme_override_font_sizes/font_size = 24
+text = "+"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 341.0
+offset_right = 279.0
+offset_bottom = 428.0
+theme_override_font_sizes/font_size = 24
+text = "-"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 49.0
+offset_right = 280.0
+offset_bottom = 136.0
+theme_override_font_sizes/font_size = 24
+text = "Your bullets get +1 pierce"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label4" type="Label" parent="."]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 203.0
+offset_right = 280.0
+offset_bottom = 290.0
+theme_override_font_sizes/font_size = 24
+text = "Enemies deal 10% more damage."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(0, 11)
+points = PackedVector2Array(0, 178, 292, 178)
