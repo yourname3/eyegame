@@ -1,0 +1,111 @@
+[gd_scene load_steps=18 format=3 uid="uid://cmu8yfv1od0e7"]
+
+[ext_resource type="Script" uid="uid://csdmbatffj8q2" path="res://autoloads/sounds/sounds.gd" id="1_qu8rh"]
+[ext_resource type="AudioStream" uid="uid://biynpfn6vrfmm" path="res://Music/EyeGameGameplayTheme.wav" id="2_0dcvf"]
+[ext_resource type="AudioStream" uid="uid://bwpk1gm6xk1d3" path="res://SFX/Blink.wav" id="3_alyvm"]
+[ext_resource type="AudioStream" uid="uid://0rlm7sfxodhj" path="res://SFX/BlinkOpen.wav" id="4_fatq8"]
+[ext_resource type="Script" uid="uid://djjtpout7mgiu" path="res://autoloads/sounds/sound_effect.gd" id="4_ml10i"]
+[ext_resource type="AudioStream" uid="uid://bm2gv37haw110" path="res://SFX/BlinkWarning.wav" id="5_ml10i"]
+[ext_resource type="AudioStream" uid="uid://cd6hlat00omqf" path="res://SFX/BossDeath.wav" id="6_v1dhc"]
+[ext_resource type="AudioStream" uid="uid://l08bcns5lx3" path="res://SFX/BulletShootV3.wav" id="7_1084v"]
+[ext_resource type="AudioStream" uid="uid://dpprd3mvw0ywn" path="res://SFX/EnemyDeath.wav" id="8_wh46v"]
+[ext_resource type="AudioStream" uid="uid://djgpch5smnygu" path="res://SFX/EnemyHit.wav" id="9_onu6s"]
+[ext_resource type="AudioStream" uid="uid://bjyocn22sy3sx" path="res://SFX/GrenadeExplosion.wav" id="10_jsum0"]
+[ext_resource type="AudioStream" uid="uid://cn76j80l1gl8p" path="res://SFX/GrenadeLaunch.wav" id="11_kba71"]
+[ext_resource type="AudioStream" uid="uid://ckgb16qec2ul1" path="res://SFX/ItemSelect.wav" id="12_4uc2p"]
+[ext_resource type="AudioStream" uid="uid://c6opyxoqn5qel" path="res://SFX/LvlUp.wav" id="13_7v2lr"]
+[ext_resource type="AudioStream" uid="uid://sl73fykc4fox" path="res://SFX/MenuHover.wav" id="14_nx5xd"]
+[ext_resource type="AudioStream" uid="uid://db20shje8jhs7" path="res://SFX/PlayerHit.wav" id="15_f4wvs"]
+[ext_resource type="AudioStream" uid="uid://cybr0xc1uh5d3" path="res://SFX/Shotgun.wav" id="16_b6e7a"]
+
+[node name="Sounds" type="Node"]
+script = ExtResource("1_qu8rh")
+
+[node name="Music_Game" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_0dcvf")
+bus = &"Music"
+
+[node name="Blink" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_alyvm")
+max_polyphony = 4
+bus = &"SFX"
+script = ExtResource("4_ml10i")
+
+[node name="BlinkOpen" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_fatq8")
+max_polyphony = 4
+bus = &"SFX"
+script = ExtResource("4_ml10i")
+
+[node name="BlinkWarning" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ml10i")
+max_polyphony = 4
+bus = &"SFX"
+script = ExtResource("4_ml10i")
+
+[node name="BossDeath" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_v1dhc")
+max_polyphony = 4
+bus = &"SFX"
+script = ExtResource("4_ml10i")
+
+[node name="BulletShootV3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_1084v")
+volume_db = 12.0
+max_polyphony = 4
+bus = &"SFX"
+script = ExtResource("4_ml10i")
+
+[node name="EnemyDeath" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_wh46v")
+max_polyphony = 4
+bus = &"SFX"
+script = ExtResource("4_ml10i")
+
+[node name="EnemyHit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_onu6s")
+max_polyphony = 4
+bus = &"SFX"
+script = ExtResource("4_ml10i")
+
+[node name="GrenadeExplosion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_jsum0")
+max_polyphony = 4
+bus = &"SFX"
+script = ExtResource("4_ml10i")
+
+[node name="GrenadeLaunch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_kba71")
+max_polyphony = 4
+bus = &"SFX"
+script = ExtResource("4_ml10i")
+
+[node name="ItemSelect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_4uc2p")
+max_polyphony = 4
+bus = &"SFX"
+script = ExtResource("4_ml10i")
+
+[node name="LvlUp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_7v2lr")
+max_polyphony = 4
+bus = &"SFX"
+script = ExtResource("4_ml10i")
+
+[node name="MenuHover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_nx5xd")
+max_polyphony = 4
+bus = &"SFX"
+script = ExtResource("4_ml10i")
+
+[node name="PlayerHit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_f4wvs")
+max_polyphony = 4
+bus = &"SFX"
+script = ExtResource("4_ml10i")
+
+[node name="Shotgun" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_b6e7a")
+max_polyphony = 4
+bus = &"SFX"
+script = ExtResource("4_ml10i")

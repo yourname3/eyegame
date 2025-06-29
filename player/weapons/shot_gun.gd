@@ -19,6 +19,7 @@ func _physics_process(delta: float) -> void:
 			pellet.speed           = speed                      # if it expects speed separately
 			pellet.global_position = %FirePoint.global_position
 			pellet.gun_id = weapon_idx
+			Sounds.sfx_shotgun.play()
 			if "damage" in pellet:                              # only if your projectile exposes it
 				pellet.damage = damage
 			get_tree().root.add_child(pellet)
@@ -41,6 +42,7 @@ func _physics_process(delta: float) -> void:
 			pellet.speed           = speed                      # if it expects speed separately
 			pellet.global_position = %FirePoint.global_position
 			pellet.gun_id = weapon_idx
+			Sounds.sfx_shotgun.play()
 			if "damage" in pellet:                              # only if your projectile exposes it
 				pellet.damage = damage
 			get_tree().root.add_child(pellet)

@@ -18,6 +18,8 @@ func _on_life_time_timeout():
 	
 func _hit_enemy() -> void:
 	if gun_id == 0:
+		if Globals.owned_nonpistol_weapons_by_idx.is_empty():
+			return
 		# Get a random ammo for this each time.
 		for i in range(0, Upgrades.shoot_enemy_with_pistol_gain_ammo):
 			var weapon = Globals.owned_nonpistol_weapons_by_idx.pick_random()

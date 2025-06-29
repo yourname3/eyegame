@@ -7,6 +7,7 @@ var damage := 1
 var braking_force = 0.99
 var victims:= []
 var pull_force:= 10
+var gun_id := 0
 
 func _ready():
 	$AnimationPlayer.speed_scale = .667

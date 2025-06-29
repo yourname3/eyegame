@@ -45,6 +45,7 @@ func _drop_exp(count: int) -> void:
 		#print("hello")
 
 func _death():
+	Sounds.sfx_enemy_death.play()
 	SignalBus.enemy_died.emit()
 	
 	# "10% to drop 5 extra xp", stacks by extra rolls
@@ -170,6 +171,7 @@ func on_use_aggression():
 
 func _set_health(value:int):
 	if value < health:
+		Sounds.sfx_enemy_hit.play()
 		print("OUCH!")
 		# If value is less than health, we're taking damage.
 		# For now, do a simple red blink animation.
