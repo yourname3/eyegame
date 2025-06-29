@@ -39,6 +39,11 @@ var enemy_spawn_rolls: int = 0
 var player_damage_multiplier := 1.0
 var player_firerate_multiplier := 1.0
 
+var enemy_damage_multiplier := 1.0
+var enemy_speed_multiplier  := 1.0
+var enemy_health_multiplier := 1.0
+var enemy_scale_multiplier  := 1.0
+
 var _double_damage_timer := 0.0
 var _double_firerate_timer := 0.0
 var _heal_five_counter: int = 0
@@ -70,3 +75,8 @@ func _process(delta: float) -> void:
 	
 	player_damage_multiplier = 2.0 if _double_damage_timer > 0.0 else 1.0
 	player_firerate_multiplier = 2.0 if _double_firerate_timer > 0.0 else 1.0
+
+	enemy_damage_multiplier = pow(1.1, enemy_damage_boosts)
+	enemy_speed_multiplier  = pow(1.1, enemy_speed_boosts)
+	enemy_health_multiplier = pow(1.1, enemy_health_boosts)
+	enemy_scale_multiplier  = pow(0.9, enemy_small_boosts)

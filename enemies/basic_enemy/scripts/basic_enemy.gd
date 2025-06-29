@@ -30,6 +30,10 @@ func _ready() -> void:
 	use_engage.connect(on_use_engage)
 	use_boost.connect(on_use_boost)
 	boost_cooldown.connect(state_machine.on_boost_cooldown)
+	
+	# This only affects future enemy health.
+	# TODO: Be sure we are calling super._ready() in every subclass.
+	health = int(float(health) * Upgrades.enemy_health_multiplier)
 
 func _drop_exp(count: int) -> void:
 	for i in range(count):
@@ -60,7 +64,7 @@ func on_use_engage(new_vec):
 	
 	var dir := global_position.direction_to(new_vec)
 	
-	var target_velocity := dir * (get_speed() * get_speed_mod())
+	var target_velocity := dir * (get_modded_speed())
 	
 	
 	# Apply acceleration if there's input
@@ -79,7 +83,7 @@ func on_use_engage(new_vec):
 func on_use_retreat(new_vec):
 	var dir := global_position.direction_to(new_vec)
 	
-	var target_velocity := dir * (get_speed() * get_speed_mod()) * -1
+	var target_velocity := dir * (get_modded_speed()) * -1
 	
 	
 	# Apply acceleration if there's input
@@ -179,9 +183,18 @@ func get_speed_mod() -> float:
 func get_strength() -> int:
 	return strength
 
+func get_modded_speed() -> float:
+	return get_speed() * get_speed_mod() * Upgrades.enemy_speed_multiplier
 
 
 func _on_hit_box_body_entered(body: Node2D) -> void:
 	if body.is_in_group('Players'):
-		Globals.transmit_damage.emit(body, get_strength())
+		# enemies deal 10% more damage
+		Globals.transmit_damage.emit(body, get_strength() * Upgrades.enemy_damage_multiplier)
 		print('player damaged')
+
+func _process(delta: float) -> void:
+	# This could be moved to a signal that only updates when upgrades are chosen,
+	# but whatever.
+	scale.x = Upgrades.enemy_scale_multiplier
+	scale.y = scale.x

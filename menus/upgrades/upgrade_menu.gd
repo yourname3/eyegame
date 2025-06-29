@@ -70,3 +70,7 @@ func _ready() -> void:
 		panel.select_upgrade.connect(select_upgrade)
 	# Be sure to start out hidden
 	hide()
+	
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("debug_upgrade"):
+		show_new_upgrades()

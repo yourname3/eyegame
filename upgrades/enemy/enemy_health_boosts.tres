@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_o1f4u")
 upgrades_var = &"enemy_health_boosts"
-description = "Enemies have 10% more health."
+description = "Future enemies have 10% more health."
 metadata/_custom_type_script = "uid://cqp62343t00ga"
