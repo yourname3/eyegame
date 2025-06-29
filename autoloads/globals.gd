@@ -7,6 +7,9 @@ const GUN_SHOTGUN := 2
 const GUN_RPG     := 3
 const GUN_GRAVITY := 4
 
+var equipped_left: int = 0
+var equipped_right: int = 0
+
 var pause_stack: int = 0
 
 func push_pause() -> void:
@@ -20,6 +23,24 @@ func pop_pause() -> void:
 		pause_stack = 0
 	if pause_stack == 0:
 		get_tree().paused = false
+		
+func gun_name(weapon_idx: int) -> String:
+	match weapon_idx:
+		0: return "Blaster"
+		1: return "Rifle"
+		2: return "Shotgun"
+		3: return "RPG"
+		4: return "Gravity Gun"
+		_: return "Unknown"
+
+func gun_texture(weapon_idx: int) -> Texture:
+	match weapon_idx:
+		0: return preload("res://player/blaster.svg")
+		1: return preload("res://player/rifle.svg")
+		2: return preload("res://player/shotgun.svg")
+		3: return preload("res://player/rpg.svg")
+		4: return preload("res://player/blackhole.svg")
+		_: return null
 
 #0 - pistol 
 #1 - rifle
@@ -100,6 +121,10 @@ var explosion : PackedScene = preload("res://enemies/bullets/enemy_bullet/enemy_
 
 var game_ui_ref: GameUI
 
+
+var CURRENT_WAVE : int = 1
+
+var MAX_WAVES : int = 0
 
 var nav_rid
 var center_point : Vector2 = Vector2(2448.0, 434.0)
