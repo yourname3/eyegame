@@ -40,6 +40,7 @@ func _set_health(value:int):
 	
 	if value < health:
 		SignalBus.player_damaged.emit()
+		Sounds.sfx_player_hit.play()
 	health = value
 	print("Player took damage! ", health)
 	if Globals.game_ui_ref:

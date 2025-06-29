@@ -44,3 +44,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_blink_finished() -> void:
 	sfx_blink_open.play()
+
+
+func _on_boss_death_finished() -> void:
+	get_tree().change_scene_to_file("res://game_over_screen.tscn")

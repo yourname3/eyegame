@@ -34,3 +34,9 @@ func select_me() -> void:
 
 func _ready() -> void:
 	%SelectButton.pressed.connect(select_me)
+
+func _on_select_button_mouse_entered() -> void:
+	Sounds.sfx_menu_hover.play()
+
+func _on_select_button_button_down() -> void:
+	Sounds.sfx_item_select.play()

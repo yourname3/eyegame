@@ -116,3 +116,4 @@ script = ExtResource("4_ml10i")
 stream = ExtResource("18_ml10i")
 
 [connection signal="finished" from="Blink" to="." method="_on_blink_finished"]
+[connection signal="finished" from="BossDeath" to="." method="_on_boss_death_finished"]

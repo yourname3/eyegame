@@ -81,8 +81,8 @@ func _play_blink() -> void:
 func _process(delta: float) -> void:
 	if BlinkTimer.time_left <= 2.0 and !Sounds.sfx_blink_warning.is_playing():
 		Sounds.sfx_blink_warning.play()
-	if Globals.EYE_HEALTH <= 0:
-		get_tree().change_scene_to_file("res://game_over_screen.tscn")
+	if Globals.EYE_HEALTH <= 0 and !Sounds.sfx_boss_death.is_playing():
+		Sounds.sfx_boss_death.play()
 		
 	
 	#if Input.is_key_pressed(KEY_SPACE):		
