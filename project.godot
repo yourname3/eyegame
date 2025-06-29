@@ -10,10 +10,13 @@ config_version=5
 
 [application]
 
-config/name="eye_proto"
+config/name="Cornea Carnage: Occular Offensive"
+config/description="Defend the eye from the deadly \"Red Eye\" disease"
+config/version="0.1a"
 run/main_scene="uid://b3ny2uvbkysyk"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://bhqcbea3bfknl"
+boot_splash/icon="uid://bhqcbea3bfknl"
 
 [autoload]
 
