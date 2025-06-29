@@ -18,10 +18,9 @@ signal use_aggression
 @export var speed : int
 var speed_mod : float = 1.0
 @export var strength : int
-@onready var exp = preload("res://experience/exp.tscn")
 @export var speed_boost : float
 
-
+@export var target : Player
 
 
 
@@ -30,14 +29,11 @@ func _ready() -> void:
 	use_engage.connect(on_use_engage)
 	use_boost.connect(on_use_boost)
 	boost_cooldown.connect(state_machine.on_boost_cooldown)
+	
+	sensory.target = target
 
 
 func _death():
-	for i in range(3):
-		var e = exp.instantiate()
-		e.global_position = global_position + Vector2.from_angle(randf_range(0,TAU) ) * randf_range(.1,100)
-		get_tree().root.add_child.call_deferred(e)
-		print("hello")
 	if sensory.death_explosion:
 		var new_blowup
 		new_blowup.global_position = global_position
@@ -96,32 +92,40 @@ func on_use_boost():
 
 func on_use_skill():
 	if state_machine.attack_one:
-		var new_proj 
+		var new_proj = Globals.homing_bullet
 		new_proj.target = sensory.target
-		new_proj.global_position = global_position.direction_to(sensory.agent.target_position)
-		#add_sibling(new_proj)
+		new_proj.global_position = global_position + global_position.direction_to(sensory.agent.target_position)
+		new_proj.direction = global_position.direction_to(sensory.agent.target_position)
+		add_sibling(new_proj)
+		await get_tree().create_timer(0.1).timeout
+		add_sibling(new_proj)
+		await get_tree().create_timer(0.1).timeout
+		add_sibling(new_proj)
 		state_machine._set_attack_one(false)
 		state_machine.on_attack_one()
 	else:
 		pass
 	if state_machine.attack_two:
-		var new_proj
-		new_proj.global_position = global_position.direction_to(sensory.agent.target_position)
+		var new_proj = Globals.enemy_bullet
+		new_proj.global_position = global_position + global_position.direction_to(sensory.agent.target_position)
+		new_proj.direction = global_position.direction_to(sensory.agent.target_position)
 		add_sibling(new_proj)
 		state_machine._set_attacK_two(false)
 		state_machine.on_attacK_two()
 	else:
 		pass
 	if state_machine.attack_three:
-		var new_proj 
-		var new_proj_one
-		var new_proj_two
+		var new_proj = Globals.homing_bullet.instantiate()
+		var new_proj_one = Globals.curly_bullet.instantiate()
+		var new_proj_two = Globals.curly_bullet.instantiate()
 		var new_vec = global_position.direction_to(sensory.agent.target_position)
 		var double_vec = new_vec
-		new_proj.global_position = new_vec
+		new_proj.global_position = global_position + global_position.direction_to(sensory.agent.target_position)
+		new_proj.agent.set_target_position(sensory.agent.target_position)
 		new_vec.rotated(TAU / 8)
 		double_vec.rotated(-TAU / 8)
 		new_proj_one.global_position = new_vec
+		new_proj_one.direction = global_position.direction_to(new_vec)
 		new_proj_two.global_position = double_vec
 		#add_sibling(new_proj)
 		#add_sibling(new_proj_one)
@@ -134,8 +138,9 @@ func on_use_skill():
 
 func on_use_aggression():
 	if state_machine.attack_two:
-		var new_proj
-		new_proj.global_position = global_position.direction_to(sensory.agent.target_position)
+		var new_proj = Globals.heavy_bullet.instantiate()
+		new_proj.global_position = global_position + global_position.direction_to(sensory.agent.target_position)
+		new_proj.direction = global_position.direction_to(sensory.agent.target_position)
 		add_sibling(new_proj)
 		state_machine._set_attacK_two(false)
 		state_machine.on_attacK_two()
@@ -168,7 +173,6 @@ func get_speed_mod() -> float:
 	return speed_mod
 func get_strength() -> int:
 	return strength
-
 
 
 func _on_hit_box_body_entered(body: Node2D) -> void:

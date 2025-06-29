@@ -23,7 +23,6 @@ func _ready() -> void:
 
 func _on_vision_body_entered(body: Node2D) -> void:
 	if body.is_in_group('Players'):
-		print("Setting target, ", target)
 		_set_target(body)
 		match vision_state:
 			Globals.Status.SUCCESS:
@@ -36,7 +35,6 @@ func _on_vision_body_entered(body: Node2D) -> void:
 
 func _on_vision_body_exited(body: Node2D) -> void:
 	if body.is_in_group('Players'):
-		_set_target(null)
 		match vision_state:
 			Globals.Status.SUCCESS:
 				pass

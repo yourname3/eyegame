@@ -8,6 +8,8 @@ extends Node2D
 
 @export var SpawningRoot: Node2D
 
+@export var BlinkingAnimator: AnimationPlayer
+
 var outstanding_sequences: int = 0
 
 signal _ready_for_next_wave
@@ -42,7 +44,14 @@ func _ready() -> void:
 		
 		await _ready_for_next_wave
 
+
+func _play_blink() -> void:
+	BlinkingAnimator.play("Blink")
 	
+	
+func _process(delta: float) -> void:
+	if Input.is_key_pressed(KEY_SPACE):
+		_play_blink()
 # wave
 # time till next wave
 # enemy dictionary 

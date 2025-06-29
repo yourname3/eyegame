@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Upgrade" load_steps=2 format=3 uid="uid://bs4v1ugqpx7ap"]
+
+[ext_resource type="Script" uid="uid://cqp62343t00ga" path="res://upgrades/upgrade.gd" id="1_o12lu"]
+
+[resource]
+script = ExtResource("1_o12lu")
+upgrades_var = &"kill_5_gives_heal_5"
+description = "Every 5th time you kill an enemy, heal 5 hp."
+metadata/_custom_type_script = "uid://cqp62343t00ga"
