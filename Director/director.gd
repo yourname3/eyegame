@@ -78,7 +78,10 @@ func _play_blink() -> void:
 	
 	
 func _process(delta: float) -> void:
-	pass
+	if Globals.EYE_HEALTH <= 0:
+		get_tree().change_scene_to_file("res://game_over_screen.tscn")
+		
+	
 	#if Input.is_key_pressed(KEY_SPACE):		
 		#_play_blink()
 		
