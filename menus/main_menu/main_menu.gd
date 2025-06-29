@@ -38,7 +38,7 @@ func _ready() -> void:
 	%OpenCreditsButton.pressed.connect(open_credits)
 	%CloseCreditsButton.pressed.connect(close_credits)
 	
-	Sounds.play_music(1)
+	Sounds.play_music(Sounds.MUSIC_MENU)
 
 
 func _on_play_button_mouse_entered() -> void:

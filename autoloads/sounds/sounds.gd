@@ -33,7 +33,7 @@ func play_music(idx: int) -> void:
 
 	if current_music != idx:
 		# Restart music from beginning
-		music[current_music].play()
+		music[idx].play()
 	current_music = idx
 	
 func _physics_process(delta: float) -> void:
