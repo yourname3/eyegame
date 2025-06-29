@@ -129,3 +129,8 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 24
 text = "Done"
+
+[connection signal="button_down" from="PlayButton" to="." method="_on_play_button_button_down"]
+[connection signal="mouse_entered" from="PlayButton" to="." method="_on_play_button_mouse_entered"]
+[connection signal="button_down" from="OpenCreditsButton" to="." method="_on_open_credits_button_button_down"]
+[connection signal="mouse_entered" from="OpenCreditsButton" to="." method="_on_open_credits_button_mouse_entered"]
