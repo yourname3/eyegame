@@ -12,5 +12,5 @@ func _process(delta: float) -> void:
 		if collider.is_in_group("Enemies"):
 			print("enemy detected destroying them")
 			collider.queue_free()
-			Globals.EYE_HEALTH -= 10
+			Globals.EYE_HEALTH -= 1
 		
