@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cll6r826wc603"]
+[gd_scene load_steps=26 format=3 uid="uid://cll6r826wc603"]
 
 [ext_resource type="Script" uid="uid://bxtpjpge1yypu" path="res://game.gd" id="1_hve3p"]
 [ext_resource type="Texture2D" uid="uid://dxalddyrgwxy1" path="res://eyeball/white_square.svg" id="1_vef74"]
@@ -14,6 +14,7 @@
 [ext_resource type="Shader" uid="uid://bsrqnqm64wq4y" path="res://eyeball/eyeball_blink.gdshader" id="8_vef74"]
 [ext_resource type="PackedScene" uid="uid://b2h205882at0f" path="res://enemies/basic_enemy/enemy_list/dryeye.tscn" id="10_7sc4i"]
 [ext_resource type="PackedScene" uid="uid://l463s6lfifsc" path="res://enemies/basic_enemy/enemy_list/amblyopia.tscn" id="10_215e1"]
+[ext_resource type="Texture2D" uid="uid://bfw3fhgeks2tp" path="res://eyeball/eye_pupil.svg" id="15_7sc4i"]
 
 [sub_resource type="Animation" id="Animation_7jktm"]
 resource_name = "Blink"
@@ -110,6 +111,10 @@ libraries = {
 [node name="EyeIrisPupil" type="Sprite2D" parent="."]
 position = Vector2(2437, 422)
 texture = ExtResource("4_fc0e3")
+
+[node name="EyePupil" type="Sprite2D" parent="EyeIrisPupil"]
+position = Vector2(28, 0)
+texture = ExtResource("15_7sc4i")
 
 [node name="NavigationRegion" type="NavigationRegion2D" parent="."]
 position = Vector2(1649, 196)
