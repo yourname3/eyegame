@@ -21,7 +21,7 @@ script = ExtResource("1_c87uy")
 sensory = NodePath("Sensory")
 stats = NodePath("Stats")
 state_machine = NodePath("StateMchine")
-health = 25
+health = 14
 speed = 50
 strength = 8
 
