@@ -5,8 +5,12 @@ var speed := 0.0
 var damage := 3
 var gun_id: int = 0
 
+@onready var rotator := $Rotator
+
 func _physics_process(delta: float) -> void:
 	position += velocity * delta * speed
+	
+	rotator.rotate(TAU * 4 * delta)
 
 
 func _on_life_time_timeout():

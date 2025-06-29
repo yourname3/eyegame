@@ -116,5 +116,9 @@ script = ExtResource("4_ml10i")
 [node name="MusicMenu" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_ml10i")
 
+[node name="EyeHit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_f4wvs")
+pitch_scale = 2.63
+
 [connection signal="finished" from="Blink" to="." method="_on_blink_finished"]
 [connection signal="finished" from="BossDeath" to="." method="_on_boss_death_finished"]

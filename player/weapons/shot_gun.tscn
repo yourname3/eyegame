@@ -1,22 +1,15 @@
 [gd_scene load_steps=3 format=3 uid="uid://di8ovqt7toicq"]
 
 [ext_resource type="Script" uid="uid://dgpocqvyhrmap" path="res://player/weapons/shot_gun.gd" id="1_2tx12"]
-[ext_resource type="Texture2D" uid="uid://bqql7qdcmhd2y" path="res://player/claw.svg" id="2_ux8x1"]
+[ext_resource type="Texture2D" uid="uid://eddc83f7wc0p" path="res://player/shotgun.svg" id="2_2tx12"]
 
 [node name="Shotgun" type="Node2D"]
 script = ExtResource("1_2tx12")
 bullet_count = 6
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-self_modulate = Color(1, 0, 0, 1)
-z_index = 1
-position = Vector2(18, -7)
-scale = Vector2(1.28964, 0.491)
-texture = ExtResource("2_ux8x1")
-
 [node name="FirePoint" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(95, -22)
+position = Vector2(12, 0)
 scale = Vector2(1, 1.16393)
 
 [node name="Cooldown" type="Timer" parent="."]
@@ -25,6 +18,12 @@ scale = Vector2(1, 1.16393)
 wait_time = 0.15
 one_shot = true
 autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(10, -1)
+scale = Vector2(0.315821, 0.315821)
+texture = ExtResource("2_2tx12")
 
 [connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
 [connection signal="timeout" from="WeaponSwapCD" to="." method="_on_weapon_swap_cd_timeout"]
