@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Upgrade" load_steps=2 format=3 uid="uid://b4br03dbqjxvi"]
+
+[ext_resource type="Script" uid="uid://cqp62343t00ga" path="res://upgrades/upgrade.gd" id="1_x5u56"]
+
+[resource]
+script = ExtResource("1_x5u56")
+upgrades_var = &""
+gun_index = 1
+gun_ammo = 125
+description = "Grants you Rifle and 125 ammo for it."
+metadata/_custom_type_script = "uid://cqp62343t00ga"

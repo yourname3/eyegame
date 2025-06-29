@@ -17,7 +17,7 @@ height = 234.0
 radius = 39.0
 height = 214.0
 
-[node name="BasicEnemy2" type="CharacterBody2D" node_paths=PackedStringArray("sensory", "stats", "state_machine") groups=["Enemies"]]
+[node name="BasicEnemy3" type="CharacterBody2D" node_paths=PackedStringArray("sensory", "stats", "state_machine") groups=["Enemies"]]
 collision_mask = 0
 script = ExtResource("1_e3fca")
 sensory = NodePath("Sensory")
