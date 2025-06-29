@@ -37,6 +37,7 @@ func _set_health(value:int):
 	if value < health:
 		SignalBus.player_damaged.emit()
 	health = value
+	print("Player took damage! ", health)
 	if health <= 0:
 		_death()
 func get_health() -> int:

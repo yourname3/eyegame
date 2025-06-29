@@ -15,12 +15,16 @@ radius = 62.1289
 [sub_resource type="CircleShape2D" id="CircleShape2D_oul6g"]
 radius = 54.0093
 
-[node name="BasicEnemy" type="CharacterBody2D" node_paths=PackedStringArray("sensory", "stats", "state_machine") groups=["Enemies"]]
-collision_mask = 0
+[node name="BasicEnemy2" type="CharacterBody2D" node_paths=PackedStringArray("sensory", "stats", "state_machine") groups=["Enemies"]]
+collision_layer = 4
 script = ExtResource("1_5i3yh")
 sensory = NodePath("Sensory")
 stats = NodePath("Stats")
 state_machine = NodePath("StateMchine")
+health = 70
+speed = 180
+strength = 1
+speed_boost = 3.0
 
 [node name="Sensory" type="Node2D" parent="." node_paths=PackedStringArray("signal_bus", "vision", "agent", "hitbox")]
 script = ExtResource("2_5i3yh")
@@ -30,6 +34,8 @@ agent = NodePath("Agent")
 hitbox = NodePath("HitBox")
 
 [node name="Vision" type="Area2D" parent="Sensory"]
+collision_layer = 2
+collision_mask = 2
 
 [node name="Range" type="CollisionShape2D" parent="Sensory/Vision"]
 shape = SubResource("CircleShape2D_yx0l5")
@@ -38,6 +44,8 @@ shape = SubResource("CircleShape2D_yx0l5")
 unique_name_in_owner = true
 
 [node name="HitBox" type="Area2D" parent="Sensory"]
+collision_layer = 2
+collision_mask = 2
 
 [node name="Collision" type="CollisionShape2D" parent="Sensory/HitBox"]
 shape = SubResource("CircleShape2D_xuk7h")

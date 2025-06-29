@@ -33,6 +33,8 @@ func knockback(shoot_dir):
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func check_can_shoot():
+	if Globals.game_ui_ref:
+		Globals.game_ui_ref.update_ammo_text()
 	check_remove_gun()
 	if !Globals.OWNED_WEAPONS[weapon_idx]:
 		unequip = true
@@ -47,6 +49,7 @@ func _physics_process(delta):
 		bullet.velocity = (get_global_mouse_position() - %FirePoint.global_position).normalized() 
 		bullet.global_position = %FirePoint.global_position
 		bullet.speed = speed
+		bullet.gun_id = weapon_idx
 		
 		knockback((get_global_mouse_position() - %FirePoint.global_position).normalized())
 		get_tree().root.add_child(bullet)
@@ -60,6 +63,7 @@ func _physics_process(delta):
 		bullet.velocity = (get_global_mouse_position() - %FirePoint.global_position).normalized() 
 		bullet.global_position = %FirePoint.global_position
 		bullet.speed = speed
+		bullet.gun_id = weapon_idx
 		
 		knockback((get_global_mouse_position() - %FirePoint.global_position).normalized())
 		get_tree().root.add_child(bullet)

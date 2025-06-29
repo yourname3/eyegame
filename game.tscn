@@ -3,18 +3,19 @@
 [ext_resource type="Script" uid="uid://bxtpjpge1yypu" path="res://game.gd" id="1_hve3p"]
 [ext_resource type="Texture2D" uid="uid://dxalddyrgwxy1" path="res://eyeball/white_square.svg" id="1_vef74"]
 [ext_resource type="PackedScene" uid="uid://dhx310ohc245d" path="res://player/player.tscn" id="2_e2o6t"]
-[ext_resource type="Script" uid="uid://dhpq6e8bwcuir" path="res://detect_enemies.gd" id="3_7sc4i"]
 [ext_resource type="Texture2D" uid="uid://cpim1me506bgn" path="res://eyeball/eye_iris_pupil.svg" id="4_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://deo3ptwsido8b" path="res://menus/upgrades/upgrade_menu.tscn" id="5_j5wjh"]
 [ext_resource type="Script" uid="uid://b653chsv5uyx7" path="res://Director/Wave.gd" id="6_iotsf"]
 [ext_resource type="PackedScene" uid="uid://cx74uha2f3op4" path="res://menus/pause_menu.tscn" id="6_ryrav"]
 [ext_resource type="PackedScene" uid="uid://bwca23wivq56k" path="res://Director/director.tscn" id="7_eow3j"]
 [ext_resource type="Script" uid="uid://d0qnw1ylathq4" path="res://Director/EnemySequence.gd" id="7_lc2xo"]
-[ext_resource type="PackedScene" uid="uid://l463s6lfifsc" path="res://enemies/basic_enemy/enemy_list/amblyopia.tscn" id="8_215e1"]
+[ext_resource type="PackedScene" uid="uid://d2k42hloets24" path="res://enemies/basic_enemy/enemy_list/cataracts.tscn" id="8_215e1"]
 [ext_resource type="Texture2D" uid="uid://c58hbr1gi6k7n" path="res://eyeball/blinker.svg" id="8_j5wjh"]
 [ext_resource type="Shader" uid="uid://bsrqnqm64wq4y" path="res://eyeball/eyeball_blink.gdshader" id="8_vef74"]
 [ext_resource type="PackedScene" uid="uid://b2h205882at0f" path="res://enemies/basic_enemy/enemy_list/dryeye.tscn" id="10_7sc4i"]
-[ext_resource type="PackedScene" uid="uid://d0pk8wgi381l3" path="res://enemies/basic_enemy/enemy_list/uveitis.tscn" id="11_80cx4"]
+[ext_resource type="PackedScene" uid="uid://l463s6lfifsc" path="res://enemies/basic_enemy/enemy_list/amblyopia.tscn" id="10_215e1"]
+[ext_resource type="Texture2D" uid="uid://bfw3fhgeks2tp" path="res://eyeball/eye_pupil.svg" id="15_7sc4i"]
+[ext_resource type="PackedScene" uid="uid://bqbb77w018hnv" path="res://menus/game_ui/game_ui.tscn" id="16_80cx4"]
 
 [sub_resource type="Animation" id="Animation_7jktm"]
 resource_name = "Blink"
@@ -53,9 +54,6 @@ _data = {
 &"RESET": SubResource("Animation_ryrav")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_80cx4"]
-radius = 701.58
-
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_j5wjh"]
 vertices = PackedVector2Array(2412.94, -500.367, 2412.69, -500.531, 2981.04, -144.453, 1988.18, 565.867, 1988.2, 565.859, 1477.21, 930.133, -2038.92, -697.359, -1449.22, -1002.69, -643.398, -1248.03, 250.172, -1267.97, 1194.26, -1090.33, 1842.55, -835, 701.75, 1234.13, -122.133, 1292.91, -1213.47, 1027.56, -1872.1, 683.281, -2501.18, 309.82, -2963.42, -84.9766)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5), PackedInt32Array(6, 7, 8, 9, 10, 11, 0, 2, 3, 5, 12, 13, 14, 15, 16, 17)])
@@ -70,7 +68,7 @@ metadata/_custom_type_script = "uid://d0qnw1ylathq4"
 
 [sub_resource type="Resource" id="Resource_215e1"]
 script = ExtResource("7_lc2xo")
-Enemy = ExtResource("11_80cx4")
+Enemy = ExtResource("10_7sc4i")
 EnemyAmount = 4
 EnemySpawnInterval = 0.1
 metadata/_custom_type_script = "uid://d0qnw1ylathq4"
@@ -84,7 +82,7 @@ metadata/_custom_type_script = "uid://d0qnw1ylathq4"
 
 [sub_resource type="Resource" id="Resource_rvswv"]
 script = ExtResource("7_lc2xo")
-Enemy = ExtResource("11_80cx4")
+Enemy = ExtResource("10_215e1")
 EnemyAmount = 4
 EnemySpawnInterval = 0.1
 metadata/_custom_type_script = "uid://d0qnw1ylathq4"
@@ -115,12 +113,9 @@ libraries = {
 position = Vector2(2437, 422)
 texture = ExtResource("4_fc0e3")
 
-[node name="ParentArea2D" type="Area2D" parent="EyeIrisPupil"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EyeIrisPupil/ParentArea2D"]
-shape = SubResource("CircleShape2D_80cx4")
-debug_color = Color(1, 0, 0, 0.419608)
-script = ExtResource("3_7sc4i")
+[node name="EyePupil" type="Sprite2D" parent="EyeIrisPupil"]
+position = Vector2(28, 0)
+texture = ExtResource("15_7sc4i")
 
 [node name="NavigationRegion" type="NavigationRegion2D" parent="."]
 position = Vector2(1649, 196)
@@ -139,14 +134,15 @@ position = Vector2(1920, 280)
 scale = Vector2(123.563, 58.625)
 texture = ExtResource("1_vef74")
 
-[node name="Director" parent="." node_paths=PackedStringArray("player", "EnemyPathfindingArea", "PupilZone", "PupilcollsionShape", "SpawningRoot", "BlinkingAnimator") instance=ExtResource("7_eow3j")]
+[node name="Director" parent="." node_paths=PackedStringArray("player", "SpawnPoints", "SpawningRoot", "BlinkingAnimator") instance=ExtResource("7_eow3j")]
 player = NodePath("../Player")
 enemy_data = Array[ExtResource("6_iotsf")]([SubResource("Resource_80cx4")])
-EnemyPathfindingArea = NodePath("../NavigationRegion")
-PupilZone = NodePath("../EyeIrisPupil/ParentArea2D")
-PupilcollsionShape = NodePath("../EyeIrisPupil/ParentArea2D/CollisionShape2D")
+SpawnPoints = [NodePath("SpawnPoint")]
 SpawningRoot = NodePath("..")
 BlinkingAnimator = NodePath("../AnimationPlayer")
+
+[node name="SpawnPoint" type="Marker2D" parent="Director"]
+position = Vector2(341, -229)
 
 [node name="UpgradesMenu" type="CanvasLayer" parent="."]
 
@@ -163,3 +159,7 @@ position = Vector2(1323, 69)
 texture = ExtResource("8_j5wjh")
 region_enabled = true
 region_rect = Rect2(-3795.72, -4534.58, 13829.5, 12194.5)
+
+[node name="GameUI" type="CanvasLayer" parent="."]
+
+[node name="GameUI" parent="GameUI" instance=ExtResource("16_80cx4")]
