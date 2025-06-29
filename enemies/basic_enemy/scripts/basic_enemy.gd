@@ -44,6 +44,7 @@ func _drop_exp(count: int) -> void:
 		var e = preload("res://experience/exp.tscn").instantiate()
 		e.global_position = global_position + Vector2.from_angle(randf_range(0,TAU) ) * randf_range(.1,100)
 		get_tree().root.add_child.call_deferred(e)
+		#get_node("root/Game").add_child.call_deferred(e)
 		#print("hello")
 
 var _died = false

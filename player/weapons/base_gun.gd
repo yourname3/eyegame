@@ -61,6 +61,7 @@ func _physics_process(delta):
 		
 		knockback((get_global_mouse_position() - %FirePoint.global_position).normalized())
 		get_tree().root.add_child(bullet)
+		#get_node("root/Game").add_child(bullet)
 		_play_shoot_sfx()
 		$Cooldown.start(shoot_cooldown / Upgrades.player_firerate_multiplier)
 		Globals.CURRENT_AMMO[weapon_idx]-=1
@@ -76,6 +77,7 @@ func _physics_process(delta):
 		
 		knockback((get_global_mouse_position() - %FirePoint.global_position).normalized())
 		get_tree().root.add_child(bullet)
+		#get_node("root/Game").add_child(bullet)
 		_play_shoot_sfx()
 		$Cooldown.start(shoot_cooldown / Upgrades.player_firerate_multiplier)
 		Globals.CURRENT_AMMO[weapon_idx]-=1
