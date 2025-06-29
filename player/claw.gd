@@ -64,6 +64,11 @@ func _ready() -> void:
 		
 	line.default_color = line_color
 	
+	if is_left:
+		Globals.equipped_left = weapon_idx
+	else:
+		Globals.equipped_right = weapon_idx
+	
 func _process_points(delta: float) -> void:
 	var inv := line.global_transform.inverse()
 
@@ -129,12 +134,12 @@ func _process(delta: float) -> void:
 	#Detect inputs for weapon switching. 
 	if is_left && Input.is_action_just_pressed("SwitchWeaponLeft"):
 		change_weapon(1) 
-		if Globals.game_ui_ref:
-			Globals.game_ui_ref.switch_panel(true)
+		#if Globals.game_ui_ref:
+		#	Globals.game_ui_ref.switch_panel(true)
 	elif !is_left && Input.is_action_just_pressed("SwitchWeaponRight"):
 		change_weapon(1) 
-		if Globals.game_ui_ref:
-			Globals.game_ui_ref.switch_panel(false)
+		#if Globals.game_ui_ref:
+		#	Globals.game_ui_ref.switch_panel(false)
 
 	
 	_render_points()
@@ -176,6 +181,12 @@ func change_weapon(inc):
 		print("Current WEapon index: ", weapon_idx)
 		weapon_idx = (weapon_idx + inc) % weapons.size()
 		print("After Changign : ", weapon_idx)
+		
+	if is_left:
+		Globals.equipped_left = weapon_idx
+	else:
+		Globals.equipped_right = weapon_idx
+	
 	if weapons[weapon_idx] and Globals.OWNED_WEAPONS[weapon_idx]:
 		var old_rot = 0
 		for i in $ClawRoot.get_children():

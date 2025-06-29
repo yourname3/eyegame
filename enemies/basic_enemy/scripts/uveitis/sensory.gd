@@ -13,7 +13,9 @@ func _process(delta: float) -> void:
 		pass
 	
 	if !target:
-			target = Globals.player
+		target = Globals.player
+	if !target:
+		return
 	match vision_state:
 		Globals.Status.SUCCESS:
 			agent.set_target_position(target.position)

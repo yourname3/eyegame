@@ -1,16 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://btfica333ke2w"]
+[gd_scene load_steps=6 format=3 uid="uid://btfica333ke2w"]
 
 [ext_resource type="Theme" uid="uid://dsvhdhjqgfmv5" path="res://menus/theme/main_theme.tres" id="1_0i8mx"]
 [ext_resource type="Script" uid="uid://d21bqm4u37046" path="res://menus/game_ui/gun_window.gd" id="2_3o6t3"]
 [ext_resource type="Texture2D" uid="uid://dhp8jwm0r3rpo" path="res://player/rifle.svg" id="3_sjrsj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8f7ua"]
-bg_color = Color(0.340339, 0.340339, 0.340339, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.247059, 0.247059, 0.247059, 1)
+bg_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.144063, 0.144063, 0.144062, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+anti_aliasing_size = 0.107
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sjrsj"]
+bg_color = Color(0, 0, 0, 1)
+border_color = Color(0.144063, 0.144063, 0.144062, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
@@ -37,6 +46,22 @@ size_flags_vertical = 3
 theme = ExtResource("1_0i8mx")
 theme_override_styles/panel = SubResource("StyleBoxFlat_8f7ua")
 
+[node name="Panel2" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 6.0
+offset_right = -3.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+theme = ExtResource("1_0i8mx")
+theme_override_styles/panel = SubResource("StyleBoxFlat_sjrsj")
+
 [node name="Label3" type="Label" parent="Panel"]
 layout_mode = 1
 anchors_preset = 7
@@ -51,8 +76,7 @@ offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(89, 27)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 12
 text = "10000/10000"
 horizontal_alignment = 1
@@ -70,7 +94,7 @@ offset_right = 48.0
 offset_bottom = 28.0
 grow_horizontal = 2
 pivot_offset = Vector2(89, 27)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 12
 text = "Gravity Gun"
 horizontal_alignment = 1

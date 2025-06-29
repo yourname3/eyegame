@@ -7,6 +7,9 @@ const GUN_SHOTGUN := 2
 const GUN_RPG     := 3
 const GUN_GRAVITY := 4
 
+var equipped_left: int = 0
+var equipped_right: int = 0
+
 var pause_stack: int = 0
 
 func push_pause() -> void:

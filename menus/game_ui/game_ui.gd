@@ -13,17 +13,25 @@ func _ready():
 	create_ui()
 
 
-func switch_panel(is_left):
-	if is_left:
-		panels_left[left_idx].selected = false
-		left_idx = (left_idx + 1) % panels_left.size() 
-		print("ui_left_idx: ", left_idx)
-		panels_left[left_idx].selected = true
-	if !is_left:
-		panels_right[right_idx].selected = false
-		right_idx = (right_idx + 1) % panels_right.size() 
-		print("ui_right_idx: ", right_idx)
-		panels_right[right_idx].selected = true
+func _update_weapon_panels(arr: Array, which_weapon: int) -> void:
+	for panel in arr:
+		panel.selected = (which_weapon == panel.weapon_idx)
+
+func _process(delta: float) -> void:
+	_update_weapon_panels(panels_left, Globals.equipped_left)
+	_update_weapon_panels(panels_right, Globals.equipped_right)
+
+#func switch_panel(is_left):
+	#if is_left:
+		#panels_left[left_idx].selected = false
+		#left_idx = (left_idx + 1) % panels_left.size() 
+		#print("ui_left_idx: ", left_idx)
+		#panels_left[left_idx].selected = true
+	#if !is_left:
+		#panels_right[right_idx].selected = false
+		#right_idx = (right_idx + 1) % panels_right.size() 
+		#print("ui_right_idx: ", right_idx)
+		#panels_right[right_idx].selected = true
 	
 func set_player_level(current, needed):
 	print("c: ", current, " / n: ", needed)
