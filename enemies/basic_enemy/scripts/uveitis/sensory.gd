@@ -7,8 +7,12 @@ class_name UveitisSensory
 
 
 func _process(delta: float) -> void:
+	if !target:
+			target = Globals.player
 	match vision_state:
 		Globals.Status.SUCCESS:
+			
+			print("target: ", target, " targetPos: ", target.position)
 			agent.set_target_position(target.position)
 			signal_bus.use_engage.emit(agent.get_next_path_position())
 		Globals.Status.RUNNING:

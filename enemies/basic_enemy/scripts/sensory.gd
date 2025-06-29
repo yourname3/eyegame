@@ -23,6 +23,7 @@ func _ready() -> void:
 
 func _on_vision_body_entered(body: Node2D) -> void:
 	if body.is_in_group('Players'):
+		print("bdy entr cll")
 		_set_target(body)
 		match vision_state:
 			Globals.Status.SUCCESS:

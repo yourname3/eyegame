@@ -11,3 +11,4 @@ class_name Game
 
 func _ready() -> void:
 	Globals.nav_rid = nav_region.get_rid()
+	Globals.player = player
