@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Upgrade" load_steps=2 format=3 uid="uid://sggwob17gxa5"]
+
+[ext_resource type="Script" uid="uid://cqp62343t00ga" path="res://upgrades/upgrade.gd" id="1_o1f4u"]
+
+[resource]
+script = ExtResource("1_o1f4u")
+upgrades_var = &"enemy_health_boosts"
+description = "Enemies have 10% more health."
+metadata/_custom_type_script = "uid://cqp62343t00ga"
