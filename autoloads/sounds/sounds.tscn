@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmu8yfv1od0e7"]
+
+[ext_resource type="Script" uid="uid://csdmbatffj8q2" path="res://autoloads/sounds/sounds.gd" id="1_qu8rh"]
+[ext_resource type="AudioStream" uid="uid://biynpfn6vrfmm" path="res://Music/EyeGameGameplayTheme.wav" id="2_0dcvf"]
+
+[node name="Sounds" type="Node"]
+script = ExtResource("1_qu8rh")
+
+[node name="Music_Game" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_0dcvf")
+bus = &"Music"
