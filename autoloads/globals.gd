@@ -4,13 +4,20 @@ extends Node
 #0 - pistol 
 #1 - rifle
 #2 - shotgun
+#3 - RPG
+#4 - Gravity Gun
+#5 - Delayed Bombs
 var MAX_AMMO = [
 	9999999999999,
-	12,
-	12,
+	175,
+	180,
+	7,
+	3,
+	20,
 ]
+
 var CURRENT_AMMO = MAX_AMMO
-var OWNED_WEAPONS = [true, true, true]
+var OWNED_WEAPONS = [true, true, true, true]
 signal transmit_damage(body, amount)
 
 enum Status {
