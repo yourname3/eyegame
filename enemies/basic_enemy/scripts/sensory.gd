@@ -6,7 +6,10 @@ class_name BasicSensory
 
 var vision_state : Globals.Status
 
-var target = null
+@export var target : Player
+var center : Vector2
+@export var attack_range : int 
+
 
 @export var vision : Area2D
 @export var agent : NavigationAgent2D
@@ -15,14 +18,6 @@ var target = null
 
 
 
-func _process(delta: float) -> void:
-	match vision_state:
-		Globals.Status.SUCCESS:
-			pass
-		Globals.Status.RUNNING:
-			pass
-		Globals.Status.FAILURE:
-			pass
 
 
 func _on_vision_body_entered(body: Node2D) -> void:

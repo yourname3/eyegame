@@ -9,10 +9,11 @@ class_name UveitisSensory
 func _process(delta: float) -> void:
 	match vision_state:
 		Globals.Status.SUCCESS:
-			pass
+			agent.set_target_position(target.global_position)
+			signal_bus.use_engage.emit(target.global_position)
 		Globals.Status.RUNNING:
 			agent.set_target_position(target.global_position)
-			signal_bus.use_velocity.emit()
+			signal_bus.use_skill.emit()
 		Globals.Status.FAILURE:
 			agent.set_target_position(target.global_position)
-			signal_bus.use_velocity.emit()
+			signal_bus.use_retreat.emit(target.global_position)

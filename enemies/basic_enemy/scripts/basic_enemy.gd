@@ -1,8 +1,14 @@
 extends CharacterBody2D
 class_name BasicEnemy
 
-signal use_velocity
+
+
+
+signal use_engage
 signal use_boost
+signal boost_cooldown
+signal use_skill
+signal use_aggression
 
 @export var sensory : BasicSensory
 @export var stats : BasicStats
@@ -12,23 +18,113 @@ signal use_boost
 @export var speed : int
 var speed_mod : float = 1.0
 @export var strength : int
+@export var speed_boost : float
+
+
+
+
 
 func _ready() -> void:
-	use_velocity.connect(on_use_velocity)
+	sensory.target = get_parent().find_child("Player")
+	use_engage.connect(on_use_engage)
 	use_boost.connect(on_use_boost)
+	boost_cooldown.connect(state_machine.on_boost_cooldown)
 
 
 
-func on_use_velocity():
-	look_at(sensory.agent.get_next_path_position())
-	set_global_position(global_position.move_toward(global_position + sensory.agent.get_next_path_position(), ((get_speed_mod() * get_speed()) * get_physics_process_delta_time())))
+func on_use_engage(new_vec):
+	
+	var dir := global_position.direction_to(new_vec)
+	
+	var target_velocity := dir * (get_speed() * get_speed_mod())
+	
+	
+	# Apply acceleration if there's input
+	if dir != Vector2.ZERO:
+		# Accelerate toward target velocity
+		velocity = velocity.lerp(target_velocity, get_physics_process_delta_time())
+		#print("speed = ", velocity.length())
+	else:
+		# Apply braking force (simulates deceleration)
+		pass
+		
+	move_and_slide()
+
+
+
+func on_use_retreat(new_vec):
+	var dir := global_position.direction_to(new_vec)
+	
+	var target_velocity := dir * (get_speed() * get_speed_mod()) * -1
+	
+	
+	# Apply acceleration if there's input
+	if dir != Vector2.ZERO:
+		# Accelerate toward target velocity
+		velocity = velocity.lerp(target_velocity, get_physics_process_delta_time())
+		#print("speed = ", velocity.length())
+	else:
+		# Apply braking force (simulates deceleration)
+		pass
+		
+	move_and_slide()
 
 func on_use_boost():
 	if state_machine.boost_cooldown:
-		_set_speed_mod(1.5)
+		_set_speed_mod(speed_boost)
 		state_machine._set_boost_cooldown(false)
 		await get_tree().create_timer(.3).timeout
 		_set_speed_mod(1)
+		boost_cooldown.emit()
+	else:
+		pass
+
+
+func on_use_skill():
+	if state_machine.attack_one:
+		var new_proj 
+		new_proj.target = sensory.target
+		new_proj.global_position = global_position.direction_to(sensory.agent.target_position)
+		#add_sibling(new_proj)
+		state_machine._set_attack_one(false)
+		state_machine.on_attack_one()
+	else:
+		pass
+	if state_machine.attack_two:
+		var new_proj
+		new_proj.global_position = global_position.direction_to(sensory.agent.target_position)
+		add_sibling(new_proj)
+		state_machine._set_attacK_two(false)
+		state_machine.on_attacK_two()
+	else:
+		pass
+	if state_machine.attack_three:
+		var new_proj 
+		var new_proj_one
+		var new_proj_two
+		var new_vec = global_position.direction_to(sensory.agent.target_position)
+		var double_vec = new_vec
+		new_proj.global_position = new_vec
+		new_vec.rotated(TAU / 8)
+		double_vec.rotated(-TAU / 8)
+		new_proj_one.global_position = new_vec
+		new_proj_two.global_position = double_vec
+		#add_sibling(new_proj)
+		#add_sibling(new_proj_one)
+		#add_sibling(new_proj_two)
+		state_machine._set_attack_three(false)
+		state_machine.on_attacK_three()
+	else:
+		pass
+
+
+func on_use_aggression():
+	if state_machine.attack_two:
+		var new_proj
+		new_proj.global_position = global_position.direction_to(sensory.agent.target_position)
+		add_sibling(new_proj)
+		state_machine._set_attacK_two(false)
+		state_machine.on_attacK_two()
 	else:
 		pass
 
@@ -65,3 +161,4 @@ func _death():
 func _on_hit_box_body_entered(body: Node2D) -> void:
 	if body.is_in_group('Players'):
 		Globals.transmit_damage.emit(body, get_strength())
+		print('player damaged')
