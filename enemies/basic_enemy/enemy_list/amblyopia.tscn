@@ -25,11 +25,13 @@ stats = NodePath("Stats")
 state_machine = NodePath("StateMchine")
 health = 10
 speed = 150
+strength = 2
+speed_boost = 5.0
 
 [node name="Sensory" type="Node2D" parent="." node_paths=PackedStringArray("signal_bus", "vision", "agent", "hitbox")]
 script = ExtResource("2_pyiaf")
 signal_bus = NodePath("..")
-attack_range = 500
+attack_range = 100
 vision = NodePath("Vision")
 agent = NodePath("Agent")
 hitbox = NodePath("HitBox")

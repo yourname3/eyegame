@@ -15,6 +15,7 @@ func _on_life_time_timeout():
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("Players"):
+		print('hit')
 		Globals.transmit_damage.emit(body, damage)
 	else:
 		pass

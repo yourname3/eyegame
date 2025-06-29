@@ -35,7 +35,7 @@ func _set_attack_one(value:bool):
 func on_attack_two():
 	await get_tree().create_timer(1).timeout
 	_set_boost_cooldown(true)
-func _set_attacK_two(value:bool):
+func _set_attack_two(value:bool):
 	attack_two = value
 
 func on_attacK_three():
