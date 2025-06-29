@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b0snu6vu3acul"]
+[gd_scene load_steps=15 format=3 uid="uid://b0snu6vu3acul"]
 
 [ext_resource type="Script" uid="uid://bx4xmx3yc3sb3" path="res://player/weapons/projectiles/explosion.gd" id="1_wotpk"]
 [ext_resource type="Texture2D" uid="uid://6yc0xmhvv4fj" path="res://proto/proto_projectile.svg" id="2_mrxkh"]
@@ -31,7 +31,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.0333333, 0.433333, 1.33333),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(0.843137, 0.247059, 0, 0.635294), Color(0.890196, 0.00392157, 0, 0.623529), Color(1, 0.570067, 0.445386, 0)]
+"values": [Color(0.843137, 0.247059, 0, 0), Color(0.890196, 0.00392157, 0, 0), Color(1, 0.570067, 0.445386, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_sr0iv"]
@@ -67,6 +67,42 @@ _data = {
 &"RESET": SubResource("Animation_sr0iv")
 }
 
+[sub_resource type="Curve" id="Curve_sr0iv"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.62203, 0.507736), -1.25848, -1.25848, 0, 0, Vector2(1, 0.0101792), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_u2civ"]
+curve = SubResource("Curve_sr0iv")
+
+[sub_resource type="Gradient" id="Gradient_mrxkh"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.470588, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_sr0iv"]
+gradient = SubResource("Gradient_mrxkh")
+
+[sub_resource type="CurveTexture" id="CurveTexture_mrxkh"]
+
+[sub_resource type="Curve" id="Curve_mrxkh"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.667387, 0.502443), -1.79092, -1.79092, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_sr0iv"]
+curve = SubResource("Curve_mrxkh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mrxkh"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 24.11
+initial_velocity_max = 149.94
+gravity = Vector3(0, 0, 0)
+scale_min = 0.3
+scale_max = 0.8
+scale_curve = SubResource("CurveTexture_sr0iv")
+color_initial_ramp = SubResource("GradientTexture1D_sr0iv")
+alpha_curve = SubResource("CurveTexture_u2civ")
+emission_curve = SubResource("CurveTexture_mrxkh")
+
 [node name="Explosion" type="Node2D"]
 script = ExtResource("1_wotpk")
 
@@ -87,6 +123,16 @@ libraries = {
 &"": SubResource("AnimationLibrary_u2civ")
 }
 autoplay = "Explode"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 21
+texture = ExtResource("2_mrxkh")
+lifetime = 1.5
+one_shot = true
+speed_scale = 1.5
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_mrxkh")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
