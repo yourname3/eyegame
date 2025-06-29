@@ -3,14 +3,14 @@
 [ext_resource type="Script" uid="uid://bxtpjpge1yypu" path="res://game.gd" id="1_hve3p"]
 [ext_resource type="Texture2D" uid="uid://dxalddyrgwxy1" path="res://eyeball/white_square.svg" id="1_vef74"]
 [ext_resource type="PackedScene" uid="uid://dhx310ohc245d" path="res://player/player.tscn" id="2_e2o6t"]
-[ext_resource type="Script" uid="uid://dhpq6e8bwcuir" path="res://detect_enemies.gd" id="4_e8heu"]
+[ext_resource type="Script" path="res://detect_enemies.gd" id="4_e8heu"]
 [ext_resource type="Texture2D" uid="uid://cpim1me506bgn" path="res://eyeball/eye_iris_pupil.svg" id="4_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://deo3ptwsido8b" path="res://menus/upgrades/upgrade_menu.tscn" id="5_j5wjh"]
 [ext_resource type="Script" uid="uid://b653chsv5uyx7" path="res://Director/Wave.gd" id="6_iotsf"]
 [ext_resource type="PackedScene" uid="uid://cx74uha2f3op4" path="res://menus/pause_menu.tscn" id="6_ryrav"]
 [ext_resource type="PackedScene" uid="uid://bwca23wivq56k" path="res://Director/director.tscn" id="7_eow3j"]
 [ext_resource type="Script" uid="uid://d0qnw1ylathq4" path="res://Director/EnemySequence.gd" id="7_lc2xo"]
-[ext_resource type="Script" uid="uid://jfh83dwiuvw3" path="res://eye_health_redness.gd" id="7_rvswv"]
+[ext_resource type="Script" path="res://eye_health_redness.gd" id="7_rvswv"]
 [ext_resource type="PackedScene" uid="uid://d2k42hloets24" path="res://enemies/basic_enemy/enemy_list/cataracts.tscn" id="8_215e1"]
 [ext_resource type="Texture2D" uid="uid://c58hbr1gi6k7n" path="res://eyeball/blinker.svg" id="8_j5wjh"]
 [ext_resource type="Shader" uid="uid://bsrqnqm64wq4y" path="res://eyeball/eyeball_blink.gdshader" id="8_vef74"]
@@ -136,6 +136,7 @@ navigation_polygon = SubResource("NavigationPolygon_j5wjh")
 
 [node name="Player" parent="." instance=ExtResource("2_e2o6t")]
 position = Vector2(690, 234)
+collision_layer = 1
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-8, -9)

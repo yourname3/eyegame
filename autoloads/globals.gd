@@ -47,6 +47,7 @@ func reset_game_state() -> void:
 
 func unlock_gun(idx: int, ammo: int) -> void:
 	OWNED_WEAPONS[idx] = true
+	game_ui_ref.create_ui()
 	CURRENT_AMMO[idx] += ammo
 	if CURRENT_AMMO[idx] > MAX_AMMO[idx]:
 		CURRENT_AMMO[idx] = MAX_AMMO[idx]

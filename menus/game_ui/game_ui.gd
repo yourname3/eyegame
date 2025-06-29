@@ -26,13 +26,26 @@ func switch_panel(is_left):
 		
 func update_ammo_text():
 	for i in panels_left:
-		i.set_ammo_text()
+		if is_instance_valid(i):
+			i.set_ammo_text()
 	for i in panels_right:
-		i.set_ammo_text()
+		if is_instance_valid(i):
+			i.set_ammo_text()
 	
 func create_ui():
 	#Get owned weapons
-	var owned_weapon_count = Globals.OWNED_WEAPONS.size()
+	var get_children_vl = vbox_left.get_children()
+	var get_children_vr = vbox_right.get_children()
+	get_children_vl.append_array(get_children_vr)
+	if get_children_vl.size() > 0:
+		for i in get_children():
+			i.queue_free()
+		panels_left.clear()
+		panels_right.clear()
+	var owned_weapon_count = 0
+	for i in Globals.OWNED_WEAPONS:
+		if i == true:
+			owned_weapon_count += 1
 	for i in range(owned_weapon_count):
 		var gp = gun_panel.instantiate()
 		panels_left.append(gp)
