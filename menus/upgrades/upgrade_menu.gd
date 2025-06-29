@@ -71,6 +71,8 @@ func _ready() -> void:
 	# Be sure to start out hidden
 	hide()
 	
+	SignalBus.level_up.connect(show_new_upgrades)
+	
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("debug_upgrade"):
 		show_new_upgrades()
