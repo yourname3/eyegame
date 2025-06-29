@@ -12,7 +12,7 @@ signal use_boost
 @export var speed : int
 var speed_mod : float = 1.0
 @export var strength : int
-
+@onready var exp = preload("res://experience/exp.tscn")
 func _ready() -> void:
 	use_velocity.connect(on_use_velocity)
 	use_boost.connect(on_use_boost)
@@ -60,6 +60,11 @@ func get_strength() -> int:
 	return strength
 
 func _death():
+	for i in range(3):
+		var e = exp.instantiate()
+		e.global_position = global_position + Vector2.from_angle(randf_range(0,TAU) ) * randf_range(.1,100)
+		get_tree().root.add_child.call_deferred(e)
+		print("hello")
 	queue_free()
 
 func _on_hit_box_body_entered(body: Node2D) -> void:

@@ -72,5 +72,6 @@ libraries = {
 
 [node name="BasicEnemy" parent="EyeWhite" instance=ExtResource("5_ryrav")]
 position = Vector2(-2296, -135)
+health = 0
 
 [node name="PauseMenu" parent="." instance=ExtResource("6_ryrav")]

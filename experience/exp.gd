@@ -2,7 +2,7 @@ extends CharacterBody2D
 var player
 var fly : bool = false
 var speed = 2000
-var accel = 1
+var accel = 5
 var brake_force = .98
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("Players")
