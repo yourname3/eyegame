@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dhx310ohc245d" path="res://player/player.tscn" id="4_ljkvk"]
 [ext_resource type="PackedScene" uid="uid://c2f4gjk76cf4k" path="res://experience/exp.tscn" id="5_q7gsq"]
 [ext_resource type="PackedScene" uid="uid://cx74uha2f3op4" path="res://menus/pause_menu.tscn" id="6_my55s"]
-[ext_resource type="Script" path="res://enemies/navigation_region.gd" id="7_p2vhm"]
+[ext_resource type="Script" uid="uid://dmnbt4opvsh4c" path="res://enemies/navigation_region.gd" id="7_p2vhm"]
 
 [sub_resource type="Animation" id="Animation_7jktm"]
 resource_name = "Blink"
