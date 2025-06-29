@@ -10,6 +10,22 @@ var needed_exp : int = 1
 @export var health : int = 100
 @onready var max_health: int = health
 
+var _damage_tween: Tween = null
+
+func _create_damage_tween() -> void:
+	if _damage_tween != null:
+		_damage_tween.kill()
+		_damage_tween = null
+	_damage_tween = create_tween()
+	var c := Color(1.0, 0.5, 0.5)
+	_damage_tween.tween_property(self, "modulate", c, 0.2)\
+		.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+	_damage_tween.tween_property(self, "modulate", Color.WHITE, 0.2)\
+		.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+	_damage_tween.tween_property(self, "modulate", c, 0.2)\
+		.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+	_damage_tween.tween_property(self, "modulate", Color.WHITE, 0.2)\
+		.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
 
 func get_input() -> Vector2:
 	return Input.get_vector("Left", "Right", "Up", "Down")
@@ -39,8 +55,14 @@ func _set_health(value:int):
 		value = max_health
 	
 	if value < health:
+		# If we have a valid running damage tween, we are invincible, this
+		# gives us nice little invincibility.
+		if _damage_tween != null and _damage_tween.is_running():
+			return
+		
 		SignalBus.player_damaged.emit()
 		Sounds.sfx_player_hit.play()
+		_create_damage_tween()
 	health = value
 	print("Player took damage! ", health)
 	if Globals.game_ui_ref:
