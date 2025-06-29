@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://fi3jr1ii7joa"]
+
+[ext_resource type="Script" uid="uid://cr250551rhlnc" path="res://enemies/basic_enemy/scripts/basic_enemy.gd" id="1_m55pa"]
+[ext_resource type="Script" uid="uid://cmmfq6kyt077b" path="res://enemies/basic_enemy/scripts/conjunctivits/sensory.gd" id="2_m55pa"]
+[ext_resource type="Script" uid="uid://bastchle4oji7" path="res://enemies/basic_enemy/scripts/stats.gd" id="3_o5m4e"]
+[ext_resource type="Script" uid="uid://cctbcuv2vbaiv" path="res://enemies/basic_enemy/scripts/state_mchine.gd" id="4_6banj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yx0l5"]
+radius = 300.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xuk7h"]
+radius = 62.1289
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oul6g"]
+radius = 54.0093
+
+[node name="BasicEnemy" type="CharacterBody2D" groups=["Enemies"]]
+script = ExtResource("1_m55pa")
+
+[node name="Sensory" type="Node2D" parent="." node_paths=PackedStringArray("signal_bus", "vision", "agent", "hitbox")]
+script = ExtResource("2_m55pa")
+signal_bus = NodePath("..")
+vision = NodePath("Vision")
+agent = NodePath("Agent")
+hitbox = NodePath("HitBox")
+
+[node name="Vision" type="Area2D" parent="Sensory"]
+
+[node name="Range" type="CollisionShape2D" parent="Sensory/Vision"]
+shape = SubResource("CircleShape2D_yx0l5")
+
+[node name="Agent" type="NavigationAgent2D" parent="Sensory"]
+unique_name_in_owner = true
+
+[node name="HitBox" type="Area2D" parent="Sensory"]
+
+[node name="Collision" type="CollisionShape2D" parent="Sensory/HitBox"]
+shape = SubResource("CircleShape2D_xuk7h")
+
+[node name="Profile" type="AnimationPlayer" parent="."]
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("3_o5m4e")
+
+[node name="StateMchine" type="AnimationTree" parent="."]
+script = ExtResource("4_6banj")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_oul6g")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="body_entered" from="Sensory/Vision" to="Sensory" method="_on_vision_body_entered"]
+[connection signal="body_exited" from="Sensory/Vision" to="Sensory" method="_on_vision_body_exited"]
+[connection signal="body_entered" from="Sensory/HitBox" to="." method="_on_hit_box_body_entered"]

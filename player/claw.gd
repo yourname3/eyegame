@@ -14,26 +14,37 @@ var global_points := PackedVector2Array()
 var vels          := PackedVector2Array()
 
 @export var line_color := Color("#3f3f3f")
+#This is how far left or right the arm aims for based on the mouse position
+@export var angle_offset := 5.0
+@export var arm_length := 70
+@export var is_left = false
 
 # The root pos is where we are "attached" on the player model.
 # We must transform it into global position using our parent's transform.
 @onready var root_pos = position
 
 @onready var line: Line2D = $Line2D
-@onready var fire_point := %FirePoint
+#@onready var fire_point := %FirePoint
 
 @onready var claw_root := $ClawRoot
+@onready var weapons :=[preload("res://player/weapons/base_gun.tscn"), preload("res://player/weapons/machine_gun.tscn"), preload("res://player/weapons/shot_gun.tscn")]
+@export var weapon_idx : int = 0
+var weapon_knockback := Vector2.ZERO
 
-func _shoot() -> void:
-	var bullet = preload("res://proto/proto_projectile.tscn").instantiate()
-	
-	# We use OUR global rotation, as we're facing in the direction of the gun.
-	bullet.velocity = Vector2.from_angle(global_rotation) * 600.0
-	# The claw's parent is the player; add a sibling to the player.
-	get_parent().add_sibling(bullet)
-	bullet.global_position = fire_point.global_position
+#func _shoot() -> void:
+	#var bullet = preload("res://proto/proto_projectile.tscn").instantiate()
+	#
+	## We use OUR global rotation, as we're facing in the direction of the gun.
+	#
+	#bullet.velocity = (gun.global_position - get_global_mouse_position()).normalized() #.from_angle(global_rotation) * 600.0
+	## The claw's parent is the player; add a sibling to the player.
+	#get_parent().add_sibling(bullet)
+	#bullet.global_position = fire_point.global_position
 
 func _ready() -> void:
+	if weapons[weapon_idx]:
+		var weapon = weapons[weapon_idx].instantiate()
+		$ClawRoot.add_child(weapon)
 	# Put the circle at the "base" of the claw onto the parent
 	$ClawBase.reparent.call_deferred(get_parent())
 	line.clear_points()
@@ -57,9 +68,9 @@ func _process_points(delta: float) -> void:
 	const SPRING_LENGTH = 0.2
 	
 	for i in range(1, global_points.size() - 1):
-		var accel = spring(global_points[i], global_points[i - 1], SPRING_LENGTH) + \
-			spring(global_points[i], global_points[i + 1], SPRING_LENGTH) + \
-			spring_damp(vels[i])
+		var accel = Spring.spring(global_points[i], global_points[i - 1], SPRING_LENGTH) + \
+			Spring.spring(global_points[i], global_points[i + 1], SPRING_LENGTH) + \
+			Spring.spring_damp(vels[i])
 		vels[i] += accel * delta
 		global_points[i] += vels[i] * delta
 		
@@ -68,31 +79,31 @@ func _process_points(delta: float) -> void:
 	#	if to_last.length_squared() > (maxstep * maxstep):
 	#		global_points[i] = global_points[i - 1] + to_last.normalized() * maxstep
 		
-func spring_damp(vel: Vector2, B: float = 20) -> Vector2:
-	return -B * vel
 
-func spring(pos: Vector2, o_pos: Vector2, length: float, K: float = 800) -> Vector2:
-	# Direction from other to current pos.
-	var x = pos - o_pos
-	if x.length_squared() < 0.00000001:
-		return Vector2.ZERO
-	
-	# Project our spring length along that.
-	var rest = length * x.normalized()
-	
-	# F = -(x - rest)
-	var accel = -K * (x - rest)
-	
-	return accel
 
 func _process(delta: float) -> void:
 	const fac = 0.1
 	var noise = Vector2.from_angle(randf_range(0, TAU)) * randf_range(0, 500)
 	smooth1 += (noise - smooth1) * fac
 	smooth2 += (smooth1 - smooth2) * fac
-	target += (smooth2 - target) * fac
+	#target += (smooth2 - target) * fac
 	
-	position = position.move_toward(target, 300 * delta)
+	var to_mouse = get_global_mouse_position() - global_position
+	var ang_off = 0
+
+	if abs(rad_to_deg(to_mouse.angle() - get_parent().global_rotation)) > 90:
+		ang_off = -angle_offset
+	else:
+		ang_off = angle_offset
+		#TODO: Fix the bottom left quadrant arm crossover.
+	if is_left:
+		pass
+	var angle_with_offset = to_mouse.angle() + deg_to_rad(ang_off)
+	
+	target = get_parent().global_position + Vector2.from_angle(angle_with_offset) * arm_length
+	target += weapon_knockback
+	weapon_knockback *= .6
+	global_position = global_position.move_toward(target, 300 * delta)
 	global_rotation = rotate_toward(global_rotation, target.angle(), TAU * delta * 8)
 	
 	_render_points()

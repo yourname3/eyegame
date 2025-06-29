@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://53ndylwh10qw"]
+
+[ext_resource type="Texture2D" uid="uid://c78obv1bg8whk" path="res://enemies/animations/cannon_enemy/cannon_enemy.svg" id="1_aeakf"]
+[ext_resource type="Script" uid="uid://c2484dlv5v5y4" path="res://enemies/animations/cannon_enemy/cannon_enemy.gd" id="1_lvfaj"]
+[ext_resource type="Script" uid="uid://cj378pgaoju2f" path="res://player/player_flagellum.gd" id="2_aeakf"]
+[ext_resource type="Texture2D" uid="uid://b7io1jp0btiil" path="res://enemies/animations/cannon_enemy/cannon_tail.svg" id="2_lvfaj"]
+
+[sub_resource type="Curve" id="Curve_lvfaj"]
+_data = [Vector2(0, 1), 0.0, 0.0483477, 0, 0, Vector2(1, 0), -2.00557, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_4er0k"]
+offsets = PackedFloat32Array(0, 0.404834)
+colors = PackedColorArray(0.576471, 0.580392, 0.235294, 0, 0.756863, 0.764706, 0.396078, 1)
+
+[node name="CannonEnemy" type="Node2D"]
+script = ExtResource("1_lvfaj")
+
+[node name="CannonEnemy" type="Sprite2D" parent="."]
+position = Vector2(-24, 1)
+scale = Vector2(0.851961, 0.851961)
+texture = ExtResource("1_aeakf")
+
+[node name="Line2D4" type="Line2D" parent="."]
+texture_repeat = 2
+position = Vector2(-20.64, 0)
+rotation = 3.14159
+points = PackedVector2Array(0, 0, 196.36, 1.28746e-05)
+width = 12.0
+width_curve = SubResource("Curve_lvfaj")
+default_color = Color(0.630875, 0.750902, 0.631844, 1)
+gradient = SubResource("Gradient_4er0k")
+texture = ExtResource("2_lvfaj")
+texture_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("2_aeakf")
+
+[node name="Line2D5" type="Line2D" parent="."]
+texture_repeat = 2
+position = Vector2(-14.64, -11)
+rotation = 3.14159
+points = PackedVector2Array(0, 0, 171.36, 1.28746e-05)
+width = 12.0
+width_curve = SubResource("Curve_lvfaj")
+default_color = Color(0.630875, 0.750902, 0.631844, 1)
+gradient = SubResource("Gradient_4er0k")
+texture = ExtResource("2_lvfaj")
+texture_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("2_aeakf")
+
+[node name="Line2D6" type="Line2D" parent="."]
+texture_repeat = 2
+position = Vector2(-15.64, 11)
+rotation = 3.14159
+points = PackedVector2Array(0, 0, 174.36, 1.28746e-05)
+width = 12.0
+width_curve = SubResource("Curve_lvfaj")
+default_color = Color(0.630875, 0.750902, 0.631844, 1)
+gradient = SubResource("Gradient_4er0k")
+texture = ExtResource("2_lvfaj")
+texture_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("2_aeakf")

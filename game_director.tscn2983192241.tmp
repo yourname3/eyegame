@@ -1,0 +1,42 @@
+[gd_scene load_steps=9 format=3 uid="uid://bihugrfibx3bh"]
+
+[ext_resource type="Script" uid="uid://cgvc1adk520p3" path="res://director.gd" id="1_70yio"]
+[ext_resource type="Script" uid="uid://b653chsv5uyx7" path="res://Wave.gd" id="2_x1nkk"]
+[ext_resource type="Script" uid="uid://d0qnw1ylathq4" path="res://EnemySequence.gd" id="3_po17x"]
+
+[sub_resource type="Resource" id="Resource_x1nkk"]
+script = ExtResource("3_po17x")
+EnemyName = "First Wave Enemy 1"
+EnemyAmount = 5
+EnemySpawnInterval = 1.0
+metadata/_custom_type_script = "uid://d0qnw1ylathq4"
+
+[sub_resource type="Resource" id="Resource_po17x"]
+script = ExtResource("2_x1nkk")
+enemy_sequences = Array[ExtResource("3_po17x")]([SubResource("Resource_x1nkk")])
+SecondsTillNextWave = 3.0
+metadata/_custom_type_script = "uid://b653chsv5uyx7"
+
+[sub_resource type="Resource" id="Resource_epocm"]
+script = ExtResource("3_po17x")
+EnemyName = "Second Wave Enemy 1"
+EnemyAmount = 10
+EnemySpawnInterval = 0.8
+metadata/_custom_type_script = "uid://d0qnw1ylathq4"
+
+[sub_resource type="Resource" id="Resource_45fur"]
+script = ExtResource("3_po17x")
+EnemyName = "Second Wave Enemy 2"
+EnemyAmount = 5
+EnemySpawnInterval = 1.0
+metadata/_custom_type_script = "uid://d0qnw1ylathq4"
+
+[sub_resource type="Resource" id="Resource_1h2r8"]
+script = ExtResource("2_x1nkk")
+enemy_sequences = Array[ExtResource("3_po17x")]([SubResource("Resource_epocm"), SubResource("Resource_45fur")])
+SecondsTillNextWave = 5.0
+metadata/_custom_type_script = "uid://b653chsv5uyx7"
+
+[node name="Director" type="Node2D"]
+script = ExtResource("1_70yio")
+enemy_data = Array[ExtResource("2_x1nkk")]([SubResource("Resource_po17x"), SubResource("Resource_1h2r8")])

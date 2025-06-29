@@ -1,17 +1,62 @@
-[gd_scene load_steps=4 format=3 uid="uid://8xaqrd8b1bnf"]
+[gd_scene load_steps=9 format=3 uid="uid://8xaqrd8b1bnf"]
 
-[ext_resource type="Script" uid="uid://cr250551rhlnc" path="res://enemies/basic_enemy/basic_enemy.gd" id="1_yx0l5"]
+[ext_resource type="Script" uid="uid://cr250551rhlnc" path="res://enemies/basic_enemy/scripts/basic_enemy.gd" id="1_yx0l5"]
 [ext_resource type="Texture2D" uid="uid://cjjjj6t82jvhd" path="res://icon.svg" id="2_eopwh"]
+[ext_resource type="Script" uid="uid://d3bdbfqyjv66r" path="res://enemies/basic_enemy/scripts/sensory.gd" id="2_xuk7h"]
+[ext_resource type="Script" uid="uid://bastchle4oji7" path="res://enemies/basic_enemy/scripts/stats.gd" id="4_xuk7h"]
+[ext_resource type="Script" uid="uid://cctbcuv2vbaiv" path="res://enemies/basic_enemy/scripts/state_mchine.gd" id="5_m6spd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yx0l5"]
+radius = 300.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xuk7h"]
+radius = 62.1289
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oul6g"]
-radius = 66.0076
+radius = 54.0093
 
-[node name="BasicEnemy" type="CharacterBody2D"]
+[node name="BasicEnemy" type="CharacterBody2D" node_paths=PackedStringArray("sensory", "stats", "state_machine") groups=["Enemies"]]
 script = ExtResource("1_yx0l5")
+sensory = NodePath("Sensory")
+stats = NodePath("Stats")
+state_machine = NodePath("StateMchine")
 
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(0, 4)
+[node name="Sensory" type="Node2D" parent="." node_paths=PackedStringArray("signal_bus", "vision", "agent", "hitbox")]
+script = ExtResource("2_xuk7h")
+signal_bus = NodePath("..")
+vision = NodePath("Vision")
+agent = NodePath("Agent")
+hitbox = NodePath("HitBox")
+
+[node name="Vision" type="Area2D" parent="Sensory"]
+
+[node name="Range" type="CollisionShape2D" parent="Sensory/Vision"]
+shape = SubResource("CircleShape2D_yx0l5")
+
+[node name="Agent" type="NavigationAgent2D" parent="Sensory"]
+
+[node name="HitBox" type="Area2D" parent="Sensory"]
+
+[node name="Collision" type="CollisionShape2D" parent="Sensory/HitBox"]
+shape = SubResource("CircleShape2D_xuk7h")
+
+[node name="Profile" type="AnimationPlayer" parent="."]
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("4_xuk7h")
+
+[node name="StateMchine" type="AnimationTree" parent="."]
+script = ExtResource("5_m6spd")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_oul6g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_eopwh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_oul6g")
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="body_entered" from="Sensory/Vision" to="Sensory" method="_on_vision_body_entered"]
+[connection signal="body_exited" from="Sensory/Vision" to="Sensory" method="_on_vision_body_exited"]
+[connection signal="navigation_finished" from="Sensory/Agent" to="Sensory" method="_on_agent_navigation_finished"]
+[connection signal="body_entered" from="Sensory/HitBox" to="." method="_on_hit_box_body_entered"]

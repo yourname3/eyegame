@@ -31,10 +31,13 @@ func _draw_spiral(phase: float, funny_phase: float) -> void:
 var _funny_phase := 0.0
 var _phase := 0.0
 
+var _last_position = global_position
+
 func _process(delta: float) -> void:
-	var speed = 100.0
-	
-	position.x += speed * delta
+	var position_dif = global_position - _last_position
+	var speed = position_dif.length() / delta
+	if delta <= 0.0:
+		speed = 0.0 # idk
 	
 	var phase_step = speed / (30 * 0.5 * 0.3)
 	
@@ -42,3 +45,5 @@ func _process(delta: float) -> void:
 	_phase = fmod(_phase + phase_step * delta, TAU)
 	
 	_funny_phase = fmod(_funny_phase + TAU * delta, PI * PI * 2.0)
+	
+	_last_position = global_position

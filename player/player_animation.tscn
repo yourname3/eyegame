@@ -76,10 +76,18 @@ scale = Vector2(0.59375, 0.59375)
 texture = ExtResource("3_t8nns")
 
 [node name="Claw" parent="." instance=ExtResource("4_v3vk1")]
-position = Vector2(0, -26)
+position = Vector2(2, -25)
+line_color = Color(0.215686, 0.215686, 0.215686, 1)
+angle_offset = -12.0
+arm_length = 120
+weapon_idx = 2
 
 [node name="Claw2" parent="." instance=ExtResource("4_v3vk1")]
 position = Vector2(2, 25)
 line_color = Color(0.215902, 0.215902, 0.215902, 1)
+angle_offset = 12.0
+arm_length = 120
+is_left = true
+weapon_idx = 1
 
 [node name="Line2D6" type="Line2D" parent="."]

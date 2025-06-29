@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://lu2jh4qxhpgd"]
+
+[ext_resource type="Script" uid="uid://d2yqfw3j5atmx" path="res://player/weapons/base_gun.gd" id="1_1pb1g"]
+[ext_resource type="Texture2D" uid="uid://bqql7qdcmhd2y" path="res://player/claw.svg" id="1_3lnlr"]
+
+[node name="Gun" type="Node2D"]
+script = ExtResource("1_1pb1g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(18, -7)
+scale = Vector2(0.315821, 0.315821)
+texture = ExtResource("1_3lnlr")
+
+[node name="FirePoint" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(36, -16)
+
+[node name="Cooldown" type="Timer" parent="."]
+
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
