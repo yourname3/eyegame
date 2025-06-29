@@ -10,6 +10,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if !target:
 		target = Globals.player
+	if target == null:
+		# Once the player dies, we can't do anything anymore.
+		return
 	match vision_state:
 		Globals.Status.SUCCESS:
 			agent.set_target_position(target.global_position)

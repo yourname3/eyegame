@@ -1,0 +1,81 @@
+[gd_scene load_steps=5 format=3 uid="uid://btfica333ke2w"]
+
+[ext_resource type="Theme" uid="uid://dsvhdhjqgfmv5" path="res://menus/theme/main_theme.tres" id="1_0i8mx"]
+[ext_resource type="Script" uid="uid://d21bqm4u37046" path="res://menus/game_ui/gun_window.gd" id="2_3o6t3"]
+[ext_resource type="Texture2D" uid="uid://bqql7qdcmhd2y" path="res://player/claw.svg" id="3_sjrsj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8f7ua"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.613851, 0.0026006, 0.865147, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing_size = 0.107
+
+[node name="Control" type="Control"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 100.0
+offset_bottom = 100.0
+pivot_offset = Vector2(65.5, 54)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("2_3o6t3")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+offset_right = 100.0
+offset_bottom = 100.0
+
+[node name="Panel" type="Panel" parent="AspectRatioContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+theme = ExtResource("1_0i8mx")
+theme_override_styles/panel = SubResource("StyleBoxFlat_8f7ua")
+
+[node name="Label3" type="Label" parent="AspectRatioContainer/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -36.0
+offset_top = -22.0
+offset_right = 36.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(89, 27)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "100/1000"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="AspectRatioContainer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.415, 0.415)
+pivot_offset = Vector2(64.311, 58.9401)
+texture = ExtResource("3_sjrsj")

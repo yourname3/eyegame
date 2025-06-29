@@ -29,6 +29,7 @@ func _ready() -> void:
 	$%CloseCreditsButton.hide()
 	
 	%PlayButton.pressed.connect(func():
+		Globals.reset_game_state()
 		SceneTransition.change_scene_to_packed(SceneList.Game)
 	)
 	

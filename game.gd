@@ -12,3 +12,6 @@ class_name Game
 func _ready() -> void:
 	Globals.nav_rid = nav_region.get_rid()
 	Globals.player = player
+	Globals.game_ui_ref = $GameUI/GameUI
+	
+	Sounds.play_music(Sounds.MUSIC_GAME)
