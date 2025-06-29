@@ -133,6 +133,7 @@ libraries = {
 }
 
 [node name="EyeIrisPupil" type="Sprite2D" parent="."]
+z_index = -3
 position = Vector2(2437, 422)
 texture = ExtResource("4_fc0e3")
 
