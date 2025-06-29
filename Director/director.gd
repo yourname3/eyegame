@@ -16,6 +16,8 @@ extends Node2D
 
 @export var BlinkingAnimator: AnimationPlayer
 
+@export var BlinkTimer : Timer 
+
 var outstanding_sequences: int = 0
 
 signal _ready_for_next_wave
@@ -56,6 +58,9 @@ func _do_sequence(sequence: EnemySequence) -> void:
 func _ready() -> void:
 	print("thing is loaded")
 	
+	BlinkTimer.start(randf_range(5.0, 15.0))
+	BlinkTimer.timeout.connect(_play_blink)
+	
 	for wave in enemy_data:
 		await get_tree().create_timer(wave.SecondsTillNextWave).timeout
 		
@@ -68,17 +73,32 @@ func _ready() -> void:
 
 func _play_blink() -> void:
 	BlinkingAnimator.play("Blink")
+	BlinkTimer.start(randf_range(5.0, 15.0))
+	
 	
 	
 func _process(delta: float) -> void:
-	if Input.is_key_pressed(KEY_SPACE):
+	if Input.is_key_pressed(KEY_SPACE):		
 		_play_blink()
+		
 # wave
 
 
 func _teleport_all_enemies() -> void:
 	pass
 	#get list of all enemies 
+	
+	var nodes_in_group = get_tree().get_nodes_in_group("Enemies")
+	
+	for i in nodes_in_group:
+		var RandomPoint = NavigationServer2D.region_get_random_point(Globals.nav_rid, 0, true)
+		
+		#make sure its not touching the pupil area 2D
+		while RandomPoint.distance_to(PupilZone.position) < PupilcollsionShape.shape.radius:
+			RandomPoint = NavigationServer2D.region_get_random_point(Globals.nav_rid, 0, true)
+			
+		i.position = RandomPoint
+		
 	
 	#loop list
 		#find random spot in eye
