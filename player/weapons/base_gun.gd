@@ -33,7 +33,8 @@ func knockback(shoot_dir):
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func check_can_shoot():
-	Globals.game_ui_ref.update_ammo_text()
+	if Globals.game_ui_ref:
+		Globals.game_ui_ref.update_ammo_text()
 	check_remove_gun()
 	if !Globals.OWNED_WEAPONS[weapon_idx]:
 		unequip = true
