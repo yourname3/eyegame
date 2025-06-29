@@ -26,7 +26,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		# Apply braking force (simulates deceleration)
 		velocity *= brake_force
-
+	#print(level)
 	move_and_slide()
 
 func _set_health(value:int):
@@ -63,6 +63,8 @@ func _on_exp_collect_body_entered(body: Node2D) -> void:
 		current_exp+=1
 		print(current_exp)
 		check_level_up()
+		Globals.game_ui_ref.set_player_level(current_exp, needed_exp)
+
 
 func check_level_up():
 	if current_exp >= needed_exp:
@@ -70,4 +72,3 @@ func check_level_up():
 		current_exp = 0
 		needed_exp = needed_exp * 2
 		print("level: ", level)
-	

@@ -23,7 +23,12 @@ func switch_panel(is_left):
 		print("ui_right_idx: ", right_idx)
 		panels_right[right_idx].selected = true
 	
-		
+func set_player_level(current, needed):
+	print("c: ", current, " / n: ", needed)
+	$PlayerLevel.scale.x = 1.0*current/needed * 15.0
+	print("scalex", $PlayerLevel.scale.x)
+	$PlayLevelContainer/Label.text = str("Level: ", Globals.player.level, " ", current, "/", needed )
+
 func update_ammo_text():
 	for i in panels_left:
 		if is_instance_valid(i):
@@ -37,23 +42,27 @@ func create_ui():
 	var get_children_vl = vbox_left.get_children()
 	var get_children_vr = vbox_right.get_children()
 	get_children_vl.append_array(get_children_vr)
-	if get_children_vl.size() > 0:
-		for i in get_children():
-			i.queue_free()
-		panels_left.clear()
-		panels_right.clear()
-	var owned_weapon_count = 0
-	for i in Globals.OWNED_WEAPONS:
-		if i == true:
-			owned_weapon_count += 1
-	for i in range(owned_weapon_count):
+	for i in get_children_vl:
+		i.queue_free()
+	panels_left.clear()
+	panels_right.clear()
+	print("destroying UIWDAYFLWIGAHF")
+		
+	
+	var owned_weapon_idxs = []
+	for i in range(Globals.OWNED_WEAPONS.size()):
+		if Globals.OWNED_WEAPONS[i]:
+			owned_weapon_idxs.append(i)
+			print("owned weapon count: ", owned_weapon_idxs)
+	for i in (owned_weapon_idxs):
 		var gp = gun_panel.instantiate()
 		panels_left.append(gp)
 		gp.weapon_idx = i
 		if i == 0:
 			gp.selected = true
 		vbox_left.add_child(gp)
-	for i in range(owned_weapon_count):
+		print("adding gp L")
+	for i in (owned_weapon_idxs):
 		var gp = gun_panel.instantiate()
 		panels_right.append(gp)
 		gp.weapon_idx = i
@@ -62,3 +71,4 @@ func create_ui():
 		gp.layout_direction = 3
 		gp.is_right = true
 		vbox_right.add_child(gp)
+		print("adding gp R")
