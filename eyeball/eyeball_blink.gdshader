@@ -7,11 +7,12 @@ shader_type canvas_item;
 // So, just do that inside this shader.
 
 uniform float scale = 1.0;
+uniform vec4 modulate : source_color;
 
 void fragment() {
 	vec2 uv = UV;
 	uv.y = (uv.y - 0.5) / scale + 0.5;
-	COLOR = texture(TEXTURE, uv);
+	COLOR = texture(TEXTURE, uv) * modulate;
 }
 
 //void light() {
