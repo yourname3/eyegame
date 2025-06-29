@@ -33,6 +33,11 @@ func _ready() -> void:
 
 
 func _death():
+	for i in range(3):
+		var e = exp.instantiate()
+		e.global_position = global_position + Vector2.from_angle(randf_range(0,TAU) ) * randf_range(.1,100)
+		get_tree().root.add_child.call_deferred(e)
+		print("hello")
 	if sensory.death_explosion:
 		var new_blowup
 		new_blowup.global_position = global_position
@@ -164,13 +169,7 @@ func get_speed_mod() -> float:
 func get_strength() -> int:
 	return strength
 
-func _death():
-	for i in range(3):
-		var e = exp.instantiate()
-		e.global_position = global_position + Vector2.from_angle(randf_range(0,TAU) ) * randf_range(.1,100)
-		get_tree().root.add_child.call_deferred(e)
-		print("hello")
-	queue_free()
+
 
 func _on_hit_box_body_entered(body: Node2D) -> void:
 	if body.is_in_group('Players'):

@@ -100,9 +100,9 @@ func _process(delta: float) -> void:
 	
 	var to_mouse = get_global_mouse_position() - global_position
 	
-	var dir := get_input().normalized()
+	#var dir := get_input().normalized()
 	
-	to_mouse = dir
+	#to_mouse = dir
 	
 	var ang_off = 0
 
