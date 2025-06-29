@@ -61,6 +61,8 @@ func _do_sequence(sequence: EnemySequence) -> void:
 func _ready() -> void:
 	print("thing is loaded")
 	
+	Globals.MAX_WAVES = enemy_data.size()
+	
 	BlinkTimer.start(randf_range(5.0, 15.0))
 	BlinkTimer.timeout.connect(_play_blink)
 	
@@ -74,6 +76,8 @@ func _ready() -> void:
 		await _ready_for_next_wave
 		
 	WavesAreDone = true
+	
+	
 
 
 func _play_blink() -> void:
@@ -84,6 +88,9 @@ func _play_blink() -> void:
 	
 	
 func _process(delta: float) -> void:
+	Globals.CURRENT_WAVE = current_wave +1
+	
+	
 	if BlinkTimer.time_left <= 2.0 and !Sounds.sfx_blink_warning.is_playing():
 		Sounds.sfx_blink_warning.play()
 	if Globals.EYE_HEALTH <= 0 and !Sounds.sfx_boss_death.is_playing():

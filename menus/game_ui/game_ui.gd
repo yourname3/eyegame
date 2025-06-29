@@ -9,17 +9,21 @@ var right_idx := 0
 var panels_right = []
 var health_scale = 15
 
+@export var WavesDisplay : Label
+
 func _ready():
 	create_ui()
-
+	
+func _process(delta: float) -> void:
+	WavesDisplay.text = str("Waves: ", Globals.CURRENT_WAVE, "/", Globals.MAX_WAVES)
+	_update_weapon_panels(panels_left, Globals.equipped_left)
+	_update_weapon_panels(panels_right, Globals.equipped_right)
 
 func _update_weapon_panels(arr: Array, which_weapon: int) -> void:
 	for panel in arr:
 		panel.selected = (which_weapon == panel.weapon_idx)
 
-func _process(delta: float) -> void:
-	_update_weapon_panels(panels_left, Globals.equipped_left)
-	_update_weapon_panels(panels_right, Globals.equipped_right)
+	
 
 #func switch_panel(is_left):
 	#if is_left:
