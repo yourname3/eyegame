@@ -66,7 +66,7 @@ func _NextWave() -> void:
 				
 				#spawm enemy at that point
 				var newEnemy = j.Enemy.instantiate()
-				add_child(SpawningRoot)
+				SpawningRoot.add_child(newEnemy)
 				
 				
 			
