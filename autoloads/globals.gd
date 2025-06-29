@@ -12,12 +12,12 @@ var MAX_AMMO = [
 	175,
 	180,
 	7,
-	3,
+	4,
 	20,
 ]
 
 var CURRENT_AMMO = MAX_AMMO
-var OWNED_WEAPONS = [true, true, true, true]
+var OWNED_WEAPONS = [true, true, true, true, true]
 signal transmit_damage(body, amount)
 
 enum Status {
