@@ -1,7 +1,16 @@
 extends Node
 
 
-
+#0 - pistol 
+#1 - rifle
+#2 - shotgun
+var MAX_AMMO = [
+	9999999999999,
+	12,
+	12,
+]
+var CURRENT_AMMO = MAX_AMMO
+var OWNED_WEAPONS = [true, true, true]
 signal transmit_damage(body, amount)
 
 enum Status {

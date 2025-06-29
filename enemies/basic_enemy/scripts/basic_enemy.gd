@@ -18,6 +18,7 @@ signal use_aggression
 @export var speed : int
 var speed_mod : float = 1.0
 @export var strength : int
+@onready var exp = preload("res://experience/exp.tscn")
 @export var speed_boost : float
 
 
@@ -31,6 +32,19 @@ func _ready() -> void:
 	boost_cooldown.connect(state_machine.on_boost_cooldown)
 
 
+func _death():
+	for i in range(3):
+		var e = exp.instantiate()
+		e.global_position = global_position + Vector2.from_angle(randf_range(0,TAU) ) * randf_range(.1,100)
+		get_tree().root.add_child.call_deferred(e)
+		print("hello")
+	if sensory.death_explosion:
+		var new_blowup
+		new_blowup.global_position = global_position
+		add_sibling(new_blowup)
+		queue_free()
+	else:
+		queue_free()
 
 func on_use_engage(new_vec):
 	
@@ -155,8 +169,7 @@ func get_speed_mod() -> float:
 func get_strength() -> int:
 	return strength
 
-func _death():
-	queue_free()
+
 
 func _on_hit_box_body_entered(body: Node2D) -> void:
 	if body.is_in_group('Players'):

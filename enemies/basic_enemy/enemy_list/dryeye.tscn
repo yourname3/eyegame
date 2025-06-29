@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://b2h205882at0f"]
+[gd_scene load_steps=9 format=3 uid="uid://b2h205882at0f"]
 
 [ext_resource type="Script" uid="uid://cr250551rhlnc" path="res://enemies/basic_enemy/scripts/basic_enemy.gd" id="1_c87uy"]
 [ext_resource type="Script" uid="uid://sj05hhjbhi65" path="res://enemies/basic_enemy/scripts/dryeye/sensory.gd" id="2_c87uy"]
 [ext_resource type="Script" uid="uid://bastchle4oji7" path="res://enemies/basic_enemy/scripts/stats.gd" id="3_xjmeq"]
 [ext_resource type="Script" uid="uid://cctbcuv2vbaiv" path="res://enemies/basic_enemy/scripts/state_mchine.gd" id="4_rd046"]
+[ext_resource type="PackedScene" uid="uid://cubxw1qlq5xhf" path="res://enemies/animations/blob_enemy/blob_enemy.tscn" id="5_73ulq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yx0l5"]
 radius = 300.0
@@ -24,6 +25,7 @@ state_machine = NodePath("StateMchine")
 [node name="Sensory" type="Node2D" parent="." node_paths=PackedStringArray("signal_bus", "vision", "agent", "hitbox")]
 script = ExtResource("2_c87uy")
 signal_bus = NodePath("..")
+attack_range = null
 vision = NodePath("Vision")
 agent = NodePath("Agent")
 hitbox = NodePath("HitBox")
@@ -51,6 +53,8 @@ script = ExtResource("4_rd046")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_oul6g")
+
+[node name="BlobEnemy" parent="." instance=ExtResource("5_73ulq")]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 

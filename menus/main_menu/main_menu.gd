@@ -32,5 +32,7 @@ func _ready() -> void:
 		SceneTransition.change_scene_to_packed(SceneList.Game)
 	)
 	
+	%PlayButton.grab_focus()
+	
 	%OpenCreditsButton.pressed.connect(open_credits)
 	%CloseCreditsButton.pressed.connect(close_credits)
