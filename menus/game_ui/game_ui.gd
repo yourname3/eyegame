@@ -46,6 +46,7 @@ func set_player_level(current, needed):
 	print("scalex", %PlayerLevel.scale.x)
 	$PlayLevelContainer/Label.text = str("Level: ", Globals.player.level, " XP: ", current, "/", needed )
 func set_player_health_ui(hp, max_hp):
+	hp = max(hp, 0)
 	#print("Health ", $PlayerHealth.scale.x )
 	%PlayerHealth.scale.x = float(hp)/float(max_hp)
 	%PlayerHealthLabel.text = str("Player: ", int(hp), "/", int(max_hp))
@@ -58,6 +59,8 @@ func update_ammo_text():
 		if is_instance_valid(i):
 			i.set_ammo_text()
 func update_eye_health(hp, max_hp):
+	hp = max(hp, 0)
+	
 	%EyeHealth.scale.x = float(hp)/float(max_hp)
 	%EyeHealthLabel.text = str("Eye: ", int(hp), "/", int(max_hp))
 
