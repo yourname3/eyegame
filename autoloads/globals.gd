@@ -133,6 +133,15 @@ var MAX_EYE_HEALTH : float = 20
 var EYE_HEALTH : float = 20
 func _ready() -> void:
 	transmit_damage.connect(receive_damage)
+	
+	# Whenever we level up, refill all our ammo, including for new
+	# guns.
+	SignalBus.level_up_finished.connect(_refill_ammo_on_level_up)
+	
+func _refill_ammo_on_level_up() -> void:
+	for i in range(0, OWNED_WEAPONS.size()):
+		if OWNED_WEAPONS[i]:
+			CURRENT_AMMO[i] = MAX_AMMO[i]
 
 
 func receive_damage(target, damage:int):

@@ -65,6 +65,7 @@ func select_upgrade(which: UpgradePanel, player: Upgrade, enemy: Upgrade) -> voi
 	%AnimationPlayer.play("hide")
 	player.apply()
 	enemy.apply()
+	SignalBus.level_up_finished.emit()
 	Globals.pop_pause()
 	
 func _ready() -> void:

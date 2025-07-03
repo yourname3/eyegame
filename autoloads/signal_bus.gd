@@ -13,3 +13,6 @@ signal player_damaged()
 
 ## Emitted when the player levels up.
 signal level_up()
+
+## Emitted after the Upgrade.apply() on player level up.
+signal level_up_finished()

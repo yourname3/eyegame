@@ -7,5 +7,5 @@ script = ExtResource("1_d4hwt")
 upgrades_var = &""
 gun_index = 2
 gun_ammo = 4
-description = "Grants you Gravity Gun and 4 ammo for it."
+description = "Grants you Gravity Gun."
 metadata/_custom_type_script = "uid://cqp62343t00ga"

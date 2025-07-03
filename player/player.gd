@@ -96,7 +96,7 @@ func _on_exp_collect_body_entered(body: Node2D) -> void:
 		
 func _compute_needed_exp():
 	var x = (level + 1) # experience to the next level, e.g. when level = 0 we get x = 1
-	needed_exp = int(20 * pow(1.1, x))
+	needed_exp = int(14 * pow(1.1, x))
 
 func check_level_up():
 	if Globals.game_ui_ref:
