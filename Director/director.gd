@@ -66,6 +66,7 @@ func _ready() -> void:
 	BlinkTimer.start(randf_range(5.0, 15.0))
 	BlinkTimer.timeout.connect(_play_blink)
 	
+	current_wave = 0
 	for wave in enemy_data:
 		await get_tree().create_timer(wave.SecondsTillNextWave, false).timeout
 		
@@ -74,6 +75,8 @@ func _ready() -> void:
 			_do_sequence(sequence)
 		
 		await _ready_for_next_wave
+		current_wave += 1
+		current_wave = min(current_wave, enemy_data.size())
 		
 	WavesAreDone = true
 	
@@ -88,7 +91,7 @@ func _play_blink() -> void:
 	
 	
 func _process(delta: float) -> void:
-	Globals.CURRENT_WAVE = current_wave +1
+	Globals.CURRENT_WAVE = current_wave + 1
 	
 	
 	if BlinkTimer.time_left <= 2.0 and !Sounds.sfx_blink_warning.is_playing():
