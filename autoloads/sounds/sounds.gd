@@ -48,5 +48,6 @@ func _on_blink_finished() -> void:
 	sfx_blink_open.play()
 
 
+# By Boss, I guess we mean the eye itself. Also why is this on Sounds...?
 func _on_boss_death_finished() -> void:
-	get_tree().change_scene_to_file("res://game_over_screen.tscn")
+	SceneTransition.change_scene_to_packed(preload("res://game_over_screen.tscn"), "gameover")

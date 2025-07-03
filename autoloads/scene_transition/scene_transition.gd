@@ -12,13 +12,14 @@ func _ready() -> void:
 	# Set ourselves to always so we can process when we are paused
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
-func change_scene_to_packed(scene: PackedScene) -> void:
+func change_scene_to_packed(scene: PackedScene, animation: StringName = "transition") -> void:
 	# Don't let us change multiple scenes until we're done
 	if _next_scene != null:
 		return
 		
 	_next_scene = scene
-	%AnimationPlayer.play("transition")
+	%AnimationPlayer.play("RESET")
+	%AnimationPlayer.play(animation)
 	
 # Called by our AnimationPlayer when we're halfway through the anim.
 func _switch_now() -> void:

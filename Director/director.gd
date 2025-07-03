@@ -49,7 +49,8 @@ func _do_sequence(sequence: EnemySequence) -> void:
 		newEnemy.global_position = _pick_random_point()
 		print("newEnemy target = ", player)
 				
-		newEnemy.sensory.target = player
+		if player:
+			newEnemy.sensory.target = player
 		SpawningRoot.add_child(newEnemy)
 		
 	# If we were the last sequence, signal to the wave manager that we're
@@ -89,6 +90,7 @@ func _play_blink() -> void:
 	Sounds.sfx_blink_open.play()
 	
 	
+var _has_started_eye_death := false
 	
 func _process(delta: float) -> void:
 	Globals.CURRENT_WAVE = current_wave + 1
@@ -96,8 +98,12 @@ func _process(delta: float) -> void:
 	
 	if BlinkTimer.time_left <= 2.0 and !Sounds.sfx_blink_warning.is_playing():
 		Sounds.sfx_blink_warning.play()
-	if Globals.EYE_HEALTH <= 0 and !Sounds.sfx_boss_death.is_playing():
-		Sounds.sfx_boss_death.play()
+	if not _has_started_eye_death:
+		if Globals.EYE_HEALTH <= 0:
+			# NOTE: This sound has a signal where it will cause the scene transition
+			# to the game over screen.
+			Sounds.sfx_boss_death.play()
+			_has_started_eye_death = true
 		
 		
 	if WavesAreDone == true:

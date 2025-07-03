@@ -44,10 +44,6 @@ func _physics_process(delta: float) -> void:
 		velocity *= brake_force
 	#print(level)
 	move_and_slide()
-	
-func  _process(delta: float) -> void:
-	if health <= 0:
-		get_tree().change_scene_to_file("res://game_over_screen.tscn")
 
 func _set_health(value:int):
 	if value > max_health:
@@ -74,7 +70,8 @@ func get_health() -> int:
 	return health
 
 func _death():
-	queue_free()
+	# Don't free the player, there is no reason to.
+	SceneTransition.change_scene_to_packed(preload("res://game_over_screen.tscn"), "gameover")
 
 func _ready():
 	_compute_needed_exp()
