@@ -17,9 +17,10 @@ var gun_rotate_speed := 10
 func _ready():
 	pass
 func check_remove_gun():
-	if Globals.CURRENT_AMMO[weapon_idx] == 0:
-		Globals.OWNED_WEAPONS[weapon_idx] = false
-		print("disowned gun")
+	pass
+	#if Globals.CURRENT_AMMO[weapon_idx] == 0:
+		#Globals.OWNED_WEAPONS[weapon_idx] = false
+		#print("disowned gun")
 		
 func knockback(shoot_dir):
 	var force = 1
