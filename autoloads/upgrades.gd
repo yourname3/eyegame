@@ -52,7 +52,7 @@ func _ready() -> void:
 	SignalBus.enemy_died.connect(func():
 		# This upgrade resets this timer -- you do get an additional 0.25 per
 		# copy of the upgrade.
-		_double_damage_timer = 0.25 * kill_enemy_gives_double_damage
+		_double_damage_timer = 0.75 * kill_enemy_gives_double_damage
 	
 		if kill_5_gives_heal_5 > 0:	
 			_heal_five_counter += 1
@@ -77,6 +77,6 @@ func _process(delta: float) -> void:
 	player_firerate_multiplier = 2.0 if _double_firerate_timer > 0.0 else 1.0
 
 	enemy_damage_multiplier = 1.0 + enemy_damage_boosts * 0.1#= pow(1.1, enemy_damage_boosts)
-	enemy_speed_multiplier  = 1.0 + enemy_speed_boosts * 0.1#= pow(1.1, enemy_speed_boosts)
+	enemy_speed_multiplier  = 1.0 + enemy_speed_boosts * 0.02#= pow(1.1, enemy_speed_boosts)
 	enemy_health_multiplier = 1.0 + enemy_health_boosts * 0.1#= pow(1.1, enemy_health_boosts)
 	enemy_scale_multiplier  = pow(0.9, enemy_small_boosts)

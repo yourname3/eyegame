@@ -5,5 +5,7 @@
 [resource]
 script = ExtResource("1_0quw6")
 upgrades_var = &"kill_enemy_gives_double_damage"
-description = "After killing an enemy, deal double damage for 0.25 sec."
+gun_index = -1
+gun_ammo = 0
+description = "After killing an enemy, deal double damage for 0.75 sec."
 metadata/_custom_type_script = "uid://cqp62343t00ga"
