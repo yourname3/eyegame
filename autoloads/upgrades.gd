@@ -30,7 +30,23 @@ var enemy_small_boosts: int = 0
 ## How many times the enemies roll for spawning themselves on death
 var enemy_spawn_rolls: int = 0
 
+func _reset():
+	shoot_enemy_with_pistol_gain_ammo = 0
+	kill_enemy_gives_double_damage = 0
+	take_damage_gives_fire_rate = 0
+	kill_5_gives_heal_5 = 0
+	rolls_for_extra_xp = 0
 
+	enemy_wave_spawn_extra_first = 0
+	enemy_damage_boosts = 0
+	enemy_speed_boosts = 0
+	enemy_health_boosts = 0
+	enemy_small_boosts = 0
+	enemy_spawn_rolls = 0
+	
+	_double_damage_timer = 0
+	_double_firerate_timer = 0
+	_heal_five_counter = 0
 
 # -- Below is variables used for tracking stuff relevant to particular
 # -- upgrades. This is done by the Upgrades script so that the relevant

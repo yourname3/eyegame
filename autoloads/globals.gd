@@ -79,6 +79,14 @@ func reset_game_state() -> void:
 	# We always have the pistol unlocked
 	OWNED_WEAPONS[GUN_PISTOL] = true
 	owned_nonpistol_weapons_by_idx = []
+	
+	equipped_left = 0
+	equipped_right = 0
+	
+	game_ui_ref = null
+	EYE_HEALTH = MAX_EYE_HEALTH
+	
+	Upgrades._reset()
 
 func unlock_gun(idx: int, ammo: int) -> void:
 	OWNED_WEAPONS[idx] = true

@@ -30,4 +30,5 @@ func _switch_now() -> void:
 	_next_scene = null
 	
 	# Make sure to unpause the game now that we're in a new scene
+	Globals.pause_stack = 0
 	get_tree().paused = false
