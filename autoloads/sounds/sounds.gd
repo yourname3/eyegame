@@ -50,4 +50,4 @@ func _on_blink_finished() -> void:
 
 # By Boss, I guess we mean the eye itself. Also why is this on Sounds...?
 func _on_boss_death_finished() -> void:
-	SceneTransition.change_scene_to_packed(preload("res://game_over_screen.tscn"), "gameover")
+	SceneTransition.change_scene_to_packed(SceneList.GameOver, "gameover")

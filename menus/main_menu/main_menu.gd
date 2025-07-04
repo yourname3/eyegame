@@ -30,7 +30,7 @@ func _ready() -> void:
 	
 	%PlayButton.pressed.connect(func():
 		Globals.reset_game_state()
-		SceneTransition.change_scene_to_packed(SceneList.Game)
+		SceneTransition.change_scene_to_packed(load("res://game.tscn"))
 	)
 	
 	%PlayButton.grab_focus()

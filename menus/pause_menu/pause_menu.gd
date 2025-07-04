@@ -40,7 +40,8 @@ func _ready() -> void:
 	
 	%ResumeButton.pressed.connect(unpause)
 	%QuitButton.pressed.connect(func():
-		SceneTransition.change_scene_to_packed(SceneList.MainMenu)
+		# Need to use 'load' to fix the cyclic reference. (???)
+		SceneTransition.change_scene_to_packed(load("res://menus/main_menu/main_menu.tscn"))
 	)
 	# Hide menu through same property as animations
 	menu.anchor_top = 1.0

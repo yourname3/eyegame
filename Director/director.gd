@@ -110,7 +110,7 @@ func _process(delta: float) -> void:
 		var nodes_in_group = get_tree().get_nodes_in_group("Enemies")
 		
 		if nodes_in_group.size() == 0:
-			get_tree().change_scene_to_file("res://win_screen.tscn")
+			get_tree().change_scene_to_packed(SceneList.WinScreen)
 	
 	#if Input.is_key_pressed(KEY_SPACE):		
 		#_play_blink()

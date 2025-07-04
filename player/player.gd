@@ -71,7 +71,7 @@ func get_health() -> int:
 
 func _death():
 	# Don't free the player, there is no reason to.
-	SceneTransition.change_scene_to_packed(preload("res://game_over_screen.tscn"), "gameover")
+	SceneTransition.change_scene_to_packed(SceneList.GameOver, "gameover")
 
 func _ready():
 	_compute_needed_exp()

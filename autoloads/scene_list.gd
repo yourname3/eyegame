@@ -35,3 +35,5 @@ class_name SceneListScript
 
 var Game: PackedScene = preload("res://game.tscn")
 var MainMenu: PackedScene = preload("res://menus/main_menu/main_menu.tscn")
+var GameOver: PackedScene = preload("res://game_over_screen.tscn")
+var WinScreen: PackedScene = preload("res://win_screen.tscn")
