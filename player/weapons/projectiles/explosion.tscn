@@ -1,71 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://b0snu6vu3acul"]
+[gd_scene load_steps=12 format=3 uid="uid://b0snu6vu3acul"]
 
 [ext_resource type="Script" uid="uid://bx4xmx3yc3sb3" path="res://player/weapons/projectiles/explosion.gd" id="1_wotpk"]
 [ext_resource type="Texture2D" uid="uid://6yc0xmhvv4fj" path="res://proto/proto_projectile.svg" id="2_mrxkh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sr0iv"]
-radius = 63.0079
-
-[sub_resource type="Animation" id="Animation_mrxkh"]
-resource_name = "Explode"
-length = 1.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.433333, 1.36667),
-"transitions": PackedFloat32Array(0.233258, 1, 1),
-"update": 0,
-"values": [Vector2(0.525, 0.525), Vector2(3.02, 3.02), Vector2(1.03, 1.03)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.0333333, 0.433333, 1.33333),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(0.843137, 0.247059, 0, 0), Color(0.890196, 0.00392157, 0, 0), Color(1, 0.570067, 0.445386, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_sr0iv"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.843137, 0.247059, 0, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_u2civ"]
-_data = {
-&"Explode": SubResource("Animation_mrxkh"),
-&"RESET": SubResource("Animation_sr0iv")
-}
+radius = 181.412
 
 [sub_resource type="Curve" id="Curve_sr0iv"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.62203, 0.507736), -1.25848, -1.25848, 0, 0, Vector2(1, 0.0101792), 0.0, 0.0, 0, 0]
@@ -96,18 +35,20 @@ spread = 180.0
 initial_velocity_min = 24.11
 initial_velocity_max = 149.94
 gravity = Vector3(0, 0, 0)
-scale_min = 0.3
-scale_max = 0.8
+scale_min = 3.0
+scale_max = 4.7
 scale_curve = SubResource("CurveTexture_sr0iv")
 color_initial_ramp = SubResource("GradientTexture1D_sr0iv")
 alpha_curve = SubResource("CurveTexture_u2civ")
 emission_curve = SubResource("CurveTexture_mrxkh")
 
 [node name="Explosion" type="Node2D"]
+scale = Vector2(1.814, 1.814)
 script = ExtResource("1_wotpk")
+explosion_damage = 2.5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.843137, 0.247059, 0, 1)
+modulate = Color(0.843137, 0.247059, 0, 0)
 self_modulate = Color(0.843137, 0.247059, 0, 1)
 texture = ExtResource("2_mrxkh")
 
@@ -116,19 +57,11 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
 shape = SubResource("CircleShape2D_sr0iv")
-disabled = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_u2civ")
-}
-autoplay = "Explode"
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 emitting = false
-amount = 21
+amount = 20
 texture = ExtResource("2_mrxkh")
 lifetime = 1.5
 one_shot = true
@@ -137,4 +70,3 @@ explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_mrxkh")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -6,7 +6,7 @@
 [node name="Gun" type="Node2D"]
 script = ExtResource("1_vo4kc")
 black_hole = true
-speed = 200
+speed = 555
 
 [node name="FirePoint" type="Marker2D" parent="."]
 unique_name_in_owner = true

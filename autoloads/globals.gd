@@ -117,15 +117,12 @@ enum NetStatus {
 	ERROR # error code
 }
 
-
-
 var enemy_bullet : PackedScene = preload("res://enemies/bullets/enemy_bullet/bullet.tscn")
 var heavy_bullet : PackedScene = preload("res://enemies/bullets/enemy_bullet/heavy_bullet.tscn")
 var curly_bullet : PackedScene = preload("res://enemies/bullets/enemy_bullet/curly_bullet.tscn")
 var homing_bullet : PackedScene = preload("res://enemies/bullets/enemy_bullet/homing_bullet.tscn")
 var explosive_bullet : PackedScene = preload("res://enemies/bullets/enemy_bullet/explosive_bullet.tscn")
 var explosion : PackedScene = preload("res://enemies/bullets/enemy_bullet/enemy_explosion.tscn")
-
 
 var game_ui_ref: GameUI
 
