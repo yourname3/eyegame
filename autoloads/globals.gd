@@ -1,5 +1,6 @@
 extends Node
 
+var is_first_time_playing := true
 var player : Player 
 const GUN_PISTOL  := 0
 const GUN_RIFLE   := 1

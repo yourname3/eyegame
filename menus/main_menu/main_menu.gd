@@ -30,7 +30,11 @@ func _ready() -> void:
 	
 	%PlayButton.pressed.connect(func():
 		Globals.reset_game_state()
-		SceneTransition.change_scene_to_packed(load("res://game.tscn"))
+		if Globals.is_first_time_playing:
+			Globals.is_first_time_playing = false
+			SceneTransition.change_scene_to_packed(load("res://menus/loading_screen.tscn"))
+		else:
+			SceneTransition.change_scene_to_packed(load("res://game.tscn"))
 	)
 	
 	%PlayButton.grab_focus()

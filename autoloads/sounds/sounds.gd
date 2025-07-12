@@ -26,7 +26,6 @@ var current_music := -1
 @onready var sfx_eye_hit := $EyeHit
 @onready var sfx_shotgun := $Shotgun
 @onready var sfx_exp_collect := $ExpCollect
-
 func play_music(idx: int) -> void:
 	if idx < 0 or idx >= music.size():
 		push_warning("Invalid music index")
@@ -43,10 +42,12 @@ func _physics_process(delta: float) -> void:
 		music[i].volume_linear += (target_volume - music[i].volume_linear) * 0.04
 		
 
-
+func _cut_grenade_sound():
+	#sfx_blink.stream_paused = true
+	sfx_grenade_explosion.stop()
+		
 func _on_blink_finished() -> void:
 	sfx_blink_open.play()
-
 
 # By Boss, I guess we mean the eye itself. Also why is this on Sounds...?
 func _on_boss_death_finished() -> void:
